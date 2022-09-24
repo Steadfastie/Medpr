@@ -1,0 +1,17 @@
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\MedprBusiness.csproj.AssemblyReference.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\MedprBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\MedprBusiness.AssemblyInfoInputs.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\MedprBusiness.AssemblyInfo.cs
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\MedprBusiness.csproj.CoreCompileInputs.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\bin\Debug\net6.0\MedprBusiness.deps.json
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\bin\Debug\net6.0\MedprBusiness.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\bin\Debug\net6.0\MedprBusiness.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\bin\Debug\net6.0\MedprCore.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\bin\Debug\net6.0\MedprDB.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\bin\Debug\net6.0\MedprCore.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\bin\Debug\net6.0\MedprDB.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\MedprBusiness.csproj.CopyComplete
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\MedprBusiness.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\refint\MedprBusiness.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\MedprBusiness.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprDB\MedprBusiness\obj\Debug\net6.0\ref\MedprBusiness.dll

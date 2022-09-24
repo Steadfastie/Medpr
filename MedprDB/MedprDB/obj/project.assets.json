@@ -782,6 +782,16 @@
             "rid": "win"
           }
         }
+      },
+      "MedprCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MedprCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MedprCore.dll": {}
+        }
       }
     }
   },
@@ -2003,10 +2013,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "MedprCore/1.0.0": {
+      "type": "project",
+      "path": "../../MedprCOre/MedprCore.csproj",
+      "msbuildProject": "../../MedprCOre/MedprCore.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "MedprCore >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.8",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.8",
@@ -2044,7 +2060,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj": {
+              "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

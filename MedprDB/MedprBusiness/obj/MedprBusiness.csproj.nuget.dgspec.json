@@ -1,0 +1,224 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprBusiness\\MedprBusiness.csproj": {}
+  },
+  "projects": {
+    "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj",
+        "projectName": "MedprCore",
+        "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj",
+        "packagesPath": "C:\\Users\\LKumb\\.nuget\\packages\\",
+        "outputPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LKumb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprBusiness\\MedprBusiness.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprBusiness\\MedprBusiness.csproj",
+        "projectName": "MedprBusiness",
+        "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprBusiness\\MedprBusiness.csproj",
+        "packagesPath": "C:\\Users\\LKumb\\.nuget\\packages\\",
+        "outputPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprBusiness\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LKumb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCore\\MedprCore.csproj": {
+                "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCore\\MedprCore.csproj"
+              },
+              "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj": {
+                "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj",
+        "projectName": "MedprDB",
+        "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj",
+        "packagesPath": "C:\\Users\\LKumb\\.nuget\\packages\\",
+        "outputPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LKumb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj": {
+                "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

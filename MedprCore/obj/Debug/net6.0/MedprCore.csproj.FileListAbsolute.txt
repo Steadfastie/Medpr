@@ -1,0 +1,12 @@
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\bin\Debug\net6.0\MedprCore.deps.json
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\bin\Debug\net6.0\MedprCore.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\bin\Debug\net6.0\MedprCore.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\MedprCore.csproj.AssemblyReference.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\MedprCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\MedprCore.AssemblyInfoInputs.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\MedprCore.AssemblyInfo.cs
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\MedprCore.csproj.CoreCompileInputs.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\MedprCore.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\refint\MedprCore.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\MedprCore.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprCOre\obj\Debug\net6.0\ref\MedprCore.dll

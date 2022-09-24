@@ -181,7 +181,7 @@ namespace MedprDB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -231,7 +231,7 @@ namespace MedprDB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Price")
+                    b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<string>("Reason")
