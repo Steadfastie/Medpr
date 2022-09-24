@@ -17,15 +17,11 @@ namespace MedprBusiness.ServiceImplementations
     {
         private readonly MedprDBContext _dbContext;
         private readonly IMapper _mapper;
+
         public DrugService(MedprDBContext dbcontext, IMapper mapper)
         {
             _dbContext = dbcontext;
             _mapper = mapper;
-        }
-
-        public Task<int> CreateArticleAsync(DrugDTO dto)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<DrugDTO> GetDrugsByIdAsync(Guid id)
@@ -38,8 +34,21 @@ namespace MedprBusiness.ServiceImplementations
 
         public Task<List<DrugDTO>> GetDrugsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
         {
+            var list = _dbContext.Drugs
+                .Skip(pageSize * pageNumber)
+                .Take(pageSize)
+                .Select(drug => _mapper.Map<DrugDTO>(drug))
+                .ToListAsync();
+            return list;
+        }
+
+        public Task<int> CreateArticleAsync(DrugDTO dto)
+        {
             throw new NotImplementedException();
         }
+
+        
+
 
         public Task<List<DrugDTO>> GetNewArticlesFromExternalSourcesAsync()
         {

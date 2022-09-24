@@ -1,17 +1,15 @@
-﻿@model DrugDTO
+﻿@model DrugModel
 
 @{
     ViewData["Title"] = "Drug detail";
 }
 
 <div>
-    <h3>
-        @Model.Name
-    </h3>
-    <h5>
-        @Model.PharmGroup
-    </h5>
-    <div>
-        @Model.Price
-    </div>
+    @{
+        await Html.RenderPartialAsync("DrugDetailsPreview", Model);
+    }
 </div>
+
+@*This page will contain:
+    CRUD buttons
+    additional information like drug description paper or wikiAPI*@

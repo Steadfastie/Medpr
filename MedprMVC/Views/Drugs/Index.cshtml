@@ -1,0 +1,12 @@
+﻿@model List<DrugModel>
+
+@{
+    ViewData["Title"] = "All drugs";
+}
+
+@if (Model.Any()){
+    foreach(var drug in Model){
+        await Html.RenderPartialAsync("DrugDetailsPreview", drug);
+        <a class="btn btn-primary" href="~/drugs/details/@drug.Id">Read details</a>
+    }
+}
