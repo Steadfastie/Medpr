@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zkXAiiGAI008qSSumMnyDHhXb8odb8ZA97mwUU3VT6bnDsDcejZSx348HzStifvWeD6B6divOKPDmuZ4jMTzMg==",
+  "dgSpecHash": "YerASyP/Llb/TLyJTg1jH140A2KMvbHXEQ7gqHRbHibl5nxbnuo/q3coWkwgPrdts6d8rnH7fqRBYKcbC8hKzQ==",
   "success": true,
-  "projectFilePath": "C:\\Skyrim\\Code\\MedprDB\\MedprDB\\MedprDB.csproj",
+  "projectFilePath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LKumb\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\LKumb\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

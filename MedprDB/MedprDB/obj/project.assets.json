@@ -2020,11 +2020,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Skyrim\\Code\\MedprDB\\MedprDB\\MedprDB.csproj",
+      "projectUniqueName": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj",
       "projectName": "MedprDB",
-      "projectPath": "C:\\Skyrim\\Code\\MedprDB\\MedprDB\\MedprDB.csproj",
+      "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj",
       "packagesPath": "C:\\Users\\LKumb\\.nuget\\packages\\",
-      "outputPath": "C:\\Skyrim\\Code\\MedprDB\\MedprDB\\obj\\",
+      "outputPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
