@@ -1,0 +1,28 @@
+﻿@model DrugModel
+@{
+    ViewData["Title"] = "Add drug to Medpr";
+}
+
+<div>
+    <h1>Add drug</h1>
+
+    <form asp-controller="Drugs" asp-action="Create" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input asp-for="Name" type="text" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="pharmGroup" class="form-label">Drug class</label>
+            <input asp-for="PharmGroup" class="form-control" id="pharmGroup">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input asp-for="Price" class="form-control" id="price">
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+
+    </form>
+</div>
+
+

@@ -18,6 +18,7 @@ namespace MedprMVC.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index(int page)
         {
             try
@@ -33,12 +34,13 @@ namespace MedprMVC.Controllers
                     return View(null);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
+        [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
             try
@@ -52,6 +54,39 @@ namespace MedprMVC.Controllers
                 else
                 {
                     return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(DrugModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    model.Id = Guid.NewGuid();
+
+                    var dto = _mapper.Map<DrugDTO>(model);
+
+                    await _drugService.CreateArticleAsync(dto);
+
+                    return RedirectToAction("Index", "Drugs");
+                }
+
+                else
+                {
+                    return View(model);
                 }
             }
             catch(Exception ex)

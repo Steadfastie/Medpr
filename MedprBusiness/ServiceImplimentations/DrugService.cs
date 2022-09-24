@@ -42,9 +42,20 @@ namespace MedprBusiness.ServiceImplementations
             return list;
         }
 
-        public Task<int> CreateArticleAsync(DrugDTO dto)
+        public async Task<int> CreateArticleAsync(DrugDTO dto)
         {
-            throw new NotImplementedException();
+            var entity = _mapper.Map<Drug>(dto);
+
+            if (entity != null)
+            {
+                await _dbContext.Drugs.AddAsync(entity);
+                var addingResult = await _dbContext.SaveChangesAsync();
+                return addingResult;
+            }
+            else
+            {
+                throw new ArgumentException(nameof(dto));
+            }
         }
 
         
