@@ -4,6 +4,7 @@ using MedprCore.DTO;
 using Microsoft.EntityFrameworkCore;
 using MedprDB;
 using MedprDB.Entities;
+using MedprBusiness;
 using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC

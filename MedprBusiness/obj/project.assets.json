@@ -18,32 +18,6 @@
           }
         }
       },
-      "AutoMapper.Extensions.Microsoft.DependencyInjection/11.0.0": {
-        "type": "package",
-        "dependencies": {
-          "AutoMapper": "11.0.0",
-          "Microsoft.Extensions.Options": "6.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
-        }
-      },
-      "Humanizer.Core/2.8.26": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/_._": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Humanizer.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
@@ -156,26 +130,6 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Design/6.0.8": {
-        "type": "package",
-        "dependencies": {
-          "Humanizer.Core": "2.8.26",
-          "Microsoft.EntityFrameworkCore.Relational": "6.0.8"
-        },
-        "compile": {
-          "lib/net6.0/_._": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "build/net6.0/Microsoft.EntityFrameworkCore.Design.props": {}
-        }
-      },
       "Microsoft.EntityFrameworkCore.Relational/6.0.8": {
         "type": "package",
         "dependencies": {
@@ -208,18 +162,6 @@
           "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Tools/6.0.8": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "6.0.8"
-        },
-        "compile": {
-          "lib/net6.0/_._": {}
-        },
-        "runtime": {
-          "lib/net6.0/_._": {}
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/6.0.0": {
@@ -812,21 +754,6 @@
           }
         }
       },
-      "MedprBusiness/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "AutoMapper": "11.0.1",
-          "MedprCore": "1.0.0",
-          "MedprDB": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/MedprBusiness.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MedprBusiness.dll": {}
-        }
-      },
       "MedprCore/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -868,36 +795,6 @@
         "icon.png",
         "lib/netstandard2.1/AutoMapper.dll",
         "lib/netstandard2.1/AutoMapper.xml"
-      ]
-    },
-    "AutoMapper.Extensions.Microsoft.DependencyInjection/11.0.0": {
-      "sha512": "0asw5WxdCFh2OTi9Gv+oKyH9SzxwYQSnO8TV5Dd0GggovILzJW4UimP26JAcxc3yB5NnC5urooZ1BBs8ElpiBw==",
-      "type": "package",
-      "path": "automapper.extensions.microsoft.dependencyinjection/11.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
-        "automapper.extensions.microsoft.dependencyinjection.nuspec",
-        "icon.png",
-        "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
-      ]
-    },
-    "Humanizer.Core/2.8.26": {
-      "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
-      "type": "package",
-      "path": "humanizer.core/2.8.26",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "humanizer.core.2.8.26.nupkg.sha512",
-        "humanizer.core.nuspec",
-        "lib/netstandard1.0/Humanizer.dll",
-        "lib/netstandard1.0/Humanizer.xml",
-        "lib/netstandard2.0/Humanizer.dll",
-        "lib/netstandard2.0/Humanizer.xml",
-        "logo.png"
       ]
     },
     "Microsoft.CSharp/4.7.0": {
@@ -1099,21 +996,6 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/6.0.8": {
-      "sha512": "yv3RGUVWP+UVmCrQiD0XGB7U1JandH+MeBrlLWMBvue01cJhFSBrzvtHr6jTNJaMTmoKiNIeK7uff6HesrfU4g==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.design/6.0.8",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "build/net6.0/Microsoft.EntityFrameworkCore.Design.props",
-        "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll",
-        "lib/net6.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.6.0.8.nupkg.sha512",
-        "microsoft.entityframeworkcore.design.nuspec"
-      ]
-    },
     "Microsoft.EntityFrameworkCore.Relational/6.0.8": {
       "sha512": "laj1Kx0Ifny8E7dCCXV4+hYJkly8t9Gjc6/Trds1W4xg/vf/dzyuxTCUqQMHtGv29C8zV1+C2wnWVOcwWin5FQ==",
       "type": "package",
@@ -1140,31 +1022,6 @@
         "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
         "microsoft.entityframeworkcore.sqlserver.6.0.8.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Tools/6.0.8": {
-      "sha512": "+wjKy16Vdz/ArHFvJZ1xXG241OZMFbTY0lS8vTQL4tfo8slX/h1J9PkzbWJjG6G7SMharUwvigIo+vrMO628Xg==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/6.0.8",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/net6.0/_._",
-        "microsoft.entityframeworkcore.tools.6.0.8.nupkg.sha512",
-        "microsoft.entityframeworkcore.tools.nuspec",
-        "tools/EntityFrameworkCore.PS2.psd1",
-        "tools/EntityFrameworkCore.PS2.psm1",
-        "tools/EntityFrameworkCore.psd1",
-        "tools/EntityFrameworkCore.psm1",
-        "tools/about_EntityFrameworkCore.help.txt",
-        "tools/init.ps1",
-        "tools/net461/any/ef.exe",
-        "tools/net461/win-arm64/ef.exe",
-        "tools/net461/win-x86/ef.exe",
-        "tools/netcoreapp2.0/any/ef.dll",
-        "tools/netcoreapp2.0/any/ef.runtimeconfig.json"
       ]
     },
     "Microsoft.Extensions.Caching.Abstractions/6.0.0": {
@@ -2103,11 +1960,6 @@
         "version.txt"
       ]
     },
-    "MedprBusiness/1.0.0": {
-      "type": "project",
-      "path": "../MedprBusiness/MedprBusiness.csproj",
-      "msbuildProject": "../MedprBusiness/MedprBusiness.csproj"
-    },
     "MedprCore/1.0.0": {
       "type": "project",
       "path": "../MedprCOre/MedprCore.csproj",
@@ -2122,14 +1974,8 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper >= 11.0.1",
-      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 11.0.0",
-      "MedprBusiness >= 1.0.0",
       "MedprCore >= 1.0.0",
-      "MedprDB >= 1.0.0",
-      "Microsoft.EntityFrameworkCore >= 6.0.8",
-      "Microsoft.EntityFrameworkCore.Design >= 6.0.8",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.8",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.8"
+      "MedprDB >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2139,11 +1985,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprMVC\\MedprMVC.csproj",
-      "projectName": "MedprMVC",
-      "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprMVC\\MedprMVC.csproj",
+      "projectUniqueName": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprBusiness\\MedprBusiness.csproj",
+      "projectName": "MedprBusiness",
+      "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprBusiness\\MedprBusiness.csproj",
       "packagesPath": "C:\\Users\\LKumb\\.nuget\\packages\\",
-      "outputPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprMVC\\obj\\",
+      "outputPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprBusiness\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2164,9 +2010,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprBusiness\\MedprBusiness.csproj": {
-              "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprBusiness\\MedprBusiness.csproj"
-            },
             "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj": {
               "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj"
             },
@@ -2189,30 +2032,6 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[11.0.1, )"
-          },
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-            "target": "Package",
-            "version": "[11.0.0, )"
-          },
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[6.0.8, )"
-          },
-          "Microsoft.EntityFrameworkCore.Design": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[6.0.8, )"
-          },
-          "Microsoft.EntityFrameworkCore.SqlServer": {
-            "target": "Package",
-            "version": "[6.0.8, )"
-          },
-          "Microsoft.EntityFrameworkCore.Tools": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[6.0.8, )"
           }
         },
         "imports": [
@@ -2227,9 +2046,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

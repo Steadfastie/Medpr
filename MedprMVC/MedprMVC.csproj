@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MedprBusiness\MedprBusiness.csproj" />
     <ProjectReference Include="..\MedprCOre\MedprCore.csproj" />
-    <ProjectReference Include="..\MedprDB\MedprBusiness\MedprBusiness.csproj" />
     <ProjectReference Include="..\MedprDB\MedprDB\MedprDB.csproj" />
   </ItemGroup>
 
