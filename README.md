@@ -6,5 +6,7 @@ Hey, check out my new UI mockup: https://xd.adobe.com/view/c5b3da8e-d86b-435c-88
 List of things that will be updated in my project next:
   1. password -> password hash migration (✔️)
   2. basic MVC stracture (✔️)
-  3. CRUD for 1 db branch
+  3. CRUD for 1 db branch (✔️)
   4. Remove guid from drug detail url route
+  5. Add Serilog
+  6. UnitOfWork architecture
