@@ -63,7 +63,7 @@ namespace MedprMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -89,7 +89,83 @@ namespace MedprMVC.Controllers
                     return View(model);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            try
+            {
+                if (id != Guid.Empty)
+                {
+                    var dto = await _drugService.GetDrugsByIdAsync(id);
+                    if (dto == null)
+                    {
+                        return BadRequest();
+                    }
+
+                    var editModel = _mapper.Map<DrugModel>(dto);
+
+                    return View(editModel);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(DrugModel model)
+        {
+            try
+            {
+                if (model != null)
+                {
+                    var dto = _mapper.Map<DrugDTO>(model);
+
+                    await _drugService.UpdateArticleAsync(dto);
+
+                    return RedirectToAction("Index", "Drugs");
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                if (id != Guid.Empty)
+                {
+                    var dto = await _drugService.GetDrugsByIdAsync(id);
+
+                    await _drugService.DeleteArticleAsync(dto);
+
+                    return RedirectToAction("Index", "Drugs");
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

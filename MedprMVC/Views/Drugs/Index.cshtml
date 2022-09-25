@@ -4,13 +4,25 @@
     ViewData["Title"] = "All drugs";
 }
 
-@if (Model.Any()){
-    foreach(var drug in Model){
-        await Html.RenderPartialAsync("DrugDetailsPreview", drug);
+<table class="table table-borderless">
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var drug in Model)
+            {
+                <tr>
+                    <td>
+                        @{await Html.RenderPartialAsync("DrugDetailsPreview", drug);}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="~/drugs/details/@drug.Id">Read details</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 
-        <a class="btn btn-primary" href="~/drugs/details/@drug.Id">Read details</a>
-    }
-}
 <br>
 <br>
 <div>

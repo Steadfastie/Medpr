@@ -10,6 +10,7 @@ using MedprCore.DTO;
 using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplementations
 {
@@ -26,7 +27,7 @@ namespace MedprBusiness.ServiceImplementations
 
         public async Task<DrugDTO> GetDrugsByIdAsync(Guid id)
         {
-            var entity = await _dbContext.Drugs.FirstOrDefaultAsync(drug => drug.Id.Equals(id));
+            var entity = await _dbContext.Drugs.AsNoTracking().FirstOrDefaultAsync(drug => drug.Id.Equals(id));
             var dto = _mapper.Map<DrugDTO>(entity);
 
             return dto;
@@ -58,7 +59,38 @@ namespace MedprBusiness.ServiceImplementations
             }
         }
 
-        
+        public async Task<int> UpdateArticleAsync(DrugDTO dto)
+        {
+            var entity = _mapper.Map<Drug>(dto);
+
+            if (entity != null)
+            {
+                _dbContext.Drugs.Update(entity);
+                var addingResult = await _dbContext.SaveChangesAsync();
+                return addingResult;
+            }
+            else
+            {
+                throw new ArgumentException(nameof(dto));
+            }
+        }
+
+        public async Task<int> DeleteArticleAsync(DrugDTO dto)
+        {
+            var entity = _mapper.Map<Drug>(dto);
+
+            if (entity != null)
+            {
+                //_dbContext.Entry(entity).State = EntityState.Deleted;
+                _dbContext.Drugs.Remove(entity);
+                var addingResult = await _dbContext.SaveChangesAsync();
+                return addingResult;
+            }
+            else
+            {
+                throw new ArgumentException(nameof(dto));
+            }
+        }
 
 
         public Task<List<DrugDTO>> GetNewArticlesFromExternalSourcesAsync()

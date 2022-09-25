@@ -6,6 +6,7 @@ using MedprDB;
 using MedprDB.Entities;
 using MedprBusiness;
 using MedprBusiness.ServiceImplementations;
+using Microsoft.Extensions.Options;
 
 namespace MedprMVC
 {
