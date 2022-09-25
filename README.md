@@ -9,4 +9,5 @@ List of things that will be updated in my project next:
   3. CRUD for 1 db branch (✔️)
   4. Remove guid from drug detail url route
   5. Add Serilog
-  6. UnitOfWork architecture
+  6. Add validation tags
+  7. UnitOfWork architecture
