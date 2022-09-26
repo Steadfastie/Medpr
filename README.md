@@ -8,7 +8,7 @@ List of things that will be updated in my project next:
   2. basic MVC stracture (✔️)
   3. CRUD for 1 db branch (✔️)
   4. Remove guid from drug detail url route
-  5. [ValidateAntiForgeryToken] to delete method
+  5. [ValidateAntiForgeryToken] to post methods
   6. Add Serilog
   7. Add validation tags
   8. UnitOfWork architecture
