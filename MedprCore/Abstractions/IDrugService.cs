@@ -1,4 +1,5 @@
-﻿using MedprCore.DTO;
+﻿using AspNetSample.Core;
+using MedprCore.DTO;
 
 namespace MedprCore.Abstractions
 {
@@ -7,12 +8,10 @@ namespace MedprCore.Abstractions
         Task<List<DrugDTO>> GetDrugsByPageNumberAndPageSizeAsync
             (int pageNumber, int pageSize);
 
-        Task<List<DrugDTO>> GetNewArticlesFromExternalSourcesAsync();
-
         Task<DrugDTO> GetDrugsByIdAsync(Guid id);
 
-        Task<int> CreateArticleAsync(DrugDTO dto);
-        Task<int> UpdateArticleAsync(DrugDTO dto);
-        Task<int> DeleteArticleAsync(DrugDTO dto);
+        Task<int> CreateDrugAsync(DrugDTO dto);
+        Task<int> PatchDrugAsync(Guid id, List<PatchModel> patchList);
+        Task<int> DeleteDrugAsync(DrugDTO dto);
     }
 }

@@ -47,7 +47,7 @@ namespace MedprDB.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointment");
+                    b.ToTable("Appointment", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.Doctor", b =>
@@ -65,7 +65,7 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Doctor");
+                    b.ToTable("Doctor", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.Drug", b =>
@@ -87,7 +87,7 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Drug");
+                    b.ToTable("Drug", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.Family", b =>
@@ -102,7 +102,7 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Family");
+                    b.ToTable("Family", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.FamilyMember", b =>
@@ -126,7 +126,7 @@ namespace MedprDB.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FamilyMember");
+                    b.ToTable("FamilyMember", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.Prescription", b =>
@@ -161,7 +161,7 @@ namespace MedprDB.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Prescription");
+                    b.ToTable("Prescription", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.User", b =>
@@ -191,7 +191,7 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.Vaccination", b =>
@@ -218,7 +218,7 @@ namespace MedprDB.Migrations
 
                     b.HasIndex("VaccineId");
 
-                    b.ToTable("Vaccination");
+                    b.ToTable("Vaccination", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.Vaccine", b =>
@@ -240,7 +240,7 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vaccine");
+                    b.ToTable("Vaccine", (string)null);
                 });
 
             modelBuilder.Entity("MedprDB.Appointment", b =>

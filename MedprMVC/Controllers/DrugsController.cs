@@ -5,6 +5,8 @@ using MedprCore.DTO;
 using AutoMapper;
 using MedprMVC.Models;
 using Serilog;
+using AspNetSample.Core;
+using System.Reflection;
 
 namespace MedprMVC.Controllers
 {
@@ -82,7 +84,7 @@ namespace MedprMVC.Controllers
 
                     var dto = _mapper.Map<DrugDTO>(model);
 
-                    await _drugService.CreateArticleAsync(dto);
+                    await _drugService.CreateDrugAsync(dto);
 
                     return RedirectToAction("Index", "Drugs");
                 }
@@ -137,7 +139,25 @@ namespace MedprMVC.Controllers
                 {
                     var dto = _mapper.Map<DrugDTO>(model);
 
-                    await _drugService.UpdateArticleAsync(dto);
+                    var sourceDto = await _drugService.GetDrugsByIdAsync(model.Id);
+
+                    var patchList = new List<PatchModel>();
+
+                    if (dto != null)
+                    {
+                        foreach (PropertyInfo property in typeof(DrugDTO).GetProperties())
+                        {
+                            if (!property.GetValue(dto).Equals(property.GetValue(sourceDto))){
+                                patchList.Add(new PatchModel()
+                                {
+                                    PropertyName = property.Name,
+                                    PropertyValue = property.GetValue(dto)
+                                });
+                            }
+                        }
+                    }
+
+                    await _drugService.PatchDrugAsync(model.Id, patchList);
 
                     return RedirectToAction("Index", "Drugs");
                 }
@@ -162,7 +182,7 @@ namespace MedprMVC.Controllers
                 {
                     var dto = await _drugService.GetDrugsByIdAsync(id);
 
-                    await _drugService.DeleteArticleAsync(dto);
+                    await _drugService.DeleteDrugAsync(dto);
 
                     return RedirectToAction("Index", "Drugs");
                 }

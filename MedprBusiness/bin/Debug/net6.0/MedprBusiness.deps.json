@@ -10,7 +10,8 @@
         "dependencies": {
           "AutoMapper": "11.0.1",
           "MedprCore": "1.0.0",
-          "MedprDB": "1.0.0"
+          "MedprDB": "1.0.0",
+          "MedprDataAbstractions": "1.0.0"
         },
         "runtime": {
           "MedprBusiness.dll": {}
@@ -474,6 +475,14 @@
           "MedprCore.dll": {}
         }
       },
+      "MedprDataAbstractions/1.0.0": {
+        "dependencies": {
+          "MedprDB": "1.0.0"
+        },
+        "runtime": {
+          "MedprDataAbstractions.dll": {}
+        }
+      },
       "MedprDB/1.0.0": {
         "dependencies": {
           "MedprCore": "1.0.0",
@@ -780,6 +789,11 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "MedprCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MedprDataAbstractions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -28,6 +28,7 @@
     <ProjectReference Include="..\MedprBusiness\MedprBusiness.csproj" />
     <ProjectReference Include="..\MedprCOre\MedprCore.csproj" />
     <ProjectReference Include="..\MedprDB\MedprDB\MedprDB.csproj" />
+    <ProjectReference Include="..\MedprRepositories\MedprDataRepositories.csproj" />
   </ItemGroup>
 
 </Project>

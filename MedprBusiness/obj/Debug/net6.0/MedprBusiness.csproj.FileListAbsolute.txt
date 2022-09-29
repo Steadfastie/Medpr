@@ -15,3 +15,5 @@ C:\Skyrim\Code\ASPNET\Medpr\MedprBusiness\obj\Debug\net6.0\MedprBusiness.dll
 C:\Skyrim\Code\ASPNET\Medpr\MedprBusiness\obj\Debug\net6.0\refint\MedprBusiness.dll
 C:\Skyrim\Code\ASPNET\Medpr\MedprBusiness\obj\Debug\net6.0\MedprBusiness.pdb
 C:\Skyrim\Code\ASPNET\Medpr\MedprBusiness\obj\Debug\net6.0\ref\MedprBusiness.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprBusiness\bin\Debug\net6.0\MedprDataAbstractions.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprBusiness\bin\Debug\net6.0\MedprDataAbstractions.pdb

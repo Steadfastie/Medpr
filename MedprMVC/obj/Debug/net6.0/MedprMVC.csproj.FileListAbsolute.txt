@@ -77,3 +77,7 @@ C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Settings.Configura
 C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Sinks.Console.dll
 C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
 C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Sinks.File.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\MedprDataAbstractions.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\MedprDataRepositories.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\MedprDataRepositories.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\MedprDataAbstractions.pdb

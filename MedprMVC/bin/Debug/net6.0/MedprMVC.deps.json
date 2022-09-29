@@ -13,6 +13,7 @@
           "MedprBusiness": "1.0.0",
           "MedprCore": "1.0.0",
           "MedprDB": "1.0.0",
+          "MedprDataRepositories": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.8",
           "Microsoft.EntityFrameworkCore.Design": "6.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.8",
@@ -623,7 +624,8 @@
         "dependencies": {
           "AutoMapper": "11.0.1",
           "MedprCore": "1.0.0",
-          "MedprDB": "1.0.0"
+          "MedprDB": "1.0.0",
+          "MedprDataAbstractions": "1.0.0"
         },
         "runtime": {
           "MedprBusiness.dll": {}
@@ -632,6 +634,24 @@
       "MedprCore/1.0.0": {
         "runtime": {
           "MedprCore.dll": {}
+        }
+      },
+      "MedprDataAbstractions/1.0.0": {
+        "dependencies": {
+          "MedprDB": "1.0.0"
+        },
+        "runtime": {
+          "MedprDataAbstractions.dll": {}
+        }
+      },
+      "MedprDataRepositories/1.0.0": {
+        "dependencies": {
+          "MedprCore": "1.0.0",
+          "MedprDB": "1.0.0",
+          "MedprDataAbstractions": "1.0.0"
+        },
+        "runtime": {
+          "MedprDataRepositories.dll": {}
         }
       },
       "MedprDB/1.0.0": {
@@ -1085,6 +1105,16 @@
       "sha512": ""
     },
     "MedprCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MedprDataAbstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MedprDataRepositories/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

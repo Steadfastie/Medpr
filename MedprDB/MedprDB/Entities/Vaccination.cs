@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MedprDB.Entities
 {
-    public class Vaccination
+    public class Vaccination : IBaseEntity
     {
         public Guid Id { get; set; }
 

@@ -9,6 +9,10 @@ using MedprBusiness.ServiceImplementations;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
+using MedprRepositories;
+using MedprAbstractions.Repositories;
+using MedprAbstractions;
+using MedprDataRepositories;
 
 namespace MedprMVC
 {
@@ -36,6 +40,8 @@ namespace MedprMVC
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddScoped<IDrugService, DrugService>();
+            builder.Services.AddScoped<IRepository<Drug>, Repository<Drug>>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedprDB.Entities
 {
-    public class Family
+    public class Family : IBaseEntity
     {
         public Guid Id { get; set; }
 

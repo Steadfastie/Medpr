@@ -1,0 +1,701 @@
+2022-09-29 21:36:59.843 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 21:37:00.229 +03:00 [INF] Now listening on: https://localhost:7298
+2022-09-29 21:37:00.236 +03:00 [INF] Now listening on: http://localhost:5298
+2022-09-29 21:37:00.239 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 21:37:00.240 +03:00 [INF] Hosting environment: Development
+2022-09-29 21:37:00.241 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-09-29 21:37:00.854 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-09-29 21:37:00.917 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:37:00.965 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-09-29 21:37:00.980 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:37:01.265 +03:00 [INF] Executed ViewResult - view Index executed in 287.9822ms.
+2022-09-29 21:37:01.275 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 307.3273ms
+2022-09-29 21:37:01.277 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:37:01.376 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 525.9753ms
+2022-09-29 21:37:01.406 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:37:01.413 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.7143ms
+2022-09-29 21:37:01.443 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:37:01.504 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 60.6958ms
+2022-09-29 21:37:02.623 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:37:02.626 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:37:02.651 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:37:03.686 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:37:03.894 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:37:04.279 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:37:04.283 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:37:05.256 +03:00 [INF] Executed DbCommand (76ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2022-09-29 21:37:05.384 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:37:05.419 +03:00 [INF] Executed ViewResult - view Index executed in 34.9889ms.
+2022-09-29 21:37:05.420 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 2767.4864ms
+2022-09-29 21:37:05.425 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:37:05.434 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 2811.3268ms
+2022-09-29 21:37:05.463 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:37:05.471 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:37:05.476 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.2892ms
+2022-09-29 21:37:05.493 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 30.0816ms
+2022-09-29 21:37:11.749 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs/Create - -
+2022-09-29 21:37:11.752 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Create (MedprMVC)'
+2022-09-29 21:37:11.755 +03:00 [INF] Route matched with {action = "Create", controller = "Drugs"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:37:11.793 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:37:11.797 +03:00 [INF] Executing ViewResult, running view Create.
+2022-09-29 21:37:11.841 +03:00 [INF] Executed ViewResult - view Create executed in 44.6586ms.
+2022-09-29 21:37:11.843 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Create (MedprMVC) in 85.1701ms
+2022-09-29 21:37:11.844 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Create (MedprMVC)'
+2022-09-29 21:37:11.848 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs/Create - - - 200 - text/html;+charset=utf-8 99.1905ms
+2022-09-29 21:37:11.881 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:37:11.883 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.5819ms
+2022-09-29 21:37:11.891 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:37:11.905 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 13.2211ms
+2022-09-29 21:38:17.774 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Drugs/Create application/x-www-form-urlencoded 226
+2022-09-29 21:38:17.786 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Create (MedprMVC)'
+2022-09-29 21:38:17.792 +03:00 [INF] Route matched with {action = "Create", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MedprMVC.Models.DrugModel) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:38:17.804 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:38:17.969 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='8edb4cdf-1627-4720-bb05-72ac297230aa', @p1='Aponvie' (Nullable = false) (Size = 4000), @p2='Aprepitant' (Nullable = false) (Size = 4000), @p3='81'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Drugs] ([Id], [Name], [PharmGroup], [Price])
+VALUES (@p0, @p1, @p2, @p3);
+2022-09-29 21:38:18.005 +03:00 [INF] Executing RedirectResult, redirecting to /Drugs.
+2022-09-29 21:38:18.007 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Create (MedprMVC) in 212.7727ms
+2022-09-29 21:38:18.009 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Create (MedprMVC)'
+2022-09-29 21:38:18.010 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7298/Drugs/Create application/x-www-form-urlencoded 226 - 302 0 - 261.4527ms
+2022-09-29 21:38:18.018 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:38:18.019 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:38:18.021 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:38:18.024 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:38:18.032 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2022-09-29 21:38:18.035 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:38:18.048 +03:00 [INF] Executed ViewResult - view Index executed in 13.4637ms.
+2022-09-29 21:38:18.050 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 26.5375ms
+2022-09-29 21:38:18.052 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:38:18.058 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 40.5551ms
+2022-09-29 21:38:18.100 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:38:18.102 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.6277ms
+2022-09-29 21:38:18.103 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:38:18.109 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.6888ms
+2022-09-29 21:38:26.208 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/details/8edb4cdf-1627-4720-bb05-72ac297230aa - -
+2022-09-29 21:38:26.211 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:38:26.214 +03:00 [INF] Route matched with {action = "Details", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:38:26.217 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:38:26.297 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='8edb4cdf-1627-4720-bb05-72ac297230aa'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:38:26.305 +03:00 [INF] Executing ViewResult, running view Details.
+2022-09-29 21:38:26.316 +03:00 [INF] Executed ViewResult - view Details executed in 12.0547ms.
+2022-09-29 21:38:26.318 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Details (MedprMVC) in 101.1317ms
+2022-09-29 21:38:26.320 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:38:26.322 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/details/8edb4cdf-1627-4720-bb05-72ac297230aa - - - 200 - text/html;+charset=utf-8 114.1325ms
+2022-09-29 21:38:26.358 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:38:26.360 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.5127ms
+2022-09-29 21:38:26.368 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:38:26.375 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 6.7640ms
+2022-09-29 21:38:30.504 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/delete/8edb4cdf-1627-4720-bb05-72ac297230aa - -
+2022-09-29 21:38:30.506 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Delete (MedprMVC)'
+2022-09-29 21:38:30.511 +03:00 [INF] Route matched with {action = "Delete", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:38:30.515 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:38:30.520 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='8edb4cdf-1627-4720-bb05-72ac297230aa'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:38:30.549 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='8edb4cdf-1627-4720-bb05-72ac297230aa'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Drugs]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2022-09-29 21:38:30.561 +03:00 [INF] Executing RedirectResult, redirecting to /Drugs.
+2022-09-29 21:38:30.563 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Delete (MedprMVC) in 48.0284ms
+2022-09-29 21:38:30.564 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Delete (MedprMVC)'
+2022-09-29 21:38:30.565 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/delete/8edb4cdf-1627-4720-bb05-72ac297230aa - - - 302 0 - 61.7423ms
+2022-09-29 21:38:30.570 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:38:30.571 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:38:30.573 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:38:30.576 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:38:30.580 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2022-09-29 21:38:30.584 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:38:30.594 +03:00 [INF] Executed ViewResult - view Index executed in 10.0539ms.
+2022-09-29 21:38:30.595 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 19.4863ms
+2022-09-29 21:38:30.597 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:38:30.599 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 29.3610ms
+2022-09-29 21:38:30.639 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:38:30.641 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.7859ms
+2022-09-29 21:38:30.644 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:38:30.650 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.4427ms
+2022-09-29 21:38:32.960 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs/Create - -
+2022-09-29 21:38:32.962 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Create (MedprMVC)'
+2022-09-29 21:38:32.963 +03:00 [INF] Route matched with {action = "Create", controller = "Drugs"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:38:32.966 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:38:32.968 +03:00 [INF] Executing ViewResult, running view Create.
+2022-09-29 21:38:32.978 +03:00 [INF] Executed ViewResult - view Create executed in 9.7631ms.
+2022-09-29 21:38:32.980 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Create (MedprMVC) in 13.9517ms
+2022-09-29 21:38:32.981 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Create (MedprMVC)'
+2022-09-29 21:38:32.984 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs/Create - - - 200 - text/html;+charset=utf-8 23.8165ms
+2022-09-29 21:38:33.036 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:38:33.037 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:38:33.038 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8795ms
+2022-09-29 21:38:33.068 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 30.9696ms
+2022-09-29 21:38:47.453 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Drugs/Create application/x-www-form-urlencoded 226
+2022-09-29 21:38:47.456 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Create (MedprMVC)'
+2022-09-29 21:38:47.457 +03:00 [INF] Route matched with {action = "Create", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MedprMVC.Models.DrugModel) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:38:47.461 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:38:47.467 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e', @p1='Aponvie' (Nullable = false) (Size = 4000), @p2='Aprepitant' (Nullable = false) (Size = 4000), @p3='81'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Drugs] ([Id], [Name], [PharmGroup], [Price])
+VALUES (@p0, @p1, @p2, @p3);
+2022-09-29 21:38:47.473 +03:00 [INF] Executing RedirectResult, redirecting to /Drugs.
+2022-09-29 21:38:47.475 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Create (MedprMVC) in 14.3137ms
+2022-09-29 21:38:47.476 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Create (MedprMVC)'
+2022-09-29 21:38:47.478 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7298/Drugs/Create application/x-www-form-urlencoded 226 - 302 0 - 24.0349ms
+2022-09-29 21:38:47.482 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:38:47.483 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:38:47.485 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:38:47.488 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:38:47.493 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2022-09-29 21:38:47.496 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:38:47.508 +03:00 [INF] Executed ViewResult - view Index executed in 12.0068ms.
+2022-09-29 21:38:47.509 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 21.9698ms
+2022-09-29 21:38:47.511 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:38:47.514 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 32.0837ms
+2022-09-29 21:38:47.560 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:38:47.561 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9507ms
+2022-09-29 21:38:47.565 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:38:47.575 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.7643ms
+2022-09-29 21:40:16.619 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:40:16.625 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:40:16.629 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:40:16.631 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:40:16.638 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:40:16.639 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:40:16.893 +03:00 [ERR] The LINQ expression 'DbSet<Drug>()
+    .Skip(__p_0)
+    .Take(__p_1)
+    .OrderBy(d => ___mapper_2.Map<DrugDTO>(d).Name)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.. 
+    at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.<VisitMethodCall>g__CheckTranslated|15_0(ShapedQueryExpression translated, <>c__DisplayClass15_0& )
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.MethodCallExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.MethodCallExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at MedprMVC.Controllers.DrugsController.Index(Int32 page) in C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\Controllers\DrugsController.cs:line 29
+2022-09-29 21:40:16.907 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2022-09-29 21:40:16.915 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 283.7927ms
+2022-09-29 21:40:16.917 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:40:16.918 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 400 - text/plain;+charset=utf-8 299.2696ms
+2022-09-29 21:40:19.985 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:40:19.987 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:40:19.988 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:40:19.991 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:40:19.995 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:40:19.996 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:40:20.019 +03:00 [ERR] The LINQ expression 'DbSet<Drug>()
+    .Skip(__p_0)
+    .Take(__p_1)
+    .OrderBy(d => ___mapper_2.Map<DrugDTO>(d).Name)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.. 
+    at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.<VisitMethodCall>g__CheckTranslated|15_0(ShapedQueryExpression translated, <>c__DisplayClass15_0& )
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.MethodCallExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.MethodCallExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at MedprMVC.Controllers.DrugsController.Index(Int32 page) in C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\Controllers\DrugsController.cs:line 29
+2022-09-29 21:40:20.023 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2022-09-29 21:40:20.025 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 34.3813ms
+2022-09-29 21:40:20.027 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:40:20.028 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 400 - text/plain;+charset=utf-8 43.6556ms
+2022-09-29 21:40:33.446 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 21:40:33.620 +03:00 [INF] Now listening on: https://localhost:7298
+2022-09-29 21:40:33.622 +03:00 [INF] Now listening on: http://localhost:5298
+2022-09-29 21:40:33.625 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 21:40:33.626 +03:00 [INF] Hosting environment: Development
+2022-09-29 21:40:33.628 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-09-29 21:40:34.201 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-09-29 21:40:34.257 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:40:34.325 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-09-29 21:40:34.336 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:40:34.504 +03:00 [INF] Executed ViewResult - view Index executed in 168.162ms.
+2022-09-29 21:40:34.515 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 187.0806ms
+2022-09-29 21:40:34.519 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:40:34.560 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 362.9651ms
+2022-09-29 21:40:34.597 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:40:34.603 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.4857ms
+2022-09-29 21:40:34.630 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:40:34.648 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.8716ms
+2022-09-29 21:40:35.412 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:40:35.417 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:40:35.434 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:40:36.224 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:40:36.422 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:40:36.684 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:40:36.688 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:40:36.818 +03:00 [ERR] The LINQ expression 'DbSet<Drug>()
+    .Skip(__p_0)
+    .Take(__p_1)
+    .OrderBy(d => ___mapper_2.Map<DrugDTO>(d).Name)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.. 
+    at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.<VisitMethodCall>g__CheckTranslated|15_0(ShapedQueryExpression translated, <>c__DisplayClass15_0& )
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.MethodCallExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.MethodCallExpression.Accept(ExpressionVisitor visitor)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at MedprMVC.Controllers.DrugsController.Index(Int32 page) in C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\Controllers\DrugsController.cs:line 29
+2022-09-29 21:40:36.831 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2022-09-29 21:40:36.837 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 1399.4ms
+2022-09-29 21:40:36.839 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:40:36.851 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 400 - text/plain;+charset=utf-8 1438.3959ms
+2022-09-29 21:41:52.812 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 21:41:52.994 +03:00 [INF] Now listening on: https://localhost:7298
+2022-09-29 21:41:52.995 +03:00 [INF] Now listening on: http://localhost:5298
+2022-09-29 21:41:52.999 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 21:41:53.000 +03:00 [INF] Hosting environment: Development
+2022-09-29 21:41:53.001 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-09-29 21:41:53.528 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-09-29 21:41:53.578 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:41:53.604 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-09-29 21:41:53.614 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:41:53.764 +03:00 [INF] Executed ViewResult - view Index executed in 150.5052ms.
+2022-09-29 21:41:53.776 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 168.5357ms
+2022-09-29 21:41:53.779 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:41:53.820 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 294.1311ms
+2022-09-29 21:41:53.850 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:41:53.855 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.9642ms
+2022-09-29 21:41:53.878 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:41:53.899 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.9165ms
+2022-09-29 21:41:54.925 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:41:54.928 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:41:54.946 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:41:55.744 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:41:55.938 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:41:56.191 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:41:56.194 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:41:56.801 +03:00 [INF] Executed DbCommand (70ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[PharmGroup], [t].[Price]
+FROM (
+    SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+    FROM [Drugs] AS [d]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+ORDER BY [t].[Name]
+2022-09-29 21:41:56.926 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:41:56.956 +03:00 [INF] Executed ViewResult - view Index executed in 31.1996ms.
+2022-09-29 21:41:56.958 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 2008.9495ms
+2022-09-29 21:41:56.959 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:41:56.971 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 2046.4120ms
+2022-09-29 21:41:56.998 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:41:57.000 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:41:57.001 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.3813ms
+2022-09-29 21:41:57.025 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 24.8666ms
+2022-09-29 21:42:04.701 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/details/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - -
+2022-09-29 21:42:04.704 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:42:04.708 +03:00 [INF] Route matched with {action = "Details", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:42:04.749 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:42:04.823 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:42:04.831 +03:00 [INF] Executing ViewResult, running view Details.
+2022-09-29 21:42:04.843 +03:00 [INF] Executed ViewResult - view Details executed in 12.143ms.
+2022-09-29 21:42:04.845 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Details (MedprMVC) in 134.5988ms
+2022-09-29 21:42:04.846 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:42:04.849 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/details/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - - - 200 - text/html;+charset=utf-8 148.0024ms
+2022-09-29 21:42:04.878 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:42:04.879 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:42:04.880 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.2319ms
+2022-09-29 21:42:04.891 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.0911ms
+2022-09-29 21:42:05.765 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - -
+2022-09-29 21:42:05.768 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:42:05.772 +03:00 [INF] Route matched with {action = "Edit", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:42:05.783 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:42:05.791 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:42:05.796 +03:00 [INF] Executing ViewResult, running view Edit.
+2022-09-29 21:42:05.824 +03:00 [INF] Executed ViewResult - view Edit executed in 28.436ms.
+2022-09-29 21:42:05.826 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Edit (MedprMVC) in 51.1645ms
+2022-09-29 21:42:05.828 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:42:05.831 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - - - 200 - text/html;+charset=utf-8 65.4450ms
+2022-09-29 21:42:05.860 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:42:05.862 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8599ms
+2022-09-29 21:42:05.869 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:42:05.878 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.7737ms
+2022-09-29 21:42:13.354 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Drugs/Edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e application/x-www-form-urlencoded 226
+2022-09-29 21:42:13.357 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:42:13.362 +03:00 [INF] Route matched with {action = "Edit", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(MedprMVC.Models.DrugModel) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:42:13.366 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:42:13.389 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:42:13.399 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:42:13.573 +03:00 [ERR] An item with the same key has already been added. Key: property. 
+    at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)
+   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](List`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
+   at MedprRepositories.Repository`1.PatchAsync(Guid id, List`1 patchData) in C:\Skyrim\Code\ASPNET\Medpr\MedprRepositories\Repository.cs:line 69
+   at MedprBusiness.ServiceImplementations.DrugService.PatchDrugAsync(Guid id, List`1 patchList) in C:\Skyrim\Code\ASPNET\Medpr\MedprBusiness\ServiceImplimentations\DrugService.cs:line 67
+   at MedprMVC.Controllers.DrugsController.Edit(DrugModel model) in C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\Controllers\DrugsController.cs:line 160
+2022-09-29 21:42:13.583 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2022-09-29 21:42:13.590 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Edit (MedprMVC) in 224.4337ms
+2022-09-29 21:42:13.593 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:42:13.595 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7298/Drugs/Edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e application/x-www-form-urlencoded 226 - 400 - text/plain;+charset=utf-8 240.9117ms
+2022-09-29 21:42:45.041 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 21:42:45.213 +03:00 [INF] Now listening on: https://localhost:7298
+2022-09-29 21:42:45.215 +03:00 [INF] Now listening on: http://localhost:5298
+2022-09-29 21:42:45.218 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 21:42:45.219 +03:00 [INF] Hosting environment: Development
+2022-09-29 21:42:45.220 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-09-29 21:42:45.837 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-09-29 21:42:45.895 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:42:45.921 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-09-29 21:42:45.931 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:42:46.082 +03:00 [INF] Executed ViewResult - view Index executed in 152.064ms.
+2022-09-29 21:42:46.092 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 168.3853ms
+2022-09-29 21:42:46.096 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:42:46.145 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 311.8016ms
+2022-09-29 21:42:46.175 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:42:46.180 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.7359ms
+2022-09-29 21:42:46.208 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:42:46.227 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 19.5255ms
+2022-09-29 21:42:47.320 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:42:47.324 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:42:47.342 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:42:48.207 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:42:48.407 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:42:48.656 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:42:48.659 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:42:49.254 +03:00 [INF] Executed DbCommand (72ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[PharmGroup], [t].[Price]
+FROM (
+    SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+    FROM [Drugs] AS [d]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+ORDER BY [t].[Name]
+2022-09-29 21:42:49.376 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:42:49.408 +03:00 [INF] Executed ViewResult - view Index executed in 32.134ms.
+2022-09-29 21:42:49.409 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 2064.6394ms
+2022-09-29 21:42:49.411 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:42:49.424 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 2103.9499ms
+2022-09-29 21:42:49.450 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:42:49.450 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:42:49.452 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.3126ms
+2022-09-29 21:42:49.463 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.6819ms
+2022-09-29 21:42:52.478 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/details/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - -
+2022-09-29 21:42:52.481 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:42:52.485 +03:00 [INF] Route matched with {action = "Details", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:42:52.523 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:42:52.596 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:42:52.603 +03:00 [INF] Executing ViewResult, running view Details.
+2022-09-29 21:42:52.616 +03:00 [INF] Executed ViewResult - view Details executed in 13.1772ms.
+2022-09-29 21:42:52.617 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Details (MedprMVC) in 129.3472ms
+2022-09-29 21:42:52.619 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:42:52.622 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/details/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - - - 200 - text/html;+charset=utf-8 143.6495ms
+2022-09-29 21:42:52.662 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:42:52.662 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:42:52.664 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9507ms
+2022-09-29 21:42:52.670 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.9235ms
+2022-09-29 21:42:53.646 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - -
+2022-09-29 21:42:53.650 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:42:53.654 +03:00 [INF] Route matched with {action = "Edit", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:42:53.664 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:42:53.673 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:42:53.679 +03:00 [INF] Executing ViewResult, running view Edit.
+2022-09-29 21:42:53.709 +03:00 [INF] Executed ViewResult - view Edit executed in 30.5455ms.
+2022-09-29 21:42:53.710 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Edit (MedprMVC) in 53.9971ms
+2022-09-29 21:42:53.712 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:42:53.715 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - - - 200 - text/html;+charset=utf-8 68.3801ms
+2022-09-29 21:42:53.751 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:42:53.753 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.1433ms
+2022-09-29 21:42:53.759 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:42:53.766 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.4809ms
+2022-09-29 21:42:58.035 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Drugs/Edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e application/x-www-form-urlencoded 226
+2022-09-29 21:42:58.037 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:42:58.043 +03:00 [INF] Route matched with {action = "Edit", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(MedprMVC.Models.DrugModel) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:42:58.046 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:43:07.283 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:45:20.703 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 21:45:20.878 +03:00 [INF] Now listening on: https://localhost:7298
+2022-09-29 21:45:20.879 +03:00 [INF] Now listening on: http://localhost:5298
+2022-09-29 21:45:20.883 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 21:45:20.884 +03:00 [INF] Hosting environment: Development
+2022-09-29 21:45:20.884 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-09-29 21:45:21.521 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-09-29 21:45:21.568 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:45:21.591 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-09-29 21:45:21.600 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:45:21.750 +03:00 [INF] Executed ViewResult - view Index executed in 150.5991ms.
+2022-09-29 21:45:21.761 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 168.252ms
+2022-09-29 21:45:21.765 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:45:21.813 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 295.6006ms
+2022-09-29 21:45:21.838 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:45:21.844 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.4726ms
+2022-09-29 21:45:21.870 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:45:21.889 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 19.0183ms
+2022-09-29 21:45:22.787 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:45:22.791 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:45:22.811 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:45:23.658 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:45:23.856 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:45:24.115 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:45:24.117 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:45:24.712 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[PharmGroup], [t].[Price]
+FROM (
+    SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+    FROM [Drugs] AS [d]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+ORDER BY [t].[Name]
+2022-09-29 21:45:24.837 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:45:24.867 +03:00 [INF] Executed ViewResult - view Index executed in 29.8463ms.
+2022-09-29 21:45:24.868 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 2055.0891ms
+2022-09-29 21:45:24.870 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:45:24.883 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 2096.0734ms
+2022-09-29 21:45:24.911 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:45:24.912 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:45:24.913 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.2299ms
+2022-09-29 21:45:24.939 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 27.0163ms
+2022-09-29 21:45:27.033 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/details/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - -
+2022-09-29 21:45:27.036 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:45:27.041 +03:00 [INF] Route matched with {action = "Details", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:45:27.081 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:45:27.152 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:45:27.160 +03:00 [INF] Executing ViewResult, running view Details.
+2022-09-29 21:45:27.169 +03:00 [INF] Executed ViewResult - view Details executed in 9.1598ms.
+2022-09-29 21:45:27.170 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Details (MedprMVC) in 127.3133ms
+2022-09-29 21:45:27.173 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:45:27.176 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/details/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - - - 200 - text/html;+charset=utf-8 142.2202ms
+2022-09-29 21:45:27.211 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:45:27.211 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:45:27.215 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.5697ms
+2022-09-29 21:45:27.219 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.5032ms
+2022-09-29 21:45:28.444 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - -
+2022-09-29 21:45:28.446 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:45:28.449 +03:00 [INF] Route matched with {action = "Edit", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:45:28.462 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:45:28.473 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:45:28.477 +03:00 [INF] Executing ViewResult, running view Edit.
+2022-09-29 21:45:28.505 +03:00 [INF] Executed ViewResult - view Edit executed in 28.6153ms.
+2022-09-29 21:45:28.507 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Edit (MedprMVC) in 52.3269ms
+2022-09-29 21:45:28.509 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:45:28.511 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - - - 200 - text/html;+charset=utf-8 67.4973ms
+2022-09-29 21:45:28.554 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:45:28.555 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:45:28.556 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.6986ms
+2022-09-29 21:45:28.565 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.4822ms
+2022-09-29 21:45:31.081 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Drugs/Edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e application/x-www-form-urlencoded 226
+2022-09-29 21:45:31.083 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:45:31.088 +03:00 [INF] Route matched with {action = "Edit", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(MedprMVC.Models.DrugModel) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:45:31.092 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:45:36.581 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:46:36.294 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 21:46:36.461 +03:00 [INF] Now listening on: https://localhost:7298
+2022-09-29 21:46:36.463 +03:00 [INF] Now listening on: http://localhost:5298
+2022-09-29 21:46:36.466 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 21:46:36.467 +03:00 [INF] Hosting environment: Development
+2022-09-29 21:46:36.468 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-09-29 21:46:36.988 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-09-29 21:46:37.040 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:46:37.066 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-09-29 21:46:37.076 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:46:37.228 +03:00 [INF] Executed ViewResult - view Index executed in 151.4808ms.
+2022-09-29 21:46:37.237 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 168.0777ms
+2022-09-29 21:46:37.239 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-09-29 21:46:37.285 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 299.1355ms
+2022-09-29 21:46:37.313 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:46:37.319 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.5736ms
+2022-09-29 21:46:37.351 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:46:37.385 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.9247ms
+2022-09-29 21:46:38.287 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:46:38.291 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:46:38.315 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:46:39.223 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:46:39.410 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:46:39.659 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:46:39.662 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-29 21:46:40.259 +03:00 [INF] Executed DbCommand (69ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[PharmGroup], [t].[Price]
+FROM (
+    SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+    FROM [Drugs] AS [d]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+ORDER BY [t].[Name]
+2022-09-29 21:46:40.385 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:46:40.416 +03:00 [INF] Executed ViewResult - view Index executed in 31.9442ms.
+2022-09-29 21:46:40.417 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 2100.5011ms
+2022-09-29 21:46:40.419 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:46:40.435 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 2148.1531ms
+2022-09-29 21:46:40.466 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:46:40.466 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:46:40.468 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.6517ms
+2022-09-29 21:46:40.479 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.1300ms
+2022-09-29 21:46:42.996 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/details/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - -
+2022-09-29 21:46:42.999 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:46:43.003 +03:00 [INF] Route matched with {action = "Details", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:46:43.045 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:46:43.112 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:46:43.118 +03:00 [INF] Executing ViewResult, running view Details.
+2022-09-29 21:46:43.129 +03:00 [INF] Executed ViewResult - view Details executed in 10.827ms.
+2022-09-29 21:46:43.130 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Details (MedprMVC) in 123.431ms
+2022-09-29 21:46:43.132 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Details (MedprMVC)'
+2022-09-29 21:46:43.134 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/details/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - - - 200 - text/html;+charset=utf-8 137.9241ms
+2022-09-29 21:46:43.170 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:46:43.170 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:46:43.171 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.6789ms
+2022-09-29 21:46:43.181 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.1694ms
+2022-09-29 21:46:44.252 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/drugs/edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - -
+2022-09-29 21:46:44.255 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:46:44.259 +03:00 [INF] Route matched with {action = "Edit", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:46:44.270 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:46:44.280 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:46:44.284 +03:00 [INF] Executing ViewResult, running view Edit.
+2022-09-29 21:46:44.316 +03:00 [INF] Executed ViewResult - view Edit executed in 31.7965ms.
+2022-09-29 21:46:44.317 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Edit (MedprMVC) in 55.4694ms
+2022-09-29 21:46:44.319 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:46:44.321 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/drugs/edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e - - - 200 - text/html;+charset=utf-8 68.7253ms
+2022-09-29 21:46:44.355 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:46:44.356 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.7301ms
+2022-09-29 21:46:44.369 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:46:44.376 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.2031ms
+2022-09-29 21:46:47.025 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Drugs/Edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e application/x-www-form-urlencoded 226
+2022-09-29 21:46:47.028 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:46:47.034 +03:00 [INF] Route matched with {action = "Edit", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(MedprMVC.Models.DrugModel) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:46:47.038 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:46:47.061 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:46:47.070 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-09-29 21:46:47.191 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p3='19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e', @p0='Aponvie' (Nullable = false) (Size = 4000), @p1='Aprepitant' (Nullable = false) (Size = 4000), @p2='82'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Drugs] SET [Name] = @p0, [PharmGroup] = @p1, [Price] = @p2
+WHERE [Id] = @p3;
+SELECT @@ROWCOUNT;
+2022-09-29 21:46:47.225 +03:00 [INF] Executing RedirectResult, redirecting to /Drugs.
+2022-09-29 21:46:47.227 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Edit (MedprMVC) in 189.3878ms
+2022-09-29 21:46:47.229 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Edit (MedprMVC)'
+2022-09-29 21:46:47.231 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7298/Drugs/Edit/19bf0b0d-2e28-41dc-9b2a-d2c81bf6714e application/x-www-form-urlencoded 226 - 302 0 - 205.5478ms
+2022-09-29 21:46:47.235 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs - -
+2022-09-29 21:46:47.236 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:46:47.237 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-09-29 21:46:47.240 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:46:47.245 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[PharmGroup], [t].[Price]
+FROM (
+    SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+    FROM [Drugs] AS [d]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+ORDER BY [t].[Name]
+2022-09-29 21:46:47.248 +03:00 [INF] Executing ViewResult, running view Index.
+2022-09-29 21:46:47.260 +03:00 [INF] Executed ViewResult - view Index executed in 11.4858ms.
+2022-09-29 21:46:47.261 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 21.7848ms
+2022-09-29 21:46:47.263 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-09-29 21:46:47.266 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs - - - 200 - text/html;+charset=utf-8 31.1491ms
+2022-09-29 21:46:47.300 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-09-29 21:46:47.301 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-09-29 21:46:47.304 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.2671ms
+2022-09-29 21:46:47.308 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.2183ms
+2022-09-29 21:47:58.216 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:47:58.382 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:48:10.167 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:48:10.325 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:48:26.040 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:48:26.227 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-09-29 21:48:26.452 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-09-29 21:48:26.473 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-09-29 21:48:26.476 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-09-29 21:48:26.476 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-09-29 21:48:26.495 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-09-29 21:48:26.508 +03:00 [INF] Applying migration '20220929184810_IBaseEntity'.
+2022-09-29 21:48:26.572 +03:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [Appointment];
+2022-09-29 21:55:05.130 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-09-29 21:55:05.281 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 

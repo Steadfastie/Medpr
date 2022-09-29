@@ -1,0 +1,17 @@
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\bin\Debug\net6.0\MedprDataAbstractions.deps.json
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\bin\Debug\net6.0\MedprDataAbstractions.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\bin\Debug\net6.0\MedprDataAbstractions.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\bin\Debug\net6.0\MedprCore.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\bin\Debug\net6.0\MedprDB.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\bin\Debug\net6.0\MedprDB.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\bin\Debug\net6.0\MedprCore.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\MedprDataAbstractions.csproj.AssemblyReference.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\MedprDataAbstractions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\MedprDataAbstractions.AssemblyInfoInputs.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\MedprDataAbstractions.AssemblyInfo.cs
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\MedprDataAbstractions.csproj.CoreCompileInputs.cache
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\MedprDataAbstractions.csproj.CopyComplete
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\MedprDataAbstractions.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\refint\MedprDataAbstractions.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\MedprDataAbstractions.pdb
+C:\Skyrim\Code\ASPNET\Medpr\MedprAbstractions\obj\Debug\net6.0\ref\MedprDataAbstractions.dll

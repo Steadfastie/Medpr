@@ -764,6 +764,19 @@
           "bin/placeholder/MedprCore.dll": {}
         }
       },
+      "MedprDataAbstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MedprDB": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MedprDataAbstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MedprDataAbstractions.dll": {}
+        }
+      },
       "MedprDB/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1965,6 +1978,11 @@
       "path": "../MedprCOre/MedprCore.csproj",
       "msbuildProject": "../MedprCOre/MedprCore.csproj"
     },
+    "MedprDataAbstractions/1.0.0": {
+      "type": "project",
+      "path": "../MedprAbstractions/MedprDataAbstractions.csproj",
+      "msbuildProject": "../MedprAbstractions/MedprDataAbstractions.csproj"
+    },
     "MedprDB/1.0.0": {
       "type": "project",
       "path": "../MedprDB/MedprDB/MedprDB.csproj",
@@ -1975,7 +1993,8 @@
     "net6.0": [
       "AutoMapper >= 11.0.1",
       "MedprCore >= 1.0.0",
-      "MedprDB >= 1.0.0"
+      "MedprDB >= 1.0.0",
+      "MedprDataAbstractions >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2010,6 +2029,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprAbstractions\\MedprDataAbstractions.csproj": {
+              "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprAbstractions\\MedprDataAbstractions.csproj"
+            },
             "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj": {
               "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj"
             },

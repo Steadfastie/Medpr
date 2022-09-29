@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MedprDB.Entities
 {
-    public class Prescription
+    public class Prescription : IBaseEntity
     {
         public Guid Id { get; set; }
 

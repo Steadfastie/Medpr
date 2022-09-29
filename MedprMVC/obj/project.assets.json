@@ -1092,7 +1092,8 @@
         "dependencies": {
           "AutoMapper": "11.0.1",
           "MedprCore": "1.0.0",
-          "MedprDB": "1.0.0"
+          "MedprDB": "1.0.0",
+          "MedprDataAbstractions": "1.0.0"
         },
         "compile": {
           "bin/placeholder/MedprBusiness.dll": {}
@@ -1109,6 +1110,34 @@
         },
         "runtime": {
           "bin/placeholder/MedprCore.dll": {}
+        }
+      },
+      "MedprDataAbstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MedprDB": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MedprDataAbstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MedprDataAbstractions.dll": {}
+        }
+      },
+      "MedprDataRepositories/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MedprCore": "1.0.0",
+          "MedprDB": "1.0.0",
+          "MedprDataAbstractions": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MedprDataRepositories.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MedprDataRepositories.dll": {}
         }
       },
       "MedprDB/1.0.0": {
@@ -2684,6 +2713,16 @@
       "path": "../MedprCOre/MedprCore.csproj",
       "msbuildProject": "../MedprCOre/MedprCore.csproj"
     },
+    "MedprDataAbstractions/1.0.0": {
+      "type": "project",
+      "path": "../MedprAbstractions/MedprDataAbstractions.csproj",
+      "msbuildProject": "../MedprAbstractions/MedprDataAbstractions.csproj"
+    },
+    "MedprDataRepositories/1.0.0": {
+      "type": "project",
+      "path": "../MedprRepositories/MedprDataRepositories.csproj",
+      "msbuildProject": "../MedprRepositories/MedprDataRepositories.csproj"
+    },
     "MedprDB/1.0.0": {
       "type": "project",
       "path": "../MedprDB/MedprDB/MedprDB.csproj",
@@ -2697,6 +2736,7 @@
       "MedprBusiness >= 1.0.0",
       "MedprCore >= 1.0.0",
       "MedprDB >= 1.0.0",
+      "MedprDataRepositories >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.8",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.8",
@@ -2746,6 +2786,9 @@
             },
             "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj": {
               "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprDB\\MedprDB\\MedprDB.csproj"
+            },
+            "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprRepositories\\MedprDataRepositories.csproj": {
+              "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprRepositories\\MedprDataRepositories.csproj"
             }
           }
         }
