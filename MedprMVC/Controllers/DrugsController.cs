@@ -4,6 +4,7 @@ using MedprCore.Abstractions;
 using MedprCore.DTO;
 using AutoMapper;
 using MedprMVC.Models;
+using Serilog;
 
 namespace MedprMVC.Controllers
 {
@@ -36,6 +37,7 @@ namespace MedprMVC.Controllers
             }
             catch (Exception ex)
             {
+                Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
                 return BadRequest(ex.Message);
             }
         }
@@ -58,6 +60,7 @@ namespace MedprMVC.Controllers
             }
             catch (Exception ex)
             {
+                Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
                 return BadRequest(ex.Message);
             }
         }
@@ -91,6 +94,7 @@ namespace MedprMVC.Controllers
             }
             catch (Exception ex)
             {
+                Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
                 return BadRequest(ex.Message);
             }
         }
@@ -119,6 +123,7 @@ namespace MedprMVC.Controllers
             }
             catch (Exception ex)
             {
+                Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
                 return BadRequest(ex.Message);
             }
         }
@@ -143,6 +148,7 @@ namespace MedprMVC.Controllers
             }
             catch (Exception ex)
             {
+                Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
                 return BadRequest(ex.Message);
             }
         }
@@ -167,6 +173,7 @@ namespace MedprMVC.Controllers
             }
             catch (Exception ex)
             {
+                Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
                 return BadRequest(ex.Message);
             }
         }

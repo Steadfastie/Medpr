@@ -67,3 +67,13 @@ C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\MedprCore.pdb
 C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\MedprBusiness.pdb
 C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\MedprDB.pdb
 C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\obj\Debug\net6.0\MedprMVC.csproj.CopyComplete
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.AspNetCore.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Formatting.Compact.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
+C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\bin\Debug\net6.0\Serilog.Sinks.File.dll

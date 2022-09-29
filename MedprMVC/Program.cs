@@ -7,6 +7,8 @@ using MedprDB.Entities;
 using MedprBusiness;
 using MedprBusiness.ServiceImplementations;
 using Microsoft.Extensions.Options;
+using Serilog;
+using Serilog.Events;
 
 namespace MedprMVC
 {
@@ -15,6 +17,14 @@ namespace MedprMVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Host.UseSerilog((ctx, lc) =>
+                lc.WriteTo.File(
+                    @"C:\Skyrim\Code\ASPNET\Medpr\Logs\data.log",
+                    LogEventLevel.Information,
+                    retainedFileCountLimit: 20,
+                    rollingInterval: RollingInterval.Hour)
+                    .WriteTo.Console(LogEventLevel.Verbose));
 
             builder.Services.AddControllersWithViews();
 
