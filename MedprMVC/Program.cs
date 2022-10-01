@@ -40,7 +40,13 @@ namespace MedprMVC
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddScoped<IDrugService, DrugService>();
+            builder.Services.AddScoped<IDoctorService, DoctorService>();
+            builder.Services.AddScoped<IVaccineService, VaccineService>();
+            builder.Services.AddScoped<IFamilyService, FamilyService>();
             builder.Services.AddScoped<IRepository<Drug>, Repository<Drug>>();
+            builder.Services.AddScoped<IRepository<Doctor>, Repository<Doctor>>();
+            builder.Services.AddScoped<IRepository<Family>, Repository<Family>>();
+            builder.Services.AddScoped<IRepository<Vaccine>, Repository<Vaccine>>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();

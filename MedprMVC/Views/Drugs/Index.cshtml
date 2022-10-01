@@ -6,7 +6,7 @@
 
 <table class="table table-borderless">
     <tbody>
-        @if (Model.Any())
+        @if (Model != null)
         {
             foreach (var drug in Model)
             {
@@ -19,6 +19,11 @@
                     </td>
                 </tr>
             }
+        }
+        else
+        {
+            <h2>No drugs found in database</h2>
+            <h4>Add new drug to this app?</h4>
         }
     </tbody>
 </table>

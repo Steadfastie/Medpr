@@ -1,0 +1,35 @@
+﻿@model List<DoctorModel>
+
+@{
+    ViewData["Title"] = "All doctors";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var doctor in Model)
+            {
+                <tr>
+                    <td>
+                        @{await Html.RenderPartialAsync("DoctorDetailsPreview", doctor);}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="~/doctors/details/@doctor.Id">Read details</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <h2>No doctors found in database</h2>
+            <h4>Add new doctor to this app?</h4>
+        }
+    </tbody>
+</table>
+
+<br>
+<br>
+<div>
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Doctors">Add doctor</a>
+</div>

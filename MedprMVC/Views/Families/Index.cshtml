@@ -1,0 +1,35 @@
+﻿@model List<FamilyModel>
+
+@{
+    ViewData["Title"] = "All families";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var family in Model)
+            {
+                <tr>
+                    <td>
+                        @{await Html.RenderPartialAsync("FamilyDetailsPreview", family);}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="~/families/details/@family.Id">Read details</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <h2>No families found in database</h2>
+            <h4>Add new family to this app?</h4>
+        }
+    </tbody>
+</table>
+
+<br>
+<br>
+<div>
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Families">Add family</a>
+</div>

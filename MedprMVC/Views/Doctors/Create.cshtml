@@ -1,0 +1,32 @@
+﻿@model DoctorModel
+@{
+    ViewData["Title"] = "Add doctor to Medpr";
+}
+
+<div>
+    <h1>Add doctor</h1>
+
+    <form asp-controller="Doctors" asp-action="Create" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input asp-for="Name" type="text" class="form-control" id="name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="experience" class="form-label">Experience</label>
+            <input asp-for="Experience" class="form-control" id="experience">
+            <span asp-validation-for="Experience" class="text-danger"></span>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

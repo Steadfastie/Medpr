@@ -1,0 +1,23 @@
+﻿@model DoctorModel
+
+@{
+    ViewData["Title"] = "Doctor detail";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        <tr>
+            <td>
+                @{await Html.RenderPartialAsync("DoctorDetailsPreview", Model);}
+            </td>
+            <td>
+                <a class="btn btn-primary" href="~/doctors/edit/@Model.Id">Edit</a>
+                <a class="btn btn-danger" href="~/doctors/delete/@Model.Id">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@*This page will contain:
+    CRUD buttons
+    additional information like doctor description paper or wikiAPI*@

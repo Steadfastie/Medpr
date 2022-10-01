@@ -1,0 +1,25 @@
+﻿@model FamilyModel
+@{
+    ViewData["Title"] = "Change surname";
+}
+
+<div>
+    <h1>Update family surname</h1>
+
+    <form asp-controller="Families" asp-action="Edit" method="post">
+        <div class="mb-3">
+            <label for="surname" class="form-label">Surname</label>
+            <input asp-for="Surname" type="text" class="form-control" id="surname">
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

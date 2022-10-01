@@ -1,0 +1,15 @@
+﻿@model VaccineModel
+
+<div>
+    <h3>
+        @Html.DisplayFor(modelItem => Model.Name)
+    </h3>
+    <h5>
+        belongs to <i>@Html.DisplayFor(modelItem => Model.Reason)</i> class
+    </h5>
+    <div>
+        Price: @Html.DisplayFor(modelItem => Model.Price)
+    </div>
+</div>
+
+

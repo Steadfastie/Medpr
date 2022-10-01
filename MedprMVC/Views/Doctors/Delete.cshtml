@@ -1,0 +1,25 @@
+﻿@model DoctorModel
+
+@{
+    ViewData["Title"] = "Delete doctor";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        <tr>
+            <td>
+                @{
+                    await Html.RenderPartialAsync("DoctorDetailsPreview", Model);
+                }
+            </td>
+            <td>
+                <form asp-controller="Doctors" asp-action="Delete" method="post">
+                    <input type="submit" name="@Model.Id" class="btn btn-primary" value="Yes">
+                </form>
+            </td>
+            <td>
+                <a class="btn btn-primary" href="~/doctors/details/@Model.Id">No</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

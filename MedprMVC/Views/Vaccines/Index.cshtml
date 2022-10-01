@@ -1,0 +1,35 @@
+﻿@model List<VaccineModel>
+
+@{
+    ViewData["Title"] = "All vaccines";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var vaccine in Model)
+            {
+                <tr>
+                    <td>
+                        @{await Html.RenderPartialAsync("VaccineDetailsPreview", vaccine);}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="~/vaccines/details/@vaccine.Id">Read details</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <h2>No vaccines found in database</h2>
+            <h4>Add new vaccine to this app?</h4>
+        }
+    </tbody>
+</table>
+
+<br>
+<br>
+<div>
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Vaccines">Add vaccine</a>
+</div>

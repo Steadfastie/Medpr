@@ -1,0 +1,23 @@
+﻿@model FamilyModel
+
+@{
+    ViewData["Title"] = "Surname";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        <tr>
+            <td>
+                @{await Html.RenderPartialAsync("FamilyDetailsPreview", Model);}
+            </td>
+            <td>
+                <a class="btn btn-primary" href="~/families/edit/@Model.Id">Edit</a>
+                <a class="btn btn-danger" href="~/families/delete/@Model.Id">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@*This page will contain:
+    CRUD buttons
+    additional information like drug description paper or wikiAPI*@

@@ -27,7 +27,9 @@ namespace MedprMVC.Controllers
             try
             {
                 var dtos = await _drugService.GetDrugsByPageNumberAndPageSizeAsync(page, _pagesize);
+
                 var models = _mapper.Map<List<DrugModel>>(dtos);
+
                 if (models.Any())
                 {
                     return View(models);
@@ -147,7 +149,8 @@ namespace MedprMVC.Controllers
                     {
                         foreach (PropertyInfo property in typeof(DrugDTO).GetProperties())
                         {
-                            if (!property.GetValue(dto).Equals(property.GetValue(sourceDto))){
+                            if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
+                            {
                                 patchList.Add(new PatchModel()
                                 {
                                     PropertyName = property.Name,
@@ -175,6 +178,37 @@ namespace MedprMVC.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                if (id != Guid.Empty)
+                {
+                    var dto = await _drugService.GetDrugsByIdAsync(id);
+
+                    if (dto == null)
+                    {
+                        return BadRequest();
+                    }
+
+                    var deleteModel = _mapper.Map<DrugModel>(dto);
+
+                    return View(deleteModel);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             try
             {

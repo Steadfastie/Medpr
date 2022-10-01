@@ -1,0 +1,25 @@
+﻿@model FamilyModel
+
+@{
+    ViewData["Title"] = "Delete family";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        <tr>
+            <td>
+                @{
+                    await Html.RenderPartialAsync("FamilyDetailsPreview", Model);
+                }
+            </td>
+            <td>
+                <form asp-controller="Families" asp-action="Delete" method="post">
+                    <input type="submit" name="@Model.Id" class="btn btn-primary" value="Yes">
+                </form>
+            </td>
+            <td>
+                <a class="btn btn-primary" href="~/families/details/@Model.Id">No</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
