@@ -7,8 +7,10 @@ List of things that will be updated in my project next:
   1. password -> password hash migration (✔️)
   2. basic MVC stracture (✔️)
   3. CRUD for 1 db branch (✔️)
-  4. Remove guid from drug detail url route
-  5. [ValidateAntiForgeryToken] to post methods
-  6. Add Serilog
-  7. Add validation tags
-  8. UnitOfWork architecture
+  4. CRUD for all endpoint branches (✔️)
+  5. Remove guid from drug detail url route
+  6. [ValidateAntiForgeryToken] to post methods
+  7. Add Serilog (✔️)
+  8. Add validation tags (✔️)
+  9. UnitOfWork architecture (✔️)
+  10. Delete confirmation page (✔️)
