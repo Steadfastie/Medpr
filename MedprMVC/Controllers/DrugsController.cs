@@ -82,6 +82,12 @@ namespace MedprMVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var alreadyCreated = await _drugService.GetDrugsByIdAsync(model.Id);
+                    if (alreadyCreated != null)
+                    {
+                        RedirectToAction("Details", "Drugs", model.Id);
+                    }
+
                     model.Id = Guid.NewGuid();
 
                     var dto = _mapper.Map<DrugDTO>(model);
@@ -139,6 +145,12 @@ namespace MedprMVC.Controllers
             {
                 if (model != null)
                 {
+                    var alreadyCreated = await _drugService.GetDrugsByIdAsync(model.Id);
+                    if (alreadyCreated != null)
+                    {
+                        RedirectToAction("Details", "Drugs", model.Id);
+                    }
+
                     var dto = _mapper.Map<DrugDTO>(model);
 
                     var sourceDto = await _drugService.GetDrugsByIdAsync(model.Id);

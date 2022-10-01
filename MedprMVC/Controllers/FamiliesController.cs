@@ -7,6 +7,7 @@ using MedprMVC.Models;
 using Serilog;
 using AspNetSample.Core;
 using System.Reflection;
+using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC.Controllers
 {
@@ -82,6 +83,12 @@ namespace MedprMVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var alreadyCreated = await _familyService.GetFamiliesByIdAsync(model.Id);
+                    if (alreadyCreated != null)
+                    {
+                        RedirectToAction("Details", "Drugs", model.Id);
+                    }
+
                     model.Id = Guid.NewGuid();
 
                     var dto = _mapper.Map<FamilyDTO>(model);
@@ -139,6 +146,12 @@ namespace MedprMVC.Controllers
             {
                 if (model != null)
                 {
+                    var alreadyCreated = await _familyService.GetFamiliesByIdAsync(model.Id);
+                    if (alreadyCreated != null)
+                    {
+                        RedirectToAction("Details", "Drugs", model.Id);
+                    }
+
                     var dto = _mapper.Map<FamilyDTO>(model);
 
                     var sourceDto = await _familyService.GetFamiliesByIdAsync(model.Id);

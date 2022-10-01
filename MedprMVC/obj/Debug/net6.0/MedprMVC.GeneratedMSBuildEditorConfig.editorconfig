@@ -103,6 +103,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/VaccinationDetailsPreview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXFZhY2NpbmF0aW9uRGV0YWlsc1ByZXZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccines/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

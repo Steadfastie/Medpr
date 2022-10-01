@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCOre.csproj",
-      "projectName": "MedprCOre",
-      "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCOre.csproj",
+      "projectUniqueName": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj",
+      "projectName": "MedprCore",
+      "projectPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\MedprCore.csproj",
       "packagesPath": "C:\\Users\\LKumb\\.nuget\\packages\\",
       "outputPath": "C:\\Skyrim\\Code\\ASPNET\\Medpr\\MedprCOre\\obj\\",
       "projectStyle": "PackageReference",
@@ -66,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

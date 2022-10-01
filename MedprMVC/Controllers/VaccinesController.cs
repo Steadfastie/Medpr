@@ -7,6 +7,7 @@ using MedprMVC.Models;
 using Serilog;
 using AspNetSample.Core;
 using System.Reflection;
+using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC.Controllers
 {
@@ -82,6 +83,12 @@ namespace MedprMVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var alreadyCreated = await _vaccineService.GetVaccinesByIdAsync(model.Id);
+                    if (alreadyCreated != null)
+                    {
+                        RedirectToAction("Details", "Drugs", model.Id);
+                    }
+
                     model.Id = Guid.NewGuid();
 
                     var dto = _mapper.Map<VaccineDTO>(model);
@@ -139,6 +146,12 @@ namespace MedprMVC.Controllers
             {
                 if (model != null)
                 {
+                    var alreadyCreated = await _vaccineService.GetVaccinesByIdAsync(model.Id);
+                    if (alreadyCreated != null)
+                    {
+                        RedirectToAction("Details", "Drugs", model.Id);
+                    }
+
                     var dto = _mapper.Map<VaccineDTO>(model);
 
                     var sourceDto = await _vaccineService.GetVaccinesByIdAsync(model.Id);

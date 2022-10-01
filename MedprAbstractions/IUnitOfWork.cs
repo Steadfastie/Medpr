@@ -9,6 +9,7 @@ public interface IUnitOfWork
     IRepository<Family> Families { get; }
     IRepository<Vaccine> Vaccines { get; }
     IRepository<Doctor> Doctors { get; }
+    IRepository<Vaccination> Vaccinations { get; }
 
     Task<int> Commit();
 }
