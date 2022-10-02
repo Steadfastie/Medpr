@@ -9,6 +9,7 @@ namespace MedprMVC.Models
     {
         public Guid Id { get; set; }
 
+        [Required(ErrorMessage = "Cmon, it should have happened ever!")]
         [Column(TypeName = "DateTime2")]
         public DateTime Date { get; set; }
 

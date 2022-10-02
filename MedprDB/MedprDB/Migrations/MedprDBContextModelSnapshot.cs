@@ -22,7 +22,7 @@ namespace MedprDB.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("MedprDB.Appointment", b =>
+            modelBuilder.Entity("MedprDB.Entities.Appointment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,10 +47,10 @@ namespace MedprDB.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointment", (string)null);
+                    b.ToTable("Appointments");
                 });
 
-            modelBuilder.Entity("MedprDB.Doctor", b =>
+            modelBuilder.Entity("MedprDB.Entities.Doctor", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,10 +65,10 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Doctor", (string)null);
+                    b.ToTable("Doctors");
                 });
 
-            modelBuilder.Entity("MedprDB.Drug", b =>
+            modelBuilder.Entity("MedprDB.Entities.Drug", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,10 +87,10 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Drug", (string)null);
+                    b.ToTable("Drugs");
                 });
 
-            modelBuilder.Entity("MedprDB.Family", b =>
+            modelBuilder.Entity("MedprDB.Entities.Family", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,10 +102,10 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Family", (string)null);
+                    b.ToTable("Families");
                 });
 
-            modelBuilder.Entity("MedprDB.FamilyMember", b =>
+            modelBuilder.Entity("MedprDB.Entities.FamilyMember", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -126,10 +126,10 @@ namespace MedprDB.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FamilyMember", (string)null);
+                    b.ToTable("FamilyMembers");
                 });
 
-            modelBuilder.Entity("MedprDB.Prescription", b =>
+            modelBuilder.Entity("MedprDB.Entities.Prescription", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -161,10 +161,25 @@ namespace MedprDB.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Prescription", (string)null);
+                    b.ToTable("Prescriptions");
                 });
 
-            modelBuilder.Entity("MedprDB.User", b =>
+            modelBuilder.Entity("MedprDB.Entities.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("MedprDB.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,16 +200,21 @@ namespace MedprDB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("MedprDB.Vaccination", b =>
+            modelBuilder.Entity("MedprDB.Entities.Vaccination", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -218,10 +238,10 @@ namespace MedprDB.Migrations
 
                     b.HasIndex("VaccineId");
 
-                    b.ToTable("Vaccination", (string)null);
+                    b.ToTable("Vaccinations");
                 });
 
-            modelBuilder.Entity("MedprDB.Vaccine", b =>
+            modelBuilder.Entity("MedprDB.Entities.Vaccine", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -240,18 +260,18 @@ namespace MedprDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vaccine", (string)null);
+                    b.ToTable("Vaccines");
                 });
 
-            modelBuilder.Entity("MedprDB.Appointment", b =>
+            modelBuilder.Entity("MedprDB.Entities.Appointment", b =>
                 {
-                    b.HasOne("MedprDB.Doctor", "Doctor")
+                    b.HasOne("MedprDB.Entities.Doctor", "Doctor")
                         .WithMany("Appointments")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedprDB.User", "User")
+                    b.HasOne("MedprDB.Entities.User", "User")
                         .WithMany("Appointments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -262,15 +282,15 @@ namespace MedprDB.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MedprDB.FamilyMember", b =>
+            modelBuilder.Entity("MedprDB.Entities.FamilyMember", b =>
                 {
-                    b.HasOne("MedprDB.Family", "Family")
+                    b.HasOne("MedprDB.Entities.Family", "Family")
                         .WithMany("FamilyMember")
                         .HasForeignKey("FamilyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedprDB.User", "User")
+                    b.HasOne("MedprDB.Entities.User", "User")
                         .WithMany("FamilyMember")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -281,21 +301,21 @@ namespace MedprDB.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MedprDB.Prescription", b =>
+            modelBuilder.Entity("MedprDB.Entities.Prescription", b =>
                 {
-                    b.HasOne("MedprDB.Doctor", "Doctor")
+                    b.HasOne("MedprDB.Entities.Doctor", "Doctor")
                         .WithMany("Prescriptions")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedprDB.Drug", "Drug")
+                    b.HasOne("MedprDB.Entities.Drug", "Drug")
                         .WithMany("Prescriptions")
                         .HasForeignKey("DrugId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedprDB.User", "User")
+                    b.HasOne("MedprDB.Entities.User", "User")
                         .WithMany("Prescriptions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -308,15 +328,26 @@ namespace MedprDB.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MedprDB.Vaccination", b =>
+            modelBuilder.Entity("MedprDB.Entities.User", b =>
                 {
-                    b.HasOne("MedprDB.User", "User")
+                    b.HasOne("MedprDB.Entities.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("MedprDB.Entities.Vaccination", b =>
+                {
+                    b.HasOne("MedprDB.Entities.User", "User")
                         .WithMany("Vaccinations")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedprDB.Vaccine", "Vaccine")
+                    b.HasOne("MedprDB.Entities.Vaccine", "Vaccine")
                         .WithMany("Vaccinations")
                         .HasForeignKey("VaccineId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -327,24 +358,29 @@ namespace MedprDB.Migrations
                     b.Navigation("Vaccine");
                 });
 
-            modelBuilder.Entity("MedprDB.Doctor", b =>
+            modelBuilder.Entity("MedprDB.Entities.Doctor", b =>
                 {
                     b.Navigation("Appointments");
 
                     b.Navigation("Prescriptions");
                 });
 
-            modelBuilder.Entity("MedprDB.Drug", b =>
+            modelBuilder.Entity("MedprDB.Entities.Drug", b =>
                 {
                     b.Navigation("Prescriptions");
                 });
 
-            modelBuilder.Entity("MedprDB.Family", b =>
+            modelBuilder.Entity("MedprDB.Entities.Family", b =>
                 {
                     b.Navigation("FamilyMember");
                 });
 
-            modelBuilder.Entity("MedprDB.User", b =>
+            modelBuilder.Entity("MedprDB.Entities.Role", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("MedprDB.Entities.User", b =>
                 {
                     b.Navigation("Appointments");
 
@@ -355,7 +391,7 @@ namespace MedprDB.Migrations
                     b.Navigation("Vaccinations");
                 });
 
-            modelBuilder.Entity("MedprDB.Vaccine", b =>
+            modelBuilder.Entity("MedprDB.Entities.Vaccine", b =>
                 {
                     b.Navigation("Vaccinations");
                 });

@@ -1,0 +1,25 @@
+﻿@model List<UserCredentialsModel>
+
+@{
+    ViewData["Title"] = "All regerested users";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                        @{await Html.RenderPartialAsync("UserCredentialsPreview", user);}
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <h2>No users found in database</h2>
+        }
+    </tbody>
+</table>

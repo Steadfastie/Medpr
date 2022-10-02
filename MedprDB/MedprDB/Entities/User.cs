@@ -23,6 +23,8 @@ namespace MedprDB.Entities
         [Column(TypeName = "DateTime2")]
         public DateTime DateOfBirth { get; set; }
 
+        public Guid RoleId { get; set; }
+        public Role Role { get; set; }
 
         public List<FamilyMember> FamilyMember { get; set; }
 
