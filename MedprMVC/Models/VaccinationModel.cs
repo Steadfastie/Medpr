@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using MedprDB.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,9 +18,9 @@ namespace MedprMVC.Models
         public int DaysOfProtection { get; set; }
 
         [Required(ErrorMessage = "Someone took a shot, didn't he?")]
-        public string UserId { get; set; }
+        public User User { get; set; }
 
         [Required(ErrorMessage = "Shot had a name, didn't it?")]
-        public Guid VaccineId { get; set; }
+        public Vaccine Vaccine { get; set; }
     }
 }

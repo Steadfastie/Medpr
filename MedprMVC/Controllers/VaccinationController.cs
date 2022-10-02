@@ -7,17 +7,22 @@ using MedprMVC.Models;
 using Serilog;
 using AspNetSample.Core;
 using System.Reflection;
+using MedprDB.Entities;
 
 namespace MedprMVC.Controllers
 {
     public class VaccinationsController : Controller
     {
         private readonly IVaccinationService _vaccinationService;
+        private readonly IVaccineService _vaccineService;
         private readonly IMapper _mapper;
         private readonly int _pagesize = 15;
-        public VaccinationsController(IVaccinationService vaccinationService, IMapper mapper)
+        public VaccinationsController(IVaccinationService vaccinationService,
+            IVaccineService vaccineService,
+            IMapper mapper)
         {
             _vaccinationService = vaccinationService;
+            _vaccineService = vaccineService;
             _mapper = mapper;
         }
 
@@ -52,9 +57,11 @@ namespace MedprMVC.Controllers
             try
             {
                 var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
-                if (dto != null)
+                var vaccineDTO = await _vaccineService.GetVaccinesByIdAsync(dto.VaccineId);
+                if (dto != null && vaccineDTO != null)
                 {
                     var model = _mapper.Map<VaccinationModel>(dto);
+                    model.Vaccine = _mapper.Map<Vaccine>(vaccineDTO);
                     return View(model);
                 }
                 else

@@ -1,0 +1,147 @@
+2022-10-02 13:20:11.916 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-02 13:20:12.284 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-02 13:20:12.285 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-02 13:20:12.289 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-02 13:20:12.290 +03:00 [INF] Hosting environment: Development
+2022-10-02 13:20:12.291 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-02 13:20:12.846 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-02 13:20:12.916 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-02 13:20:12.953 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-02 13:20:12.965 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-02 13:20:13.227 +03:00 [INF] Executed ViewResult - view Index executed in 262.7196ms.
+2022-10-02 13:20:13.239 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 282.4764ms
+2022-10-02 13:20:13.242 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-02 13:20:13.361 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 518.5897ms
+2022-10-02 13:20:13.385 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/jquery/dist/jquery.min.js - -
+2022-10-02 13:20:13.385 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - -
+2022-10-02 13:20:13.385 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/MedprMVC.styles.css?v=lzpY-cAuGQJoSR3Iw0HyoDNI53z19TftoS8oMnx2UqQ - -
+2022-10-02 13:20:13.390 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css - -
+2022-10-02 13:20:13.392 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2022-10-02 13:20:13.395 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - -
+2022-10-02 13:20:13.395 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-02 13:20:13.405 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 9.4330ms
+2022-10-02 13:20:13.408 +03:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2022-10-02 13:20:13.408 +03:00 [INF] The file /css/site.css was not modified
+2022-10-02 13:20:13.408 +03:00 [INF] The file /js/site.js was not modified
+2022-10-02 13:20:13.408 +03:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2022-10-02 13:20:13.408 +03:00 [INF] The file /MedprMVC.styles.css was not modified
+2022-10-02 13:20:13.408 +03:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2022-10-02 13:20:13.410 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css - - - 304 - text/css 20.0387ms
+2022-10-02 13:20:13.411 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - - - 304 - text/css 25.8558ms
+2022-10-02 13:20:13.413 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - - - 304 - application/javascript 17.4417ms
+2022-10-02 13:20:13.415 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/jquery/dist/jquery.min.js - - - 304 - application/javascript 29.7838ms
+2022-10-02 13:20:13.417 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/MedprMVC.styles.css?v=lzpY-cAuGQJoSR3Iw0HyoDNI53z19TftoS8oMnx2UqQ - - - 304 - text/css 31.2484ms
+2022-10-02 13:20:13.418 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 304 - application/javascript 28.4478ms
+2022-10-02 13:20:13.426 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-02 13:20:13.484 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 57.8775ms
+2022-10-02 13:20:27.171 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/vaccination/details/1039e6b6-8545-4465-8b3d-92da29aefc59 - -
+2022-10-02 13:20:27.176 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/vaccination/details/1039e6b6-8545-4465-8b3d-92da29aefc59 - - - 404 0 - 4.2989ms
+2022-10-02 13:20:37.576 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/vaccinations/details/1039e6b6-8545-4465-8b3d-92da29aefc59 - -
+2022-10-02 13:20:37.580 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-02 13:20:37.623 +03:00 [INF] Route matched with {action = "Details", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-02 13:20:38.687 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-02 13:20:38.888 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-10-02 13:21:10.530 +03:00 [INF] Executed DbCommand (80ms) [Parameters=[@__id_0='1039e6b6-8545-4465-8b3d-92da29aefc59'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-02 13:24:28.576 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-02 13:24:28.764 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-02 13:24:28.770 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-02 13:24:28.774 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-02 13:24:28.775 +03:00 [INF] Hosting environment: Development
+2022-10-02 13:24:28.776 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-02 13:24:29.266 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-02 13:24:29.318 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-02 13:24:29.345 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-02 13:24:29.356 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-02 13:24:29.515 +03:00 [INF] Executed ViewResult - view Index executed in 159.6611ms.
+2022-10-02 13:24:29.526 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 177.3243ms
+2022-10-02 13:24:29.528 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-02 13:24:29.577 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 315.6745ms
+2022-10-02 13:24:29.614 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-02 13:24:29.618 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.7018ms
+2022-10-02 13:24:29.644 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-02 13:24:29.667 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.4942ms
+2022-10-02 13:24:43.713 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/vaccinations/details/1039e6b6-8545-4465-8b3d-92da29aefc59 - -
+2022-10-02 13:24:43.717 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-02 13:24:43.735 +03:00 [INF] Route matched with {action = "Details", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-02 13:24:44.553 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-02 13:24:44.755 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-10-02 13:24:49.347 +03:00 [INF] Executed DbCommand (72ms) [Parameters=[@__id_0='1039e6b6-8545-4465-8b3d-92da29aefc59'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-02 13:25:11.647 +03:00 [INF] Executed DbCommand (11,704ms) [Parameters=[@__id_0='8865e724-e999-40ca-8b53-f816e7636cb9'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-02 13:25:48.878 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-02 13:25:49.108 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-02 13:25:49.114 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-02 13:25:49.119 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-02 13:25:49.120 +03:00 [INF] Hosting environment: Development
+2022-10-02 13:25:49.122 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-02 13:25:49.901 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-02 13:25:49.960 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-02 13:25:49.985 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-02 13:25:49.997 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-02 13:25:50.165 +03:00 [INF] Executed ViewResult - view Index executed in 168.9021ms.
+2022-10-02 13:25:50.176 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 186.8675ms
+2022-10-02 13:25:50.179 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-02 13:25:50.219 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 320.8470ms
+2022-10-02 13:25:50.261 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-02 13:25:50.266 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.1454ms
+2022-10-02 13:25:50.289 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-02 13:25:50.310 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.7961ms
+2022-10-02 13:26:02.054 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/vaccinations/details/1039e6b6-8545-4465-8b3d-92da29aefc59 - -
+2022-10-02 13:26:02.057 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-02 13:26:02.076 +03:00 [INF] Route matched with {action = "Details", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-02 13:26:02.898 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-02 13:26:03.091 +03:00 [INF] Entity Framework Core 6.0.8 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.8' with options: SensitiveDataLoggingEnabled 
+2022-10-02 13:26:10.817 +03:00 [INF] Executed DbCommand (74ms) [Parameters=[@__id_0='1039e6b6-8545-4465-8b3d-92da29aefc59'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-02 13:26:13.729 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[@__id_0='8865e724-e999-40ca-8b53-f816e7636cb9'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-02 13:29:29.681 +03:00 [INF] Executing ViewResult, running view Details.
+2022-10-02 13:29:29.879 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Details (MedprMVC) in 207799.7191ms
+2022-10-02 13:29:29.943 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-02 13:29:29.946 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The model item passed into the ViewDataDictionary is of type 'MedprMVC.Models.VaccinationModel', but this ViewDataDictionary instance requires a model item of type 'MedprMVC.Models.DrugModel'.
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary.EnsureCompatible(Object value)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary..ctor(ViewDataDictionary source, Object model, Type declaredModelType)
+   at lambda_method55(Closure , ViewDataDictionary )
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPagePropertyActivator.CreateViewDataDictionary(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPagePropertyActivator.Activate(Object page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPageActivator.Activate(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-10-02 13:29:30.137 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/vaccinations/details/1039e6b6-8545-4465-8b3d-92da29aefc59 - - - 500 - text/html;+charset=utf-8 208083.2655ms
+2022-10-02 13:29:30.158 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-02 13:29:30.158 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-02 13:29:30.160 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.0688ms
+2022-10-02 13:29:30.174 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.5958ms
