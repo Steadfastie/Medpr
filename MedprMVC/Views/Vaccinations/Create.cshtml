@@ -9,7 +9,7 @@
     <form asp-controller="Vaccinations" asp-action="Create" method="post">
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
-            <input asp-for="Date" type="text" class="form-control" id="date">
+            <input asp-for="Date" type="datetime-local" class="form-control" id="date">
             <span asp-validation-for="Date" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -19,14 +19,14 @@
         </div>
         <div class="mb-3">
             <label for="vaccine" class="form-label">Vaccine</label>
-            <select asp-for="Vaccine" asp-items="@Model.Vaccines" id="vaccine">
-                 <option selected="selected" disabled="disabled">Select Source Type</option>
+            <select asp-for="VaccineId" asp-items="@Model.Vaccines" id="vaccine">
+                 <option selected="selected" disabled="disabled">Select vaccine</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="user" class="form-label">User</label>
-            <select asp-for="User" asp-items="@Model.Users" id="user">
-                 <option selected="selected" disabled="disabled">Select Source Type</option>
+            <select asp-for="UserId" asp-items="@Model.Users" id="user">
+                 <option selected="selected" disabled="disabled">Select user</option>
             </select>
         </div>
 

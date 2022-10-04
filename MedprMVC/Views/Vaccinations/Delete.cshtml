@@ -9,11 +9,11 @@
         <tr>
             <td>
                 @{
-                    await Html.RenderPartialAsync("VaccinationPartil", Model);
+                    await Html.RenderPartialAsync("VaccinationPartial", Model);
                 }
             </td>
             <td>
-                <form asp-controller="Vaccination" asp-action="Delete" method="post">
+                <form asp-controller="Vaccinations" asp-action="Delete" method="post">
                     <input type="submit" name="@Model.Id" class="btn btn-primary" value="Yes">
                 </form>
             </td>

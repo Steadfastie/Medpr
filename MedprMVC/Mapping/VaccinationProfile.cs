@@ -25,8 +25,8 @@ namespace MedprMVC.Mapping
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(model => model.Id))
                 .ForMember(dto => dto.Date, opt => opt.MapFrom(model => model.Date))
                 .ForMember(dto => dto.DaysOfProtection, opt => opt.MapFrom(model => model.DaysOfProtection))
-                .ForMember(dto => dto.VaccineId, opt => opt.MapFrom(model => model.Vaccine.Id))
-                .ForMember(dto => dto.UserId, opt => opt.MapFrom(model => model.User.Id));
+                .ForMember(dto => dto.VaccineId, opt => opt.MapFrom(model => model.VaccineId))
+                .ForMember(dto => dto.UserId, opt => opt.MapFrom(model => model.UserId));
         }
     }
 }

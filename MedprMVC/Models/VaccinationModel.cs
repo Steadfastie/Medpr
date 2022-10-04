@@ -22,11 +22,15 @@ namespace MedprMVC.Models
         public SelectList Users { get; set; }
 
         [Required(ErrorMessage = "Someone took a shot, didn't he?")]
+        public Guid UserId { get; set; }
+
         public UserModel User { get; set; }
 
         public SelectList Vaccines { get; set; }
 
         [Required(ErrorMessage = "Shot had a name, didn't it?")]
+        public Guid VaccineId { get; set; }
+
         public VaccineModel Vaccine { get; set; }
     }
 }
