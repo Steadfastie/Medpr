@@ -1,29 +1,29 @@
-﻿@model List<DrugModel>
+﻿@model List<VaccinationModel>
 
 @{
-    ViewData["Title"] = "All drugs";
+    ViewData["Title"] = "All vaccinations";
 }
 
 <table class="table table-borderless">
     <tbody>
         @if (Model != null)
         {
-            foreach (var drug in Model)
+            foreach (var vaccination in Model)
             {
                 <tr>
                     <td>
-                        @{await Html.RenderPartialAsync("DrugDetailsPreview", drug);}
+                        @{await Html.RenderPartialAsync("VaccinationPartial", vaccination);}
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="~/drugs/details/@drug.Id">Read details</a>
+                        <a class="btn btn-primary" href="~/vaccinations/details/@vaccination.Id">Read more</a>
                     </td>
                 </tr>
             }
         }
         else
         {
-            <h2>No drugs found in database</h2>
-            <h4>Add new drug to this app?</h4>
+            <h2>No vaccinations found in database</h2>
+            <h4>Add new vaccination to this app?</h4>
         }
     </tbody>
 </table>
@@ -31,5 +31,5 @@
 <br>
 <br>
 <div>
-    <a class="btn btn-primary" asp-action="Create" asp-controller="Drugs">Add drug</a>
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Vaccinations">Add vaccination</a>
 </div>

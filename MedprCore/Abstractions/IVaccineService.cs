@@ -1,5 +1,4 @@
-﻿using AspNetSample.Core;
-using MedprCore.DTO;
+﻿using MedprCore.DTO;
 
 namespace MedprCore.Abstractions
 {
@@ -9,6 +8,7 @@ namespace MedprCore.Abstractions
             (int pageNumber, int pageSize);
 
         Task<VaccineDTO> GetVaccinesByIdAsync(Guid id);
+        Task<List<VaccineDTO>> GetAllVaccinesAsync();
 
         Task<int> CreateVaccineAsync(VaccineDTO dto);
         Task<int> PatchVaccineAsync(Guid id, List<PatchModel> patchList);

@@ -1,5 +1,4 @@
-﻿using AspNetSample.Core;
-using MedprCore.DTO;
+﻿using MedprCore.DTO;
 
 namespace MedprCore.Abstractions
 {

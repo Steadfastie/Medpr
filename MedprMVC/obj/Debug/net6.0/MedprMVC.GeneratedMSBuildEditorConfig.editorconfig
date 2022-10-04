@@ -103,12 +103,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Users/UserCredentialsPreview.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcVXNlckNyZWRlbnRpYWxzUHJldmlldy5jc2h0bWw=
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Users/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Users/UserPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcVXNlclBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/Create.cshtml]
@@ -131,8 +147,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/VaccinationDetailsPreview.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXFZhY2NpbmF0aW9uRGV0YWlsc1ByZXZpZXcuY3NodG1s
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccinations/VaccinationPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjY2luYXRpb25zXFZhY2NpbmF0aW9uUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Vaccines/Create.cshtml]

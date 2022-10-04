@@ -1,4 +1,5 @@
 ﻿using MedprDB.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,10 +19,14 @@ namespace MedprMVC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Input something greater than 0"), DataType(DataType.Duration)]
         public int DaysOfProtection { get; set; }
 
+        public SelectList Users { get; set; }
+
         [Required(ErrorMessage = "Someone took a shot, didn't he?")]
-        public User User { get; set; }
+        public UserModel User { get; set; }
+
+        public SelectList Vaccines { get; set; }
 
         [Required(ErrorMessage = "Shot had a name, didn't it?")]
-        public Vaccine Vaccine { get; set; }
+        public VaccineModel Vaccine { get; set; }
     }
 }

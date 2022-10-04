@@ -1,7 +1,7 @@
-﻿@model List<UserCredentialsModel>
+﻿@model List<UserModel>
 
 @{
-    ViewData["Title"] = "All regerested users";
+    ViewData["Title"] = "All users";
 }
 
 <table class="table table-borderless">
@@ -12,7 +12,10 @@
             {
                 <tr>
                     <td>
-                        @{await Html.RenderPartialAsync("UserCredentialsPreview", user);}
+                        @{await Html.RenderPartialAsync("UserPartial", user);}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="~/users/details/@user.Id">Read details</a>
                     </td>
                 </tr>
             }
@@ -20,6 +23,13 @@
         else
         {
             <h2>No users found in database</h2>
+            <h4>Add new user to this app?</h4>
         }
     </tbody>
 </table>
+
+<br>
+<br>
+<div>
+    <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
+</div>

@@ -188,11 +188,11 @@ namespace MedprDB.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("DateTime2");
 
-                    b.Property<string>("Login")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Login")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -202,10 +202,6 @@ namespace MedprDB.Migrations
 
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -331,7 +327,7 @@ namespace MedprDB.Migrations
             modelBuilder.Entity("MedprDB.Entities.User", b =>
                 {
                     b.HasOne("MedprDB.Entities.Role", "Role")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -373,11 +369,6 @@ namespace MedprDB.Migrations
             modelBuilder.Entity("MedprDB.Entities.Family", b =>
                 {
                     b.Navigation("FamilyMember");
-                });
-
-            modelBuilder.Entity("MedprDB.Entities.Role", b =>
-                {
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("MedprDB.Entities.User", b =>

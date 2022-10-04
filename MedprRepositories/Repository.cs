@@ -1,5 +1,5 @@
-﻿using AspNetSample.Core;
-using MedprAbstractions.Repositories;
+﻿using MedprAbstractions.Repositories;
+using MedprCore;
 using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;

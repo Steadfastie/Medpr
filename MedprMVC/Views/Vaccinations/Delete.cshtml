@@ -1,7 +1,7 @@
-﻿@model DrugModel
+﻿@model VaccinationModel
 
 @{
-    ViewData["Title"] = "Delete drug";
+    ViewData["Title"] = "Delete vaccination";
 }
 
 <table class="table table-borderless">
@@ -9,16 +9,16 @@
         <tr>
             <td>
                 @{
-                    await Html.RenderPartialAsync("DrugDetailsPreview", Model);
+                    await Html.RenderPartialAsync("VaccinationPartil", Model);
                 }
             </td>
             <td>
-                <form asp-controller="Drugs" asp-action="Delete" method="post">
+                <form asp-controller="Vaccination" asp-action="Delete" method="post">
                     <input type="submit" name="@Model.Id" class="btn btn-primary" value="Yes">
                 </form>
             </td>
             <td>
-                <a class="btn btn-primary" href="~/drugs/details/@Model.Id">No</a>
+                <a class="btn btn-primary" href="~/vaccinations/details/@Model.Id">No</a>
             </td>
         </tr>
     </tbody>

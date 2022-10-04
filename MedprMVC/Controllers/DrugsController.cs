@@ -5,7 +5,6 @@ using MedprCore.DTO;
 using AutoMapper;
 using MedprMVC.Models;
 using Serilog;
-using AspNetSample.Core;
 using System.Reflection;
 
 namespace MedprMVC.Controllers

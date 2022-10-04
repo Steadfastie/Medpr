@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AspNetSample.Core;
 using AutoMapper;
 using MedprAbstractions;
 using MedprCore;
@@ -16,7 +15,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplementations;
 
-public class UserService : IUserService
+public class UserService : PasswordHash, IUserService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
@@ -27,31 +26,68 @@ public class UserService : IUserService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<List<UserCredentialsDTO>> GetAllUsersAsync(Guid id)
-    {
-        List<User> users = _unitOfWork.Users.Get().ToList();
-        List<UserCredentialsDTO> userCredentials = _mapper.Map<List<UserCredentialsDTO>>(users);
-
-        return userCredentials;
-    }
-
-    public async Task<UserCredentialsDTO> GetUserByIdAsync(Guid id)
+    public async Task<UserDTO> GetUsersByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Users.GetByIdAsync(id);
-        var dto = _mapper.Map<UserCredentialsDTO>(entity);
+        var dto = _mapper.Map<UserDTO>(entity);
 
         return dto;
     }
 
-    public Task<List<UserCredentialsDTO>> GetUsersByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<UserDTO>> GetAllUsersAsync()
+    {
+        var entities = await _unitOfWork.Users.GetAllAsync();
+        var dto = _mapper.Map<List<UserDTO>>(entities);
+
+        return dto;
+    }
+
+    public Task<List<UserDTO>> GetUsersByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
     {
         var list = _unitOfWork.Users
             .Get()
             .Skip(pageSize * pageNumber)
             .Take(pageSize)
-            .OrderBy(user => user.Name)
-            .Select(user => _mapper.Map<UserCredentialsDTO>(user))
+            .OrderBy(user => user.FullName)
+            .Select(user => _mapper.Map<UserDTO>(user))
             .ToListAsync();
         return list;
+    }
+
+    public async Task<int> CreateUserAsync(UserDTO dto)
+    {
+        var entity = _mapper.Map<User>(dto);
+
+        if (entity != null)
+        {
+            entity.PasswordHash = CreateMd5(dto.PasswordHash);
+            await _unitOfWork.Users.AddAsync(entity);
+            return await _unitOfWork.Commit();
+        }
+        else
+        {
+            throw new ArgumentException(nameof(dto));
+        }
+    }
+
+    public async Task<int> PatchUserAsync(Guid id, List<PatchModel> patchList)
+    {
+        await _unitOfWork.Users.PatchAsync(id, patchList);
+        return await _unitOfWork.Commit();
+    }
+
+    public async Task<int> DeleteUserAsync(UserDTO dto)
+    {
+        var entity = _mapper.Map<User>(dto);
+
+        if (entity != null)
+        {
+            _unitOfWork.Users.Remove(entity);
+            return await _unitOfWork.Commit();
+        }
+        else
+        {
+            throw new ArgumentException(nameof(dto));
+        }
     }
 }

@@ -1,27 +1,35 @@
-﻿@model DrugModel
+﻿@model VaccinationModel
 @{
-    ViewData["Title"] = "Update drug info";
+    ViewData["Title"] = "Update vaccination info";
 }
 
 <div>
-    <h1>Update drug info</h1>
+    <h1>Update vaccination info</h1>
 
-    <form asp-controller="Drugs" asp-action="Edit" method="post">
+    <form asp-controller="Vaccinations" asp-action="Create" method="post">
         <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input asp-for="Name" type="text" class="form-control" id="name">
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <label for="date" class="form-label">Date</label>
+            <input asp-for="Date" type="text" class="form-control" id="date">
+            <span asp-validation-for="Date" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label for="pharmGroup" class="form-label">Drug class</label>
-            <input asp-for="PharmGroup" class="form-control" id="pharmGroup">
-            <span asp-validation-for="PharmGroup" class="text-danger"></span>
+            <label for="daysOfProtection" class="form-label">Days of protection</label>
+            <input asp-for="DaysOfProtection" class="form-control" id="daysOfProtection">
+            <span asp-validation-for="DaysOfProtection" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input asp-for="Price" class="form-control" id="price">
-            <span asp-validation-for="Price" class="text-danger"></span>
+            <label for="vaccine" class="form-label">Vaccine</label>
+            <select asp-for="Vaccine" asp-items="@Model.Vaccines" id="vaccine">
+                <option selected="selected" disabled="disabled">Select Source Type</option>
+            </select>
         </div>
+        <div class="mb-3">
+            <label for="user" class="form-label">User</label>
+            <select asp-for="User" asp-items="@Model.Users" id="user">
+                <option selected="selected" disabled="disabled">Select Source Type</option>
+            </select>
+        </div>
+
 
         <input type="submit" class="btn btn-primary" value="Submit">
 

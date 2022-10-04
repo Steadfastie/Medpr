@@ -1,4 +1,4 @@
-﻿namespace AspNetSample.Core;
+﻿namespace MedprCore;
 
 public class PatchModel
 {

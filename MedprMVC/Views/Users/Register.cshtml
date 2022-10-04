@@ -1,0 +1,42 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Add user to Medpr";
+}
+
+<div>
+    <h1>Add user</h1>
+
+    <form asp-controller="Users" asp-action="Register" method="post">
+        <div class="mb-3">
+            <label for="login" class="form-label">Login</label>
+            <input asp-for="Login" type="text" class="form-control" id="login">
+            <span asp-validation-for="Login" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="passwordHash" class="form-label">Password</label>
+            <input asp-for="PasswordHash" type="text" class="form-control" id="passwordHash">
+            <span asp-validation-for="PasswordHash" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="FullName" class="form-label">FullName</label>
+            <input asp-for="FullName" type="text" class="form-control" id="FullName">
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="DateOfBirth" class="form-label">Date of birth</label>
+            <input asp-for="DateOfBirth" class="form-control" id="DateOfBirth">
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

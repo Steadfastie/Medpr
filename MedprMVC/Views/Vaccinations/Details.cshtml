@@ -1,18 +1,18 @@
-﻿@model DrugModel
+﻿@model VaccinationModel
 
 @{
-    ViewData["Title"] = "Drug detail";
+    ViewData["Title"] = "Vaccination details";
 }
 
 <table class="table table-borderless">
     <tbody>
         <tr>
             <td>
-                @{await Html.RenderPartialAsync("DrugDetailsPreview", Model);}
+                @{await Html.RenderPartialAsync("VaccinationPartial", Model);}
             </td>
             <td>
-                <a class="btn btn-primary" href="~/drugs/edit/@Model.Id">Edit</a>
-                <a class="btn btn-danger" href="~/drugs/delete/@Model.Id">Delete</a>
+                <a class="btn btn-primary" href="~/vaccinations/edit/@Model.Id">Edit</a>
+                <a class="btn btn-danger" href="~/vaccinations/delete/@Model.Id">Delete</a>
             </td>
         </tr>
     </tbody>

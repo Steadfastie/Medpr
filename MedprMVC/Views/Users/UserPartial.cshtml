@@ -1,0 +1,15 @@
+﻿@model UserModel
+
+<div>
+    <h3>
+        @Html.DisplayFor(modelItem => Model.FullName)
+    </h3>
+    <h5>
+        appeared on mother Earth <i>@Html.DisplayFor(modelItem => Model.DateOfBirth)</i>
+    </h5>
+    <div>
+        Login: @Html.DisplayFor(modelItem => Model.Login)
+    </div>
+</div>
+
+

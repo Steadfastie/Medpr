@@ -13,6 +13,6 @@ namespace MedprDB.Entities
         public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public List<User> Users { get; set; }
+        List<User> Users { get; set; }
     }
 }

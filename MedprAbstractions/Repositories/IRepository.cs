@@ -1,4 +1,4 @@
-﻿using AspNetSample.Core;
+﻿using MedprCore;
 using MedprDB.Entities;
 using System;
 using System.Collections.Generic;

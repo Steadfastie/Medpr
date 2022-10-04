@@ -5,15 +5,15 @@ using MedprMVC.Models;
 
 namespace MedprMVC.Mapping
 {
-    public class UserCredentialsProfile : Profile
+    public class DrugProfile : Profile
     {
-        public UserCredentialsProfile() 
+        public DrugProfile() 
         {
-            CreateMap<User, UserCredentialsDTO>();
-            CreateMap<UserCredentialsDTO, User>();
+            CreateMap<Drug, DrugDTO>();
+            CreateMap<DrugDTO, Drug>();
 
-            CreateMap<UserCredentialsDTO, UserCredentialsModel>();
-            CreateMap<UserCredentialsModel, UserCredentialsDTO>();
+            CreateMap<DrugDTO, DrugModel>();
+            CreateMap<DrugModel, DrugDTO>();
         }
     }
 }

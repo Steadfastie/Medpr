@@ -1,0 +1,25 @@
+﻿@model UserModel
+
+@{
+    ViewData["Title"] = "Delete user";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        <tr>
+            <td>
+                @{
+                    await Html.RenderPartialAsync("UserPartial", Model);
+                }
+            </td>
+            <td>
+                <form asp-controller="Users" asp-action="Delete" method="post">
+                    <input type="submit" name="@Model.Id" class="btn btn-primary" value="Yes">
+                </form>
+            </td>
+            <td>
+                <a class="btn btn-primary" href="~/users/details/@Model.Id">No</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

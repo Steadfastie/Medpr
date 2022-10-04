@@ -16,15 +16,10 @@ namespace MedprDB.Entities
 
         public string PasswordHash { get; set; }
 
-        public string Name { get; set; }
-
-        public string Surname { get; set; }
+        public string FullName { get; set; }
 
         [Column(TypeName = "DateTime2")]
         public DateTime DateOfBirth { get; set; }
-
-        public Guid RoleId { get; set; }
-        public Role Role { get; set; }
 
         public List<FamilyMember> FamilyMember { get; set; }
 
@@ -33,5 +28,8 @@ namespace MedprDB.Entities
         public List<Vaccination> Vaccinations { get; set; }
 
         public List<Appointment> Appointments { get; set; }
+
+        public Role Role { get; set; }
+        public Guid RoleId { get; set; }
     }
 }

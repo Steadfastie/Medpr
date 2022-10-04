@@ -5,9 +5,9 @@ using MedprCore.DTO;
 using AutoMapper;
 using MedprMVC.Models;
 using Serilog;
-using AspNetSample.Core;
 using System.Reflection;
 using MedprDB.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MedprMVC.Controllers
 {
@@ -15,15 +15,18 @@ namespace MedprMVC.Controllers
     {
         private readonly IVaccinationService _vaccinationService;
         private readonly IVaccineService _vaccineService;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
         private readonly int _pagesize = 15;
         public VaccinationsController(IVaccinationService vaccinationService,
             IVaccineService vaccineService,
+            IUserService userService,
             IMapper mapper)
         {
             _vaccinationService = vaccinationService;
             _vaccineService = vaccineService;
             _mapper = mapper;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -33,7 +36,20 @@ namespace MedprMVC.Controllers
             {
                 var dtos = await _vaccinationService.GetVaccinationsByPageNumberAndPageSizeAsync(page, _pagesize);
 
-                var models = _mapper.Map<List<VaccinationModel>>(dtos);
+                List<VaccinationModel> models = new();
+
+                foreach (var dto in dtos)
+                {
+                    var vaccineSelected = await _vaccineService.GetVaccinesByIdAsync(dto.VaccineId);
+                    var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+
+                    var model = _mapper.Map<VaccinationModel>(dto);
+
+                    model.Vaccine = _mapper.Map<VaccineModel>(vaccineSelected);
+                    model.User = _mapper.Map<UserModel>(userSelected);
+
+                    models.Add(model);
+                }
 
                 if (models.Any())
                 {
@@ -57,11 +73,17 @@ namespace MedprMVC.Controllers
             try
             {
                 var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
-                var vaccineDTO = await _vaccineService.GetVaccinesByIdAsync(dto.VaccineId);
-                if (dto != null && vaccineDTO != null)
+
+                if (dto != null)
                 {
+                    var vaccineSelected = await _vaccineService.GetVaccinesByIdAsync(dto.VaccineId);
+                    var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+
                     var model = _mapper.Map<VaccinationModel>(dto);
-                    model.Vaccine = _mapper.Map<Vaccine>(vaccineDTO);
+
+                    model.Vaccine = _mapper.Map<VaccineModel>(vaccineSelected);
+                    model.User = _mapper.Map<UserModel>(userSelected);
+
                     return View(model);
                 }
                 else
@@ -77,9 +99,14 @@ namespace MedprMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync()
         {
-            return View();
+            var allVaccines = await _vaccineService.GetAllVaccinesAsync();
+            var allUsers = await _userService.GetAllUsersAsync();
+            VaccinationModel model = new();
+            model.Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines));
+            model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers));
+            return View(model);
         }
 
         [HttpPost]
@@ -123,7 +150,18 @@ namespace MedprMVC.Controllers
                         return BadRequest();
                     }
 
+                    var vaccineSelected = await _vaccineService.GetVaccinesByIdAsync(dto.VaccineId);
+                    var allVaccines = await _vaccineService.GetAllVaccinesAsync();
+
+                    var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                    var allUsers = await _userService.GetAllUsersAsync();
+
                     var editModel = _mapper.Map<VaccinationModel>(dto);
+
+                    editModel.Vaccine = _mapper.Map<VaccineModel>(vaccineSelected);
+                    editModel.Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines));
+                    editModel.User = _mapper.Map<UserModel>(userSelected);
+                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers));
 
                     return View(editModel);
                 }
@@ -197,7 +235,13 @@ namespace MedprMVC.Controllers
                         return BadRequest();
                     }
 
+                    var vaccineSelected = await _vaccineService.GetVaccinesByIdAsync(dto.VaccineId);
+                    var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+
                     var deleteModel = _mapper.Map<VaccinationModel>(dto);
+
+                    deleteModel.Vaccine = _mapper.Map<VaccineModel>(vaccineSelected);
+                    deleteModel.User = _mapper.Map<UserModel>(userSelected);
 
                     return View(deleteModel);
                 }

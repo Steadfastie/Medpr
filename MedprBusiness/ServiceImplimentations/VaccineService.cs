@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AspNetSample.Core;
 using AutoMapper;
 using MedprAbstractions;
 using MedprCore;
@@ -33,6 +32,14 @@ public class VaccineService : IVaccineService
         var dto = _mapper.Map<VaccineDTO>(entity);
 
         return dto;
+    }
+
+    public async Task<List<VaccineDTO>> GetAllVaccinesAsync()
+    {
+        var entities = await _unitOfWork.Vaccines.GetAllAsync();
+        var dtos = _mapper.Map<List<VaccineDTO>>(entities);
+
+        return dtos;
     }
 
     public Task<List<VaccineDTO>> GetVaccinesByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
