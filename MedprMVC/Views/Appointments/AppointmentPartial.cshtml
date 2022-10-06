@@ -1,0 +1,25 @@
+﻿@model AppointmentModel
+
+<div>
+    <h3>
+        @Html.DisplayFor(modelItem => Model.Date)
+    </h3>
+    <h5>
+        @Html.DisplayFor(modelItem => Model.Place)
+    </h5>
+
+    <h5>Doctor:</h5>
+    <div>
+        @Model.Doctor.Name
+        @Model.Doctor.Experience
+    </div>
+
+    <h5>User:</h5>
+    <div>
+        @Model.User.FullName
+        @Model.User.Login
+        @Model.User.DateOfBirth
+    </div>
+</div>
+
+

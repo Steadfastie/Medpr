@@ -1,0 +1,72 @@
+﻿@model PrescriptionModel
+@{
+    ViewData["Title"] = "Update prescription info";
+}
+
+<div class="container text-center">
+    <div class="row align-items-center">
+        <h1>Edit prescription</h1>
+    </div>
+    <form asp-controller="Prescriptions" asp-action="Edit" method="post" class="row gx-3 gy-2 align-items-center" id="mainform">
+        <div class="row align-items-center">
+            <div class="col">
+                <label for="doctor" class="form-label"></label>
+                <select asp-for="DoctorId" asp-items="@Model.Doctors" id="doctor">
+                </select>
+            </div>
+            <div class="col">
+                <label for="drug" class="form-label"></label>
+                <select asp-for="DrugId" asp-items="@Model.Drugs" id="drug">
+                </select>
+            </div>
+            <div class="col">
+                <label for="user" class="form-label"></label>
+                <select asp-for="UserId" asp-items="@Model.Users" id="user">
+                </select>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row align-items-center">
+            <div class="col">
+                <label for="startDate" class="form-label">Start at</label>
+                <input asp-for="StartDate" type="datetime-local" class="form-control" id="startDate">
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <label for="endDate" class="form-label">End at</label>
+                <input asp-for="EndDate" type="datetime-local" class="form-control" id="endDate">
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <label for="dose" class="form-label">Pills per day</label>
+                <input asp-for="Dose" class="form-control" id="dose">
+                <span asp-validation-for="Dose" class="text-danger"></span>
+            </div>
+        </div>
+    </form>
+    <br>
+    <div class="row align-items-center">
+        <div class="col">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Doctors">Add doctor</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Drugs">Add drug</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Users">Add user</a>
+        </div>
+    </div>
+    <br>
+    <div class="row align-items-center">
+        <div>
+            <input type="submit" form="mainform" class="btn btn-primary col-sm-2" value="Submit">
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

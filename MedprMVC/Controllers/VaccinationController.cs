@@ -114,6 +114,9 @@ public class VaccinationsController : Controller
     {
         try
         {
+            // At the current moment Vaccination Model has 4 additional fields to form other
+            // actions's models. They aren't suppose to fill in, so ModelState.IsValid won't
+            // be true. The other way around is used in Edit[post]
             if (ModelState.ErrorCount < 5)
             {
                 model.Id = Guid.NewGuid();

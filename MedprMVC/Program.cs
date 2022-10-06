@@ -45,6 +45,9 @@ namespace MedprMVC
             builder.Services.AddScoped<IFamilyService, FamilyService>();
             builder.Services.AddScoped<IVaccineService, VaccineService>();
             builder.Services.AddScoped<IVaccinationService, VaccinationService>();
+            builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+            builder.Services.AddScoped<IFamilyMemberService, FamilyMemberService>();
+            builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
 
             builder.Services.AddScoped<IRepository<User>, Repository<User>>();
             builder.Services.AddScoped<IRepository<Role>, Repository<Role>>();
@@ -53,6 +56,9 @@ namespace MedprMVC
             builder.Services.AddScoped<IRepository<Family>, Repository<Family>>();
             builder.Services.AddScoped<IRepository<Vaccine>, Repository<Vaccine>>();
             builder.Services.AddScoped<IRepository<Vaccination>, Repository<Vaccination>>();
+            builder.Services.AddScoped<IRepository<Appointment>, Repository<Appointment>>();
+            builder.Services.AddScoped<IRepository<FamilyMember>, Repository<FamilyMember>>();
+            builder.Services.AddScoped<IRepository<Prescription>, Repository<Prescription>>();
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

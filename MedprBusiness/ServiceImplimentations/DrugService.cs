@@ -34,6 +34,14 @@ public class DrugService : IDrugService
         return dto;
     }
 
+    public async Task<List<DrugDTO>> GetAllDrugsAsync()
+    {
+        var entities = await _unitOfWork.Drugs.GetAllAsync();
+        var dtos = _mapper.Map<List<DrugDTO>>(entities);
+
+        return dtos;
+    }
+
     public Task<List<DrugDTO>> GetDrugsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
     {
         var list = _unitOfWork.Drugs

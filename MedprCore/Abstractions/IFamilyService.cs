@@ -9,6 +9,7 @@ namespace MedprCore.Abstractions
 
         Task<FamilyDTO> GetFamiliesByIdAsync(Guid id);
 
+        Task<List<FamilyDTO>> GetAllFamiliesAsync();
         Task<int> CreateFamilyAsync(FamilyDTO dto);
         Task<int> PatchFamilyAsync(Guid id, List<PatchModel> patchList);
         Task<int> DeleteFamilyAsync(FamilyDTO dto);

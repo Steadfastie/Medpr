@@ -34,6 +34,14 @@ public class FamilyService : IFamilyService
         return dto;
     }
 
+    public async Task<List<FamilyDTO>> GetAllFamiliesAsync()
+    {
+        var entities = await _unitOfWork.Families.GetAllAsync();
+        var dtos = _mapper.Map<List<FamilyDTO>>(entities);
+
+        return dtos;
+    }
+
     public Task<List<FamilyDTO>> GetFamiliesByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
     {
         var list = _unitOfWork.Families

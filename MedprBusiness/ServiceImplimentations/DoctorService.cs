@@ -34,6 +34,14 @@ public class DoctorService : IDoctorService
         return dto;
     }
 
+    public async Task<List<DoctorDTO>> GetAllDoctorsAsync()
+    {
+        var entities = await _unitOfWork.Doctors.GetAllAsync();
+        var dtos = _mapper.Map<List<DoctorDTO>>(entities);
+
+        return dtos;
+    }
+
     public Task<List<DoctorDTO>> GetDoctorsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
     {
         var list = _unitOfWork.Doctors

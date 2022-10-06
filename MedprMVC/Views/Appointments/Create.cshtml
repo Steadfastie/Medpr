@@ -1,0 +1,49 @@
+﻿@model AppointmentModel
+@{
+    ViewData["Title"] = "Add appointment to Medpr";
+}
+
+<div>
+    <h1>Add appointment</h1>
+
+    <form asp-controller="Appointments" asp-action="Create" method="post">
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input asp-for="Date" type="datetime-local" class="form-control" id="date">
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="place" class="form-label">Place</label>
+            <input asp-for="Place" class="form-control" id="place">
+            <span asp-validation-for="Place" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="doctor" class="form-label">Doctor</label>
+            <select asp-for="DoctorId" asp-items="@Model.Doctors" id="doctor">
+                 <option selected="selected" disabled="disabled">Select doctor</option>
+            </select>
+            <span asp-validation-for="DoctorId" class="text-danger"></span>
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Doctors">Add doctor</a>
+        </div>
+        <div class="mb-3">
+            <label for="user" class="form-label">User</label>
+            <select asp-for="UserId" asp-items="@Model.Users" id="user">
+                 <option selected="selected" disabled="disabled">Select user</option>
+            </select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+            <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
+        </div>
+
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

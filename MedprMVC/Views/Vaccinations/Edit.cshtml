@@ -20,14 +20,16 @@
         <div class="mb-3">
             <label for="vaccine" class="form-label">Vaccine</label>
             <select asp-for="VaccineId" asp-items="@Model.Vaccines" id="vaccine">
-                
             </select>
+            <span asp-validation-for="VaccineId" class="text-danger"></span>
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Vaccines">Add vaccine</a>
         </div>
         <div class="mb-3">
             <label for="user" class="form-label">User</label>
             <select asp-for="UserId" asp-items="@Model.Users" id="user">
-                
             </select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+            <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
         </div>
 
 

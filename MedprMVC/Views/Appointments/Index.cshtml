@@ -1,0 +1,35 @@
+﻿@model List<AppointmentModel>
+
+@{
+    ViewData["Title"] = "All appointments";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var appointment in Model)
+            {
+                <tr>
+                    <td>
+                        @{await Html.RenderPartialAsync("AppointmentPartial", appointment);}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="~/appointments/details/@appointment.Id">Read more</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <h2>No appointments found in database</h2>
+            <h4>Add new appointment to this app?</h4>
+        }
+    </tbody>
+</table>
+
+<br>
+<br>
+<div>
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Appointments">Add appointment</a>
+</div>

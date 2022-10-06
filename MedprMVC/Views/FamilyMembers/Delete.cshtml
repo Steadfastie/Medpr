@@ -1,0 +1,25 @@
+﻿@model FamilyMemberModel
+
+@{
+    ViewData["Title"] = "Delete family tie";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        <tr>
+            <td>
+                @{
+                    await Html.RenderPartialAsync("FamilyMemberPartial", Model);
+                }
+            </td>
+            <td>
+                <form asp-controller="FamilyMembers" asp-action="Delete" method="post">
+                    <input type="submit" name="@Model.Id" class="btn btn-primary" value="Yes">
+                </form>
+            </td>
+            <td>
+                <a class="btn btn-primary" href="~/familyMembers/details/@Model.Id">No</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

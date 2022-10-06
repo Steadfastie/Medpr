@@ -17,8 +17,10 @@ namespace MedprMVC.Mapping
                 .ForMember(model => model.Date, opt => opt.MapFrom(dto => dto.Date))
                 .ForMember(model => model.DaysOfProtection, opt => opt.MapFrom(dto => dto.DaysOfProtection))
                 .ForMember(model => model.Vaccine, opt => opt.Ignore())
+                .ForMember(model => model.VaccineId, opt => opt.MapFrom(dto => dto.VaccineId))
                 .ForMember(model => model.Vaccines, opt => opt.Ignore())
                 .ForMember(model => model.User, opt => opt.Ignore())
+                .ForMember(model => model.UserId, opt => opt.MapFrom(dto => dto.UserId))
                 .ForMember(model => model.Users, opt => opt.Ignore());
 
             CreateMap<VaccinationModel, VaccinationDTO>()

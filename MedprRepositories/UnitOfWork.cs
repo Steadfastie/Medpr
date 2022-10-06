@@ -21,6 +21,9 @@ namespace MedprDataRepositories
         public IRepository<Doctor> Doctors { get; }
         public IRepository<User> Users { get; }
         public IRepository<Role> Roles { get; }
+        public IRepository<Appointment> Appointments { get; }
+        public IRepository<FamilyMember> FamilyMembers { get; }
+        public IRepository<Prescription> Prescriptions { get; }
 
         public UnitOfWork(MedprDBContext database,
             IRepository<Drug> drugRepository,
@@ -29,7 +32,10 @@ namespace MedprDataRepositories
             IRepository<Vaccine> vaccineRepository,
             IRepository<Vaccination> vaccinations,
             IRepository<User> users,
-            IRepository<Role> roles)
+            IRepository<Role> roles,
+            IRepository<Appointment> appointments,
+            IRepository<FamilyMember> familyMembers,
+            IRepository<Prescription> presctiptions)
         {
             _database = database;
             Drugs = drugRepository;
@@ -39,6 +45,9 @@ namespace MedprDataRepositories
             Vaccinations = vaccinations;
             Users = users;
             Roles = roles;
+            Appointments = appointments;
+            FamilyMembers = familyMembers;
+            Prescriptions = presctiptions;
         }
 
         public async Task<int> Commit()

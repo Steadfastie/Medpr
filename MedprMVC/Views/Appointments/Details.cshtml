@@ -1,0 +1,23 @@
+﻿@model AppointmentModel
+
+@{
+    ViewData["Title"] = "Appointment details";
+}
+
+<table class="table table-borderless">
+    <tbody>
+        <tr>
+            <td>
+                @{await Html.RenderPartialAsync("AppointmentPartial", Model);}
+            </td>
+            <td>
+                <a class="btn btn-primary" href="~/appointments/edit/@Model.Id">Edit</a>
+                <a class="btn btn-danger" href="~/appointments/delete/@Model.Id">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@*This page will contain:
+    CRUD buttons
+    additional information like drug description paper or wikiAPI*@

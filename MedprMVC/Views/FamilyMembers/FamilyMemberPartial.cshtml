@@ -1,0 +1,28 @@
+﻿@model FamilyMemberModel
+
+<div class="container text-center">
+    <div class="row align-items-center">
+        <div class="col">
+            <h5>User:</h5>
+            <p>@Model.User.FullName</p>
+            <p>@Model.User.Login</p>
+            <p>@Model.User.DateOfBirth</p>
+        </div>
+        <div class="col">
+            @if(Model.isAdmin){
+                <div>Can see family data</div>
+            }
+            else{
+                <div>Is not worthy</div>
+            }
+        </div>
+        <div class="col">
+            <h5>Family:</h5>
+            <div>
+                @Model.Family.Surname
+            </div>
+        </div>
+    </div>
+</div>
+
+

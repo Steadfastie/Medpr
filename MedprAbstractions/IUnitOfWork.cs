@@ -12,6 +12,9 @@ public interface IUnitOfWork
     IRepository<Vaccine> Vaccines { get; }
     IRepository<Doctor> Doctors { get; }
     IRepository<Vaccination> Vaccinations { get; }
+    IRepository<Appointment> Appointments { get; }
+    IRepository<FamilyMember> FamilyMembers { get; }
+    IRepository<Prescription> Prescriptions { get; }
 
     Task<int> Commit();
 }
