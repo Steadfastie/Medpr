@@ -15,4 +15,7 @@ List of things that will be updated in my project next:
   9. UnitOfWork architecture (✔️)
   10. Delete confirmation page (✔️)
   11. CRUD for table with select (✔️)
-  12. CRUD for all tables with select
+  12. CRUD for all tables with select (✔️)
+  13. CRUD for all tables (✔️)
+  14. Layout for every table
+  15. Date validation on input
