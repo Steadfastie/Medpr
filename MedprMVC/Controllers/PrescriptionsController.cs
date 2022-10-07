@@ -126,7 +126,7 @@ public class PrescriptionsController : Controller
             // At the current moment Prescription Model has 6 additional fields to form other
             // actions's models. They aren't suppose to fill in, so ModelState.IsValid won't
             // be true. The other way around is used in Edit[post]
-            if (ModelState.ErrorCount < 7)
+            if (ModelState.ErrorCount < 7 && CheckDate(model))
             {
                 model.Id = Guid.NewGuid();
 
@@ -300,5 +300,26 @@ public class PrescriptionsController : Controller
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
         }
+    }
+
+    [HttpPost]
+    public IActionResult CheckDate(string startDate, string endDate)
+    {
+        var start = DateTime.Parse(startDate);
+        var end = DateTime.Parse(endDate);
+        if (start < end)
+        {
+            return Ok(true);
+        }
+        return Ok(false);
+    }
+
+    private bool CheckDate(PrescriptionModel model)
+    {
+        if (model.StartDate > model.EndDate)
+        {
+            return false;
+        }
+        return true;
     }
 }

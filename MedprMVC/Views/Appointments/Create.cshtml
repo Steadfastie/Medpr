@@ -9,7 +9,10 @@
     <form asp-controller="Appointments" asp-action="Create" method="post">
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
-            <input asp-for="Date" type="datetime-local" class="form-control" id="date">
+            <input asp-for="Date" type="date" class="form-control" id="date"
+                   min="@DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd")"
+                   max="@DateTime.Now.AddYears(2).ToString("yyyy-MM-dd")"
+                   value="@DateTime.Now.ToString("yyyy-MM-dd")">
             <span asp-validation-for="Date" class="text-danger"></span>
         </div>
         <div class="mb-3">
