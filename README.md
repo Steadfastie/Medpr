@@ -18,4 +18,8 @@ List of things that will be updated in my project next:
   12. CRUD for all tables with select (✔️)
   13. CRUD for all tables (✔️)
   14. Layout for every table
-  15. Date validation on input
+  15. Date validation on input (✔️)
+  16. Add simultaneous remote checking for 
+			beginning and ending dates on presctiption CRUD.
+			As for now validation works, but sticks to the field
+			last modified
