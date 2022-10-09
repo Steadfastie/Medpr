@@ -13,6 +13,8 @@ using MedprRepositories;
 using MedprAbstractions.Repositories;
 using MedprAbstractions;
 using MedprDataRepositories;
+using MedprMVC.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace MedprMVC
 {
@@ -36,6 +38,15 @@ namespace MedprMVC
 
             builder.Services.AddDbContext<MedprDBContext>(
                 optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
+
+            var connectionStringIdentity = builder.Configuration.GetConnectionString("Identity");
+
+            builder.Services.AddDbContext<IdentityDBContext>(
+                optionsBuilder => optionsBuilder.UseSqlServer(connectionStringIdentity));
+
+            builder.Services.AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<IdentityDBContext>()
+                .AddDefaultTokenProviders();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
