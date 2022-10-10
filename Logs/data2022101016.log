@@ -1,0 +1,32 @@
+2022-10-10 16:05:07.356 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-10 16:05:07.659 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-10 16:05:07.660 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-10 16:05:07.669 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-10 16:05:07.671 +03:00 [INF] Hosting environment: Development
+2022-10-10 16:05:07.672 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-10 16:05:08.482 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-10 16:05:08.559 +03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Administrator)
+2022-10-10 16:05:08.566 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-10-10 16:05:08.588 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 111.6655ms
+2022-10-10 16:05:08.594 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Account/Login?ReturnUrl=%2F - -
+2022-10-10 16:05:08.602 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Account/Login?ReturnUrl=%2F - - - 404 0 - 7.2035ms
+2022-10-10 16:59:12.003 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-10 16:59:12.179 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-10 16:59:53.875 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-10 16:59:54.045 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-10 16:59:54.618 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-10-10 16:59:54.642 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-10-10 16:59:54.645 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-10-10 16:59:54.645 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-10-10 16:59:54.665 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-10-10 16:59:54.676 +03:00 [INF] Applying migration '20221010135912_UserRoleAdjustment'.
+2022-10-10 16:59:54.728 +03:00 [ERR] Failed executing DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Users] DROP CONSTRAINT [FK_Users_Role_RoleId];

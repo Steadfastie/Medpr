@@ -6,7 +6,6 @@ namespace MedprAbstractions;
 public interface IUnitOfWork
 {
     IRepository<User> Users { get; }
-    IRepository<Role> Roles { get; }
     IRepository<Drug> Drugs { get; }
     IRepository<Family> Families { get; }
     IRepository<Vaccine> Vaccines { get; }

@@ -27,7 +27,7 @@
             <input asp-for="DateOfBirth" class="form-control" id="DateOfBirth"
                    min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-dd")"
                    max="@DateTime.Now.AddDays(30).ToString("yyyy-MM-dd")"
-                   value="@Model.DateOfBirth.ToString("yyyy-MM-dd")">
+                   value="@Model.DateOfBirth?.ToString("yyyy-MM-dd")">
             <span asp-validation-for="DateOfBirth" class="text-danger"></span>
         </div>
 

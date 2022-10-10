@@ -20,7 +20,6 @@ namespace MedprDataRepositories
         public IRepository<Vaccination> Vaccinations { get; }
         public IRepository<Doctor> Doctors { get; }
         public IRepository<User> Users { get; }
-        public IRepository<Role> Roles { get; }
         public IRepository<Appointment> Appointments { get; }
         public IRepository<FamilyMember> FamilyMembers { get; }
         public IRepository<Prescription> Prescriptions { get; }
@@ -32,7 +31,6 @@ namespace MedprDataRepositories
             IRepository<Vaccine> vaccineRepository,
             IRepository<Vaccination> vaccinations,
             IRepository<User> users,
-            IRepository<Role> roles,
             IRepository<Appointment> appointments,
             IRepository<FamilyMember> familyMembers,
             IRepository<Prescription> presctiptions)
@@ -44,7 +42,6 @@ namespace MedprDataRepositories
             Doctors = doctorRepository;
             Vaccinations = vaccinations;
             Users = users;
-            Roles = roles;
             Appointments = appointments;
             FamilyMembers = familyMembers;
             Prescriptions = presctiptions;
