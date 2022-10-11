@@ -108,7 +108,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Home}/{action=signup}/{id?}");
+            pattern: "{controller=Home}/{action=Login}/{id?}");
 
         app.Run();
     }

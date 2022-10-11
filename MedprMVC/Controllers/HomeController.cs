@@ -62,7 +62,11 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult SignUp()
     {
-        return View();
+        if (!User.Identity.IsAuthenticated)
+        {
+            return View();
+        }
+        return RedirectToAction("Index");
     }
 
     [AllowAnonymous]
@@ -104,7 +108,11 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Login()
     {
-        return View();
+        if (!User.Identity.IsAuthenticated)
+        {
+            return View();
+        }
+        return RedirectToAction("Index");
     }
 
     [AllowAnonymous]
