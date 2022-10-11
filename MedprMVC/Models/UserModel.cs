@@ -15,7 +15,7 @@ namespace MedprMVC.Models
 
         [Required(ErrorMessage = "Provide some password for security")]
         [StringLength(30, MinimumLength = 5)]
-        public string PasswordHash { get; set; }
+        public string Password { get; set; }
 
         [StringLength(30, MinimumLength = 1)]
         public string? FullName { get; set; }

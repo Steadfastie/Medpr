@@ -15,6 +15,7 @@ using MedprAbstractions;
 using MedprDataRepositories;
 using MedprMVC.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MedprMVC;
 
@@ -50,7 +51,7 @@ public class Program
 
         builder.Services.AddAuthorization(options =>
         {
-            options.AddPolicy("RequireAdministratorRole",
+            options.AddPolicy("RequireAdminRole",
                  policy => policy.RequireRole("Admin"));
             options.AddPolicy("RequireDefaultRole",
                  policy => policy.RequireRole("Default"));
@@ -58,9 +59,9 @@ public class Program
 
         builder.Services.ConfigureApplicationCookie(opts =>
         {
-            opts.AccessDeniedPath = "/Home/Denied";
-            opts.LogoutPath = "/Home/Login";
-            opts.LoginPath = "/Home/Index";
+            opts.LoginPath = new PathString("/Home/Login");
+            opts.LogoutPath = new PathString("/Home/Login");
+            opts.AccessDeniedPath = new PathString("/Home/Denied");
         });
 
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

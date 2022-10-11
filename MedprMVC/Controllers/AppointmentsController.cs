@@ -8,9 +8,11 @@ using Serilog;
 using System.Reflection;
 using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MedprMVC.Controllers;
 
+[Authorize]
 public class AppointmentsController : Controller
 {
     private readonly IAppointmentService _appointmentService;

@@ -60,7 +60,6 @@ public class UserService : PasswordHash, IUserService
 
         if (entity != null)
         {
-            entity.PasswordHash = CreateMd5(dto.PasswordHash);
             await _unitOfWork.Users.AddAsync(entity);
             return await _unitOfWork.Commit();
         }

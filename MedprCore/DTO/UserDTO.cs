@@ -14,8 +14,6 @@ namespace MedprCore.DTO
 
         public string Login { get; set; }
 
-        public string PasswordHash { get; set; }
-
         public string? FullName { get; set; }
 
         [Column(TypeName = "DateTime2")]
