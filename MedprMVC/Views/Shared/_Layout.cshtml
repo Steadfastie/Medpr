@@ -21,36 +21,19 @@
                     <ul class="navbar-nav flex-grow-1">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Drugs" asp-action="Index">Drugs</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Families" asp-action="Index">Surnames</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Vaccines" asp-action="Index">Vaccines</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Doctors" asp-action="Index">Doctors</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Vaccinations" asp-action="Index">Vaccinations</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="FamilyMembers" asp-action="Index">Family ties</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Prescriptions" asp-action="Index">Prescriptions</a>
-                            </li>
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-item nav-link" asp-controller="Drugs" asp-action="Index">Drugs</a>
+                            <a class="nav-item nav-link" asp-controller="Families" asp-action="Index">Surnames</a>
+                            <a class="nav-item nav-link" asp-controller="Vaccines" asp-action="Index">Vaccines</a>
+                            <a class="nav-item nav-link" asp-controller="Doctors" asp-action="Index">Doctors</a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a class="nav-item nav-link" asp-controller="Users" asp-action="Index">Users</a>
+                            }
+                            <a class="nav-item nav-link" asp-controller="Vaccinations" asp-action="Index">Vaccinations</a>
+                            <a class="nav-item nav-link" asp-controller="Appointments" asp-action="Index">Appointments</a>
+                            <a class="nav-item nav-link" asp-controller="FamilyMembers" asp-action="Index">Family ties</a>
+                            <a class="nav-item nav-link" asp-controller="Prescriptions" asp-action="Index">Prescriptions</a>
                         }
                     </ul>
                 </div>

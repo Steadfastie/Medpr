@@ -7,19 +7,30 @@ using MedprMVC.Models;
 using Serilog;
 using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using MedprCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedprMVC.Controllers;
 
 [Authorize(Policy = "RequireAdminRole")]
 public class UsersController : Controller
 {
+    private readonly UserManager<IdentityUser<Guid>> _userManager;
+    private readonly RoleManager<IdentityRole<Guid>> _roleManager;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
     private readonly int _pagesize = 15;
-    public UsersController(IUserService userService, IMapper mapper)
+    public UsersController(IUserService userService,
+        IMapper mapper,
+        UserManager<IdentityUser<Guid>> userManager,
+        RoleManager<IdentityRole<Guid>> roleManager)
     {
         _userService = userService;
         _mapper = mapper;
+        _userManager = userManager;
+        _roleManager = roleManager;
     }
 
     [HttpGet]
@@ -81,27 +92,36 @@ public class UsersController : Controller
     {
         try
         {
-            if (ModelState.IsValid)
+            if (model.Login.Any() && model.Password.Any())
             {
-                var alreadyCreated = await _userService.GetUsersByIdAsync(model.Id);
-                if (alreadyCreated != null)
+                var identityUser = new IdentityUser<Guid>(model.Login);
+                var result = await _userManager.CreateAsync(identityUser, model.Password);
+
+                if (result.Succeeded)
                 {
-                    RedirectToAction("Details", "Users", model.Id);
+                    AppRole selectedRole = model.Roles.SelectedValue != null ? (AppRole)model.Roles.SelectedValue : AppRole.Default;
+
+                    if (await EnsureRoleCreatedAsync(selectedRole.ToString()))
+                    {
+                        var role = await _roleManager.FindByNameAsync(selectedRole.ToString());
+                        var roleResult = await _userManager.AddToRoleAsync(identityUser, role.Name);
+
+                        if (roleResult.Succeeded)
+                        {
+                            var dto = _mapper.Map<UserDTO>(model);
+                            dto.Id = Guid.Parse(await _userManager.GetUserIdAsync(identityUser));
+                            await _userService.CreateUserAsync(dto);
+                        }
+                        // TODO: User should be removed from Identity DB
+                    }
+                    return RedirectToAction("Index", "Users");
                 }
-
-                model.Id = Guid.NewGuid();
-
-                var dto = _mapper.Map<UserDTO>(model);
-
-                await _userService.CreateUserAsync(dto);
-
-                return RedirectToAction("Index", "Users");
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
-
-            else
-            {
-                return View(model);
-            }
+            return View(model);
         }
         catch (Exception ex)
         {
@@ -125,6 +145,19 @@ public class UsersController : Controller
 
                 var editModel = _mapper.Map<UserModel>(dto);
 
+                var user = await _userManager.FindByIdAsync(id.ToString());
+                var role = await _userManager.GetRolesAsync(user);
+
+                editModel.Roles = new SelectList(Enum
+                    .GetValues(typeof(AppRole))
+                    .Cast<AppRole>()
+                    .Select(role => new
+                        {
+                            Value = ((int)role).ToString(),
+                            Text = role.ToString()
+                        })
+                    .ToList(), "Value", "Text", role[0]);
+
                 return View(editModel);
             }
             else
@@ -144,41 +177,17 @@ public class UsersController : Controller
     {
         try
         {
-            if (model != null)
+            if (model.Login != null && model.Password != null)
             {
-                var alreadyCreated = await _userService.GetUsersByIdAsync(model.Id);
-                if (alreadyCreated != null)
+                var currentUser = await _userManager.FindByIdAsync(model.Id.ToString());
+                if (currentUser != null)
                 {
                     RedirectToAction("Details", "Users", model.Id);
                 }
 
-                var dto = _mapper.Map<UserDTO>(model);
+                await UpdateIdentityDB(model, currentUser);
 
-                var sourceDto = await _userService.GetUsersByIdAsync(model.Id);
-
-                var patchList = new List<PatchModel>();
-
-                if (dto != null)
-                {
-                    foreach (PropertyInfo property in typeof(UserDTO).GetProperties())
-                    {
-                        if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
-                        {
-                            if (property.Name.Equals("PasswordHash"))
-                            {
-                                var passwordHash = PasswordHash.CreateMd5(property.GetValue(dto).ToString());
-                                property.SetValue(dto, passwordHash);
-                            }
-                            patchList.Add(new PatchModel()
-                            {
-                                PropertyName = property.Name,
-                                PropertyValue = property.GetValue(dto)
-                            });
-                        }
-                    }
-                }
-
-                await _userService.PatchUserAsync(model.Id, patchList);
+                await UpdateMainDB(model);
 
                 return RedirectToAction("Index", "Users");
             }
@@ -236,6 +245,9 @@ public class UsersController : Controller
 
                 await _userService.DeleteUserAsync(dto);
 
+                var user = await _userManager.FindByIdAsync(id.ToString());
+                await _userManager.DeleteAsync(user);
+
                 return RedirectToAction("Index", "Users");
             }
             else
@@ -247,6 +259,62 @@ public class UsersController : Controller
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
+        }
+    }
+
+    private async Task<bool> EnsureRoleCreatedAsync(string roleName)
+    {
+        var role = await _roleManager.FindByNameAsync(roleName);
+        bool check =
+            role != null && await _roleManager.RoleExistsAsync(role.Name);
+
+        if (!check)
+        {
+            var newRole = new IdentityRole<Guid>(roleName);
+            await _roleManager.CreateAsync(newRole);
+        }
+        return true;
+    }
+
+    private async Task UpdateMainDB(UserModel model)
+    {
+        var dto = _mapper.Map<UserDTO>(model);
+
+        var patchList = new List<PatchModel>();
+
+        var sourceDto = await _userService.GetUsersByIdAsync(dto.Id);
+
+        foreach (PropertyInfo property in typeof(UserDTO).GetProperties())
+        {
+            if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
+            {
+                patchList.Add(new PatchModel()
+                {
+                    PropertyName = property.Name,
+                    PropertyValue = property.GetValue(dto)
+                });
+            }
+        }
+
+        await _userService.PatchUserAsync(dto.Id, patchList);
+    }
+
+    private async Task UpdateIdentityDB(UserModel model, IdentityUser<Guid> user)
+    {
+        if (model.Login != user.Email)
+        {
+            user.Email = model.Login;
+            await _userManager.UpdateAsync(user);
+        }
+
+        var currentRole = await _userManager.GetRolesAsync(user);
+        if (model.Roles != null)
+        {
+            if (model.Roles.SelectedValue.ToString() != currentRole[0].ToString())
+            {
+                await _userManager.RemoveFromRoleAsync(user, currentRole[0]);
+                await _userManager.AddToRoleAsync(user, model.Roles.SelectedValue.ToString());
+            }
         }
     }
 }

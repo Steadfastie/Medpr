@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MedprCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MedprMVC.Models
 {
@@ -22,5 +24,7 @@ namespace MedprMVC.Models
 
         [Column(TypeName = "DateTime2")]
         public DateTime? DateOfBirth { get; set; }
+
+        public SelectList Roles { get; set; }
     }
 }

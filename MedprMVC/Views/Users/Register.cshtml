@@ -1,4 +1,5 @@
-﻿@model UserModel
+﻿@using MedprCore;
+@model UserModel
 @{
     ViewData["Title"] = "Add user to Medpr";
 }
@@ -29,6 +30,13 @@
                    max="@DateTime.Now.AddDays(30).ToString("yyyy-MM-dd")"
                    value="@DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")">
             <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select asp-for="Roles" asp-items="Html.GetEnumSelectList<AppRole>()" id="role">
+                <option selected="selected" disabled="disabled">Select role</option>
+            </select>
+            <span asp-validation-for="Roles" class="text-danger"></span>
         </div>
 
         <input type="submit" class="btn btn-primary" value="Submit">

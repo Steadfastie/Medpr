@@ -12,11 +12,14 @@
             <input asp-for="Login" type="text" class="form-control" id="login">
             <span asp-validation-for="Login" class="text-danger"></span>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input asp-for="Password" type="text" class="form-control" id="password">
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
+        @if (User.IsInRole("Default"))
+        {
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input asp-for="Password" type="text" class="form-control" id="password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        }
         <div class="mb-3">
             <label for="FullName" class="form-label">FullName</label>
             <input asp-for="FullName" type="text" class="form-control" id="FullName">
@@ -30,7 +33,12 @@
                    value="@Model.DateOfBirth?.ToString("yyyy-MM-dd")">
             <span asp-validation-for="DateOfBirth" class="text-danger"></span>
         </div>
-
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select asp-for="Roles" asp-items="@Model.Roles" id="role">
+            </select>
+            <span asp-validation-for="Roles" class="text-danger"></span>
+        </div>
         <input type="submit" class="btn btn-primary" value="Submit">
 
     </form>

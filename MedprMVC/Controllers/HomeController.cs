@@ -14,6 +14,7 @@ using MedprCore.DTO;
 using MedprCore;
 using Microsoft.Extensions.Logging;
 using MedprDB.Entities;
+using Serilog;
 
 namespace MedprMVC.Controllers;
 
@@ -73,35 +74,44 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> SignUp(UserModel model)
     {
-        if (model.Login.Any() && model.Password.Any())
+        try
         {
-            var identityUser = new IdentityUser<Guid>(model.Login);
-            var result = await _userManager.CreateAsync(identityUser, model.Password);
-
-            if (result.Succeeded)
+            if (model.Login.Any() && model.Password.Any())
             {
-                if (await EnsureRoleCreatedAsync("Default"))
+                var identityUser = new IdentityUser<Guid>(model.Login);
+                var result = await _userManager.CreateAsync(identityUser, model.Password);
+
+                if (result.Succeeded)
                 {
-                    var role = await _roleManager.FindByNameAsync("Default");
-                    var roleResult = await _userManager.AddToRoleAsync(identityUser, role.Name);
-
-                    if (roleResult.Succeeded)
+                    if (await EnsureRoleCreatedAsync("Default"))
                     {
-                        var dto = _mapper.Map<UserDTO>(model);
-                        dto.Id = Guid.Parse(await _userManager.GetUserIdAsync(identityUser));
-                        await _userService.CreateUserAsync(dto);
+                        var role = await _roleManager.FindByNameAsync("Default");
+                        var roleResult = await _userManager.AddToRoleAsync(identityUser, role.Name);
+
+                        if (roleResult.Succeeded)
+                        {
+                            var dto = _mapper.Map<UserDTO>(model);
+                            dto.Id = Guid.Parse(await _userManager.GetUserIdAsync(identityUser));
+                            await _userService.CreateUserAsync(dto);
+                        }
+                        // TODO: User should be removed from Identity DB
                     }
+                    await CreateAdmin();
+                    await _signInManager.SignInAsync(identityUser, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
                 }
-                await CreateAdmin();
-                await _signInManager.SignInAsync(identityUser, isPersistent: false);
-                return RedirectToAction("Index", "Home");
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
+            return View(model);
         }
-        return View(model);
+        catch (Exception ex)
+        {
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            return BadRequest(ex.Message);
+        }
     }
 
     [AllowAnonymous]
@@ -119,25 +129,41 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(UserModel model)
     {
-        if (model.Login.Any() && model.Password.Any())
+        try
         {
-            var result = await _signInManager
-                .PasswordSignInAsync(model.Login, model.Password, isPersistent: true, lockoutOnFailure: false);
-
-            if (result.Succeeded)
+            if (model.Login.Any() && model.Password.Any())
             {
-                return RedirectToAction("Index", "Home");
+                var result = await _signInManager
+                    .PasswordSignInAsync(model.Login, model.Password, isPersistent: true, lockoutOnFailure: false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View(model);
             }
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return View(model);
         }
-        return View(model);
+        catch (Exception ex)
+        {
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            return BadRequest(ex.Message);
+        }
     }
 
     public async Task<IActionResult> Logout()
     {
-        await _signInManager.SignOutAsync();
-        return RedirectToAction("Login", "Home");
+        try
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Home");
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet]
