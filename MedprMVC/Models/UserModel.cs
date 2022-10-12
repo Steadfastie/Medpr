@@ -25,6 +25,8 @@ namespace MedprMVC.Models
         [Column(TypeName = "DateTime2")]
         public DateTime? DateOfBirth { get; set; }
 
+        public int? SelectedRole { get; set; }
+
         public SelectList Roles { get; set; }
     }
 }

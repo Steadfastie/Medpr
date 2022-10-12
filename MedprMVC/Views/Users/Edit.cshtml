@@ -35,12 +35,10 @@
         </div>
         <div class="mb-3">
             <label for="role" class="form-label">Role</label>
-            <select asp-for="Roles" asp-items="@Model.Roles" id="role">
-            </select>
+            <select asp-for="SelectedRole" asp-items="@Model.Roles" id="role"></select>
             <span asp-validation-for="Roles" class="text-danger"></span>
         </div>
         <input type="submit" class="btn btn-primary" value="Submit">
-
     </form>
 </div>
 

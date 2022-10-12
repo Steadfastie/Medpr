@@ -1,5 +1,4 @@
-﻿@using MedprCore;
-@model UserModel
+﻿@model UserModel
 @{
     ViewData["Title"] = "Add user to Medpr";
 }
@@ -33,7 +32,7 @@
         </div>
         <div class="mb-3">
             <label for="role" class="form-label">Role</label>
-            <select asp-for="Roles" asp-items="Html.GetEnumSelectList<AppRole>()" id="role">
+            <select asp-for="SelectedRole" asp-items="@Model.Roles" id="role">
                 <option selected="selected" disabled="disabled">Select role</option>
             </select>
             <span asp-validation-for="Roles" class="text-danger"></span>

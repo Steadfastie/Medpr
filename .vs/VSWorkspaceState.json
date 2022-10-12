@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MedprMVC",
+    "\\MedprMVC\\Views",
+    "\\MedprMVC\\Views\\Shared"
   ],
   "SelectedNode": "\\Medpr.sln",
   "PreviewInSolutionExplorer": false

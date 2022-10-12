@@ -84,7 +84,19 @@ public class UsersController : Controller
     [HttpGet]
     public IActionResult Register()
     {
-        return View();
+        var model = new UserModel
+        {
+            Roles = new SelectList(Enum
+                    .GetValues(typeof(AppRole))
+                    .Cast<AppRole>()
+                    .Select(role => new
+                    {
+                        Value = ((int)role).ToString(),
+                        Text = role.ToString()
+                    })
+                    .ToList(), "Value", "Text")
+        };
+        return View(model);
     }
 
     [HttpPost]
@@ -96,10 +108,11 @@ public class UsersController : Controller
             {
                 var identityUser = new IdentityUser<Guid>(model.Login);
                 var result = await _userManager.CreateAsync(identityUser, model.Password);
+                model.Id = Guid.Parse(await _userManager.GetUserIdAsync(identityUser));
 
                 if (result.Succeeded)
                 {
-                    AppRole selectedRole = model.Roles.SelectedValue != null ? (AppRole)model.Roles.SelectedValue : AppRole.Default;
+                    AppRole selectedRole = model.Roles?.SelectedValue != null ? (AppRole)model.Roles.SelectedValue : AppRole.Default;
 
                     if (await EnsureRoleCreatedAsync(selectedRole.ToString()))
                     {
@@ -125,6 +138,8 @@ public class UsersController : Controller
         }
         catch (Exception ex)
         {
+            var user = await _userManager.FindByIdAsync(model.Id.ToString());
+            await _userManager.DeleteAsync(user);
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
         }
@@ -148,15 +163,12 @@ public class UsersController : Controller
                 var user = await _userManager.FindByIdAsync(id.ToString());
                 var role = await _userManager.GetRolesAsync(user);
 
-                editModel.Roles = new SelectList(Enum
+                var listOfRoles = Enum
                     .GetValues(typeof(AppRole))
                     .Cast<AppRole>()
-                    .Select(role => new
-                        {
-                            Value = ((int)role).ToString(),
-                            Text = role.ToString()
-                        })
-                    .ToList(), "Value", "Text", role[0]);
+                    .ToList();
+
+                editModel.Roles = new SelectList(listOfRoles, role[0]);
 
                 return View(editModel);
             }
@@ -177,13 +189,9 @@ public class UsersController : Controller
     {
         try
         {
-            if (model.Login != null && model.Password != null)
+            if (model.Login != null)
             {
                 var currentUser = await _userManager.FindByIdAsync(model.Id.ToString());
-                if (currentUser != null)
-                {
-                    RedirectToAction("Details", "Users", model.Id);
-                }
 
                 await UpdateIdentityDB(model, currentUser);
 
@@ -286,7 +294,7 @@ public class UsersController : Controller
 
         foreach (PropertyInfo property in typeof(UserDTO).GetProperties())
         {
-            if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
+            if (!Equals(property.GetValue(dto), property.GetValue(sourceDto)))
             {
                 patchList.Add(new PatchModel()
                 {
@@ -308,12 +316,13 @@ public class UsersController : Controller
         }
 
         var currentRole = await _userManager.GetRolesAsync(user);
-        if (model.Roles != null)
+        if (model.SelectedRole != null)
         {
-            if (model.Roles.SelectedValue.ToString() != currentRole[0].ToString())
+            var selectedRole = ((AppRole)model.SelectedRole).ToString();
+            if (selectedRole != currentRole[0])
             {
                 await _userManager.RemoveFromRoleAsync(user, currentRole[0]);
-                await _userManager.AddToRoleAsync(user, model.Roles.SelectedValue.ToString());
+                await _userManager.AddToRoleAsync(user, selectedRole);
             }
         }
     }
