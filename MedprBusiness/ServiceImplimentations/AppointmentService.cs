@@ -34,6 +34,15 @@ public class AppointmentService : IAppointmentService
         return dto;
     }
 
+    public Task<List<AppointmentDTO>> GetAppointmentsRelevantToUser(Guid id)
+    {
+        var list = _unitOfWork.Appointments
+            .FindBy(appointment => appointment.UserId == id)
+            .Select(appointment => _mapper.Map<AppointmentDTO>(appointment))
+            .ToListAsync();
+        return list;
+    }
+
     public Task<List<AppointmentDTO>> GetAppointmentsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
     {
         var list = _unitOfWork.Appointments

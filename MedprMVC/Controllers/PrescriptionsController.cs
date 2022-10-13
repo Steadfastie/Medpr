@@ -9,6 +9,8 @@ using System.Reflection;
 using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC.Controllers;
 
@@ -16,6 +18,7 @@ namespace MedprMVC.Controllers;
 public class PrescriptionsController : Controller
 {
     private readonly IPrescriptionService _prescriptionService;
+    private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IDoctorService _doctorService;
     private readonly IUserService _userService;
     private readonly IDrugService _drugService;
@@ -25,13 +28,15 @@ public class PrescriptionsController : Controller
         IDoctorService doctorService,
         IUserService userService,
         IDrugService drugService,
-        IMapper mapper)
+        IMapper mapper,
+        UserManager<IdentityUser<Guid>> userManager)
     {
         _prescriptionService = prescriptionService;
         _doctorService = doctorService;
         _mapper = mapper;
         _userService = userService;
         _drugService = drugService;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -39,7 +44,18 @@ public class PrescriptionsController : Controller
     {
         try
         {
-            var dtos = await _prescriptionService.GetPrescriptionsByPageNumberAndPageSizeAsync(page, _pagesize);
+            var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+            List<PrescriptionDTO> dtos;
+            if (currentUserRole[0] == "Default")
+            {
+                dtos = await _prescriptionService.GetPrescriptionsRelevantToUser(currentUser.Id);
+            }
+            else
+            {
+                dtos = await _prescriptionService.GetPrescriptionsByPageNumberAndPageSizeAsync(page, _pagesize);
+            }
 
             List<PrescriptionModel> models = new();
 
@@ -79,6 +95,11 @@ public class PrescriptionsController : Controller
     {
         try
         {
+            if (!await CheckRelevancy(id))
+            {
+                return RedirectToAction("Denied", "Home");
+            }
+
             var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
 
             if (dto != null)
@@ -111,12 +132,28 @@ public class PrescriptionsController : Controller
     public async Task<IActionResult> CreateAsync()
     {
         var allDoctors = await _doctorService.GetAllDoctorsAsync();
-        var allUsers = await _userService.GetAllUsersAsync();
         var allDrugs = await _drugService.GetAllDrugsAsync();
-        PrescriptionModel model = new();
-        model.Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name");
-        model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "FullName");
-        model.Drugs = new SelectList(_mapper.Map<List<DrugModel>>(allDrugs), "Id", "Name");
+        PrescriptionModel model = new()
+        {
+            Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name"),
+            Drugs = new SelectList(_mapper.Map<List<DrugModel>>(allDrugs), "Id", "Name")
+        };
+
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+        if (currentUserRole[0] == "Default")
+        {
+            var user = await _userService.GetUsersByIdAsync(currentUser.Id);
+            var userList = new List<UserDTO>() { user };
+            model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+        }
+        else
+        {
+            var allUsers = await _userService.GetAllUsersAsync();
+            model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+        }
+
         return View(model);
     }
 
@@ -158,6 +195,11 @@ public class PrescriptionsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
                 if (dto == null)
                 {
@@ -167,9 +209,6 @@ public class PrescriptionsController : Controller
                 var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
                 var allDoctors = await _doctorService.GetAllDoctorsAsync();
 
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-                var allUsers = await _userService.GetAllUsersAsync();
-
                 var drugSelected = await _drugService.GetDrugsByIdAsync(dto.DrugId);
                 var allDrugs = await _drugService.GetAllDrugsAsync();
 
@@ -177,10 +216,26 @@ public class PrescriptionsController : Controller
 
                 editModel.Doctor = _mapper.Map<DoctorModel>(doctorSelected);
                 editModel.Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name", doctorSelected.Id.ToString());
-                editModel.User = _mapper.Map<UserModel>(userSelected);
-                editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "FullName", userSelected.Id.ToString());
+                
                 editModel.Drug = _mapper.Map<DrugModel>(drugSelected);
                 editModel.Drugs = new SelectList(_mapper.Map<List<DrugModel>>(allDrugs), "Id", "Name", drugSelected.Id.ToString());
+
+                var currentUser = await _userManager.GetUserAsync(User);
+                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                editModel.User = _mapper.Map<UserModel>(userSelected);
+
+                if (currentUserRole[0] == "Default")
+                {
+                    var user = await _userService.GetUsersByIdAsync(currentUser.Id);
+                    var userList = new List<UserDTO>() { user };
+                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login", userSelected.Id.ToString());
+                }
+                else
+                {
+                    var allUsers = await _userService.GetAllUsersAsync();
+                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login", userSelected.Id.ToString());
+                }
 
                 return View(editModel);
             }
@@ -247,6 +302,11 @@ public class PrescriptionsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
 
                 if (dto == null)
@@ -316,11 +376,29 @@ public class PrescriptionsController : Controller
         return Ok(false);
     }
 
-    private bool CheckDate(PrescriptionModel model)
+    private static bool CheckDate(PrescriptionModel model)
     {
         if (model.StartDate > model.EndDate)
         {
             return false;
+        }
+        return true;
+    }
+
+    private async Task<bool> CheckRelevancy(Guid prescriptionId)
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+        if (currentUserRole[0] == "Default")
+        {
+            var dtos = await _prescriptionService.GetPrescriptionsRelevantToUser(currentUser.Id);
+
+            var ids = dtos.Select(dto => dto.Id).ToList();
+
+            if (!ids.Contains(prescriptionId))
+            {
+                return false;
+            }
         }
         return true;
     }

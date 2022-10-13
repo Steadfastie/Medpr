@@ -37,7 +37,8 @@
                 }
             </select>
             <span asp-validation-for="UserId" class="text-danger"></span>
-            @if (User.IsInRole("Admin")){
+            @if (User.IsInRole("Admin"))
+            {
                 <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
             }
         </div>

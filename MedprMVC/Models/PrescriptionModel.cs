@@ -18,6 +18,7 @@ public class PrescriptionModel
         HttpMethod = WebRequestMethods.Http.Post, 
         ErrorMessage = "Starting date should be before ending",
         AdditionalFields = "EndDate")]
+    [DisplayFormat(DataFormatString = "{0:dddd d MMMM yyyy}")]
     public DateTime StartDate { get; set; }
 
     [Required(ErrorMessage = "Cmon, it should have the ending date!")]
@@ -26,6 +27,7 @@ public class PrescriptionModel
         HttpMethod = WebRequestMethods.Http.Post,
         ErrorMessage = "Starting date should be before ending",
         AdditionalFields = "StartDate")]
+    [DisplayFormat(DataFormatString = "{0:dddd d MMMM yyyy}")]
     public DateTime EndDate { get; set; }
 
     [Required(ErrorMessage = "Cmon, it should've some dosage!")]

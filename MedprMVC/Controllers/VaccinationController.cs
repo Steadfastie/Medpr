@@ -93,6 +93,7 @@ public class VaccinationsController : Controller
             {
                 return RedirectToAction("Denied", "Home");
             }
+
             var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
 
             if (dto != null)
@@ -285,6 +286,11 @@ public class VaccinationsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
 
                 if (dto == null)

@@ -23,6 +23,7 @@ namespace MedprMVC.Models
         public string? FullName { get; set; }
 
         [Column(TypeName = "DateTime2")]
+        [DisplayFormat(DataFormatString = "{0:dddd d MMMM yyyy}")]
         public DateTime? DateOfBirth { get; set; }
 
         public int? SelectedRole { get; set; }

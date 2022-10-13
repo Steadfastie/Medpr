@@ -12,6 +12,7 @@ public class AppointmentModel
 
     [Required(ErrorMessage = "Cmon, it should have happened sometime!")]
     [Column(TypeName = "DateTime2")]
+    [DisplayFormat(DataFormatString = "{0:dddd d MMMM yyyy}")]
     public DateTime Date { get; set; }
 
     [Required(ErrorMessage = "Cmon, it should've happend somewhere!")]

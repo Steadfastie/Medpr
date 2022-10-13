@@ -52,7 +52,9 @@
         </div>
     </form>
     <br>
-    <div class="row align-items-center">
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="row align-items-center">
         <div class="col">
             <a class="btn btn-primary" asp-action="Create" asp-controller="Doctors">Add doctor</a>
         </div>
@@ -64,6 +66,7 @@
         </div>
     </div>
     <br>
+    }
     <div class="row align-items-center">
         <div>
             <input type="submit" form="mainform" class="btn btn-primary col-sm-2" value="Submit">

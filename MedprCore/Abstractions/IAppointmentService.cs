@@ -7,6 +7,8 @@ public interface IAppointmentService
     Task<List<AppointmentDTO>> GetAppointmentsByPageNumberAndPageSizeAsync
         (int pageNumber, int pageSize);
 
+    Task<List<AppointmentDTO>> GetAppointmentsRelevantToUser(Guid id);
+
     Task<AppointmentDTO> GetAppointmentsByIdAsync(Guid id);
 
     Task<int> CreateAppointmentAsync(AppointmentDTO dto);

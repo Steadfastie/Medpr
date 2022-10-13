@@ -31,10 +31,16 @@
         <div class="mb-3">
             <label for="user" class="form-label">User</label>
             <select asp-for="UserId" asp-items="@Model.Users" id="user">
-                 <option selected="selected" disabled="disabled">Select user</option>
+                @if (User.IsInRole("Admin"))
+                {
+                    <option selected="selected" disabled="disabled">Select user</option>
+                }
             </select>
             <span asp-validation-for="UserId" class="text-danger"></span>
-            <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
+            }
         </div>
 
 

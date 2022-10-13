@@ -45,6 +45,15 @@ public class PrescriptionService : IPrescriptionService
         return list;
     }
 
+    public Task<List<PrescriptionDTO>> GetPrescriptionsRelevantToUser(Guid id)
+    {
+        var list = _unitOfWork.Prescriptions
+            .FindBy(prescription => prescription.UserId == id)
+            .Select(prescription => _mapper.Map<PrescriptionDTO>(prescription))
+            .ToListAsync();
+        return list;
+    }
+
     public async Task<int> CreatePrescriptionAsync(PrescriptionDTO dto)
     {
         var entity = _mapper.Map<Prescription>(dto);

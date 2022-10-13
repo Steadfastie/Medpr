@@ -9,6 +9,8 @@ using System.Reflection;
 using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC.Controllers;
 
@@ -16,6 +18,7 @@ namespace MedprMVC.Controllers;
 public class AppointmentsController : Controller
 {
     private readonly IAppointmentService _appointmentService;
+    private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IDoctorService _doctorService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
@@ -23,12 +26,14 @@ public class AppointmentsController : Controller
     public AppointmentsController(IAppointmentService appointmentService,
         IDoctorService doctorService,
         IUserService userService,
-        IMapper mapper)
+        IMapper mapper,
+        UserManager<IdentityUser<Guid>> userManager)
     {
         _appointmentService = appointmentService;
         _doctorService = doctorService;
         _mapper = mapper;
         _userService = userService;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -36,7 +41,18 @@ public class AppointmentsController : Controller
     {
         try
         {
-            var dtos = await _appointmentService.GetAppointmentsByPageNumberAndPageSizeAsync(page, _pagesize);
+            var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+            List<AppointmentDTO> dtos;
+            if (currentUserRole[0] == "Default")
+            {
+                dtos = await _appointmentService.GetAppointmentsRelevantToUser(currentUser.Id);
+            }
+            else
+            {
+                dtos = await _appointmentService.GetAppointmentsByPageNumberAndPageSizeAsync(page, _pagesize);
+            }
 
             List<AppointmentModel> models = new();
 
@@ -74,6 +90,11 @@ public class AppointmentsController : Controller
     {
         try
         {
+            if (!await CheckRelevancy(id))
+            {
+                return RedirectToAction("Denied", "Home");
+            }
+
             var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
 
             if (dto != null)
@@ -104,10 +125,26 @@ public class AppointmentsController : Controller
     public async Task<IActionResult> CreateAsync()
     {
         var allDoctors = await _doctorService.GetAllDoctorsAsync();
-        var allUsers = await _userService.GetAllUsersAsync();
-        AppointmentModel model = new();
-        model.Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name");
-        model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "FullName");
+        AppointmentModel model = new()
+        {
+            Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name")
+        };
+
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+        if (currentUserRole[0] == "Default")
+        {
+            var user = await _userService.GetUsersByIdAsync(currentUser.Id);
+            var userList = new List<UserDTO>() { user };
+            model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+        }
+        else
+        {
+            var allUsers = await _userService.GetAllUsersAsync();
+            model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+        }
+
         return View(model);
     }
 
@@ -149,6 +186,11 @@ public class AppointmentsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
                 if (dto == null)
                 {
@@ -158,15 +200,26 @@ public class AppointmentsController : Controller
                 var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
                 var allDoctors = await _doctorService.GetAllDoctorsAsync();
 
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-                var allUsers = await _userService.GetAllUsersAsync();
-
                 var editModel = _mapper.Map<AppointmentModel>(dto);
-
                 editModel.Doctor = _mapper.Map<DoctorModel>(doctorSelected);
                 editModel.Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name", doctorSelected.Id.ToString());
+
+                var currentUser = await _userManager.GetUserAsync(User);
+                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
                 editModel.User = _mapper.Map<UserModel>(userSelected);
-                editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "FullName", userSelected.Id.ToString());
+
+                if (currentUserRole[0] == "Default")
+                {
+                    var user = await _userService.GetUsersByIdAsync(currentUser.Id);
+                    var userList = new List<UserDTO>() { user };
+                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login", userSelected.Id.ToString());
+                }
+                else
+                {
+                    var allUsers = await _userService.GetAllUsersAsync();
+                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login", userSelected.Id.ToString());
+                }
 
                 return View(editModel);
             }
@@ -233,6 +286,11 @@ public class AppointmentsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
 
                 if (dto == null)
@@ -286,5 +344,23 @@ public class AppointmentsController : Controller
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
         }
+    }
+
+    private async Task<bool> CheckRelevancy(Guid appointmentId)
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+        if (currentUserRole[0] == "Default")
+        {
+            var dtos = await _appointmentService.GetAppointmentsRelevantToUser(currentUser.Id);
+
+            var ids = dtos.Select(dto => dto.Id).ToList();
+
+            if (!ids.Contains(appointmentId))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
