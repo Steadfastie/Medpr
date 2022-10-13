@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using MedprCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace MedprMVC.Controllers;
 
@@ -84,17 +85,19 @@ public class UsersController : Controller
     [HttpGet]
     public IActionResult Register()
     {
-        var model = new UserModel
-        {
-            Roles = new SelectList(Enum
+        var listOfRoles = Enum
                     .GetValues(typeof(AppRole))
                     .Cast<AppRole>()
-                    .Select(role => new
+                    .Select(role => new SelectListItem
                     {
-                        Value = ((int)role).ToString(),
-                        Text = role.ToString()
+                        Text = role.ToString(),
+                        Value = ((int)role).ToString()
                     })
-                    .ToList(), "Value", "Text")
+                    .ToList();
+
+        var model = new UserModel
+        {
+            Roles = new SelectList(listOfRoles, "Value", "Text")
         };
         return View(model);
     }
@@ -112,12 +115,11 @@ public class UsersController : Controller
 
                 if (result.Succeeded)
                 {
-                    AppRole selectedRole = model.Roles?.SelectedValue != null ? (AppRole)model.Roles.SelectedValue : AppRole.Default;
+                    var selectedRole = model.SelectedRole != null ? ((AppRole)model.SelectedRole).ToString() : "Default";
 
-                    if (await EnsureRoleCreatedAsync(selectedRole.ToString()))
+                    if (await EnsureRoleCreatedAsync(selectedRole))
                     {
-                        var role = await _roleManager.FindByNameAsync(selectedRole.ToString());
-                        var roleResult = await _userManager.AddToRoleAsync(identityUser, role.Name);
+                        var roleResult = await _userManager.AddToRoleAsync(identityUser, selectedRole);
 
                         if (roleResult.Succeeded)
                         {
@@ -140,6 +142,10 @@ public class UsersController : Controller
         {
             var user = await _userManager.FindByIdAsync(model.Id.ToString());
             await _userManager.DeleteAsync(user);
+
+            var dto = _mapper.Map<UserDTO>(model);
+            await _userService.DeleteUserAsync(dto);
+
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
         }
@@ -166,9 +172,14 @@ public class UsersController : Controller
                 var listOfRoles = Enum
                     .GetValues(typeof(AppRole))
                     .Cast<AppRole>()
+                    .Select(role => new SelectListItem
+                        {
+                            Text = role.ToString(),
+                            Value = ((int)role).ToString()
+                        })
                     .ToList();
 
-                editModel.Roles = new SelectList(listOfRoles, role[0]);
+                editModel.Roles = new SelectList(listOfRoles, "Value", "Text", role[0]);
 
                 return View(editModel);
             }
@@ -187,12 +198,12 @@ public class UsersController : Controller
     [HttpPost]
     public async Task<IActionResult> Edit(UserModel model)
     {
+        var currentUser = await _userManager.FindByIdAsync(model.Id.ToString());
+        var currentDTO = await _userService.GetUsersByIdAsync(model.Id);
         try
         {
             if (model.Login != null)
             {
-                var currentUser = await _userManager.FindByIdAsync(model.Id.ToString());
-
                 await UpdateIdentityDB(model, currentUser);
 
                 await UpdateMainDB(model);
@@ -206,6 +217,12 @@ public class UsersController : Controller
         }
         catch (Exception ex)
         {
+            var savedModel = _mapper.Map<UserModel>(currentDTO);
+
+            await UpdateIdentityDB(savedModel, currentUser);
+
+            await UpdateMainDB(savedModel);
+
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
         }
