@@ -7,6 +7,8 @@ namespace MedprCore.Abstractions
         Task<List<FamilyDTO>> GetFamiliesByPageNumberAndPageSizeAsync
             (int pageNumber, int pageSize);
 
+        Task<List<FamilyDTO>> GetFamiliesRelevantToUser(Guid id);
+
         Task<FamilyDTO> GetFamiliesByIdAsync(Guid id);
 
         Task<List<FamilyDTO>> GetAllFamiliesAsync();

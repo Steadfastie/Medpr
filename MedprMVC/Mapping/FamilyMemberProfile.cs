@@ -14,7 +14,7 @@ public class FamilyMemberProfile : Profile
 
         CreateMap<FamilyMemberDTO, FamilyMemberModel>()
             .ForMember(model => model.Id, opt => opt.MapFrom(dto => dto.Id))
-            .ForMember(model => model.isAdmin, opt => opt.MapFrom(dto => dto.IsAdmin))
+            .ForMember(model => model.IsAdmin, opt => opt.MapFrom(dto => dto.IsAdmin))
             .ForMember(model => model.Family, opt => opt.Ignore())
             .ForMember(model => model.FamilyId, opt => opt.MapFrom(dto => dto.FamilyId))
             .ForMember(model => model.Families, opt => opt.Ignore())
@@ -24,7 +24,7 @@ public class FamilyMemberProfile : Profile
 
         CreateMap<FamilyMemberModel, FamilyMemberDTO>()
             .ForMember(dto => dto.Id, opt => opt.MapFrom(model => model.Id))
-            .ForMember(dto => dto.IsAdmin, opt => opt.MapFrom(model => model.isAdmin))
+            .ForMember(dto => dto.IsAdmin, opt => opt.MapFrom(model => model.IsAdmin))
             .ForMember(dto => dto.FamilyId, opt => opt.MapFrom(model => model.FamilyId))
             .ForMember(dto => dto.UserId, opt => opt.MapFrom(model => model.UserId));
     }

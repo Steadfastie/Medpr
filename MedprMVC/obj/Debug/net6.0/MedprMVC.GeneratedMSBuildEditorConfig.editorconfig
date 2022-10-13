@@ -103,8 +103,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Families/FamilyDetailsPreview.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpZXNcRmFtaWx5RGV0YWlsc1ByZXZpZXcuY3NodG1s
+[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Families/FamilyPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpZXNcRmFtaWx5UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Families/Index.cshtml]

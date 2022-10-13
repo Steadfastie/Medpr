@@ -54,6 +54,19 @@ public class FamilyService : IFamilyService
         return list;
     }
 
+    public async Task<List<FamilyDTO>> GetFamiliesRelevantToUser(Guid id)
+    {
+        var list = await _unitOfWork.FamilyMembers
+            .FindBy(member => member.UserId == id)
+            .Select(member => member.FamilyId)
+            .ToListAsync();
+        var dtos = await _unitOfWork.Families
+            .FindBy(family => list.Contains(family.Id))
+            .Select(family => _mapper.Map<FamilyDTO>(family))
+            .ToListAsync();
+        return dtos;
+    }
+
     public async Task<int> CreateFamilyAsync(FamilyDTO dto)
     {
         var entity = _mapper.Map<Family>(dto);

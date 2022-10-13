@@ -45,6 +45,41 @@ public class FamilyMemberService : IFamilyMemberService
         return list;
     }
 
+    public async Task<List<FamilyDTO>> GetFamiliesRelevantToUser(Guid id)
+    {
+        var list = await _unitOfWork.FamilyMembers
+            .FindBy(member => member.UserId == id)
+            .Select(member => member.FamilyId)
+            .ToListAsync();
+        var dtos = await _unitOfWork.Families
+            .FindBy(family => list.Contains(family.Id))
+            .Select(family => _mapper.Map<FamilyDTO>(family))
+            .ToListAsync();
+        return dtos;
+    }
+
+    public async Task<List<FamilyMemberDTO>> GetMembersRelevantToFamily(Guid id)
+    {
+        var list = await _unitOfWork.FamilyMembers
+            .FindBy(member => member.FamilyId == id)
+            .Select(member => _mapper.Map<FamilyMemberDTO>(member))
+            .ToListAsync();
+        return list;
+    }
+
+    public async Task<List<UserDTO>> GetUsersRelevantToFamily(Guid id)
+    {
+        var list = await _unitOfWork.FamilyMembers
+            .FindBy(member => member.FamilyId == id)
+            .Select(member => member.UserId)
+            .ToListAsync();
+        var dtos = await _unitOfWork.Users
+            .FindBy(user => list.Contains(user.Id))
+            .Select(user => _mapper.Map<UserDTO>(user))
+            .ToListAsync();
+        return dtos;
+    }
+
     public async Task<int> CreateFamilyMemberAsync(FamilyMemberDTO dto)
     {
         var entity = _mapper.Map<FamilyMember>(dto);

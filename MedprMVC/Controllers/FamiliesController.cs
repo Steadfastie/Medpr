@@ -8,6 +8,7 @@ using Serilog;
 using System.Reflection;
 using MedprBusiness.ServiceImplementations;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace MedprMVC.Controllers;
 
@@ -15,12 +16,22 @@ namespace MedprMVC.Controllers;
 public class FamiliesController : Controller
 {
     private readonly IFamilyService _familyService;
+    private readonly IFamilyMemberService _familyMemberService;
+    private readonly IUserService _userService;
+    private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IMapper _mapper;
     private readonly int _pagesize = 15;
-    public FamiliesController(IFamilyService familyService, IMapper mapper)
+    public FamiliesController(IFamilyService familyService,
+        IFamilyMemberService familyMemberService,
+        IUserService userService,
+        IMapper mapper,
+        UserManager<IdentityUser<Guid>> userManager)
     {
         _familyService = familyService;
+        _familyMemberService = familyMemberService;
         _mapper = mapper;
+        _userManager = userManager;
+        _userService = userService;
     }
 
     [HttpGet]
@@ -28,13 +39,29 @@ public class FamiliesController : Controller
     {
         try
         {
-            var dtos = await _familyService.GetFamiliesByPageNumberAndPageSizeAsync(page, _pagesize);
+            var currentUser = await _userManager.GetUserAsync(User);
 
-            var models = _mapper.Map<List<FamilyModel>>(dtos);
+            var dtos = await _familyService.GetFamiliesRelevantToUser(currentUser.Id);
+            var familiesModels = _mapper.Map<List<FamilyModel>>(dtos);
 
-            if (models.Any())
+            if (familiesModels.Any())
             {
-                return View(models);
+                foreach (var family in familiesModels)
+                {
+                    var membersDTO = await _familyMemberService.GetMembersRelevantToFamily(family.Id);
+                    var membersModels = _mapper.Map<List<FamilyMemberModel>>(membersDTO);
+
+                    foreach (var member in membersModels)
+                    {
+                        var userDTO = await _userService.GetUsersByIdAsync(member.UserId);
+                        var userModel = _mapper.Map<UserModel>(userDTO);
+                        member.User = userModel;
+                    }
+
+                    family.Members = membersModels;
+                }
+
+                return View(familiesModels);
             }
             else
             {
@@ -53,6 +80,11 @@ public class FamiliesController : Controller
     {
         try
         {
+            if (!await CheckRelevancy(id))
+            {
+                return RedirectToAction("Denied", "Home");
+            }
+
             var dto = await _familyService.GetFamiliesByIdAsync(id);
             if (dto != null)
             {
@@ -82,19 +114,26 @@ public class FamiliesController : Controller
     {
         try
         {
-            if (ModelState.IsValid)
+            if (model.Surname != null)
             {
-                var alreadyCreated = await _familyService.GetFamiliesByIdAsync(model.Id);
-                if (alreadyCreated != null)
-                {
-                    RedirectToAction("Details", "Drugs", model.Id);
-                }
-
                 model.Id = Guid.NewGuid();
 
                 var dto = _mapper.Map<FamilyDTO>(model);
 
+                var currentUser = await _userManager.GetUserAsync(User);
+
+                var familyTie = new FamilyMemberModel()
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = currentUser.Id,
+                    FamilyId = model.Id,
+                    IsAdmin = true
+                };
+
+                var familyTieDTO = _mapper.Map<FamilyMemberDTO>(familyTie);
+
                 await _familyService.CreateFamilyAsync(dto);
+                await _familyMemberService.CreateFamilyMemberAsync(familyTieDTO);
 
                 return RedirectToAction("Index", "Families");
             }
@@ -118,6 +157,11 @@ public class FamiliesController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _familyService.GetFamiliesByIdAsync(id);
                 if (dto == null)
                 {
@@ -197,6 +241,11 @@ public class FamiliesController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _familyService.GetFamiliesByIdAsync(id);
 
                 if (dto == null)
@@ -244,5 +293,23 @@ public class FamiliesController : Controller
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
         }
+    }
+
+    private async Task<bool> CheckRelevancy(Guid familyId)
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+        if (currentUserRole[0] == "Default")
+        {
+            var dtos = await _familyService.GetFamiliesRelevantToUser(currentUser.Id);
+
+            var ids = dtos.Select(dto => dto.Id).ToList();
+
+            if (!ids.Contains(familyId))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

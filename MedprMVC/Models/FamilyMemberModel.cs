@@ -11,7 +11,7 @@ public class FamilyMemberModel
     public Guid Id { get; set; }
 
     [Required(ErrorMessage = "Cmon, is this user responsible for his family or not?")]
-    public bool isAdmin { get; set; }
+    public bool IsAdmin { get; set; }
 
     public SelectList Users { get; set; }
 
