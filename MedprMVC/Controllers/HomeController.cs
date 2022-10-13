@@ -134,7 +134,7 @@ public class HomeController : Controller
             if (model.Login.Any() && model.Password.Any())
             {
                 var result = await _signInManager
-                    .PasswordSignInAsync(model.Login, model.Password, isPersistent: true, lockoutOnFailure: false);
+                    .PasswordSignInAsync(model.Login, model.Password, isPersistent: false, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {

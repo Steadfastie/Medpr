@@ -9,6 +9,7 @@ using System.Reflection;
 using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace MedprMVC.Controllers;
 
@@ -16,19 +17,22 @@ namespace MedprMVC.Controllers;
 public class VaccinationsController : Controller
 {
     private readonly IVaccinationService _vaccinationService;
+    private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IVaccineService _vaccineService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
     private readonly int _pagesize = 15;
     public VaccinationsController(IVaccinationService vaccinationService,
         IVaccineService vaccineService,
-        IUserService userService,
-        IMapper mapper)
+        IUserService userService, 
+        IMapper mapper, 
+        UserManager<IdentityUser<Guid>> userManager)
     {
         _vaccinationService = vaccinationService;
         _vaccineService = vaccineService;
         _mapper = mapper;
         _userService = userService;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -36,7 +40,18 @@ public class VaccinationsController : Controller
     {
         try
         {
-            var dtos = await _vaccinationService.GetVaccinationsByPageNumberAndPageSizeAsync(page, _pagesize);
+            var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+            List<VaccinationDTO> dtos;
+            if (currentUserRole[0] == "Default")
+            {
+                dtos = await _vaccinationService.GetVaccinationsRelevantToUser(currentUser.Id);
+            }
+            else
+            {
+                dtos = await _vaccinationService.GetVaccinationsByPageNumberAndPageSizeAsync(page, _pagesize);
+            }
 
             List<VaccinationModel> models = new();
 
@@ -74,6 +89,10 @@ public class VaccinationsController : Controller
     {
         try
         {
+            if (!await CheckRelevancy(id))
+            {
+                return RedirectToAction("Denied", "Home");
+            }
             var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
 
             if (dto != null)
@@ -104,10 +123,26 @@ public class VaccinationsController : Controller
     public async Task<IActionResult> CreateAsync()
     {
         var allVaccines = await _vaccineService.GetAllVaccinesAsync();
-        var allUsers = await _userService.GetAllUsersAsync();
-        VaccinationModel model = new();
-        model.Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines), "Id", "Name");
-        model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "FullName");
+        VaccinationModel model = new()
+        {
+            Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines), "Id", "Name")
+        };
+
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+        if (currentUserRole[0] == "Default")
+        {
+            var user = await _userService.GetUsersByIdAsync(currentUser.Id);
+            var userList = new List<UserDTO>() { user };
+            model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+        }
+        else
+        {
+            var allUsers = await _userService.GetAllUsersAsync();
+            model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+        }
+        
         return View(model);
     }
 
@@ -149,6 +184,11 @@ public class VaccinationsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
                 if (dto == null)
                 {
@@ -158,15 +198,27 @@ public class VaccinationsController : Controller
                 var vaccineSelected = await _vaccineService.GetVaccinesByIdAsync(dto.VaccineId);
                 var allVaccines = await _vaccineService.GetAllVaccinesAsync();
 
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-                var allUsers = await _userService.GetAllUsersAsync();
-
                 var editModel = _mapper.Map<VaccinationModel>(dto);
 
                 editModel.Vaccine = _mapper.Map<VaccineModel>(vaccineSelected);
                 editModel.Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines), "Id", "Name", vaccineSelected.Id.ToString());
+
+                var currentUser = await _userManager.GetUserAsync(User);
+                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
                 editModel.User = _mapper.Map<UserModel>(userSelected);
-                editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "FullName", userSelected.Id.ToString());
+
+                if (currentUserRole[0] == "Default")
+                {
+                    var user = await _userService.GetUsersByIdAsync(currentUser.Id);
+                    var userList = new List<UserDTO>() { user };
+                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login", userSelected.Id.ToString());
+                }
+                else
+                {
+                    var allUsers = await _userService.GetAllUsersAsync();
+                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login", userSelected.Id.ToString());
+                }
 
                 return View(editModel);
             }
@@ -286,5 +338,23 @@ public class VaccinationsController : Controller
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
         }
+    }
+
+    private async Task<bool> CheckRelevancy(Guid vaccinationId)
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+        if (currentUserRole[0] == "Default")
+        {
+            var dtos = await _vaccinationService.GetVaccinationsRelevantToUser(currentUser.Id);
+
+            var ids = dtos.Select(dto => dto.Id).ToList();
+
+            if (!ids.Contains(vaccinationId))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

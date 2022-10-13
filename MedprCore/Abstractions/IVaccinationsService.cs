@@ -7,6 +7,8 @@ namespace MedprCore.Abstractions
         Task<List<VaccinationDTO>> GetVaccinationsByPageNumberAndPageSizeAsync
             (int pageNumber, int pageSize);
 
+        Task<List<VaccinationDTO>> GetVaccinationsRelevantToUser(Guid id);
+
         Task<VaccinationDTO> GetVaccinationsByIdAsync(Guid id);
 
         Task<int> CreateVaccinationAsync(VaccinationDTO dto);

@@ -12,6 +12,7 @@ namespace MedprMVC.Models
 
         [Required(ErrorMessage = "Cmon, it should have happened sometime!")]
         [Column(TypeName = "DateTime2")]
+        [DisplayFormat(DataFormatString = "{0:dddd d MMMM}")]
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Cmon, it should protect at least for a day!")]

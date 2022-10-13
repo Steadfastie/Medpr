@@ -1,15 +1,29 @@
 ﻿@model UserModel
 
 <div>
-    <h3>
-        @Html.DisplayFor(modelItem => Model.FullName)
-    </h3>
-    <h5>
-        appeared on mother Earth <i>@Html.DisplayFor(modelItem => Model.DateOfBirth)</i>
-    </h5>
-    <div>
+    <h2>
         Login: @Html.DisplayFor(modelItem => Model.Login)
-    </div>
+    </h2>
+    @if(Model.FullName != null) {
+        <h5>
+            With username @Html.DisplayFor(modelItem => Model.FullName)
+        </h5>
+    }
+    else{
+        <h5>
+            Username has not been filled yet 
+        </h5>
+    }
+    @if(Model.DateOfBirth != null){
+        <div>
+            first appeared on Earth <i>@Html.DisplayFor(modelItem => Model.DateOfBirth)</i>
+        </div>
+    }
+    else{
+        <div>
+            Date of birth has not been provided yet
+        </div>
+    }
 </div>
 
 

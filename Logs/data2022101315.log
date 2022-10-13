@@ -1,0 +1,712 @@
+2022-10-13 15:02:35.094 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-13 15:02:35.273 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-13 15:02:35.275 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-13 15:02:35.278 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-13 15:02:35.279 +03:00 [INF] Hosting environment: Development
+2022-10-13 15:02:35.280 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-13 15:02:35.886 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-13 15:02:36.106 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:02:36.114 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:02:36.862 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-13 15:02:37.071 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:02:37.091 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-13 15:02:37.098 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 975.9782ms
+2022-10-13 15:02:37.104 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:02:37.128 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-13 15:02:37.134 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1250.7805ms
+2022-10-13 15:02:37.148 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:02:37.151 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:02:37.183 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:02:37.227 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:02:37.378 +03:00 [INF] Executed ViewResult - view Index executed in 188.3204ms.
+2022-10-13 15:02:37.385 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 231.9777ms
+2022-10-13 15:02:37.388 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:02:37.409 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 281.7996ms
+2022-10-13 15:02:37.451 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:02:37.451 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/MedprMVC.styles.css?v=lzpY-cAuGQJoSR3Iw0HyoDNI53z19TftoS8oMnx2UqQ - -
+2022-10-13 15:02:37.456 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.4850ms
+2022-10-13 15:02:37.481 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:02:37.503 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.2607ms
+2022-10-13 15:02:37.506 +03:00 [INF] The file /MedprMVC.styles.css was not modified
+2022-10-13 15:02:37.508 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/MedprMVC.styles.css?v=lzpY-cAuGQJoSR3Iw0HyoDNI53z19TftoS8oMnx2UqQ - - - 304 - text/css 57.9159ms
+2022-10-13 15:02:40.176 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccinations/Index - -
+2022-10-13 15:02:40.188 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:02:40.233 +03:00 [INF] Route matched with {action = "Index", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:02:40.243 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:02:40.339 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:02:41.190 +03:00 [INF] Executed DbCommand (73ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:02:41.361 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:02:41.452 +03:00 [INF] Executed DbCommand (46ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[UserId] = @__id_0
+2022-10-13 15:02:41.494 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='2a3d57fd-0599-4378-9171-30354d571ee3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:02:41.504 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:02:41.517 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:02:41.546 +03:00 [INF] Executed ViewResult - view Index executed in 28.8094ms.
+2022-10-13 15:02:41.548 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Index (MedprMVC) in 1311.1934ms
+2022-10-13 15:02:41.549 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:02:41.553 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Vaccinations/Index - - - 200 - text/html;+charset=utf-8 1377.5178ms
+2022-10-13 15:02:41.608 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:02:41.608 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:02:41.611 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.0184ms
+2022-10-13 15:02:41.631 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.0729ms
+2022-10-13 15:02:56.896 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/vaccinations/details/0fe19e45-58a2-404a-aee3-6286460e19e3 - -
+2022-10-13 15:02:56.900 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-13 15:02:56.905 +03:00 [INF] Route matched with {action = "Details", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:02:56.908 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:02:56.969 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:02:56.976 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:02:56.982 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:02:56.989 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[UserId] = @__id_0
+2022-10-13 15:02:56.999 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='0fe19e45-58a2-404a-aee3-6286460e19e3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:02:57.005 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='2a3d57fd-0599-4378-9171-30354d571ee3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:02:57.010 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:02:57.014 +03:00 [INF] Executing ViewResult, running view Details.
+2022-10-13 15:02:57.030 +03:00 [INF] Executed ViewResult - view Details executed in 16.9933ms.
+2022-10-13 15:02:57.032 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Details (MedprMVC) in 124.0268ms
+2022-10-13 15:02:57.034 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-13 15:02:57.037 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/vaccinations/details/0fe19e45-58a2-404a-aee3-6286460e19e3 - - - 200 - text/html;+charset=utf-8 141.0324ms
+2022-10-13 15:02:57.085 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:02:57.085 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:02:57.089 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.6298ms
+2022-10-13 15:02:57.104 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 19.2865ms
+2022-10-13 15:02:58.202 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/vaccinations/edit/0fe19e45-58a2-404a-aee3-6286460e19e3 - -
+2022-10-13 15:02:58.205 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Edit (MedprMVC)'
+2022-10-13 15:02:58.208 +03:00 [INF] Route matched with {action = "Edit", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:02:58.214 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:02:58.229 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:02:58.235 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:02:58.241 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:02:58.245 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[UserId] = @__id_0
+2022-10-13 15:02:58.250 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='0fe19e45-58a2-404a-aee3-6286460e19e3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:02:58.255 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='2a3d57fd-0599-4378-9171-30354d571ee3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:02:58.263 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+2022-10-13 15:02:58.311 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:02:58.315 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:02:58.320 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:02:58.326 +03:00 [INF] Executing ViewResult, running view Edit.
+2022-10-13 15:02:58.423 +03:00 [INF] Executed ViewResult - view Edit executed in 97.6047ms.
+2022-10-13 15:02:58.424 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Edit (MedprMVC) in 212.9569ms
+2022-10-13 15:02:58.426 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Edit (MedprMVC)'
+2022-10-13 15:02:58.429 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/vaccinations/edit/0fe19e45-58a2-404a-aee3-6286460e19e3 - - - 200 - text/html;+charset=utf-8 227.2676ms
+2022-10-13 15:02:58.470 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:02:58.472 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.7513ms
+2022-10-13 15:02:58.476 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:02:58.482 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.7752ms
+2022-10-13 15:03:10.081 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Logout - -
+2022-10-13 15:03:10.085 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Logout (MedprMVC)'
+2022-10-13 15:03:10.088 +03:00 [INF] Route matched with {action = "Logout", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:03:10.092 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:03:10.151 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2022-10-13 15:03:10.154 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2022-10-13 15:03:10.156 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2022-10-13 15:03:10.157 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2022-10-13 15:03:10.158 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Logout (MedprMVC) in 66.6261ms
+2022-10-13 15:03:10.160 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Logout (MedprMVC)'
+2022-10-13 15:03:10.162 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Logout - - - 302 0 - 80.9423ms
+2022-10-13 15:03:10.166 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-13 15:03:10.168 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:03:10.170 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:03:10.172 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:03:10.175 +03:00 [INF] Executing ViewResult, running view Login.
+2022-10-13 15:03:10.194 +03:00 [INF] Executed ViewResult - view Login executed in 19.8424ms.
+2022-10-13 15:03:10.196 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 24.0993ms
+2022-10-13 15:03:10.197 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:03:10.200 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 33.2635ms
+2022-10-13 15:03:10.245 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:03:10.245 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:03:10.248 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.3212ms
+2022-10-13 15:03:10.255 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.8633ms
+2022-10-13 15:03:18.388 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/ application/x-www-form-urlencoded 231
+2022-10-13 15:03:18.391 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:03:18.400 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(MedprMVC.Models.UserModel) on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:03:18.403 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:03:18.427 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:03:18.443 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2022-10-13 15:03:18.488 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2022-10-13 15:03:18.498 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:03:18.507 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-13 15:03:18.528 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2022-10-13 15:03:18.537 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2022-10-13 15:03:18.541 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-13 15:03:18.543 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 140.4778ms
+2022-10-13 15:03:18.545 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:03:18.546 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7298/ application/x-www-form-urlencoded 231 - 302 0 - 157.7601ms
+2022-10-13 15:03:18.551 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-13 15:03:18.553 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:03:18.554 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:03:18.556 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:03:18.559 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:03:18.565 +03:00 [INF] Executed ViewResult - view Index executed in 6.5933ms.
+2022-10-13 15:03:18.567 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 11.1958ms
+2022-10-13 15:03:18.569 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:03:18.571 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 20.5580ms
+2022-10-13 15:03:18.620 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:03:18.620 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:03:18.624 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.0253ms
+2022-10-13 15:03:18.628 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.6353ms
+2022-10-13 15:03:20.017 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccinations/Index - -
+2022-10-13 15:03:20.019 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:03:20.021 +03:00 [INF] Route matched with {action = "Index", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:03:20.023 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:03:20.026 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:03:20.031 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:03:20.038 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:03:20.045 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-10-13 15:03:20.047 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-10-13 15:03:20.053 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='0', @__p_1='15'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2022-10-13 15:03:20.057 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='2a3d57fd-0599-4378-9171-30354d571ee3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:03:20.062 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:03:20.066 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:03:20.074 +03:00 [INF] Executed ViewResult - view Index executed in 7.1488ms.
+2022-10-13 15:03:20.075 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Index (MedprMVC) in 52.3661ms
+2022-10-13 15:03:20.077 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:03:20.080 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Vaccinations/Index - - - 200 - text/html;+charset=utf-8 63.2392ms
+2022-10-13 15:03:20.122 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:03:20.122 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:03:20.124 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9817ms
+2022-10-13 15:03:20.133 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.9423ms
+2022-10-13 15:03:45.233 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-13 15:03:45.474 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-13 15:03:45.476 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-13 15:03:45.479 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-13 15:03:45.481 +03:00 [INF] Hosting environment: Development
+2022-10-13 15:03:45.482 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-13 15:03:46.150 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-13 15:03:46.371 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:03:46.380 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:03:47.118 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-13 15:03:47.310 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:03:47.330 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-13 15:03:47.335 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 948.09ms
+2022-10-13 15:03:47.343 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:03:47.365 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-13 15:03:47.368 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1220.8464ms
+2022-10-13 15:03:47.374 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:03:47.377 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:03:47.412 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:03:47.421 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:03:47.568 +03:00 [INF] Executed ViewResult - view Index executed in 150.019ms.
+2022-10-13 15:03:47.586 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 207.3812ms
+2022-10-13 15:03:47.595 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:03:47.618 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 252.5525ms
+2022-10-13 15:03:47.648 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:03:47.655 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.5522ms
+2022-10-13 15:03:47.687 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:03:47.721 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.5652ms
+2022-10-13 15:03:48.850 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccinations/Index - -
+2022-10-13 15:03:48.862 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:03:48.880 +03:00 [INF] Route matched with {action = "Index", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:03:48.891 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:03:50.589 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:03:51.449 +03:00 [INF] Executed DbCommand (75ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:03:56.424 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:04:13.832 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-13 15:04:13.999 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-13 15:04:14.001 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-13 15:04:14.005 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-13 15:04:14.006 +03:00 [INF] Hosting environment: Development
+2022-10-13 15:04:14.007 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-13 15:04:14.499 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-13 15:04:14.718 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:04:14.728 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:04:15.428 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-13 15:04:15.626 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:15.644 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-13 15:04:15.652 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 916.5349ms
+2022-10-13 15:04:15.659 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:04:15.682 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-13 15:04:15.685 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1188.8401ms
+2022-10-13 15:04:15.698 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:04:15.700 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:04:15.736 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:15.745 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:04:15.901 +03:00 [INF] Executed ViewResult - view Index executed in 159.8649ms.
+2022-10-13 15:04:15.908 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 205.6069ms
+2022-10-13 15:04:15.911 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:04:15.945 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 263.3385ms
+2022-10-13 15:04:15.969 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:04:15.974 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.3711ms
+2022-10-13 15:04:16.002 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:04:16.023 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.6333ms
+2022-10-13 15:04:17.107 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Logout - -
+2022-10-13 15:04:17.121 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Logout (MedprMVC)'
+2022-10-13 15:04:17.132 +03:00 [INF] Route matched with {action = "Logout", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:04:17.147 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:17.158 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2022-10-13 15:04:17.161 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2022-10-13 15:04:17.162 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2022-10-13 15:04:17.164 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2022-10-13 15:04:17.165 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Logout (MedprMVC) in 28.9939ms
+2022-10-13 15:04:17.166 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Logout (MedprMVC)'
+2022-10-13 15:04:17.167 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Logout - - - 302 0 - 60.8593ms
+2022-10-13 15:04:17.172 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-13 15:04:17.174 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:04:17.175 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:04:17.178 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:17.180 +03:00 [INF] Executing ViewResult, running view Login.
+2022-10-13 15:04:17.215 +03:00 [INF] Executed ViewResult - view Login executed in 35.6181ms.
+2022-10-13 15:04:17.217 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 39.8231ms
+2022-10-13 15:04:17.219 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:04:17.223 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 50.9064ms
+2022-10-13 15:04:17.253 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:04:17.253 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:04:17.257 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.0341ms
+2022-10-13 15:04:17.281 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 28.1553ms
+2022-10-13 15:04:20.674 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Signup - -
+2022-10-13 15:04:20.676 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.SignUp (MedprMVC)'
+2022-10-13 15:04:20.679 +03:00 [INF] Route matched with {action = "SignUp", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SignUp() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:04:20.682 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:20.686 +03:00 [INF] Executing ViewResult, running view SignUp.
+2022-10-13 15:04:20.751 +03:00 [INF] Executed ViewResult - view SignUp executed in 65.7228ms.
+2022-10-13 15:04:20.753 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.SignUp (MedprMVC) in 71.3845ms
+2022-10-13 15:04:20.755 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.SignUp (MedprMVC)'
+2022-10-13 15:04:20.757 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Signup - - - 200 - text/html;+charset=utf-8 82.7698ms
+2022-10-13 15:04:20.792 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:04:20.794 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.4506ms
+2022-10-13 15:04:20.805 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:04:20.812 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 6.7957ms
+2022-10-13 15:04:35.848 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Home/SignUp application/x-www-form-urlencoded 230
+2022-10-13 15:04:35.850 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.SignUp (MedprMVC)'
+2022-10-13 15:04:35.865 +03:00 [INF] Route matched with {action = "SignUp", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(MedprMVC.Models.UserModel) on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:04:35.870 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:36.003 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:04:36.842 +03:00 [INF] Executed DbCommand (79ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2022-10-13 15:04:37.175 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2022-10-13 15:04:37.222 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-13 15:04:37.254 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-13 15:04:37.260 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-13 15:04:37.274 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2022-10-13 15:04:37.322 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid), @__get_Item_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE ([a].[UserId] = @__get_Item_0) AND ([a].[RoleId] = @__get_Item_1)
+2022-10-13 15:04:37.331 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2022-10-13 15:04:37.351 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2022-10-13 15:04:37.375 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+2022-10-13 15:04:37.386 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p14='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;
+2022-10-13 15:04:37.462 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='5263faef-e3e1-4b5c-e52d-08daad131971', @p1=NULL (DbType = DateTime2), @p2=NULL (Size = 4000), @p3='thirduser@email.com' (Nullable = false) (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [DateOfBirth], [FullName], [Login])
+VALUES (@p0, @p1, @p2, @p3);
+2022-10-13 15:04:37.477 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2022-10-13 15:04:37.483 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-13 15:04:37.491 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-13 15:04:37.497 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2022-10-13 15:04:37.502 +03:00 [WRN] User validation failed: DuplicateUserName.
+2022-10-13 15:04:37.528 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2022-10-13 15:04:37.570 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:04:37.577 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-13 15:04:37.589 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2022-10-13 15:04:37.597 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2022-10-13 15:04:37.603 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-13 15:04:37.606 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.SignUp (MedprMVC) in 1736.9179ms
+2022-10-13 15:04:37.608 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.SignUp (MedprMVC)'
+2022-10-13 15:04:37.610 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7298/Home/SignUp application/x-www-form-urlencoded 230 - 302 0 - 1762.2478ms
+2022-10-13 15:04:37.614 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-13 15:04:37.616 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:04:37.617 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:04:37.620 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:37.623 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:04:37.633 +03:00 [INF] Executed ViewResult - view Index executed in 10.4834ms.
+2022-10-13 15:04:37.635 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 15.2176ms
+2022-10-13 15:04:37.636 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-13 15:04:37.640 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 25.6089ms
+2022-10-13 15:04:37.666 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:04:37.678 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:04:37.682 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 16.2350ms
+2022-10-13 15:04:37.682 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.1793ms
+2022-10-13 15:04:39.748 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccinations/Index - -
+2022-10-13 15:04:39.750 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:04:39.756 +03:00 [INF] Route matched with {action = "Index", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:04:39.759 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:39.798 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:04:39.808 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:04:39.813 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:04:39.838 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[UserId] = @__id_0
+2022-10-13 15:04:39.843 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:04:39.852 +03:00 [INF] Executed ViewResult - view Index executed in 8.9388ms.
+2022-10-13 15:04:39.853 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Index (MedprMVC) in 94.8339ms
+2022-10-13 15:04:39.855 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:04:39.858 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Vaccinations/Index - - - 200 - text/html;+charset=utf-8 110.7922ms
+2022-10-13 15:04:39.884 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:04:39.884 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:04:39.891 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.2644ms
+2022-10-13 15:04:39.895 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.1419ms
+2022-10-13 15:04:44.947 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccinations/Create - -
+2022-10-13 15:04:44.950 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.CreateAsync (MedprMVC)'
+2022-10-13 15:04:44.955 +03:00 [INF] Route matched with {action = "Create", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateAsync() on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:04:44.958 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:44.969 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+2022-10-13 15:04:45.006 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:04:45.011 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:04:45.016 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:04:45.036 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:04:45.046 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-13 15:04:45.086 +03:00 [INF] Executed ViewResult - view Create executed in 41.1369ms.
+2022-10-13 15:04:45.088 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.CreateAsync (MedprMVC) in 130.2527ms
+2022-10-13 15:04:45.089 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.CreateAsync (MedprMVC)'
+2022-10-13 15:04:45.092 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Vaccinations/Create - - - 200 - text/html;+charset=utf-8 145.1831ms
+2022-10-13 15:04:45.125 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:04:45.127 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8845ms
+2022-10-13 15:04:45.134 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:04:45.139 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.8160ms
+2022-10-13 15:04:55.738 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Vaccinations/Create application/x-www-form-urlencoded 353
+2022-10-13 15:04:55.741 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Create (MedprMVC)'
+2022-10-13 15:04:55.745 +03:00 [INF] Route matched with {action = "Create", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MedprMVC.Models.VaccinationModel) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:04:55.749 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:55.780 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='da9f95d0-25ab-4cba-936b-13d93636f1bc', @p1='2022-08-15T00:00:00.0000000', @p2='150', @p3='5263faef-e3e1-4b5c-e52d-08daad131971', @p4='8865e724-e999-40ca-8b53-f816e7636cb9'], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Vaccinations] ([Id], [Date], [DaysOfProtection], [UserId], [VaccineId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2022-10-13 15:04:55.785 +03:00 [INF] Executing RedirectResult, redirecting to /Vaccinations/Index.
+2022-10-13 15:04:55.786 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Create (MedprMVC) in 37.8543ms
+2022-10-13 15:04:55.788 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Create (MedprMVC)'
+2022-10-13 15:04:55.789 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7298/Vaccinations/Create application/x-www-form-urlencoded 353 - 302 0 - 51.3333ms
+2022-10-13 15:04:55.793 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccinations/Index - -
+2022-10-13 15:04:55.795 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:04:55.797 +03:00 [INF] Route matched with {action = "Index", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:04:55.799 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:55.803 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:04:55.807 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:04:55.813 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:04:55.817 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[UserId] = @__id_0
+2022-10-13 15:04:55.829 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='8865e724-e999-40ca-8b53-f816e7636cb9'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:04:55.835 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:04:55.843 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:04:55.856 +03:00 [INF] Executed ViewResult - view Index executed in 12.332ms.
+2022-10-13 15:04:55.857 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Index (MedprMVC) in 57.8489ms
+2022-10-13 15:04:55.858 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:04:55.862 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Vaccinations/Index - - - 200 - text/html;+charset=utf-8 69.2789ms
+2022-10-13 15:04:55.895 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:04:55.896 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:04:55.897 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9084ms
+2022-10-13 15:04:55.907 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.2067ms
+2022-10-13 15:04:58.628 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/vaccinations/details/da9f95d0-25ab-4cba-936b-13d93636f1bc - -
+2022-10-13 15:04:58.630 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-13 15:04:58.634 +03:00 [INF] Route matched with {action = "Details", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:04:58.640 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:04:58.646 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:04:58.651 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:04:58.657 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:04:58.662 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[UserId] = @__id_0
+2022-10-13 15:04:58.672 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='da9f95d0-25ab-4cba-936b-13d93636f1bc'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:04:58.676 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='8865e724-e999-40ca-8b53-f816e7636cb9'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:04:58.681 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:04:58.685 +03:00 [INF] Executing ViewResult, running view Details.
+2022-10-13 15:04:58.694 +03:00 [INF] Executed ViewResult - view Details executed in 9.1758ms.
+2022-10-13 15:04:58.695 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Details (MedprMVC) in 55.928ms
+2022-10-13 15:04:58.697 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-13 15:04:58.699 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/vaccinations/details/da9f95d0-25ab-4cba-936b-13d93636f1bc - - - 200 - text/html;+charset=utf-8 72.1478ms
+2022-10-13 15:04:58.726 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:04:58.726 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:04:58.728 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.6295ms
+2022-10-13 15:04:58.736 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.7833ms
+2022-10-13 15:05:38.260 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/vaccinations/details/0FE19E45-58A2-404A-AEE3-6286460E19E3 - -
+2022-10-13 15:05:38.266 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-13 15:05:38.267 +03:00 [INF] Route matched with {action = "Details", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:05:38.271 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:05:38.274 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:05:38.280 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:05:38.285 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:05:38.290 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[UserId] = @__id_0
+2022-10-13 15:05:38.294 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Denied.
+2022-10-13 15:05:38.295 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Details (MedprMVC) in 25.3603ms
+2022-10-13 15:05:38.297 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Details (MedprMVC)'
+2022-10-13 15:05:38.298 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/vaccinations/details/0FE19E45-58A2-404A-AEE3-6286460E19E3 - - - 302 0 - 38.3855ms
+2022-10-13 15:05:38.305 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Denied - -
+2022-10-13 15:05:38.307 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Denied (MedprMVC)'
+2022-10-13 15:05:38.310 +03:00 [INF] Route matched with {action = "Denied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Denied() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:05:38.313 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:05:38.316 +03:00 [INF] Executing ViewResult, running view Denied.
+2022-10-13 15:05:38.323 +03:00 [INF] Executed ViewResult - view Denied executed in 8.0921ms.
+2022-10-13 15:05:38.325 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Denied (MedprMVC) in 12.6505ms
+2022-10-13 15:05:38.326 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Denied (MedprMVC)'
+2022-10-13 15:05:38.329 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Denied - - - 200 - text/html;+charset=utf-8 23.8538ms
+2022-10-13 15:05:38.360 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:05:38.367 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.3031ms
+2022-10-13 15:05:38.373 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:05:38.375 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.6397ms
+2022-10-13 15:05:50.316 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccinations/Index - -
+2022-10-13 15:05:50.319 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:05:50.321 +03:00 [INF] Route matched with {action = "Index", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-13 15:05:50.325 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:05:50.328 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-13 15:05:50.334 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-13 15:05:50.340 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-13 15:05:50.344 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+WHERE [v].[UserId] = @__id_0
+2022-10-13 15:05:50.349 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='8865e724-e999-40ca-8b53-f816e7636cb9'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-13 15:05:50.353 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-13 15:05:50.356 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-13 15:05:50.363 +03:00 [INF] Executed ViewResult - view Index executed in 6.4898ms.
+2022-10-13 15:05:50.365 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Index (MedprMVC) in 40.4214ms
+2022-10-13 15:05:50.366 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-13 15:05:50.368 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Vaccinations/Index - - - 200 - text/html;+charset=utf-8 51.8902ms
+2022-10-13 15:05:50.395 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:05:50.399 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:05:50.402 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.9710ms
+2022-10-13 15:05:50.416 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.5067ms
+2022-10-13 15:17:06.140 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Logout - -
+2022-10-13 15:17:06.149 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Logout (MedprMVC)'
+2022-10-13 15:17:06.151 +03:00 [INF] Route matched with {action = "Logout", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:17:06.155 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:17:06.158 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2022-10-13 15:17:06.159 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2022-10-13 15:17:06.160 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2022-10-13 15:17:06.162 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2022-10-13 15:17:06.163 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Logout (MedprMVC) in 7.9586ms
+2022-10-13 15:17:06.165 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Logout (MedprMVC)'
+2022-10-13 15:17:06.166 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Logout - - - 302 0 - 26.7502ms
+2022-10-13 15:17:06.173 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-13 15:17:06.175 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:17:06.176 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-13 15:17:06.179 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-13 15:17:06.181 +03:00 [INF] Executing ViewResult, running view Login.
+2022-10-13 15:17:06.191 +03:00 [INF] Executed ViewResult - view Login executed in 9.5795ms.
+2022-10-13 15:17:06.192 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 14.1402ms
+2022-10-13 15:17:06.194 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-13 15:17:06.197 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 23.5817ms
+2022-10-13 15:17:06.218 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-13 15:17:06.222 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-13 15:17:06.229 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.4707ms
+2022-10-13 15:17:06.240 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.7999ms

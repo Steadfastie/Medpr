@@ -45,6 +45,15 @@ public class VaccinationService : IVaccinationService
         return list;
     }
 
+    public Task<List<VaccinationDTO>> GetVaccinationsRelevantToUser(Guid id)
+    {
+        var list = _unitOfWork.Vaccinations
+            .FindBy(vaccination => vaccination.UserId == id)
+            .Select(vaccination => _mapper.Map<VaccinationDTO>(vaccination))
+            .ToListAsync();
+        return list;
+    }
+
     public async Task<int> CreateVaccinationAsync(VaccinationDTO dto)
     {
         var entity = _mapper.Map<Vaccination>(dto);
