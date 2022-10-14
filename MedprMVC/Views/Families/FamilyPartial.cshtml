@@ -1,39 +1,16 @@
 ﻿@model FamilyModel
 
-<div class="container text-center">
-    <div class="row align-items-center">
-        <h2>
-            @Html.DisplayFor(modelItem => Model.Surname)
-        </h2>
-    </div>
-    <br>
-    <div class="row align-items-center">
-        <form asp-controller="Family" asp-action="Edit" method="post" class="row align-items-center" id="mainform">
-
-            @foreach (var member in Model.Members)
-            {
-                <div class="col">
-                    @member.User.Login
-                </div>
-                @if (member.User.FullName != null)
-                {
-                    <div class="col">
-                        @member.User.FullName
-                    </div>
-                }
-                <div class="col">
-                    <label for="isAdmin" class="form-check-label">Can see family info</label>
-                    <input asp-for="@member.IsAdmin" id="isAdmin" class="form-check-input">
-                    <span asp-validation-for="@member.IsAdmin" class="text-danger"></span>
-                </div>
-            }
-            
-        </form>
-    </div>
-    <br>
-    <div class="row align-items-center justify-content-md-center">
-        <input type="submit" class="btn btn-primary col-sm-2" value="Submit" form="mainform">
-    </div>
+<div class="row align-items-center">
+    <h2>
+        @Html.DisplayFor(modelItem => Model.Surname)
+    </h2>
+</div>
+<br>
+<div class="row align-items-center">
+    @foreach (var member in Model.Members)
+    {
+        await Html.RenderPartialAsync("../FamilyMembers/Edit.cshtml", member);
+    }
 </div>
 
 @section Scripts

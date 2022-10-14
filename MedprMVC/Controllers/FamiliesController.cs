@@ -9,6 +9,7 @@ using System.Reflection;
 using MedprBusiness.ServiceImplementations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using MedprDB.Entities;
 
 namespace MedprMVC.Controllers;
 
@@ -56,6 +57,10 @@ public class FamiliesController : Controller
                         var userDTO = await _userService.GetUsersByIdAsync(member.UserId);
                         var userModel = _mapper.Map<UserModel>(userDTO);
                         member.User = userModel;
+
+                        var FamilyDTO = await _userService.GetUsersByIdAsync(member.FamilyId);
+                        var familyModel = _mapper.Map<FamilyModel>(FamilyDTO);
+                        member.Family = familyModel;
                     }
 
                     family.Members = membersModels;
@@ -89,6 +94,18 @@ public class FamiliesController : Controller
             if (dto != null)
             {
                 var model = _mapper.Map<FamilyModel>(dto);
+
+                var membersDTO = await _familyMemberService.GetMembersRelevantToFamily(model.Id);
+                var membersModels = _mapper.Map<List<FamilyMemberModel>>(membersDTO);
+
+                foreach (var member in membersModels)
+                {
+                    var userDTO = await _userService.GetUsersByIdAsync(member.UserId);
+                    var userModel = _mapper.Map<UserModel>(userDTO);
+                    member.User = userModel;
+                }
+
+                model.Members = membersModels;
                 return View(model);
             }
             else
@@ -189,36 +206,12 @@ public class FamiliesController : Controller
     {
         try
         {
-            if (model != null)
+            if (ModelState.IsValid)
             {
-                var alreadyCreated = await _familyService.GetFamiliesByIdAsync(model.Id);
-                if (alreadyCreated != null)
+                foreach (var member in model.Members)
                 {
-                    RedirectToAction("Details", "Drugs", model.Id);
+                    RedirectToAction("Edit", "FamilyMembers", member);
                 }
-
-                var dto = _mapper.Map<FamilyDTO>(model);
-
-                var sourceDto = await _familyService.GetFamiliesByIdAsync(model.Id);
-
-                var patchList = new List<PatchModel>();
-
-                if (dto != null)
-                {
-                    foreach (PropertyInfo property in typeof(FamilyDTO).GetProperties())
-                    {
-                        if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
-                        {
-                            patchList.Add(new PatchModel()
-                            {
-                                PropertyName = property.Name,
-                                PropertyValue = property.GetValue(dto)
-                            });
-                        }
-                    }
-                }
-
-                await _familyService.PatchFamilyAsync(model.Id, patchList);
 
                 return RedirectToAction("Index", "Families");
             }

@@ -4,20 +4,20 @@
     ViewData["Title"] = "Surname";
 }
 
-<table class="table table-borderless">
-    <tbody>
-        <tr>
-            <td>
-                @{await Html.RenderPartialAsync("FamilyDetailsPreview", Model);}
-            </td>
-            <td>
-                <a class="btn btn-primary" href="~/families/edit/@Model.Id">Edit</a>
-                <a class="btn btn-danger" href="~/families/delete/@Model.Id">Delete</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container text-center">
+    <div class="row align-items-start">
+        <div class="col-8">
+            @{
+                await Html.RenderPartialAsync("FamilyPartial", Model);
+            }
+        </div>
+        <div class="col align-self-center">
+            <a class="btn btn-primary" href="~/families/edit/@Model.Id">Edit</a>
+        </div>
+        <div class="col align-self-center">
+            <a class="btn btn-danger" href="~/families/delete/@Model.Id">Delete</a>
+        </div>
+    </div>
+</div>
 
-@*This page will contain:
-    CRUD buttons
-    additional information like drug description paper or wikiAPI*@
+

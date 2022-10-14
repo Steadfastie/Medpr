@@ -10,13 +10,14 @@
         foreach (var family in Model)
         {
             <div class="row align-items-center">
-                <div class="col-10">
-                    @{
-                        await Html.RenderPartialAsync("FamilyPartial", family);
-                    }
-                </div>
+                @{
+                    await Html.RenderPartialAsync("FamilyPartial", family);
+                }
+            </div>
+            <br>
+            <div class="row align-items-center">
                 <div class="col">
-                    <a class="btn btn-primary" href="~/families/details/@family.Id">Read details</a>
+                    <a class="btn btn-primary" href="~/families/delete/@family.Id">Remove me from family</a>
                 </div>
             </div>
             <br>

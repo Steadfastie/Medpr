@@ -212,7 +212,7 @@ public class FamilyMembersController : Controller
 
                 await _familyMemberService.PatchFamilyMemberAsync(model.Id, patchList);
 
-                return RedirectToAction("Index", "FamilyMembers");
+                return RedirectToAction("Index", "Families");
             }
             else
             {

@@ -3,33 +3,24 @@
     ViewData["Title"] = "Update family ties";
 }
 
-<div>
-    <h1>Update family ties</h1>
-
-    <form asp-controller="FamilyMembers" asp-action="Edit" method="post" class="row gx-3 gy-2 align-items-center">
-        <div class="col-sm-3">
-            <label for="family" class="form-label"></label>
-            <select asp-for="FamilyId" asp-items="@Model.Families" id="family">
-            </select>
-            <span asp-validation-for="FamilyId" class="text-danger"></span>
-            <a class="btn btn-primary" asp-action="Create" asp-controller="Families">Add doctor</a>
+<div class="col">
+    <form asp-controller="FamilyMembers" asp-action="Edit" method="post" class="row align-items-center">
+        <div class="col">
+            <label for="user" class="form-label">@Model.User.Login</label>
+            <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
+            <input asp-for="FamilyId" type="hidden" value="@Model.FamilyId" id="family">
+            <input asp-for="Id" type="hidden" value="@Model.Id" id="family">
         </div>
-        <div class="col-sm-3">
-            <label for="user" class="form-label"></label>
-            <select asp-for="UserId" asp-items="@Model.Users" id="user">
-            </select>
-            <span asp-validation-for="UserId" class="text-danger"></span>
-            <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
-        </div>
-        <div class="col-sm-3">
+        @if (Model.User.FullName != null){
+            <div class="col">
+                @Model.User.FullName;
+            </div>
+        }
+        <div class="col">
             <label for="isAdmin" class="form-check-label">Can see family info</label>
-            <input asp-for="IsAdmin" id="isAdmin" class="form-check-input">
+            <input asp-for="IsAdmin" id="isAdmin" class="form-check-input" onchange="this.form.submit()">
             <span asp-validation-for="IsAdmin" class="text-danger"></span>
         </div>
-
-
-        <input type="submit" class="btn btn-primary" value="Submit">
-
     </form>
 </div>
 
