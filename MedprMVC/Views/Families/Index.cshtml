@@ -11,7 +11,7 @@
         {
             <div class="row align-items-center">
                 @{
-                    await Html.RenderPartialAsync("FamilyPartial", family);
+                    await Html.RenderPartialAsync("FamilyPartial", family, ViewData);
                 }
             </div>
             <br>

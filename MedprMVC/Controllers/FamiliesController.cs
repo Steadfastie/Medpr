@@ -54,11 +54,16 @@ public class FamiliesController : Controller
 
                     foreach (var member in membersModels)
                     {
+                        if (member.UserId == currentUser.Id)
+                        {
+                            var isAdmin = member.IsAdmin;
+                            ViewData[$"{family.Surname}"] = isAdmin;
+                        }
                         var userDTO = await _userService.GetUsersByIdAsync(member.UserId);
                         var userModel = _mapper.Map<UserModel>(userDTO);
                         member.User = userModel;
 
-                        var FamilyDTO = await _userService.GetUsersByIdAsync(member.FamilyId);
+                        var FamilyDTO = await _familyService.GetFamiliesByIdAsync(member.FamilyId);
                         var familyModel = _mapper.Map<FamilyModel>(FamilyDTO);
                         member.Family = familyModel;
                     }

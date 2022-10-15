@@ -9,7 +9,7 @@
 <div class="row align-items-center">
     @foreach (var member in Model.Members)
     {
-        await Html.RenderPartialAsync("../FamilyMembers/Edit.cshtml", member);
+        await Html.RenderPartialAsync("../FamilyMembers/Edit.cshtml", member, ViewData);
     }
 </div>
 

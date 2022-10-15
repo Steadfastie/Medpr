@@ -1,28 +1,37 @@
 ﻿@model FamilyMemberModel
-@{
-    ViewData["Title"] = "Update family ties";
-}
 
-<div class="col">
+@{
+    bool isAdmin = bool.Parse(ViewData[$"{Model.Family.Surname}"].ToString());
+    string columnClass = isAdmin ? "col-md-4" : "col-md-6";
+}
+<div class="row align-items-center">
     <form asp-controller="FamilyMembers" asp-action="Edit" method="post" class="row align-items-center">
-        <div class="col">
+        <div class="@columnClass">
             <label for="user" class="form-label">@Model.User.Login</label>
             <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
             <input asp-for="FamilyId" type="hidden" value="@Model.FamilyId" id="family">
             <input asp-for="Id" type="hidden" value="@Model.Id" id="family">
         </div>
         @if (Model.User.FullName != null){
-            <div class="col">
-                @Model.User.FullName;
+            <div class="@columnClass">
+                @Model.User.FullName
             </div>
         }
-        <div class="col">
-            <label for="isAdmin" class="form-check-label">Can see family info</label>
-            <input asp-for="IsAdmin" id="isAdmin" class="form-check-input" onchange="this.form.submit()">
-            <span asp-validation-for="IsAdmin" class="text-danger"></span>
-        </div>
+        else{
+            <div class="@columnClass">
+                User has not provided name yet
+            </div>
+        }
+        @if (isAdmin){
+            <div class="col-md-4">
+                <label for="isAdmin" class="form-check-label">Can see family info</label>
+                <input asp-for="IsAdmin" id="isAdmin" class="form-check-input" onchange="this.form.submit()">
+                <span asp-validation-for="IsAdmin" class="text-danger"></span>
+            </div>
+        }
     </form>
 </div>
+<br>
 
 @section Scripts
     {

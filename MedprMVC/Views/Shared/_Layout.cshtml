@@ -28,11 +28,18 @@
                             <a class="nav-item nav-link" asp-controller="Doctors" asp-action="Index">Doctors</a>
                             @if (User.IsInRole("Admin"))
                             {
-                                <a class="nav-item nav-link" asp-controller="Users" asp-action="Index">Users</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Admin
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="nav-item nav-link dropdown-item" asp-controller="Users" asp-action="Index">Users</a></li>
+                                        <li><a class="nav-item nav-link dropdown-item" asp-controller="FamilyMembers" asp-action="Index">Family ties</a></li>
+                                    </ul>
+                                </li>
                             }
                             <a class="nav-item nav-link" asp-controller="Vaccinations" asp-action="Index">Vaccinations</a>
                             <a class="nav-item nav-link" asp-controller="Appointments" asp-action="Index">Appointments</a>
-                            <a class="nav-item nav-link" asp-controller="FamilyMembers" asp-action="Index">Family ties</a>
                             <a class="nav-item nav-link" asp-controller="Prescriptions" asp-action="Index">Prescriptions</a>
                         }
                     </ul>
