@@ -12,5 +12,7 @@ public class FamilyModel
     [StringLength(15, MinimumLength = 2)]
     public string Surname { get; set; }
 
+    public Guid Creator { get; set; }
+
     public List<FamilyMemberModel> Members { get; set; }
 }

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "All families";
+    var currentUser = Guid.Parse(ViewData["CurrentUser"].ToString());
 }
 
 <div class="container text-center">
@@ -9,18 +10,31 @@
     {
         foreach (var family in Model)
         {
+            var removeId = family.Members.Where(member => member.UserId == currentUser).FirstOrDefault().Id;
+            var creator = Guid.Parse(ViewData[$"Creator of {family.Surname}"].ToString());
+
             <div class="row align-items-center">
                 @{
                     await Html.RenderPartialAsync("FamilyPartial", family, ViewData);
                 }
             </div>
-            <br>
-            <div class="row align-items-center">
-                <div class="col">
-                    <a class="btn btn-primary" href="~/families/delete/@family.Id">Remove me from family</a>
+            <hr />
+            @if (creator == currentUser){
+                <div class="row align-items-center">
+                    <div class="col">
+                        <a class="btn btn-outline-danger" href="~/families/delete/@family.Id">Remove family</a>
+                    </div>
                 </div>
-            </div>
-            <br>
+            }
+            else{
+                <div class="row align-items-center">
+                    <div class="col">
+                        <form action="/FamilyMembers/Delete?MemberId=@removeId&UserId=@currentUser" method="post">
+                            <input type="submit" class="btn btn-outline-danger" value="Remove me from @family.Surname">
+                        </form>
+                    </div>
+                </div>
+            }
         }
     }
     else
@@ -33,8 +47,7 @@
         </div>
     }
     <br>
-    <br>
-    <div class="row align-items-center justify-content-md-center">
-        <a class="btn btn-primary col-sm-4" asp-action="Create" asp-controller="Families">Add family</a>
+    <div class="row align-items-center justify-content-center">
+        <a class="btn btn-primary col-auto" asp-action="Create" asp-controller="Families">Add family</a>
     </div>
 </div>

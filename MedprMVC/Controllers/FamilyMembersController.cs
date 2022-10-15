@@ -226,51 +226,17 @@ public class FamilyMembersController : Controller
         }
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Delete(Guid id)
-    {
-        try
-        {
-            if (id != Guid.Empty)
-            {
-                var dto = await _familyMemberService.GetFamilyMembersByIdAsync(id);
-
-                if (dto == null)
-                {
-                    return BadRequest();
-                }
-
-                var familySelected = await _familyService.GetFamiliesByIdAsync(dto.FamilyId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-
-                var deleteModel = _mapper.Map<FamilyMemberModel>(dto);
-
-                deleteModel.Family = _mapper.Map<FamilyModel>(familySelected);
-                deleteModel.User = _mapper.Map<UserModel>(userSelected);
-
-                return View(deleteModel);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
-        }
-    }
-
     [HttpPost]
     [ActionName("Delete")]
-    public async Task<IActionResult> DeleteConfirmed(Guid id)
+    public async Task<IActionResult> DeleteConfirmed(Guid MemberId, Guid UserId)
     {
         try
         {
-            if (id != Guid.Empty)
+            if (MemberId != Guid.Empty)
             {
-                var dto = await _familyMemberService.GetFamilyMembersByIdAsync(id);
+                var dto = await _familyMemberService.GetFamilyMembersByIdAsync(MemberId);
+
+                if (false)
 
                 await _familyMemberService.DeleteFamilyMemberAsync(dto);
 

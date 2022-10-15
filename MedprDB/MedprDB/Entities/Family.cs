@@ -12,6 +12,8 @@ namespace MedprDB.Entities
 
         public string Surname { get; set; }
 
+        public Guid Creator { get; set; }
+
         public List<FamilyMember> FamilyMember { get; set; }
     }
 }

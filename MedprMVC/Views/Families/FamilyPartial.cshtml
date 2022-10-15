@@ -1,17 +1,52 @@
 ﻿@model FamilyModel
+@{
+    bool isAdmin = bool.Parse(ViewData[$"{Model.Surname}"].ToString());
+}
 
-<div class="row align-items-center">
-    <h2>
-        @Html.DisplayFor(modelItem => Model.Surname)
-    </h2>
+<div class="container text-center">
+    <div class="row">
+        <h2 class="col align-self-center">
+            @Html.DisplayFor(modelItem => Model.Surname)
+        </h2>
+    </div>
+    <div class="row">
+        @foreach (var member in Model.Members)
+        {
+            @if (member.UserId == Model.Creator)
+            {
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col">
+                            @member.User.Login
+                        </div>
+                        @if (member.User.FullName != null)
+                        {
+                            <div class="col">
+                                @member.User.FullName
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col">
+                                User has not provided name yet
+                            </div>
+                        }
+                        <div class="col">
+                            Creator
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            }
+            else
+            {
+                await Html.RenderPartialAsync("../FamilyMembers/Edit.cshtml", member, ViewData);
+            }
+        }
+    </div>
 </div>
-<br>
-<div class="row align-items-center">
-    @foreach (var member in Model.Members)
-    {
-        await Html.RenderPartialAsync("../FamilyMembers/Edit.cshtml", member, ViewData);
-    }
-</div>
+
+
 
 @section Scripts
     {

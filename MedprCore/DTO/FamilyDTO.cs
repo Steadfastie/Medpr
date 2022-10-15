@@ -11,5 +11,7 @@ namespace MedprCore.DTO
         public Guid Id { get; set; }
 
         public string Surname { get; set; }
+
+        public Guid Creator { get; set; }
     }
 }

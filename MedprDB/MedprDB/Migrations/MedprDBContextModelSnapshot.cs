@@ -96,6 +96,9 @@ namespace MedprDB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("Creator")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
