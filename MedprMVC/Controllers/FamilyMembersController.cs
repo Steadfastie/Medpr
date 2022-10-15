@@ -9,6 +9,7 @@ using System.Reflection;
 using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace MedprMVC.Controllers;
 
@@ -16,11 +17,13 @@ namespace MedprMVC.Controllers;
 public class FamilyMembersController : Controller
 {
     private readonly IFamilyMemberService _familyMemberService;
+    private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IFamilyService _familyService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
     private readonly int _pagesize = 15;
     public FamilyMembersController(IFamilyMemberService familyMemberService,
+        UserManager<IdentityUser<Guid>> userManager,
         IFamilyService familyService,
         IUserService userService,
         IMapper mapper)
@@ -29,6 +32,7 @@ public class FamilyMembersController : Controller
         _familyService = familyService;
         _mapper = mapper;
         _userService = userService;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -228,19 +232,31 @@ public class FamilyMembersController : Controller
 
     [HttpPost]
     [ActionName("Delete")]
-    public async Task<IActionResult> DeleteConfirmed(Guid MemberId, Guid UserId)
+    public async Task<IActionResult> DeleteConfirmed(Guid MemberId)
     {
         try
         {
             if (MemberId != Guid.Empty)
             {
-                var dto = await _familyMemberService.GetFamilyMembersByIdAsync(MemberId);
+                var memberDTO = await _familyMemberService.GetFamilyMembersByIdAsync(MemberId);
 
-                if (false)
+                var familyDTO = await _familyService.GetFamiliesByIdAsync(memberDTO.FamilyId);
+                if (!await CheckRelevancy(familyDTO.Id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
 
-                await _familyMemberService.DeleteFamilyMemberAsync(dto);
+                var currentUser = await _userManager.GetUserAsync(User);
+                var isAdmin = await _familyMemberService.GetRoleByFamilyIdAndUserId(memberDTO.FamilyId, currentUser.Id);
 
-                return RedirectToAction("Index", "FamilyMembers");
+                if (!isAdmin)
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
+                await _familyMemberService.DeleteFamilyMemberAsync(memberDTO);
+
+                return RedirectToAction("Index", "Families");
             }
             else
             {
@@ -252,5 +268,23 @@ public class FamilyMembersController : Controller
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             return BadRequest(ex.Message);
         }
+    }
+
+    private async Task<bool> CheckRelevancy(Guid familyId)
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+        if (currentUserRole[0] == "Default")
+        {
+            var dtos = await _familyService.GetFamiliesRelevantToUser(currentUser.Id);
+
+            var ids = dtos.Select(dto => dto.Id).ToList();
+
+            if (!ids.Contains(familyId))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

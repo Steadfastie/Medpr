@@ -18,23 +18,20 @@
                     await Html.RenderPartialAsync("FamilyPartial", family, ViewData);
                 }
             </div>
-            <hr />
+            @if (family.Members.Count > 1){
+                <hr />
+            }            
             @if (creator == currentUser){
                 <div class="row align-items-center">
                     <div class="col">
-                        <a class="btn btn-outline-danger" href="~/families/delete/@family.Id">Remove family</a>
-                    </div>
-                </div>
-            }
-            else{
-                <div class="row align-items-center">
-                    <div class="col">
-                        <form action="/FamilyMembers/Delete?MemberId=@removeId&UserId=@currentUser" method="post">
-                            <input type="submit" class="btn btn-outline-danger" value="Remove me from @family.Surname">
+                        <form action="/Families/Delete/@family.Id" method="post">
+                            <input type="submit" class="btn btn-outline-danger" value="Remove @family.Surname">
                         </form>
                     </div>
                 </div>
+                <br />
             }
+            
         }
     }
     else

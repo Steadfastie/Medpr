@@ -45,19 +45,6 @@ public class FamilyMemberService : IFamilyMemberService
         return list;
     }
 
-    public async Task<List<FamilyDTO>> GetFamiliesRelevantToUser(Guid id)
-    {
-        var list = await _unitOfWork.FamilyMembers
-            .FindBy(member => member.UserId == id)
-            .Select(member => member.FamilyId)
-            .ToListAsync();
-        var dtos = await _unitOfWork.Families
-            .FindBy(family => list.Contains(family.Id))
-            .Select(family => _mapper.Map<FamilyDTO>(family))
-            .ToListAsync();
-        return dtos;
-    }
-
     public async Task<List<FamilyMemberDTO>> GetMembersRelevantToFamily(Guid id)
     {
         var list = await _unitOfWork.FamilyMembers
@@ -67,17 +54,13 @@ public class FamilyMemberService : IFamilyMemberService
         return list;
     }
 
-    public async Task<List<UserDTO>> GetUsersRelevantToFamily(Guid id)
+    public async Task<bool> GetRoleByFamilyIdAndUserId(Guid familyId, Guid userId)
     {
-        var list = await _unitOfWork.FamilyMembers
-            .FindBy(member => member.FamilyId == id)
-            .Select(member => member.UserId)
-            .ToListAsync();
-        var dtos = await _unitOfWork.Users
-            .FindBy(user => list.Contains(user.Id))
-            .Select(user => _mapper.Map<UserDTO>(user))
-            .ToListAsync();
-        return dtos;
+        var isAdmin = await _unitOfWork.FamilyMembers
+            .FindBy(member => member.FamilyId == familyId && member.UserId == userId)
+            .Select(member => member.IsAdmin)
+            .FirstOrDefaultAsync();
+        return isAdmin;
     }
 
     public async Task<int> CreateFamilyMemberAsync(FamilyMemberDTO dto)

@@ -39,16 +39,23 @@
                 </div>
             }
         </form>
-        @if (isAdmin && currentUser != Model.UserId)
+        @if (isAdmin)
         {
-            <form action="/FamilyMembers/Delete?MemberId=@Model.Id&UserId=@Model.UserId" method="post" class="col-3">
+            <form action="/FamilyMembers/Delete?MemberId=@Model.Id" method="post" class="col-3">
                 <div class="col-auto align-self-center">
-                    <input type="submit" class="btn btn-outline-danger" value="Remove">
+                    @if (currentUser == Model.UserId){
+                        <input type="submit" class="btn btn-outline-danger" value="Remove me from @Model.Family.Surname">
+                    }
+                    else{
+                        <input type="submit" class="btn btn-outline-danger" value="Remove">
+                    }
                 </div>
             </form>
         }
     </div>
 </div>
+<br />
+<br />
 
 @section Scripts
     {

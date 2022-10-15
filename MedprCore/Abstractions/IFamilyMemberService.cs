@@ -9,8 +9,7 @@ public interface IFamilyMemberService
 
     Task<FamilyMemberDTO> GetFamilyMembersByIdAsync(Guid id);
 
-    Task<List<FamilyDTO>> GetFamiliesRelevantToUser(Guid id);
-    Task<List<UserDTO>> GetUsersRelevantToFamily(Guid id);
+    Task<bool> GetRoleByFamilyIdAndUserId(Guid familyId, Guid userId);
 
     Task<List<FamilyMemberDTO>> GetMembersRelevantToFamily(Guid id);
 
