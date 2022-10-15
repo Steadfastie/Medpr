@@ -142,11 +142,6 @@ public class FamiliesController : Controller
         {
             if (id != Guid.Empty)
             {
-                if (!await CheckRelevancy(id))
-                {
-                    return RedirectToAction("Denied", "Home");
-                }
-
                 var dto = await _familyService.GetFamiliesByIdAsync(id);
                 var currentUser = await _userManager.GetUserAsync(User);
 
@@ -171,25 +166,7 @@ public class FamiliesController : Controller
         }
     }
 
-    private async Task<bool> CheckRelevancy(Guid familyId)
-    {
-        var currentUser = await _userManager.GetUserAsync(User);
-        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
-        if (currentUserRole[0] == "Default")
-        {
-            var dtos = await _familyService.GetFamiliesRelevantToUser(currentUser.Id);
-
-            var ids = dtos.Select(dto => dto.Id).ToList();
-
-            if (!ids.Contains(familyId))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private List<FamilyMemberModel> SortMembers(List<FamilyMemberModel> membersModels, FamilyModel family)
+    private static List<FamilyMemberModel> SortMembers(List<FamilyMemberModel> membersModels, FamilyModel family)
     {
         var sorted = new List<FamilyMemberModel>();
 
