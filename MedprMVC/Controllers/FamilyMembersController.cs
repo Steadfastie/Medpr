@@ -62,7 +62,7 @@ public class FamilyMembersController : Controller
 
                 await _familyMemberService.CreateFamilyMemberAsync(dto);
 
-                return RedirectToAction("Index", "FamilyMembers");
+                return RedirectToAction("Create", "FamilyMembers");
             }
 
             else

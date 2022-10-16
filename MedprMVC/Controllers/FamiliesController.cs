@@ -160,7 +160,7 @@ public class FamiliesController : Controller
                 var currentUser = await _userManager.GetUserAsync(User);
                 var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-                if (currentUserRole[0] == "Default" && dto.Creator != currentUser.Id)
+                if (currentUserRole[0] == "Default" && dto.Creator != currentUser.Id || dto == null)
                 {
                     return RedirectToAction("Denied", "Home");
                 }

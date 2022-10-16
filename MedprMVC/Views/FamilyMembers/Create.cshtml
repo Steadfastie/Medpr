@@ -9,29 +9,27 @@
     </div>
 
     <form asp-controller="FamilyMembers" asp-action="Create" method="post" class="row gx-3 gy-2 align-items-center">
-        <div class="col-sm-3">
-            <label for="family" class="form-label"></label>
-            <select asp-for="FamilyId" asp-items="@Model.Families" id="family">
+        <div class="col-3">
+            <select asp-for="FamilyId" asp-items="@Model.Families" id="family" class="col-12">
                  <option selected="selected" disabled="disabled">Select family</option>
             </select>
             <span asp-validation-for="FamilyId" class="text-danger"></span>
             <a class="btn btn-primary" asp-action="Create" asp-controller="Families">Add doctor</a>
         </div>
-        <div class="col-sm-3">
-            <label for="user" class="form-label"></label>
-            <select asp-for="UserId" asp-items="@Model.Users" id="user">
+        <div class="col-3">
+            <select asp-for="UserId" asp-items="@Model.Users" id="user" class="col-12">
                  <option selected="selected" disabled="disabled">Select user</option>
             </select>
             <span asp-validation-for="UserId" class="text-danger"></span>
             <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-3">
             <label for="isAdmin" class="form-check-label">Can see family info</label>
             <input asp-for="IsAdmin" id="isAdmin" class="form-check-input">
             <span asp-validation-for="IsAdmin" class="text-danger"></span>
         </div>
 
-        <div class="col-sm-3 align-self-center">
+        <div class="col-3 align-self-center">
             <input type="submit" class="btn btn-primary col-sm-auto" value="Submit">
         </div>
 
