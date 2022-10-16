@@ -3,8 +3,10 @@
     ViewData["Title"] = "Add family tie to Medpr";
 }
 
-<div>
-    <h1>Add family tie</h1>
+<div class ="container text-center">
+    <div class="row align-items-center">
+        <h2>Add user to family</h2>
+    </div>
 
     <form asp-controller="FamilyMembers" asp-action="Create" method="post" class="row gx-3 gy-2 align-items-center">
         <div class="col-sm-3">
@@ -29,8 +31,9 @@
             <span asp-validation-for="IsAdmin" class="text-danger"></span>
         </div>
 
-
-        <input type="submit" class="btn btn-primary col-sm-3" value="Submit">
+        <div class="col-sm-3 align-self-center">
+            <input type="submit" class="btn btn-primary col-sm-auto" value="Submit">
+        </div>
 
     </form>
 </div>

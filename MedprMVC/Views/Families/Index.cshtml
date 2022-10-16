@@ -10,7 +10,6 @@
     {
         foreach (var family in Model)
         {
-            var removeId = family.Members.Where(member => member.UserId == currentUser).FirstOrDefault().Id;
             var creator = Guid.Parse(ViewData[$"Creator of {family.Surname}"].ToString());
 
             <div class="row align-items-center">
@@ -21,7 +20,7 @@
             @if (family.Members.Count > 1){
                 <hr />
             }            
-            @if (creator == currentUser){
+            @if (creator == currentUser || User.IsInRole("Admin")){
                 <div class="row align-items-center">
                     <div class="col">
                         <form action="/Families/Delete/@family.Id" method="post">

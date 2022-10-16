@@ -40,8 +40,17 @@ public class FamiliesController : Controller
         try
         {
             var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-            var dtos = await _familyService.GetFamiliesRelevantToUser(currentUser.Id);
+            List<FamilyDTO> dtos;
+            if (currentUserRole[0] == "Default")
+            {
+                dtos = await _familyService.GetFamiliesRelevantToUser(currentUser.Id);
+            }
+            else
+            {
+                dtos = await _familyService.GetAllFamiliesAsync();
+            }
             var familiesModels = _mapper.Map<List<FamilyModel>>(dtos);
 
             if (familiesModels.Any())
@@ -53,11 +62,16 @@ public class FamiliesController : Controller
 
                     foreach (var member in membersModels)
                     {
-                        if (member.UserId == currentUser.Id)
+                        if (currentUserRole[0] == "Default" && member.UserId == currentUser.Id)
                         {
                             var isAdmin = member.IsAdmin;
                             ViewData[$"{family.Surname}"] = isAdmin;
                         }
+                        if (currentUserRole[0] == "Admin")
+                        {
+                            ViewData[$"{family.Surname}"] = true;
+                        }
+
                         var userDTO = await _userService.GetUsersByIdAsync(member.UserId);
                         var userModel = _mapper.Map<UserModel>(userDTO);
                         member.User = userModel;
@@ -144,8 +158,9 @@ public class FamiliesController : Controller
             {
                 var dto = await _familyService.GetFamiliesByIdAsync(id);
                 var currentUser = await _userManager.GetUserAsync(User);
+                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-                if (dto.Creator != currentUser.Id)
+                if (currentUserRole[0] == "Default" && dto.Creator != currentUser.Id)
                 {
                     return RedirectToAction("Denied", "Home");
                 }

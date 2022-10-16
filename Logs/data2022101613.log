@@ -1,0 +1,1271 @@
+2022-10-16 13:03:06.824 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:03:07.010 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:03:07.012 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:03:07.016 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:03:07.017 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:03:07.018 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:03:07.874 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:03:08.104 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:03:08.113 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:03:08.796 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:03:08.983 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:03:08.999 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:03:09.005 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 885.2195ms
+2022-10-16 13:03:09.011 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:03:09.037 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:03:09.039 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1166.9849ms
+2022-10-16 13:03:09.046 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:03:09.049 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:03:09.079 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:03:09.116 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:03:09.259 +03:00 [INF] Executed ViewResult - view Index executed in 172.979ms.
+2022-10-16 13:03:09.267 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 215.982ms
+2022-10-16 13:03:09.269 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:03:09.292 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 254.7201ms
+2022-10-16 13:03:09.316 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:03:09.322 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.0356ms
+2022-10-16 13:03:09.357 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:03:09.380 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.1702ms
+2022-10-16 13:03:10.664 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:03:10.677 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:03:10.686 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:03:10.696 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:03:13.001 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:03:13.904 +03:00 [INF] Executed DbCommand (89ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:03:15.387 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:03:28.391 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:04:05.045 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:04:07.585 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:04:08.334 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:04:11.409 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:04:11.421 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:04:11.425 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:04:11.430 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:04:11.436 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:04:11.440 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:04:11.445 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:04:11.449 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:04:11.454 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:04:11.458 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:04:11.463 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:04:11.488 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:05:55.036 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:05:55.230 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:05:55.231 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:05:55.235 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:05:55.236 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:05:55.237 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:05:55.921 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:05:56.154 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:05:56.163 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:05:56.855 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:05:57.056 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:05:57.075 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:05:57.081 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 910.97ms
+2022-10-16 13:05:57.088 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:05:57.114 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:05:57.118 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1199.8842ms
+2022-10-16 13:05:57.135 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:05:57.138 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:05:57.192 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:05:57.243 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:05:57.384 +03:00 [INF] Executed ViewResult - view Index executed in 183.5119ms.
+2022-10-16 13:05:57.389 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 248.6041ms
+2022-10-16 13:05:57.392 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:05:57.423 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 309.3499ms
+2022-10-16 13:05:57.446 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:05:57.452 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.4490ms
+2022-10-16 13:05:57.486 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:05:57.507 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.4003ms
+2022-10-16 13:05:58.724 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:05:58.737 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:05:58.746 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:05:58.756 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:06:01.806 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:06:02.721 +03:00 [INF] Executed DbCommand (77ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:06:02.910 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:06:02.936 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:06:02.999 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:06:03.044 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:06:03.055 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:06:03.065 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:06:03.072 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:06:03.077 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:06:03.081 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:06:03.113 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:06:03.118 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:06:03.123 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:06:03.127 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:06:03.131 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:06:03.135 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:06:03.139 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:06:03.148 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:07:19.329 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:07:19.494 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:07:19.496 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:07:19.499 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:07:19.500 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:07:19.501 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:07:19.944 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:07:20.181 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:07:20.190 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:07:20.859 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:07:21.051 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:07:21.068 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:07:21.073 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 875.7633ms
+2022-10-16 13:07:21.079 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:07:21.106 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:07:21.107 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1165.7824ms
+2022-10-16 13:07:21.114 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:07:21.117 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:07:21.151 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:07:21.160 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:07:21.302 +03:00 [INF] Executed ViewResult - view Index executed in 145.0269ms.
+2022-10-16 13:07:21.309 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 189.2536ms
+2022-10-16 13:07:21.312 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:07:21.334 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 228.6868ms
+2022-10-16 13:07:21.359 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:07:21.365 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.3479ms
+2022-10-16 13:07:21.398 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:07:21.419 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.2358ms
+2022-10-16 13:07:22.320 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:07:22.333 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:07:22.342 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:07:22.353 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:07:22.449 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:07:23.361 +03:00 [INF] Executed DbCommand (78ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:07:23.535 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:07:23.564 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:07:23.626 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:07:23.672 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:07:23.684 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:07:23.694 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:07:23.701 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:07:23.705 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:07:23.709 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:07:23.715 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:07:23.720 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:07:23.724 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:07:23.730 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:07:23.735 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:07:23.738 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:07:23.743 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:07:23.750 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:10:15.897 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:10:16.098 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:10:16.099 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:10:16.103 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:10:16.104 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:10:16.105 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:10:16.783 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:10:17.064 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:10:17.073 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:10:17.772 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:10:17.957 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:10:17.973 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:10:17.979 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 899.5209ms
+2022-10-16 13:10:17.986 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:10:18.011 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:10:18.015 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1236.3191ms
+2022-10-16 13:10:18.032 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:10:18.034 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:10:18.071 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:10:18.116 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:10:18.262 +03:00 [INF] Executed ViewResult - view Index executed in 185.8141ms.
+2022-10-16 13:10:18.268 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 232.2008ms
+2022-10-16 13:10:18.271 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:10:18.294 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 282.9915ms
+2022-10-16 13:10:18.319 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:10:18.328 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 9.8001ms
+2022-10-16 13:10:18.358 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:10:18.384 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 25.6177ms
+2022-10-16 13:10:19.580 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:10:19.593 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:10:19.602 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:10:19.611 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:10:19.747 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:10:20.661 +03:00 [INF] Executed DbCommand (72ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:10:20.839 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:10:20.865 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:10:20.926 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:10:20.973 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:10:20.984 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:10:20.993 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:10:21.000 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:10:21.005 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:10:21.009 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:10:21.056 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:10:21.061 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:10:21.065 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:10:21.070 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:10:21.074 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:10:21.078 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:10:21.082 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:10:21.091 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:10:21.150 +03:00 [INF] Executed ViewResult - view Index executed in 60.1945ms.
+2022-10-16 13:10:21.152 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 1546.5673ms
+2022-10-16 13:10:21.154 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:10:21.159 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 1579.2639ms
+2022-10-16 13:10:21.189 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:10:21.193 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:10:21.207 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 14.0718ms
+2022-10-16 13:10:21.210 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.0279ms
+2022-10-16 13:11:13.660 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:11:13.667 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:11:13.670 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:11:13.674 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:11:13.709 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:11:13.715 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:11:13.722 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:11:13.727 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:11:13.731 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:11:13.735 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:11:13.739 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:11:13.746 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:11:13.750 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:11:13.755 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:11:13.759 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:11:13.764 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:11:13.768 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:11:13.772 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:11:13.777 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:11:13.781 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:11:13.784 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:11:13.790 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:11:13.794 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:11:13.814 +03:00 [INF] Executed ViewResult - view Index executed in 21.1255ms.
+2022-10-16 13:11:13.815 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 141.848ms
+2022-10-16 13:11:13.817 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:11:13.821 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 161.1578ms
+2022-10-16 13:11:13.853 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:11:13.854 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:11:13.858 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.6487ms
+2022-10-16 13:11:13.866 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 13.4527ms
+2022-10-16 13:13:11.723 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:13:11.736 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:13:11.737 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:13:11.741 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:13:14.231 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:13:14.252 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:13:15.017 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:13:20.418 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:13:37.939 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:17:08.126 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:17:08.353 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:17:08.354 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:17:08.358 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:17:08.359 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:17:08.360 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:17:09.036 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:17:09.271 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:17:09.280 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:17:09.967 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:17:10.159 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:17:10.178 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:17:10.184 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 896.698ms
+2022-10-16 13:17:10.191 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:17:10.217 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:17:10.220 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1186.5176ms
+2022-10-16 13:17:10.226 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:17:10.229 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:17:10.261 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:17:10.300 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:17:10.446 +03:00 [INF] Executed ViewResult - view Index executed in 180.4707ms.
+2022-10-16 13:17:10.453 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 221.3414ms
+2022-10-16 13:17:10.456 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:17:10.478 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 260.1942ms
+2022-10-16 13:17:10.501 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:17:10.507 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.1656ms
+2022-10-16 13:17:10.549 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:17:10.585 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.2811ms
+2022-10-16 13:17:18.225 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:17:18.238 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:17:18.247 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:17:18.257 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:17:18.384 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:17:19.245 +03:00 [INF] Executed DbCommand (70ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:17:19.423 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:17:19.450 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:17:19.511 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:17:19.557 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:19.571 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:19.579 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:19.587 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:19.591 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:19.596 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:19.647 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:17:19.652 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:19.657 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:19.662 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:19.667 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:19.671 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:19.676 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:19.685 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:17:19.740 +03:00 [INF] Executed ViewResult - view Index executed in 55.8693ms.
+2022-10-16 13:17:19.741 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 1490.5599ms
+2022-10-16 13:17:19.743 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:17:19.748 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 1523.3318ms
+2022-10-16 13:17:19.771 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:17:19.771 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:17:19.772 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8148ms
+2022-10-16 13:17:19.787 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 16.4447ms
+2022-10-16 13:17:59.170 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:17:59.179 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:17:59.188 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:17:59.192 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:17:59.230 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:17:59.237 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:17:59.244 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:17:59.248 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:17:59.255 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:17:59.261 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:59.268 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:59.272 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:59.277 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:59.281 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:59.286 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:59.291 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:17:59.296 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:59.300 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:59.305 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:59.310 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:59.315 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:17:59.319 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:17:59.323 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:17:59.337 +03:00 [INF] Executed ViewResult - view Index executed in 15.5431ms.
+2022-10-16 13:17:59.339 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 147.8278ms
+2022-10-16 13:17:59.341 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:17:59.345 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 175.0166ms
+2022-10-16 13:17:59.378 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:17:59.378 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:17:59.380 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9527ms
+2022-10-16 13:17:59.397 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 19.0273ms
+2022-10-16 13:25:18.242 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/FamilyMembers/Delete?MemberId=8133b052-593c-4aca-a8ed-8d87199e711f application/x-www-form-urlencoded 0
+2022-10-16 13:25:18.252 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.DeleteConfirmed (MedprMVC)'
+2022-10-16 13:25:18.264 +03:00 [INF] Route matched with {action = "Delete", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteConfirmed(System.Guid) on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-16 13:25:18.269 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:25:27.960 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:25:28.150 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:25:28.151 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:25:28.154 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:25:28.155 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:25:28.156 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:25:28.526 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:25:28.761 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:25:28.772 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:25:29.467 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:25:29.657 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:25:29.673 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:25:29.680 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 901.4369ms
+2022-10-16 13:25:29.686 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:25:29.709 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:25:29.710 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1187.1983ms
+2022-10-16 13:25:29.717 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:25:29.720 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:25:29.750 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:25:29.759 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:25:29.896 +03:00 [INF] Executed ViewResult - view Index executed in 141.1791ms.
+2022-10-16 13:25:29.904 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 181.613ms
+2022-10-16 13:25:29.906 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:25:29.928 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 219.3559ms
+2022-10-16 13:25:29.954 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:25:29.959 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.5214ms
+2022-10-16 13:25:29.993 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:25:30.028 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.7579ms
+2022-10-16 13:25:31.027 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:25:31.040 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:25:31.050 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:25:31.060 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:25:31.153 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:25:32.024 +03:00 [INF] Executed DbCommand (73ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:25:32.223 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:25:32.251 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:25:32.310 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:25:32.358 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:25:32.369 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:25:32.379 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:25:32.385 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:25:32.391 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:25:32.395 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:25:32.401 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:25:32.407 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:25:32.410 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:25:32.414 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:25:32.419 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:25:32.423 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:25:32.428 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:25:32.436 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:25:32.488 +03:00 [INF] Executed ViewResult - view Index executed in 52.4972ms.
+2022-10-16 13:25:32.489 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 1435.0681ms
+2022-10-16 13:25:32.491 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:25:32.496 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 1468.3568ms
+2022-10-16 13:25:32.523 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:25:32.524 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:25:32.528 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.8588ms
+2022-10-16 13:25:32.538 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.2920ms
+2022-10-16 13:25:34.924 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/FamilyMembers/Delete?MemberId=8133b052-593c-4aca-a8ed-8d87199e711f application/x-www-form-urlencoded 0
+2022-10-16 13:25:34.927 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.DeleteConfirmed (MedprMVC)'
+2022-10-16 13:25:34.939 +03:00 [INF] Route matched with {action = "Delete", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteConfirmed(System.Guid) on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-16 13:25:34.943 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:25:40.168 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='8133b052-593c-4aca-a8ed-8d87199e711f'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:25:41.016 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:25:41.598 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:25:41.604 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:25:42.149 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:25:42.754 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__familyId_0='4809715a-3104-425f-be6b-a3a5f4627fca', @__userId_1='b7ab1335-9243-4399-a1a1-08daab78df95'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[IsAdmin]
+FROM [FamilyMembers] AS [f]
+WHERE ([f].[FamilyId] = @__familyId_0) AND ([f].[UserId] = @__userId_1)
+2022-10-16 13:25:43.818 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:28:37.421 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:28:37.612 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:28:37.613 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:28:37.616 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:28:37.618 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:28:37.619 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:28:38.309 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:28:39.270 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:28:40.129 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:28:40.298 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2022-10-16 13:28:40.343 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:28:40.363 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-16 13:28:40.385 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2022-10-16 13:28:40.400 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:28:40.408 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:28:40.637 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:28:40.647 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:28:40.664 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:28:40.672 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 255.1622ms
+2022-10-16 13:28:40.675 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:28:40.704 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:28:40.708 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 2401.1602ms
+2022-10-16 13:28:40.719 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:28:40.721 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:28:40.752 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:28:40.760 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:28:40.897 +03:00 [INF] Executed ViewResult - view Index executed in 140.3079ms.
+2022-10-16 13:28:40.904 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 180.6797ms
+2022-10-16 13:28:40.907 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:28:40.936 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 231.6783ms
+2022-10-16 13:28:40.963 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:28:40.970 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 7.1377ms
+2022-10-16 13:28:41.004 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:28:41.026 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.9494ms
+2022-10-16 13:28:41.761 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:28:41.773 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:28:41.778 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:28:41.790 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:28:41.873 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:28:41.882 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:28:41.889 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:28:41.918 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:28:41.977 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:28:42.024 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:28:42.035 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:28:42.042 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:28:42.049 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:28:42.053 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:28:42.057 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:28:42.063 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:28:42.068 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:28:42.073 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:28:42.077 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:28:42.081 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:28:42.085 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:28:42.089 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:28:42.097 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:28:42.154 +03:00 [INF] Executed ViewResult - view Index executed in 57.9981ms.
+2022-10-16 13:28:42.156 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 374.4962ms
+2022-10-16 13:28:42.158 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:28:42.163 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 402.2657ms
+2022-10-16 13:28:42.193 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:28:42.195 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:28:42.197 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8387ms
+2022-10-16 13:28:42.218 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 24.7298ms
+2022-10-16 13:28:44.170 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/FamilyMembers/Delete?MemberId=8133b052-593c-4aca-a8ed-8d87199e711f application/x-www-form-urlencoded 0
+2022-10-16 13:28:44.173 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.DeleteConfirmed (MedprMVC)'
+2022-10-16 13:28:44.186 +03:00 [INF] Route matched with {action = "Delete", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteConfirmed(System.Guid) on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-16 13:28:44.189 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:28:47.317 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='8133b052-593c-4aca-a8ed-8d87199e711f'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:28:47.917 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:28:48.668 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:28:48.674 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:28:49.255 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:28:52.405 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:29:05.559 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:29:05.727 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:29:05.728 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:29:05.731 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:29:05.733 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:29:05.734 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:29:06.452 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:29:06.671 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:29:06.680 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:29:07.378 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:29:07.557 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:29:07.574 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:29:07.581 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 893.0384ms
+2022-10-16 13:29:07.586 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:29:07.610 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:29:07.613 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1163.7057ms
+2022-10-16 13:29:07.619 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:29:07.622 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:29:07.651 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:29:07.660 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:29:07.797 +03:00 [INF] Executed ViewResult - view Index executed in 141.0659ms.
+2022-10-16 13:29:07.834 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 209.7556ms
+2022-10-16 13:29:07.836 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:29:07.857 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 247.5888ms
+2022-10-16 13:29:07.877 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:29:07.883 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.8722ms
+2022-10-16 13:29:07.919 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:29:07.938 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 18.7863ms
+2022-10-16 13:29:09.346 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:29:09.359 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:29:09.369 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:29:09.379 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:29:09.467 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:29:10.308 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:29:10.488 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:29:10.513 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:29:10.576 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:29:10.621 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:29:10.632 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:29:10.641 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:29:10.649 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:29:10.653 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:29:10.658 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:29:10.664 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:29:10.669 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:29:10.673 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:29:10.678 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:29:10.682 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:29:10.686 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:29:10.691 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:29:10.698 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:29:10.748 +03:00 [INF] Executed ViewResult - view Index executed in 50.5054ms.
+2022-10-16 13:29:10.750 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 1376.9249ms
+2022-10-16 13:29:10.751 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:29:10.756 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 1409.7890ms
+2022-10-16 13:29:10.782 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:29:10.789 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:29:10.793 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.8039ms
+2022-10-16 13:29:10.793 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.6391ms
+2022-10-16 13:29:13.836 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Families/Delete/4809715a-3104-425f-be6b-a3a5f4627fca application/x-www-form-urlencoded 0
+2022-10-16 13:29:13.884 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Delete (MedprMVC)'
+2022-10-16 13:29:13.896 +03:00 [INF] Route matched with {action = "Delete", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(System.Guid) on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:29:13.900 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:29:18.112 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:29:18.955 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:29:18.960 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:29:19.581 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:35:34.346 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-16 13:35:34.532 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-16 13:35:34.533 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-16 13:35:34.537 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-16 13:35:34.538 +03:00 [INF] Hosting environment: Development
+2022-10-16 13:35:34.539 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-16 13:35:35.348 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-16 13:35:35.566 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:35:35.576 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:35:36.234 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-16 13:35:36.418 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:35:36.436 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-16 13:35:36.442 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 858.0324ms
+2022-10-16 13:35:36.448 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-16 13:35:36.472 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-16 13:35:36.476 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1131.0989ms
+2022-10-16 13:35:36.482 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:35:36.485 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-16 13:35:36.514 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:35:36.523 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:35:36.662 +03:00 [INF] Executed ViewResult - view Index executed in 142.7235ms.
+2022-10-16 13:35:36.671 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 183.6793ms
+2022-10-16 13:35:36.673 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-16 13:35:36.695 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 222.8567ms
+2022-10-16 13:35:36.731 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:35:36.736 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.0305ms
+2022-10-16 13:35:36.767 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:35:36.783 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 16.2193ms
+2022-10-16 13:35:40.708 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-16 13:35:40.722 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:35:40.731 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:35:40.741 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:35:40.826 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:35:41.671 +03:00 [INF] Executed DbCommand (68ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:35:41.857 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-16 13:35:41.882 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-16 13:35:41.944 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:35:41.997 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:35:42.008 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:35:42.017 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:35:42.024 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:35:42.029 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:35:42.033 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:35:42.040 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-16 13:35:42.045 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:35:42.049 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:35:42.053 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:35:42.057 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:35:42.062 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-16 13:35:42.066 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:35:42.074 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-16 13:35:42.130 +03:00 [INF] Executed ViewResult - view Index executed in 55.9481ms.
+2022-10-16 13:35:42.131 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 1396.4117ms
+2022-10-16 13:35:42.133 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-16 13:35:42.138 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 1429.9800ms
+2022-10-16 13:35:42.162 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-16 13:35:42.170 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-16 13:35:42.174 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.2033ms
+2022-10-16 13:35:42.184 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.4155ms
+2022-10-16 13:35:45.397 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/Families/Delete/4809715a-3104-425f-be6b-a3a5f4627fca application/x-www-form-urlencoded 0
+2022-10-16 13:35:45.400 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Delete (MedprMVC)'
+2022-10-16 13:35:45.413 +03:00 [INF] Route matched with {action = "Delete", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(System.Guid) on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-16 13:35:45.417 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-16 13:35:49.853 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-16 13:35:50.565 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-16 13:35:50.571 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-16 13:35:51.248 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0

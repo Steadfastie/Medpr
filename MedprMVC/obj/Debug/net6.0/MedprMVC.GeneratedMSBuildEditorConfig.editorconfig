@@ -115,24 +115,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5TWVtYmVyc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/FamilyMembers/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5TWVtYmVyc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/FamilyMembers/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5TWVtYmVyc1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/FamilyMembers/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5TWVtYmVyc1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/FamilyMembers/FamilyMemberPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5TWVtYmVyc1xGYW1pbHlNZW1iZXJQYXJ0aWFsLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/FamilyMembers/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWx5TWVtYmVyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Skyrim/Code/ASPNET/Medpr/MedprMVC/Views/Home/Denied.cshtml]

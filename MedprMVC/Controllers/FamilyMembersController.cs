@@ -36,82 +36,13 @@ public class FamilyMembersController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index(int page)
-    {
-        try
-        {
-            var dtos = await _familyMemberService.GetFamilyMembersByPageNumberAndPageSizeAsync(page, _pagesize);
-
-            List<FamilyMemberModel> models = new();
-
-            foreach (var dto in dtos)
-            {
-                var familySelected = await _familyService.GetFamiliesByIdAsync(dto.FamilyId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-
-                var model = _mapper.Map<FamilyMemberModel>(dto);
-
-                model.Family = _mapper.Map<FamilyModel>(familySelected);
-                model.User = _mapper.Map<UserModel>(userSelected);
-
-                models.Add(model);
-            }
-
-            if (models.Any())
-            {
-                return View(models);
-            }
-            else
-            {
-                return View(null);
-            }
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
-        }
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> Details(Guid id)
-    {
-        try
-        {
-            var dto = await _familyMemberService.GetFamilyMembersByIdAsync(id);
-
-            if (dto != null)
-            {
-                var familySelected = await _familyService.GetFamiliesByIdAsync(dto.FamilyId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-
-                var model = _mapper.Map<FamilyMemberModel>(dto);
-
-                model.Family = _mapper.Map<FamilyModel>(familySelected);
-                model.User = _mapper.Map<UserModel>(userSelected);
-
-                return View(model);
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
-        }
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> CreateAsync()
+    public async Task<IActionResult> Create()
     {
         var allFamilys = await _familyService.GetAllFamiliesAsync();
         var allUsers = await _userService.GetAllUsersAsync();
         FamilyMemberModel model = new();
         model.Families = new SelectList(_mapper.Map<List<FamilyModel>>(allFamilys), "Id", "Surname");
-        model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "FullName");
+        model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
         return View(model);
     }
 
@@ -137,46 +68,6 @@ public class FamilyMembersController : Controller
             else
             {
                 return View(model);
-            }
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
-        }
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> Edit(Guid id)
-    {
-        try
-        {
-            if (id != Guid.Empty)
-            {
-                var dto = await _familyMemberService.GetFamilyMembersByIdAsync(id);
-                if (dto == null)
-                {
-                    return BadRequest();
-                }
-
-                var familySelected = await _familyService.GetFamiliesByIdAsync(dto.FamilyId);
-                var allFamilys = await _familyService.GetAllFamiliesAsync();
-
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-                var allUsers = await _userService.GetAllUsersAsync();
-
-                var editModel = _mapper.Map<FamilyMemberModel>(dto);
-
-                editModel.Family = _mapper.Map<FamilyModel>(familySelected);
-                editModel.Families = new SelectList(_mapper.Map<List<FamilyModel>>(allFamilys), "Id", "Surname", familySelected.Id.ToString());
-                editModel.User = _mapper.Map<UserModel>(userSelected);
-                editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "FullName", userSelected.Id.ToString());
-
-                return View(editModel);
-            }
-            else
-            {
-                return BadRequest();
             }
         }
         catch (Exception ex)
@@ -231,25 +122,28 @@ public class FamilyMembersController : Controller
     }
 
     [HttpPost]
-    [ActionName("Delete")]
-    public async Task<IActionResult> DeleteConfirmed(Guid MemberId)
+    public async Task<IActionResult> Delete(Guid MemberId)
     {
         try
         {
             if (MemberId != Guid.Empty)
             {
                 var memberDTO = await _familyMemberService.GetFamilyMembersByIdAsync(MemberId);
-
                 var familyDTO = await _familyService.GetFamiliesByIdAsync(memberDTO.FamilyId);
-                if (!await CheckRelevancy(familyDTO.Id))
+                var currentUser = await _userManager.GetUserAsync(User);
+                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+                bool isAdmin;
+                if (currentUserRole[0] == "Admin")
                 {
-                    return RedirectToAction("Denied", "Home");
+                    isAdmin = true;
+                }
+                else
+                {
+                    isAdmin = await _familyMemberService.GetRoleByFamilyIdAndUserId(memberDTO.FamilyId, currentUser.Id); ;
                 }
 
-                var currentUser = await _userManager.GetUserAsync(User);
-                var isAdmin = await _familyMemberService.GetRoleByFamilyIdAndUserId(memberDTO.FamilyId, currentUser.Id);
-
-                if (!isAdmin)
+                if (!await CheckRelevancy(familyDTO.Id) || !isAdmin)
                 {
                     return RedirectToAction("Denied", "Home");
                 }
