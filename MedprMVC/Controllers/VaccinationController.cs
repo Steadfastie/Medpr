@@ -10,6 +10,7 @@ using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC.Controllers;
 
@@ -17,6 +18,8 @@ namespace MedprMVC.Controllers;
 public class VaccinationsController : Controller
 {
     private readonly IVaccinationService _vaccinationService;
+    private readonly IFamilyService _familyService;
+    private readonly IFamilyMemberService _familyMemberService;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IVaccineService _vaccineService;
     private readonly IUserService _userService;
@@ -24,6 +27,8 @@ public class VaccinationsController : Controller
     private readonly int _pagesize = 15;
     public VaccinationsController(IVaccinationService vaccinationService,
         IVaccineService vaccineService,
+        IFamilyService familyService,
+        IFamilyMemberService familyMemberService,
         IUserService userService, 
         IMapper mapper, 
         UserManager<IdentityUser<Guid>> userManager)
@@ -33,6 +38,8 @@ public class VaccinationsController : Controller
         _mapper = mapper;
         _userService = userService;
         _userManager = userManager;
+        _familyMemberService = familyMemberService;
+        _familyService = familyService;
     }
 
     [HttpGet]
@@ -43,10 +50,20 @@ public class VaccinationsController : Controller
             var currentUser = await _userManager.GetUserAsync(User);
             var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-            List<VaccinationDTO> dtos;
+            List<VaccinationDTO> dtos = new();
             if (currentUserRole[0] == "Default")
             {
-                dtos = await _vaccinationService.GetVaccinationsRelevantToUser(currentUser.Id);
+                List<Guid> users = new()
+                {
+                    currentUser.Id
+                };
+                users.AddRange(await GetWardedByUserPeople(currentUser.Id));
+
+                foreach (var user in users)
+                {
+                    var userVaccinations = await _vaccinationService.GetVaccinationsRelevantToUser(user);
+                    dtos.AddRange(userVaccinations);
+                }
             }
             else
             {
@@ -362,5 +379,27 @@ public class VaccinationsController : Controller
             }
         }
         return true;
+    }
+
+    private async Task<List<Guid>> GetWardedByUserPeople(Guid userId)
+    {
+        var families = await _familyService.GetFamiliesRelevantToUser(userId);
+        var usersInAllFamilies = new List<Guid>();
+
+        foreach (var family in families)
+        {
+            var membersDTO = await _familyMemberService.GetMembersRelevantToFamily(family.Id);
+            var isCurrentUserAdmin = membersDTO
+                .Where(member => member.UserId == userId)
+                .ToList()[0]
+                .IsAdmin;
+            if (isCurrentUserAdmin)
+            {
+                var wardedPeople = membersDTO.Select(member => member.UserId).Where(member => member != userId);
+                usersInAllFamilies.AddRange(wardedPeople);
+            }
+        }
+
+        return usersInAllFamilies;
     }
 }
