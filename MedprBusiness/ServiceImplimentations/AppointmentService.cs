@@ -43,15 +43,10 @@ public class AppointmentService : IAppointmentService
         return list;
     }
 
-    public Task<List<AppointmentDTO>> GetAppointmentsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<AppointmentDTO>> GetAllAppointments()
     {
-        var list = _unitOfWork.Appointments
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .Select(appointment => _mapper.Map<AppointmentDTO>(appointment))
-            .ToListAsync();
-        return list;
+        var list = await _unitOfWork.Appointments.Get().ToListAsync();
+        return list.Select(appointment => _mapper.Map<AppointmentDTO>(appointment)).ToList();
     }
 
     public async Task<int> CreateAppointmentAsync(AppointmentDTO dto)

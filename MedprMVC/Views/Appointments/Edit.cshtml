@@ -28,14 +28,8 @@
             <a class="btn btn-primary" asp-action="Create" asp-controller="Doctors">Add doctor</a>
         </div>
         <div class="mb-3">
-            <label for="user" class="form-label">User</label>
-            <select asp-for="UserId" asp-items="@Model.Users" id="user">
-            </select>
-            <span asp-validation-for="UserId" class="text-danger"></span>
-            @if (User.IsInRole("Admin"))
-            {
-                <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
-            }
+            <label for="user" class="form-label">User: <em>@Model.User.Login</em></label>
+            <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
         </div>
 
 

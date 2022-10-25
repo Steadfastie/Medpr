@@ -22,12 +22,20 @@
                 </select>
             </div>
             <div class="col">
-                <label for="user" class="form-label"></label>
-                <select asp-for="UserId" asp-items="@Model.Users" id="user">.
-                    @if (User.IsInRole("Admin")){
-                        <option selected="selected" disabled="disabled">Select user</option>
-                    }
-                </select>
+                @if (Model.Users != null)
+                {
+                    <label for="user" class="form-label">User</label>
+                    <select asp-for="UserId" asp-items="@Model.Users" id="user">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <option selected="selected" disabled="disabled">Select user</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
+                }
             </div>
         </div>
         <br>

@@ -4,8 +4,7 @@ namespace MedprCore.Abstractions;
 
 public interface IPrescriptionService
 {
-    Task<List<PrescriptionDTO>> GetPrescriptionsByPageNumberAndPageSizeAsync
-        (int pageNumber, int pageSize);
+    Task<List<PrescriptionDTO>> GetAllPrescriptions();
     Task<List<PrescriptionDTO>> GetPrescriptionsRelevantToUser(Guid id);
 
     Task<PrescriptionDTO> GetPrescriptionsByIdAsync(Guid id);

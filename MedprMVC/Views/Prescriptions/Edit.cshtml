@@ -20,9 +20,8 @@
                 </select>
             </div>
             <div class="col">
-                <label for="user" class="form-label"></label>
-                <select asp-for="UserId" asp-items="@Model.Users" id="user">
-                </select>
+                <label for="user" class="form-label">User: <em>@Model.User.Login</em></label>
+                <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
             </div>
         </div>
         <br>

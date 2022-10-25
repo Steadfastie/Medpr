@@ -2,12 +2,12 @@
 
 <div>
     <h3>
-        @Html.DisplayFor(modelItem => Model.Date)
+        @Html.DisplayFor(modelItem => Model.Date) (@Model.DaysOfProtection)
     </h3>
 
     <h5>Vaccine taken:</h5>
     <div>
-        @Model.Vaccine.Name
+        @Model.Vaccine.Name - 
         @Model.Vaccine.Reason
     </div>
 
@@ -15,7 +15,6 @@
     <div>
         @Model.User.FullName
         @Model.User.Login
-        @Model.User.DateOfBirth
     </div>
 </div>
 

@@ -25,7 +25,6 @@ public class VaccinationsController : Controller
     private readonly IVaccineService _vaccineService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
-    private readonly int _pagesize = 15;
     public VaccinationsController(IVaccinationService vaccinationService,
         IVaccineService vaccineService,
         IFamilyService familyService,
@@ -77,7 +76,7 @@ public class VaccinationsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -113,39 +112,54 @@ public class VaccinationsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
     [HttpGet]
     public async Task<IActionResult> CreateAsync()
     {
-        var allVaccines = await _vaccineService.GetAllVaccinesAsync();
-        VaccinationModel model = new()
+        try
         {
-            Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines), "Id", "Name")
-        };
-
-        var currentUser = await _userManager.GetUserAsync(User);
-        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
-
-        if (currentUserRole[0] == "Default")
-        {
-            var ids = await GetWardedByUserPeople(currentUser.Id);
-            List<UserDTO> userList = new();
-            foreach (var id in ids)
+            var allVaccines = await _vaccineService.GetAllVaccinesAsync();
+            VaccinationModel model = new()
             {
-                userList.Add(await _userService.GetUsersByIdAsync(id));
+                Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines), "Id", "Name")
+            };
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+            if (currentUserRole[0] == "Default")
+            {
+                var ids = await GetWardedByUserPeople(currentUser.Id);
+                if (ids.Count < 2)
+                {
+                    model.UserId = currentUser.Id;
+                }
+                else
+                {
+                    List<UserDTO> userList = new();
+                    foreach (var id in ids)
+                    {
+                        userList.Add(await _userService.GetUsersByIdAsync(id));
+                    }
+                    model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+                }
             }
-            model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+            else
+            {
+                var allUsers = await _userService.GetAllUsersAsync();
+                model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+            }
+
+            return View(model);
         }
-        else
+        catch (Exception ex)
         {
-            var allUsers = await _userService.GetAllUsersAsync();
-            model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            return RedirectToAction("Error", "Home");
         }
-        
-        return View(model);
     }
 
     [HttpPost]
@@ -200,10 +214,6 @@ public class VaccinationsController : Controller
                 }
 
                 var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
-                if (dto == null)
-                {
-                    return BadRequest();
-                }
 
                 var vaccineSelected = await _vaccineService.GetVaccinesByIdAsync(dto.VaccineId);
                 var allVaccines = await _vaccineService.GetAllVaccinesAsync();
@@ -213,22 +223,8 @@ public class VaccinationsController : Controller
                 editModel.Vaccine = _mapper.Map<VaccineModel>(vaccineSelected);
                 editModel.Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines), "Id", "Name", vaccineSelected.Id.ToString());
 
-                var currentUser = await _userManager.GetUserAsync(User);
-                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
                 editModel.User = _mapper.Map<UserModel>(userSelected);
-
-                if (currentUserRole[0] == "Default")
-                {
-                    var user = await _userService.GetUsersByIdAsync(currentUser.Id);
-                    var userList = new List<UserDTO>() { user };
-                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login", userSelected.Id.ToString());
-                }
-                else
-                {
-                    var allUsers = await _userService.GetAllUsersAsync();
-                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login", userSelected.Id.ToString());
-                }
 
                 return View(editModel);
             }
@@ -240,7 +236,7 @@ public class VaccinationsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -251,6 +247,11 @@ public class VaccinationsController : Controller
         {
             if (model != null)
             {
+                if (!await CheckRelevancy(model.Id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = _mapper.Map<VaccinationDTO>(model);
 
                 var sourceDto = await _vaccinationService.GetVaccinationsByIdAsync(model.Id);
@@ -284,7 +285,7 @@ public class VaccinationsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -325,7 +326,7 @@ public class VaccinationsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -337,6 +338,11 @@ public class VaccinationsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
 
                 await _vaccinationService.DeleteVaccinationAsync(dto);
@@ -351,7 +357,7 @@ public class VaccinationsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 

@@ -29,7 +29,7 @@
             <a class="btn btn-primary" asp-action="Create" asp-controller="Vaccines">Add vaccine</a>
         </div>
         <div class="mb-3">
-            @if (Model.Users.Count() > 1){
+            @if (Model.Users != null){
                 <label for="user" class="form-label">User</label>
                 <select asp-for="UserId" asp-items="@Model.Users" id="user">
                     @if (User.IsInRole("Admin"))

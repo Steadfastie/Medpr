@@ -18,13 +18,16 @@ namespace MedprMVC.Controllers;
 public class AppointmentsController : Controller
 {
     private readonly IAppointmentService _appointmentService;
+    private readonly IFamilyService _familyService;
+    private readonly IFamilyMemberService _familyMemberService;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IDoctorService _doctorService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
-    private readonly int _pagesize = 15;
     public AppointmentsController(IAppointmentService appointmentService,
         IDoctorService doctorService,
+        IFamilyService familyService,
+        IFamilyMemberService familyMemberService,
         IUserService userService,
         IMapper mapper,
         UserManager<IdentityUser<Guid>> userManager)
@@ -34,25 +37,16 @@ public class AppointmentsController : Controller
         _mapper = mapper;
         _userService = userService;
         _userManager = userManager;
+        _familyMemberService = familyMemberService;
+        _familyService = familyService;
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index(int page)
+    public async Task<IActionResult> Index()
     {
         try
         {
-            var currentUser = await _userManager.GetUserAsync(User);
-            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
-
-            List<AppointmentDTO> dtos;
-            if (currentUserRole[0] == "Default")
-            {
-                dtos = await _appointmentService.GetAppointmentsRelevantToUser(currentUser.Id);
-            }
-            else
-            {
-                dtos = await _appointmentService.GetAppointmentsByPageNumberAndPageSizeAsync(page, _pagesize);
-            }
+            List<AppointmentDTO> dtos = await GetRelevantAppointments();
 
             List<AppointmentModel> models = new();
 
@@ -81,7 +75,7 @@ public class AppointmentsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -117,35 +111,54 @@ public class AppointmentsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
     [HttpGet]
     public async Task<IActionResult> CreateAsync()
     {
-        var allDoctors = await _doctorService.GetAllDoctorsAsync();
-        AppointmentModel model = new()
+        try
         {
-            Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name")
-        };
+            var allDoctors = await _doctorService.GetAllDoctorsAsync();
+            AppointmentModel model = new()
+            {
+                Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name")
+            };
 
-        var currentUser = await _userManager.GetUserAsync(User);
-        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+            var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-        if (currentUserRole[0] == "Default")
-        {
-            var user = await _userService.GetUsersByIdAsync(currentUser.Id);
-            var userList = new List<UserDTO>() { user };
-            model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+            if (currentUserRole[0] == "Default")
+            {
+                var ids = await GetWardedByUserPeople(currentUser.Id);
+                if (ids.Count < 2)
+                {
+                    model.UserId = currentUser.Id;
+                }
+                else
+                {
+                    List<UserDTO> userList = new();
+                    foreach (var id in ids)
+                    {
+                        userList.Add(await _userService.GetUsersByIdAsync(id));
+                    }
+                    model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+                }
+            }
+            else
+            {
+                var allUsers = await _userService.GetAllUsersAsync();
+                model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+            }
+
+            return View(model);
         }
-        else
+        catch (Exception ex)
         {
-            var allUsers = await _userService.GetAllUsersAsync();
-            model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            return RedirectToAction("Error", "Home");
         }
-
-        return View(model);
     }
 
     [HttpPost]
@@ -158,6 +171,13 @@ public class AppointmentsController : Controller
             // be true. The other way around is used in Edit[post]
             if (ModelState.ErrorCount < 5)
             {
+                var currentUser = await _userManager.GetUserAsync(User);
+                var ids = await GetWardedByUserPeople(currentUser.Id);
+                if (!ids.Contains(model.UserId))
+                {
+                    RedirectToAction("Denied", "Home");
+                }
+
                 model.Id = Guid.NewGuid();
 
                 var dto = _mapper.Map<AppointmentDTO>(model);
@@ -175,7 +195,7 @@ public class AppointmentsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -204,22 +224,8 @@ public class AppointmentsController : Controller
                 editModel.Doctor = _mapper.Map<DoctorModel>(doctorSelected);
                 editModel.Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name", doctorSelected.Id.ToString());
 
-                var currentUser = await _userManager.GetUserAsync(User);
-                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
                 editModel.User = _mapper.Map<UserModel>(userSelected);
-
-                if (currentUserRole[0] == "Default")
-                {
-                    var user = await _userService.GetUsersByIdAsync(currentUser.Id);
-                    var userList = new List<UserDTO>() { user };
-                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login", userSelected.Id.ToString());
-                }
-                else
-                {
-                    var allUsers = await _userService.GetAllUsersAsync();
-                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login", userSelected.Id.ToString());
-                }
 
                 return View(editModel);
             }
@@ -231,7 +237,7 @@ public class AppointmentsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -242,6 +248,11 @@ public class AppointmentsController : Controller
         {
             if (model != null)
             {
+                if (!await CheckRelevancy(model.Id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = _mapper.Map<AppointmentDTO>(model);
 
                 var sourceDto = await _appointmentService.GetAppointmentsByIdAsync(model.Id);
@@ -275,7 +286,7 @@ public class AppointmentsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -316,7 +327,7 @@ public class AppointmentsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -328,6 +339,11 @@ public class AppointmentsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
 
                 await _appointmentService.DeleteAppointmentAsync(dto);
@@ -342,25 +358,74 @@ public class AppointmentsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
+    }
+
+    private async Task<List<AppointmentDTO>> GetRelevantAppointments()
+    {
+        var currentUser = await _userManager.GetUserAsync(User);
+        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+        List<AppointmentDTO> dtos = new();
+        if (currentUserRole[0] == "Default")
+        {
+            List<Guid> users = new();
+            users.AddRange(await GetWardedByUserPeople(currentUser.Id));
+
+            foreach (var user in users)
+            {
+                var userAppointments = await _appointmentService.GetAppointmentsRelevantToUser(user);
+                dtos.AddRange(userAppointments);
+            }
+            return dtos;
+        }
+        else
+        {
+            return await _appointmentService.GetAllAppointments();
+        }
+
     }
 
     private async Task<bool> CheckRelevancy(Guid appointmentId)
     {
-        var currentUser = await _userManager.GetUserAsync(User);
-        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
-        if (currentUserRole[0] == "Default")
+        var dtos = await GetRelevantAppointments();
+
+        var ids = dtos.Select(dto => dto.Id).ToList();
+
+        if (!ids.Contains(appointmentId))
         {
-            var dtos = await _appointmentService.GetAppointmentsRelevantToUser(currentUser.Id);
+            return false;
+        }
 
-            var ids = dtos.Select(dto => dto.Id).ToList();
+        return true;
+    }
 
-            if (!ids.Contains(appointmentId))
+    private async Task<List<Guid>> GetWardedByUserPeople(Guid userId)
+    {
+        var families = await _familyService.GetFamiliesRelevantToUser(userId);
+        HashSet<Guid> usersInAllFamilies = new()
+        {
+            userId
+        };
+
+        foreach (var family in families)
+        {
+            var membersDTO = await _familyMemberService.GetMembersRelevantToFamily(family.Id);
+            var isCurrentUserAdmin = membersDTO
+                .Where(member => member.UserId == userId)
+                .ToList()[0]
+                .IsAdmin;
+            if (isCurrentUserAdmin)
             {
-                return false;
+                var wardedPeople = membersDTO.Select(member => member.UserId).Where(member => member != userId);
+                foreach (var person in wardedPeople)
+                {
+                    usersInAllFamilies.Add(person);
+                }
             }
         }
-        return true;
+
+        return usersInAllFamilies.ToList();
     }
 }

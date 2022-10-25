@@ -4,8 +4,7 @@ namespace MedprCore.Abstractions;
 
 public interface IAppointmentService
 {
-    Task<List<AppointmentDTO>> GetAppointmentsByPageNumberAndPageSizeAsync
-        (int pageNumber, int pageSize);
+    Task<List<AppointmentDTO>> GetAllAppointments();
 
     Task<List<AppointmentDTO>> GetAppointmentsRelevantToUser(Guid id);
 

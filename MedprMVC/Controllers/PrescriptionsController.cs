@@ -18,6 +18,8 @@ namespace MedprMVC.Controllers;
 public class PrescriptionsController : Controller
 {
     private readonly IPrescriptionService _prescriptionService;
+    private readonly IFamilyService _familyService;
+    private readonly IFamilyMemberService _familyMemberService;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IDoctorService _doctorService;
     private readonly IUserService _userService;
@@ -26,6 +28,8 @@ public class PrescriptionsController : Controller
     private readonly int _pagesize = 15;
     public PrescriptionsController(IPrescriptionService prescriptionService,
         IDoctorService doctorService,
+        IFamilyService familyService,
+        IFamilyMemberService familyMemberService,
         IUserService userService,
         IDrugService drugService,
         IMapper mapper,
@@ -37,25 +41,16 @@ public class PrescriptionsController : Controller
         _userService = userService;
         _drugService = drugService;
         _userManager = userManager;
+        _familyMemberService = familyMemberService;
+        _familyService = familyService;
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index(int page)
+    public async Task<IActionResult> Index()
     {
         try
         {
-            var currentUser = await _userManager.GetUserAsync(User);
-            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
-
-            List<PrescriptionDTO> dtos;
-            if (currentUserRole[0] == "Default")
-            {
-                dtos = await _prescriptionService.GetPrescriptionsRelevantToUser(currentUser.Id);
-            }
-            else
-            {
-                dtos = await _prescriptionService.GetPrescriptionsByPageNumberAndPageSizeAsync(page, _pagesize);
-            }
+            List<PrescriptionDTO> dtos = await GetRelevantPrescriptions();
 
             List<PrescriptionModel> models = new();
 
@@ -86,7 +81,7 @@ public class PrescriptionsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -124,37 +119,56 @@ public class PrescriptionsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
     [HttpGet]
     public async Task<IActionResult> CreateAsync()
     {
-        var allDoctors = await _doctorService.GetAllDoctorsAsync();
-        var allDrugs = await _drugService.GetAllDrugsAsync();
-        PrescriptionModel model = new()
+        try
         {
-            Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name"),
-            Drugs = new SelectList(_mapper.Map<List<DrugModel>>(allDrugs), "Id", "Name")
-        };
+            var allDoctors = await _doctorService.GetAllDoctorsAsync();
+            var allDrugs = await _drugService.GetAllDrugsAsync();
+            PrescriptionModel model = new()
+            {
+                Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name"),
+                Drugs = new SelectList(_mapper.Map<List<DrugModel>>(allDrugs), "Id", "Name")
+            };
 
-        var currentUser = await _userManager.GetUserAsync(User);
-        var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+            var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-        if (currentUserRole[0] == "Default")
-        {
-            var user = await _userService.GetUsersByIdAsync(currentUser.Id);
-            var userList = new List<UserDTO>() { user };
-            model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+            if (currentUserRole[0] == "Default")
+            {
+                var ids = await GetWardedByUserPeople(currentUser.Id);
+                if (ids.Count < 2)
+                {
+                    model.UserId = currentUser.Id;
+                }
+                else
+                {
+                    List<UserDTO> userList = new();
+                    foreach (var id in ids)
+                    {
+                        userList.Add(await _userService.GetUsersByIdAsync(id));
+                    }
+                    model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
+                }
+            }
+            else
+            {
+                var allUsers = await _userService.GetAllUsersAsync();
+                model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+            }
+
+            return View(model);
         }
-        else
+        catch (Exception ex)
         {
-            var allUsers = await _userService.GetAllUsersAsync();
-            model.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login");
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            return RedirectToAction("Error", "Home");
         }
-
-        return View(model);
     }
 
     [HttpPost]
@@ -167,6 +181,13 @@ public class PrescriptionsController : Controller
             // be true. The other way around is used in Edit[post]
             if (ModelState.ErrorCount < 7 && CheckDate(model))
             {
+                var currentUser = await _userManager.GetUserAsync(User);
+                var ids = await GetWardedByUserPeople(currentUser.Id);
+                if (!ids.Contains(model.UserId))
+                {
+                    RedirectToAction("Denied", "Home");
+                }
+
                 model.Id = Guid.NewGuid();
 
                 var dto = _mapper.Map<PrescriptionDTO>(model);
@@ -184,7 +205,7 @@ public class PrescriptionsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -220,22 +241,8 @@ public class PrescriptionsController : Controller
                 editModel.Drug = _mapper.Map<DrugModel>(drugSelected);
                 editModel.Drugs = new SelectList(_mapper.Map<List<DrugModel>>(allDrugs), "Id", "Name", drugSelected.Id.ToString());
 
-                var currentUser = await _userManager.GetUserAsync(User);
-                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
                 editModel.User = _mapper.Map<UserModel>(userSelected);
-
-                if (currentUserRole[0] == "Default")
-                {
-                    var user = await _userService.GetUsersByIdAsync(currentUser.Id);
-                    var userList = new List<UserDTO>() { user };
-                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login", userSelected.Id.ToString());
-                }
-                else
-                {
-                    var allUsers = await _userService.GetAllUsersAsync();
-                    editModel.Users = new SelectList(_mapper.Map<List<UserModel>>(allUsers), "Id", "Login", userSelected.Id.ToString());
-                }
 
                 return View(editModel);
             }
@@ -247,7 +254,7 @@ public class PrescriptionsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -258,6 +265,11 @@ public class PrescriptionsController : Controller
         {
             if (model != null)
             {
+                if (!await CheckRelevancy(model.Id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = _mapper.Map<PrescriptionDTO>(model);
 
                 var sourceDto = await _prescriptionService.GetPrescriptionsByIdAsync(model.Id);
@@ -291,7 +303,7 @@ public class PrescriptionsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -334,7 +346,7 @@ public class PrescriptionsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -346,6 +358,11 @@ public class PrescriptionsController : Controller
         {
             if (id != Guid.Empty)
             {
+                if (!await CheckRelevancy(id))
+                {
+                    return RedirectToAction("Denied", "Home");
+                }
+
                 var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
 
                 await _prescriptionService.DeletePrescriptionAsync(dto);
@@ -385,21 +402,70 @@ public class PrescriptionsController : Controller
         return true;
     }
 
-    private async Task<bool> CheckRelevancy(Guid prescriptionId)
+    private async Task<List<PrescriptionDTO>> GetRelevantPrescriptions()
     {
         var currentUser = await _userManager.GetUserAsync(User);
         var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+        List<PrescriptionDTO> dtos = new();
         if (currentUserRole[0] == "Default")
         {
-            var dtos = await _prescriptionService.GetPrescriptionsRelevantToUser(currentUser.Id);
+            List<Guid> users = new();
+            users.AddRange(await GetWardedByUserPeople(currentUser.Id));
 
-            var ids = dtos.Select(dto => dto.Id).ToList();
-
-            if (!ids.Contains(prescriptionId))
+            foreach (var user in users)
             {
-                return false;
+                var userPrescriptions = await _prescriptionService.GetPrescriptionsRelevantToUser(user);
+                dtos.AddRange(userPrescriptions);
+            }
+            return dtos;
+        }
+        else
+        {
+            return await _prescriptionService.GetAllPrescriptions();
+        }
+
+    }
+
+    private async Task<bool> CheckRelevancy(Guid prescriptionId)
+    {
+        var dtos = await GetRelevantPrescriptions();
+
+        var ids = dtos.Select(dto => dto.Id).ToList();
+
+        if (!ids.Contains(prescriptionId))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private async Task<List<Guid>> GetWardedByUserPeople(Guid userId)
+    {
+        var families = await _familyService.GetFamiliesRelevantToUser(userId);
+        HashSet<Guid> usersInAllFamilies = new()
+        {
+            userId
+        };
+
+        foreach (var family in families)
+        {
+            var membersDTO = await _familyMemberService.GetMembersRelevantToFamily(family.Id);
+            var isCurrentUserAdmin = membersDTO
+                .Where(member => member.UserId == userId)
+                .ToList()[0]
+                .IsAdmin;
+            if (isCurrentUserAdmin)
+            {
+                var wardedPeople = membersDTO.Select(member => member.UserId).Where(member => member != userId);
+                foreach (var person in wardedPeople)
+                {
+                    usersInAllFamilies.Add(person);
+                }
             }
         }
-        return true;
+
+        return usersInAllFamilies.ToList();
     }
 }

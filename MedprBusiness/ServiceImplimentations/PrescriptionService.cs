@@ -34,15 +34,10 @@ public class PrescriptionService : IPrescriptionService
         return dto;
     }
 
-    public Task<List<PrescriptionDTO>> GetPrescriptionsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<PrescriptionDTO>> GetAllPrescriptions()
     {
-        var list = _unitOfWork.Prescriptions
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .Select(prescription => _mapper.Map<PrescriptionDTO>(prescription))
-            .ToListAsync();
-        return list;
+        var list = _unitOfWork.Prescriptions.Get();
+        return await list.Select(prescription => _mapper.Map<PrescriptionDTO>(prescription)).ToListAsync();
     }
 
     public Task<List<PrescriptionDTO>> GetPrescriptionsRelevantToUser(Guid id)
