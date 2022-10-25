@@ -42,16 +42,10 @@ public class VaccineService : IVaccineService
         return dtos;
     }
 
-    public Task<List<VaccineDTO>> GetVaccinesByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<VaccineDTO>> GetAllVaccines()
     {
-        var list = _unitOfWork.Vaccines
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .OrderBy(Vaccine => Vaccine.Name)
-            .Select(Vaccine => _mapper.Map<VaccineDTO>(Vaccine))
-            .ToListAsync();
-        return list;
+        var list = _unitOfWork.Vaccines.Get();
+        return await list.Select(vaccine => _mapper.Map<VaccineDTO>(vaccine)).ToListAsync();
     }
 
     public async Task<int> CreateVaccineAsync(VaccineDTO dto)

@@ -4,8 +4,7 @@ namespace MedprCore.Abstractions
 {
     public interface IUserService
     {
-        Task<List<UserDTO>> GetUsersByPageNumberAndPageSizeAsync
-            (int pageNumber, int pageSize);
+        Task<List<UserDTO>> GetAllUsers();
 
         Task<UserDTO> GetUsersByIdAsync(Guid id);
         Task<List<UserDTO>> GetAllUsersAsync();

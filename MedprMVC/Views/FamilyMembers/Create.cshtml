@@ -5,35 +5,46 @@
 
 <div class ="container text-center">
     <div class="row align-items-center">
-        <h2>Add user to family</h2>
+        <div class="fs-3">Add user to family</div>
     </div>
+    <br />
 
-    <form asp-controller="FamilyMembers" asp-action="Create" method="post" class="row gx-3 gy-2 align-items-center">
-        <div class="col-3">
-            <select asp-for="FamilyId" asp-items="@Model.Families" id="family" class="col-12">
+    <form asp-controller="FamilyMembers" asp-action="Create" method="post" class="row gx-3 gy-2 align-items-center" id="mainform">
+        <div class="col">
+            <select asp-for="FamilyId" asp-items="@Model.Families" id="family" class="col-12 form-select">
                  <option selected="selected" disabled="disabled">Select family</option>
             </select>
-            <span asp-validation-for="FamilyId" class="text-danger"></span>
-            <a class="btn btn-primary" asp-action="Create" asp-controller="Families">Add doctor</a>
         </div>
-        <div class="col-3">
-            <select asp-for="UserId" asp-items="@Model.Users" id="user" class="col-12">
+        <div class="col">
+            <select asp-for="UserId" asp-items="@Model.Users" id="user" class="col-12 form-select">
                  <option selected="selected" disabled="disabled">Select user</option>
             </select>
-            <span asp-validation-for="UserId" class="text-danger"></span>
-            <a class="btn btn-primary" asp-action="Register" asp-controller="Users">Add user</a>
         </div>
-        <div class="col-3">
-            <label for="isAdmin" class="form-check-label">Can see family info</label>
-            <input asp-for="IsAdmin" id="isAdmin" class="form-check-input">
+        <div class="col form-check form-switch">
+            <input class="form-check-input" style="float:initial" asp-for="IsAdmin" type="checkbox" role="switch" id="isAdmin">
+            <label class="form-check-label" for="isAdmin">Can see family info</label>
+        </div>
+    </form>
+    <div class="row align-items-center">
+        <div class="col">
+            <span asp-validation-for="FamilyId" class="text-danger"></span>
+        </div>
+        <div class="col">
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+        <div class="col">
             <span asp-validation-for="IsAdmin" class="text-danger"></span>
         </div>
+    </div>
+    <br />
 
-        <div class="col-3 align-self-center">
-            <input type="submit" class="btn btn-primary col-sm-auto" value="Submit">
+    <div class="row align-items-center">
+        <div>
+            <a class="btn btn-outline-secondary col-auto" asp-action="Register" asp-controller="Users">Add user</a>
+            <a class="btn btn-outline-secondary col-auto" asp-action="Create" asp-controller="Families">Add doctor</a>
+            <input type="submit" form="mainform" class="btn btn-primary col-auto" value="Submit">
         </div>
-
-    </form>
+    </div>
 </div>
 
 @section Scripts

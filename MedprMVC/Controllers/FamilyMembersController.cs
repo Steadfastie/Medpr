@@ -73,7 +73,7 @@ public class FamilyMembersController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -117,7 +117,7 @@ public class FamilyMembersController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -160,7 +160,7 @@ public class FamilyMembersController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 

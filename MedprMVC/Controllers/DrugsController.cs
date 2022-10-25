@@ -15,7 +15,6 @@ public class DrugsController : Controller
 {
     private readonly IDrugService _drugService;
     private readonly IMapper _mapper;
-    private readonly int _pagesize = 15;
     public DrugsController(IDrugService drugService, IMapper mapper)
     {
         _drugService = drugService;
@@ -23,11 +22,11 @@ public class DrugsController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index(int page)
+    public async Task<IActionResult> Index()
     {
         try
         {
-            var dtos = await _drugService.GetDrugsByPageNumberAndPageSizeAsync(page, _pagesize);
+            var dtos = await _drugService.GetAllDrugs();
 
             var models = _mapper.Map<List<DrugModel>>(dtos);
 
@@ -43,7 +42,7 @@ public class DrugsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -66,7 +65,7 @@ public class DrugsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -106,7 +105,7 @@ public class DrugsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -135,7 +134,7 @@ public class DrugsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -185,7 +184,7 @@ public class DrugsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -215,7 +214,7 @@ public class DrugsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -241,7 +240,7 @@ public class DrugsController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 }

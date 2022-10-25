@@ -16,7 +16,6 @@ public class VaccinesController : Controller
 {
     private readonly IVaccineService _vaccineService;
     private readonly IMapper _mapper;
-    private readonly int _pagesize = 15;
     public VaccinesController(IVaccineService VaccineService, IMapper mapper)
     {
         _vaccineService = VaccineService;
@@ -24,11 +23,11 @@ public class VaccinesController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index(int page)
+    public async Task<IActionResult> Index()
     {
         try
         {
-            var dtos = await _vaccineService.GetVaccinesByPageNumberAndPageSizeAsync(page, _pagesize);
+            var dtos = await _vaccineService.GetAllVaccines();
 
             var models = _mapper.Map<List<VaccineModel>>(dtos);
 
@@ -44,7 +43,7 @@ public class VaccinesController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -67,7 +66,7 @@ public class VaccinesController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -107,7 +106,7 @@ public class VaccinesController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -136,7 +135,7 @@ public class VaccinesController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -185,7 +184,7 @@ public class VaccinesController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -215,7 +214,7 @@ public class VaccinesController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -241,7 +240,7 @@ public class VaccinesController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 }

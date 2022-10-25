@@ -34,15 +34,10 @@ public class FamilyMemberService : IFamilyMemberService
         return dto;
     }
 
-    public Task<List<FamilyMemberDTO>> GetFamilyMembersByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<FamilyMemberDTO>> GetAllFamilyMembers()
     {
-        var list = _unitOfWork.FamilyMembers
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .Select(familyMember => _mapper.Map<FamilyMemberDTO>(familyMember))
-            .ToListAsync();
-        return list;
+        var list = _unitOfWork.FamilyMembers.Get();
+        return await list.Select(member => _mapper.Map<FamilyMemberDTO>(member)).ToListAsync();
     }
 
     public async Task<List<FamilyMemberDTO>> GetMembersRelevantToFamily(Guid id)

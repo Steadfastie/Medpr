@@ -42,16 +42,10 @@ public class DrugService : IDrugService
         return dtos;
     }
 
-    public Task<List<DrugDTO>> GetDrugsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<DrugDTO>> GetAllDrugs()
     {
-        var list = _unitOfWork.Drugs
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .OrderBy(drug => drug.Name)
-            .Select(drug => _mapper.Map<DrugDTO>(drug))
-            .ToListAsync();
-        return list;
+        var list = _unitOfWork.Drugs.Get();
+        return await list.Select(drug => _mapper.Map<DrugDTO>(drug)).ToListAsync();
     }
 
     public async Task<int> CreateDrugAsync(DrugDTO dto)

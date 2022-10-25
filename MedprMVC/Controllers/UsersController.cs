@@ -22,7 +22,6 @@ public class UsersController : Controller
     private readonly RoleManager<IdentityRole<Guid>> _roleManager;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
-    private readonly int _pagesize = 15;
     public UsersController(IUserService userService,
         IMapper mapper,
         UserManager<IdentityUser<Guid>> userManager,
@@ -39,7 +38,7 @@ public class UsersController : Controller
     {
         try
         {
-            var dtos = await _userService.GetUsersByPageNumberAndPageSizeAsync(page, _pagesize);
+            var dtos = await _userService.GetAllUsers();
 
             var models = _mapper.Map<List<UserModel>>(dtos);
 
@@ -55,7 +54,7 @@ public class UsersController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -78,7 +77,7 @@ public class UsersController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -147,7 +146,7 @@ public class UsersController : Controller
             await _userService.DeleteUserAsync(dto);
 
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -191,7 +190,7 @@ public class UsersController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -224,7 +223,7 @@ public class UsersController : Controller
             await UpdateMainDB(savedModel);
 
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -254,7 +253,7 @@ public class UsersController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 
@@ -283,7 +282,7 @@ public class UsersController : Controller
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return BadRequest(ex.Message);
+            return RedirectToAction("Error", "Home");
         }
     }
 

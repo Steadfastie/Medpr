@@ -42,16 +42,10 @@ public class DoctorService : IDoctorService
         return dtos;
     }
 
-    public Task<List<DoctorDTO>> GetDoctorsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<DoctorDTO>> GetAllDoctors()
     {
-        var list = _unitOfWork.Doctors
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .OrderBy(Doctor => Doctor.Name)
-            .Select(Doctor => _mapper.Map<DoctorDTO>(Doctor))
-            .ToListAsync();
-        return list;
+        var list = _unitOfWork.Doctors.Get();
+        return await list.Select(doctor => _mapper.Map<DoctorDTO>(doctor)).ToListAsync();
     }
 
     public async Task<int> CreateDoctorAsync(DoctorDTO dto)

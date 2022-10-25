@@ -42,18 +42,6 @@ public class FamilyService : IFamilyService
         return dtos;
     }
 
-    public Task<List<FamilyDTO>> GetFamiliesByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
-    {
-        var list = _unitOfWork.Families
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .OrderBy(Family => Family.Surname)
-            .Select(Family => _mapper.Map<FamilyDTO>(Family))
-            .ToListAsync();
-        return list;
-    }
-
     public async Task<List<FamilyDTO>> GetFamiliesRelevantToUser(Guid id)
     {
         var list = await _unitOfWork.FamilyMembers

@@ -1,0 +1,1380 @@
+2022-10-25 22:10:38.348 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-25 22:10:38.527 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-25 22:10:38.528 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-25 22:10:38.532 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-25 22:10:38.533 +03:00 [INF] Hosting environment: Development
+2022-10-25 22:10:38.534 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-25 22:10:39.061 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-25 22:10:40.180 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:10:41.502 +03:00 [INF] Executed DbCommand (76ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:10:41.693 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2022-10-25 22:10:41.739 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:10:41.759 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-25 22:10:41.780 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2022-10-25 22:10:41.795 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:10:41.804 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:10:42.055 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-25 22:10:42.069 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:10:42.086 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-25 22:10:42.093 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 281.5317ms
+2022-10-25 22:10:42.097 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:10:42.125 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:10:42.126 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 3068.0001ms
+2022-10-25 22:10:42.147 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:10:42.149 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:10:42.181 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:10:42.192 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:10:42.331 +03:00 [INF] Executed ViewResult - view Index executed in 142.9401ms.
+2022-10-25 22:10:42.337 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 185.8757ms
+2022-10-25 22:10:42.340 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:10:42.369 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 243.5787ms
+2022-10-25 22:10:42.406 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:10:42.412 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.8138ms
+2022-10-25 22:10:42.441 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:10:42.462 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.3838ms
+2022-10-25 22:10:44.978 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Logout - -
+2022-10-25 22:10:44.993 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Logout (MedprMVC)'
+2022-10-25 22:10:44.998 +03:00 [INF] Route matched with {action = "Logout", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:10:45.010 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:10:45.021 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2022-10-25 22:10:45.024 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2022-10-25 22:10:45.025 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2022-10-25 22:10:45.027 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2022-10-25 22:10:45.028 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Logout (MedprMVC) in 27.0312ms
+2022-10-25 22:10:45.030 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Logout (MedprMVC)'
+2022-10-25 22:10:45.031 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Logout - - - 302 0 - 53.0478ms
+2022-10-25 22:10:45.036 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-25 22:10:45.038 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:10:45.040 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:10:45.042 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:10:45.045 +03:00 [INF] Executing ViewResult, running view Login.
+2022-10-25 22:10:45.087 +03:00 [INF] Executed ViewResult - view Login executed in 42.2951ms.
+2022-10-25 22:10:45.088 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 46.5531ms
+2022-10-25 22:10:45.090 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:10:45.094 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 200 - text/html;+charset=utf-8 57.7856ms
+2022-10-25 22:10:45.126 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:10:45.128 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.3223ms
+2022-10-25 22:10:45.139 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:10:45.148 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.1771ms
+2022-10-25 22:11:02.077 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/ application/x-www-form-urlencoded 229
+2022-10-25 22:11:02.079 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:11:02.095 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(MedprMVC.Models.UserModel) on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:11:02.099 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:02.157 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:11:02.165 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2022-10-25 22:11:02.198 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2022-10-25 22:11:02.204 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:11:02.209 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-10-25 22:11:02.214 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2022-10-25 22:11:02.219 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2022-10-25 22:11:02.227 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-25 22:11:02.228 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 129.561ms
+2022-10-25 22:11:02.229 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:11:02.231 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7298/ application/x-www-form-urlencoded 229 - 302 0 - 153.8728ms
+2022-10-25 22:11:02.238 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:11:02.241 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:11:02.242 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:11:02.245 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:02.247 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:02.257 +03:00 [INF] Executed ViewResult - view Index executed in 9.5124ms.
+2022-10-25 22:11:02.258 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 14.0823ms
+2022-10-25 22:11:02.260 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:11:02.262 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 23.8290ms
+2022-10-25 22:11:02.300 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:02.302 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.0603ms
+2022-10-25 22:11:02.308 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:02.333 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 24.9753ms
+2022-10-25 22:11:04.137 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:11:04.140 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:11:04.141 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:11:04.144 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:04.146 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:04.153 +03:00 [INF] Executed ViewResult - view Index executed in 6.5025ms.
+2022-10-25 22:11:04.154 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 11.1334ms
+2022-10-25 22:11:04.156 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:11:04.158 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 21.4192ms
+2022-10-25 22:11:04.185 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:04.186 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9370ms
+2022-10-25 22:11:04.193 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:04.202 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.9444ms
+2022-10-25 22:11:04.739 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Drugs/Index - -
+2022-10-25 22:11:04.741 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-10-25 22:11:04.744 +03:00 [INF] Route matched with {action = "Index", controller = "Drugs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.DrugsController (MedprMVC).
+2022-10-25 22:11:04.748 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:04.784 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+2022-10-25 22:11:04.819 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:04.843 +03:00 [INF] Executed ViewResult - view Index executed in 24.6375ms.
+2022-10-25 22:11:04.845 +03:00 [INF] Executed action MedprMVC.Controllers.DrugsController.Index (MedprMVC) in 97.2851ms
+2022-10-25 22:11:04.846 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DrugsController.Index (MedprMVC)'
+2022-10-25 22:11:04.849 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Drugs/Index - - - 200 - text/html;+charset=utf-8 110.6340ms
+2022-10-25 22:11:04.875 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:04.877 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.5511ms
+2022-10-25 22:11:04.888 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:04.893 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.2466ms
+2022-10-25 22:11:06.697 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Families/Index - -
+2022-10-25 22:11:06.700 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-25 22:11:06.704 +03:00 [INF] Route matched with {action = "Index", controller = "Families"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.FamiliesController (MedprMVC).
+2022-10-25 22:11:06.708 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:06.718 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:11:06.725 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:11:06.731 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:11:06.739 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:11:06.761 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-25 22:11:06.804 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:06.817 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-25 22:11:06.824 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:06.831 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-25 22:11:06.835 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:06.839 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='7fddba89-8bf9-4386-ab29-203b603ec057'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-25 22:11:06.844 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-25 22:11:06.849 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:06.853 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-25 22:11:06.856 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:06.861 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-25 22:11:06.865 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:06.869 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='4809715a-3104-425f-be6b-a3a5f4627fca'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-25 22:11:06.873 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='cd8f7f26-6e87-498f-9828-b7a553d43bd1'], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[FamilyId], [f].[IsAdmin], [f].[UserId]
+FROM [FamilyMembers] AS [f]
+WHERE [f].[FamilyId] = @__id_0
+2022-10-25 22:11:06.877 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:06.880 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='cd8f7f26-6e87-498f-9828-b7a553d43bd1'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+WHERE [f].[Id] = @__id_0
+2022-10-25 22:11:06.884 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:06.917 +03:00 [INF] Executed ViewResult - view Index executed in 33.4424ms.
+2022-10-25 22:11:06.918 +03:00 [INF] Executed action MedprMVC.Controllers.FamiliesController.Index (MedprMVC) in 211.0309ms
+2022-10-25 22:11:06.920 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamiliesController.Index (MedprMVC)'
+2022-10-25 22:11:06.924 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Families/Index - - - 200 - text/html;+charset=utf-8 226.6961ms
+2022-10-25 22:11:06.949 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:06.949 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:06.951 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9700ms
+2022-10-25 22:11:06.959 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.0862ms
+2022-10-25 22:11:09.666 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccines/Index - -
+2022-10-25 22:11:09.669 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinesController.Index (MedprMVC)'
+2022-10-25 22:11:09.672 +03:00 [INF] Route matched with {action = "Index", controller = "Vaccines"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.VaccinesController (MedprMVC).
+2022-10-25 22:11:09.675 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:09.685 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+2022-10-25 22:11:09.700 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:09.716 +03:00 [INF] Executed ViewResult - view Index executed in 16.6387ms.
+2022-10-25 22:11:09.718 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinesController.Index (MedprMVC) in 42.8901ms
+2022-10-25 22:11:09.719 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinesController.Index (MedprMVC)'
+2022-10-25 22:11:09.723 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Vaccines/Index - - - 200 - text/html;+charset=utf-8 57.1620ms
+2022-10-25 22:11:09.756 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:09.756 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:09.758 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9893ms
+2022-10-25 22:11:09.764 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.9357ms
+2022-10-25 22:11:11.202 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Doctors/Index - -
+2022-10-25 22:11:11.205 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.DoctorsController.Index (MedprMVC)'
+2022-10-25 22:11:11.208 +03:00 [INF] Route matched with {action = "Index", controller = "Doctors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.DoctorsController (MedprMVC).
+2022-10-25 22:11:11.212 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:11.222 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+2022-10-25 22:11:11.239 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:11.252 +03:00 [INF] Executed ViewResult - view Index executed in 14.0067ms.
+2022-10-25 22:11:11.254 +03:00 [INF] Executed action MedprMVC.Controllers.DoctorsController.Index (MedprMVC) in 42.5881ms
+2022-10-25 22:11:11.255 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.DoctorsController.Index (MedprMVC)'
+2022-10-25 22:11:11.258 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Doctors/Index - - - 200 - text/html;+charset=utf-8 55.2788ms
+2022-10-25 22:11:11.284 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:11.284 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:11.285 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.4654ms
+2022-10-25 22:11:11.291 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.2324ms
+2022-10-25 22:11:12.556 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Users/Index - -
+2022-10-25 22:11:12.559 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.UsersController.Index (MedprMVC)'
+2022-10-25 22:11:12.563 +03:00 [INF] Route matched with {action = "Index", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MedprMVC.Controllers.UsersController (MedprMVC).
+2022-10-25 22:11:12.567 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:12.575 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:11:12.594 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:12.616 +03:00 [INF] Executed ViewResult - view Index executed in 21.9809ms.
+2022-10-25 22:11:12.618 +03:00 [INF] Executed action MedprMVC.Controllers.UsersController.Index (MedprMVC) in 51.4168ms
+2022-10-25 22:11:12.619 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.UsersController.Index (MedprMVC)'
+2022-10-25 22:11:12.622 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Users/Index - - - 200 - text/html;+charset=utf-8 65.7822ms
+2022-10-25 22:11:12.648 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:12.648 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:12.652 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.2451ms
+2022-10-25 22:11:12.659 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.0804ms
+2022-10-25 22:11:15.370 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:11:15.373 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:11:15.376 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:11:15.380 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:15.385 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:11:15.393 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:11:15.399 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:11:15.418 +03:00 [INF] Executed ViewResult - view Create executed in 19.684ms.
+2022-10-25 22:11:15.420 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 40.9852ms
+2022-10-25 22:11:15.421 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:11:15.425 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 54.4446ms
+2022-10-25 22:11:15.451 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:15.452 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.2580ms
+2022-10-25 22:11:15.464 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:15.471 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.2248ms
+2022-10-25 22:11:24.731 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Vaccinations/Index - -
+2022-10-25 22:11:24.734 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-25 22:11:24.737 +03:00 [INF] Route matched with {action = "Index", controller = "Vaccinations"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.VaccinationsController (MedprMVC).
+2022-10-25 22:11:24.741 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:24.746 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:11:24.753 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:11:24.760 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:11:24.769 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [v].[Id], [v].[Date], [v].[DaysOfProtection], [v].[UserId], [v].[VaccineId]
+FROM [Vaccinations] AS [v]
+2022-10-25 22:11:24.787 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='8865e724-e999-40ca-8b53-f816e7636cb9'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-25 22:11:24.793 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:24.800 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='2ba96243-9854-4c94-a960-5efc5c462d0f'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-25 22:11:24.805 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:24.810 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='2a3d57fd-0599-4378-9171-30354d571ee3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-25 22:11:24.814 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:24.818 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='8865e724-e999-40ca-8b53-f816e7636cb9'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [v].[Id], [v].[Name], [v].[Price], [v].[Reason]
+FROM [Vaccines] AS [v]
+WHERE [v].[Id] = @__id_0
+2022-10-25 22:11:24.823 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:24.827 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:24.843 +03:00 [INF] Executed ViewResult - view Index executed in 16.1449ms.
+2022-10-25 22:11:24.844 +03:00 [INF] Executed action MedprMVC.Controllers.VaccinationsController.Index (MedprMVC) in 104.0922ms
+2022-10-25 22:11:24.846 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.VaccinationsController.Index (MedprMVC)'
+2022-10-25 22:11:24.850 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Vaccinations/Index - - - 200 - text/html;+charset=utf-8 118.6841ms
+2022-10-25 22:11:24.883 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:24.883 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:24.884 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.1947ms
+2022-10-25 22:11:24.889 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 6.2629ms
+2022-10-25 22:11:28.861 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Appointments/Index - -
+2022-10-25 22:11:28.863 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.AppointmentsController.Index (MedprMVC)'
+2022-10-25 22:11:28.867 +03:00 [INF] Route matched with {action = "Index", controller = "Appointments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.AppointmentsController (MedprMVC).
+2022-10-25 22:11:28.870 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:28.876 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:11:28.881 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:11:28.887 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:11:28.895 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Date], [a].[DoctorId], [a].[Place], [a].[UserId]
+FROM [Appointments] AS [a]
+2022-10-25 22:11:28.909 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='269af575-f2d4-4796-8d32-c7a3c57928b4'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:28.914 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:28.921 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='ab31d6be-3314-48a0-bbcd-d96e46cc0790'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:28.925 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:28.929 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='b97a37d8-13fb-4f71-9400-bfbb758a778a'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:28.933 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:28.937 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:28.951 +03:00 [INF] Executed ViewResult - view Index executed in 14.7ms.
+2022-10-25 22:11:28.953 +03:00 [INF] Executed action MedprMVC.Controllers.AppointmentsController.Index (MedprMVC) in 82.8142ms
+2022-10-25 22:11:28.955 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.AppointmentsController.Index (MedprMVC)'
+2022-10-25 22:11:28.959 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Appointments/Index - - - 200 - text/html;+charset=utf-8 98.0065ms
+2022-10-25 22:11:28.985 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:28.985 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:28.988 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.6643ms
+2022-10-25 22:11:29.001 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.7455ms
+2022-10-25 22:11:29.795 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Prescriptions/Index - -
+2022-10-25 22:11:29.797 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.PrescriptionsController.Index (MedprMVC)'
+2022-10-25 22:11:29.801 +03:00 [INF] Route matched with {action = "Index", controller = "Prescriptions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.PrescriptionsController (MedprMVC).
+2022-10-25 22:11:29.804 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:29.810 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:11:29.814 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:11:29.820 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:11:29.828 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[DoctorId], [p].[Dose], [p].[DrugId], [p].[EndDate], [p].[StartDate], [p].[UserId]
+FROM [Prescriptions] AS [p]
+2022-10-25 22:11:29.841 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='b97a37d8-13fb-4f71-9400-bfbb758a778a'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:29.845 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:29.854 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f3a67ca8-791d-48c3-9591-bd1d93e31df6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:29.862 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='269af575-f2d4-4796-8d32-c7a3c57928b4'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:29.867 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:29.871 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='d8c8eb06-488d-4974-b8d0-8ee21eea13bc'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:29.876 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='b97a37d8-13fb-4f71-9400-bfbb758a778a'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:29.880 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:29.883 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='c80c0051-f65c-412c-9326-ccd9e1e8f9e3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:29.888 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='ab31d6be-3314-48a0-bbcd-d96e46cc0790'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:29.893 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:11:29.897 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='c80c0051-f65c-412c-9326-ccd9e1e8f9e3'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Name], [d].[PharmGroup], [d].[Price]
+FROM [Drugs] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:11:29.901 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:11:29.913 +03:00 [INF] Executed ViewResult - view Index executed in 13.6083ms.
+2022-10-25 22:11:29.915 +03:00 [INF] Executed action MedprMVC.Controllers.PrescriptionsController.Index (MedprMVC) in 111.1012ms
+2022-10-25 22:11:29.916 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.PrescriptionsController.Index (MedprMVC)'
+2022-10-25 22:11:29.920 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Prescriptions/Index - - - 200 - text/html;+charset=utf-8 124.7665ms
+2022-10-25 22:11:29.945 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:29.945 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:29.947 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.6831ms
+2022-10-25 22:11:29.957 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.8980ms
+2022-10-25 22:11:31.724 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:11:31.728 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:11:31.729 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:11:31.732 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:11:31.735 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:11:31.740 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:11:31.743 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:11:31.749 +03:00 [INF] Executed ViewResult - view Create executed in 5.8801ms.
+2022-10-25 22:11:31.750 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 18.7ms
+2022-10-25 22:11:31.752 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:11:31.756 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 31.1220ms
+2022-10-25 22:11:31.783 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:11:31.785 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.4313ms
+2022-10-25 22:11:31.788 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:11:31.793 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.3670ms
+2022-10-25 22:12:34.368 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:12:34.378 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:12:34.381 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:12:34.384 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:12:34.389 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:12:34.396 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:12:34.400 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:12:34.433 +03:00 [INF] Executed ViewResult - view Create executed in 34.1672ms.
+2022-10-25 22:12:34.435 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 51.4575ms
+2022-10-25 22:12:34.437 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:12:34.439 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 70.9074ms
+2022-10-25 22:12:34.474 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:12:34.484 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:12:34.485 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 10.6267ms
+2022-10-25 22:12:34.490 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 6.0119ms
+2022-10-25 22:13:48.109 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-25 22:13:48.292 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-25 22:13:48.293 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-25 22:13:48.297 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-25 22:13:48.298 +03:00 [INF] Hosting environment: Development
+2022-10-25 22:13:48.299 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-25 22:13:48.771 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-25 22:13:48.985 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:13:48.995 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:13:49.666 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-25 22:13:49.850 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:13:49.867 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-25 22:13:49.873 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 871.1322ms
+2022-10-25 22:13:49.881 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:13:49.904 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:13:49.905 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1137.2394ms
+2022-10-25 22:13:49.913 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:13:49.915 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:13:49.949 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:13:49.959 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:13:50.096 +03:00 [INF] Executed ViewResult - view Index executed in 141.4421ms.
+2022-10-25 22:13:50.102 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 183.9635ms
+2022-10-25 22:13:50.105 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:13:50.127 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 223.5343ms
+2022-10-25 22:13:50.166 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:13:50.171 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.5145ms
+2022-10-25 22:13:50.195 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:13:50.217 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.4933ms
+2022-10-25 22:13:51.487 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:13:51.499 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:13:51.508 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:13:51.520 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:13:52.137 +03:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:13:52.257 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:13:52.291 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:13:52.337 +03:00 [INF] Executed ViewResult - view Create executed in 46.5409ms.
+2022-10-25 22:13:52.338 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 826.0823ms
+2022-10-25 22:13:52.339 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:13:52.343 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 856.4312ms
+2022-10-25 22:13:52.380 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:13:52.381 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.6994ms
+2022-10-25 22:13:52.393 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:13:52.408 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 14.7011ms
+2022-10-25 22:14:12.642 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:14:12.645 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:14:12.648 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:14:12.652 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:14:12.656 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:14:12.661 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:14:12.665 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:14:12.706 +03:00 [INF] Executed ViewResult - view Create executed in 41.764ms.
+2022-10-25 22:14:12.707 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 55.839ms
+2022-10-25 22:14:12.709 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:14:12.712 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 69.8452ms
+2022-10-25 22:14:12.751 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:14:12.751 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:14:12.753 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.7453ms
+2022-10-25 22:14:12.776 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 24.5935ms
+2022-10-25 22:14:37.369 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:14:37.376 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:14:37.379 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:14:37.383 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:14:37.393 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:14:37.397 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:14:37.402 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:14:37.438 +03:00 [INF] Executed ViewResult - view Create executed in 38.0992ms.
+2022-10-25 22:14:37.440 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 58.8578ms
+2022-10-25 22:14:37.443 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:14:37.446 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 76.9922ms
+2022-10-25 22:14:37.490 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:14:37.491 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:14:37.492 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.3329ms
+2022-10-25 22:14:37.509 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.9644ms
+2022-10-25 22:17:34.014 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-25 22:17:34.190 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-25 22:17:34.192 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-25 22:17:34.195 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-25 22:17:34.196 +03:00 [INF] Hosting environment: Development
+2022-10-25 22:17:34.197 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-25 22:17:34.931 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-25 22:17:35.271 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:17:35.284 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:17:36.088 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-25 22:17:36.278 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:17:36.296 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-25 22:17:36.302 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 1012.0068ms
+2022-10-25 22:17:36.308 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:17:36.336 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:17:36.338 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1412.7261ms
+2022-10-25 22:17:36.354 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:17:36.357 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:17:36.387 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:17:36.396 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:17:36.536 +03:00 [INF] Executed ViewResult - view Index executed in 143.7607ms.
+2022-10-25 22:17:36.544 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 184.5637ms
+2022-10-25 22:17:36.546 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:17:36.572 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 236.1036ms
+2022-10-25 22:17:36.619 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:17:36.635 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 16.4935ms
+2022-10-25 22:17:36.674 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:17:36.702 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 27.9787ms
+2022-10-25 22:17:38.135 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:17:38.148 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:17:38.157 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:17:38.166 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:17:38.817 +03:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:17:38.942 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:17:38.978 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:17:39.021 +03:00 [INF] Executed ViewResult - view Create executed in 42.8886ms.
+2022-10-25 22:17:39.022 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 862.473ms
+2022-10-25 22:17:39.024 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:17:39.028 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 893.0029ms
+2022-10-25 22:17:39.056 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:17:39.058 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.8647ms
+2022-10-25 22:17:39.073 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:17:39.079 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 6.0032ms
+2022-10-25 22:18:02.691 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:18:02.700 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:18:02.705 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:18:02.708 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:18:02.713 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:18:02.722 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:18:02.726 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:18:02.764 +03:00 [INF] Executed ViewResult - view Create executed in 39.2462ms.
+2022-10-25 22:18:02.766 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 59.0622ms
+2022-10-25 22:18:02.768 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:18:02.772 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 80.2675ms
+2022-10-25 22:18:02.801 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:18:02.801 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:18:02.802 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8334ms
+2022-10-25 22:18:02.813 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.1811ms
+2022-10-25 22:18:49.289 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:18:49.296 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:18:49.299 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:18:49.304 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:18:49.313 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:18:49.317 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:18:49.321 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:18:49.357 +03:00 [INF] Executed ViewResult - view Create executed in 37.7712ms.
+2022-10-25 22:18:49.359 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 57.1321ms
+2022-10-25 22:18:49.360 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:18:49.363 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 74.0626ms
+2022-10-25 22:18:49.402 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:18:49.403 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.4935ms
+2022-10-25 22:18:49.411 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:18:49.415 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 4.9030ms
+2022-10-25 22:19:08.639 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:19:08.641 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:19:08.644 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:19:08.647 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:19:08.653 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:19:08.660 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:19:08.664 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:19:08.703 +03:00 [INF] Executed ViewResult - view Create executed in 39.9652ms.
+2022-10-25 22:19:08.705 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 57.7268ms
+2022-10-25 22:19:08.706 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:19:08.710 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 71.6305ms
+2022-10-25 22:19:08.749 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:19:08.750 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:19:08.751 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.0971ms
+2022-10-25 22:19:08.756 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 6.3279ms
+2022-10-25 22:19:31.577 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Appointments/Index - -
+2022-10-25 22:19:31.586 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.AppointmentsController.Index (MedprMVC)'
+2022-10-25 22:19:31.589 +03:00 [INF] Route matched with {action = "Index", controller = "Appointments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MedprMVC.Controllers.AppointmentsController (MedprMVC).
+2022-10-25 22:19:31.592 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:19:31.734 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:19:31.984 +03:00 [INF] Executed DbCommand (33ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:19:32.082 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:19:32.094 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Date], [a].[DoctorId], [a].[Place], [a].[UserId]
+FROM [Appointments] AS [a]
+2022-10-25 22:19:32.125 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='269af575-f2d4-4796-8d32-c7a3c57928b4'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:19:32.138 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:19:32.154 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='ab31d6be-3314-48a0-bbcd-d96e46cc0790'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:19:32.159 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='f1e73fad-8b2d-4c7a-267b-08daac8f9f21'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:19:32.167 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='b97a37d8-13fb-4f71-9400-bfbb758a778a'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:19:32.171 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='5263faef-e3e1-4b5c-e52d-08daad131971'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:19:32.208 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:19:32.266 +03:00 [INF] Executed ViewResult - view Index executed in 89.8345ms.
+2022-10-25 22:19:32.267 +03:00 [INF] Executed action MedprMVC.Controllers.AppointmentsController.Index (MedprMVC) in 675.6408ms
+2022-10-25 22:19:32.269 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.AppointmentsController.Index (MedprMVC)'
+2022-10-25 22:19:32.276 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Appointments/Index - - - 200 - text/html;+charset=utf-8 699.5424ms
+2022-10-25 22:19:32.315 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:19:32.319 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.5932ms
+2022-10-25 22:19:32.329 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:19:32.341 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.6150ms
+2022-10-25 22:19:33.744 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/appointments/details/0d93d604-ba05-40d7-8337-50372eeeb970 - -
+2022-10-25 22:19:33.748 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.AppointmentsController.Details (MedprMVC)'
+2022-10-25 22:19:33.760 +03:00 [INF] Route matched with {action = "Details", controller = "Appointments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller MedprMVC.Controllers.AppointmentsController (MedprMVC).
+2022-10-25 22:19:33.765 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:19:33.847 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:19:33.852 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:19:33.859 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:19:33.865 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Date], [a].[DoctorId], [a].[Place], [a].[UserId]
+FROM [Appointments] AS [a]
+2022-10-25 22:19:33.878 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='0d93d604-ba05-40d7-8337-50372eeeb970'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Date], [a].[DoctorId], [a].[Place], [a].[UserId]
+FROM [Appointments] AS [a]
+WHERE [a].[Id] = @__id_0
+2022-10-25 22:19:33.883 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='269af575-f2d4-4796-8d32-c7a3c57928b4'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:19:33.888 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:19:33.894 +03:00 [INF] Executing ViewResult, running view Details.
+2022-10-25 22:19:33.908 +03:00 [INF] Executed ViewResult - view Details executed in 15.5057ms.
+2022-10-25 22:19:33.910 +03:00 [INF] Executed action MedprMVC.Controllers.AppointmentsController.Details (MedprMVC) in 145.5399ms
+2022-10-25 22:19:33.912 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.AppointmentsController.Details (MedprMVC)'
+2022-10-25 22:19:33.916 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/appointments/details/0d93d604-ba05-40d7-8337-50372eeeb970 - - - 200 - text/html;+charset=utf-8 171.7515ms
+2022-10-25 22:19:33.953 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:19:33.954 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.7660ms
+2022-10-25 22:19:33.964 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:19:33.978 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 14.0156ms
+2022-10-25 22:19:34.736 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/appointments/edit/0d93d604-ba05-40d7-8337-50372eeeb970 - -
+2022-10-25 22:19:34.738 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.AppointmentsController.Edit (MedprMVC)'
+2022-10-25 22:19:34.742 +03:00 [INF] Route matched with {action = "Edit", controller = "Appointments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller MedprMVC.Controllers.AppointmentsController (MedprMVC).
+2022-10-25 22:19:34.748 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:19:34.759 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:19:34.767 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:19:34.773 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:19:34.780 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Date], [a].[DoctorId], [a].[Place], [a].[UserId]
+FROM [Appointments] AS [a]
+2022-10-25 22:19:34.785 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='0d93d604-ba05-40d7-8337-50372eeeb970'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Date], [a].[DoctorId], [a].[Place], [a].[UserId]
+FROM [Appointments] AS [a]
+WHERE [a].[Id] = @__id_0
+2022-10-25 22:19:34.789 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='269af575-f2d4-4796-8d32-c7a3c57928b4'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:19:34.800 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+2022-10-25 22:19:34.835 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:19:34.841 +03:00 [INF] Executing ViewResult, running view Edit.
+2022-10-25 22:19:34.917 +03:00 [INF] Executed ViewResult - view Edit executed in 77.0195ms.
+2022-10-25 22:19:34.919 +03:00 [INF] Executed action MedprMVC.Controllers.AppointmentsController.Edit (MedprMVC) in 171.6467ms
+2022-10-25 22:19:34.921 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.AppointmentsController.Edit (MedprMVC)'
+2022-10-25 22:19:34.924 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/appointments/edit/0d93d604-ba05-40d7-8337-50372eeeb970 - - - 200 - text/html;+charset=utf-8 188.2829ms
+2022-10-25 22:19:34.958 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:19:34.960 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8792ms
+2022-10-25 22:19:34.967 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:19:34.975 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.2268ms
+2022-10-25 22:20:33.645 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/appointments/edit/0d93d604-ba05-40d7-8337-50372eeeb970 - -
+2022-10-25 22:20:33.655 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.AppointmentsController.Edit (MedprMVC)'
+2022-10-25 22:20:33.659 +03:00 [INF] Route matched with {action = "Edit", controller = "Appointments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller MedprMVC.Controllers.AppointmentsController (MedprMVC).
+2022-10-25 22:20:33.663 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:20:33.665 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'IdentityDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: None
+2022-10-25 22:20:33.672 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__get_Item_0
+2022-10-25 22:20:33.679 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-10-25 22:20:33.684 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Date], [a].[DoctorId], [a].[Place], [a].[UserId]
+FROM [Appointments] AS [a]
+2022-10-25 22:20:33.689 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='0d93d604-ba05-40d7-8337-50372eeeb970'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Date], [a].[DoctorId], [a].[Place], [a].[UserId]
+FROM [Appointments] AS [a]
+WHERE [a].[Id] = @__id_0
+2022-10-25 22:20:33.696 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='269af575-f2d4-4796-8d32-c7a3c57928b4'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+WHERE [d].[Id] = @__id_0
+2022-10-25 22:20:33.700 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Experience], [d].[Name]
+FROM [Doctors] AS [d]
+2022-10-25 22:20:33.706 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='bafef5d2-d072-4e59-7881-08daab90edc6'], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2022-10-25 22:20:33.711 +03:00 [INF] Executing ViewResult, running view Edit.
+2022-10-25 22:20:33.720 +03:00 [INF] Executed ViewResult - view Edit executed in 8.8968ms.
+2022-10-25 22:20:33.722 +03:00 [INF] Executed action MedprMVC.Controllers.AppointmentsController.Edit (MedprMVC) in 59.8578ms
+2022-10-25 22:20:33.724 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.AppointmentsController.Edit (MedprMVC)'
+2022-10-25 22:20:33.728 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/appointments/edit/0d93d604-ba05-40d7-8337-50372eeeb970 - - - 200 - text/html;+charset=utf-8 83.0260ms
+2022-10-25 22:20:33.790 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:20:33.791 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8951ms
+2022-10-25 22:20:33.794 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:20:33.799 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.3218ms
+2022-10-25 22:20:36.860 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:20:36.863 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:20:36.867 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:20:36.873 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:20:36.877 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:20:36.882 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:20:36.886 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:20:36.922 +03:00 [INF] Executed ViewResult - view Create executed in 36.768ms.
+2022-10-25 22:20:36.923 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 51.3281ms
+2022-10-25 22:20:36.925 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:20:36.929 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 68.9499ms
+2022-10-25 22:20:36.969 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:20:36.969 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:20:36.975 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.2896ms
+2022-10-25 22:20:36.981 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.0661ms
+2022-10-25 22:21:40.872 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:21:40.883 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:21:40.886 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:21:40.890 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:21:40.895 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:21:40.902 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:21:40.907 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:21:40.945 +03:00 [INF] Executed ViewResult - view Create executed in 39.0315ms.
+2022-10-25 22:21:40.946 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 57.0416ms
+2022-10-25 22:21:40.948 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:21:40.952 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 79.8005ms
+2022-10-25 22:21:40.980 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:21:40.988 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.8064ms
+2022-10-25 22:21:40.990 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:21:40.992 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.4571ms
+2022-10-25 22:21:54.935 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:21:54.938 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:21:54.945 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:21:54.948 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:21:54.955 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:21:54.960 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:21:54.964 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:21:55.002 +03:00 [INF] Executed ViewResult - view Create executed in 38.5783ms.
+2022-10-25 22:21:55.003 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 55.2552ms
+2022-10-25 22:21:55.005 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:21:55.008 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 73.7414ms
+2022-10-25 22:21:55.046 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:21:55.046 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:21:55.048 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.8337ms
+2022-10-25 22:21:55.056 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.9447ms
+2022-10-25 22:22:16.070 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:22:16.072 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:22:16.079 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:22:16.082 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:22:16.088 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:22:16.095 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:22:16.100 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:22:16.137 +03:00 [INF] Executed ViewResult - view Create executed in 38.7915ms.
+2022-10-25 22:22:16.139 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 56.9145ms
+2022-10-25 22:22:16.141 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:22:16.144 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 74.5290ms
+2022-10-25 22:22:16.174 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:22:16.179 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:22:16.182 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.3682ms
+2022-10-25 22:22:16.192 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.9647ms
+2022-10-25 22:23:18.238 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:23:18.248 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:23:18.251 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:23:18.255 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:23:18.261 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:23:18.267 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:23:18.272 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:23:18.310 +03:00 [INF] Executed ViewResult - view Create executed in 39.6077ms.
+2022-10-25 22:23:18.312 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 57.2002ms
+2022-10-25 22:23:18.314 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:23:18.318 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 79.5499ms
+2022-10-25 22:23:18.353 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:23:18.353 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:23:18.355 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.5970ms
+2022-10-25 22:23:18.360 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.1296ms
+2022-10-25 22:24:04.143 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:24:04.150 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:24:04.153 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:24:04.157 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:24:04.162 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:24:04.168 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:24:04.172 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:24:04.210 +03:00 [INF] Executed ViewResult - view Create executed in 39.0628ms.
+2022-10-25 22:24:04.212 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 56.2386ms
+2022-10-25 22:24:04.215 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:24:04.220 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 76.9537ms
+2022-10-25 22:24:04.248 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:24:04.262 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:24:04.273 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 11.8322ms
+2022-10-25 22:24:04.274 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 25.9120ms
+2022-10-25 22:24:08.742 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:24:08.745 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:24:08.748 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:24:08.752 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:24:08.756 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:24:08.763 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:24:08.767 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:24:08.805 +03:00 [INF] Executed ViewResult - view Create executed in 38.4942ms.
+2022-10-25 22:24:08.807 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 55.0609ms
+2022-10-25 22:24:08.809 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:24:08.813 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 71.4076ms
+2022-10-25 22:24:08.844 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:24:08.844 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:24:08.846 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9176ms
+2022-10-25 22:24:08.854 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.9879ms
+2022-10-25 22:24:20.251 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:24:20.254 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:24:20.257 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:24:20.260 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:24:20.267 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:24:20.272 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:24:20.276 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:24:20.314 +03:00 [INF] Executed ViewResult - view Create executed in 38.8521ms.
+2022-10-25 22:24:20.316 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 55.9945ms
+2022-10-25 22:24:20.318 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:24:20.322 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 70.4860ms
+2022-10-25 22:24:20.361 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:24:20.361 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:24:20.365 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.0079ms
+2022-10-25 22:24:20.378 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.3998ms
+2022-10-25 22:24:24.531 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-10-25 22:24:24.537 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2022-10-25 22:24:24.557 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2022-10-25 22:24:24.557 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-10-25 22:24:24.559 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 22.2029ms
+2022-10-25 22:24:24.563 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 31.8905ms
+2022-10-25 22:25:38.787 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:25:38.795 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:25:38.802 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:25:38.807 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:25:38.812 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:25:38.817 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:25:38.823 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:25:38.865 +03:00 [INF] Executed ViewResult - view Create executed in 43.4846ms.
+2022-10-25 22:25:38.867 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 60.6652ms
+2022-10-25 22:25:38.869 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:25:38.873 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 85.9269ms
+2022-10-25 22:25:38.910 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:25:38.917 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:25:38.929 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 12.5294ms
+2022-10-25 22:25:38.941 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 31.0273ms
+2022-10-25 22:25:38.984 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2022-10-25 22:25:38.989 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2022-10-25 22:25:38.991 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 7.1547ms
+2022-10-25 22:25:39.025 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-10-25 22:25:39.028 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-10-25 22:25:39.030 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 5.6720ms
+2022-10-25 22:26:19.137 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:26:19.143 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:26:19.146 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:26:19.150 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:26:19.154 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:26:19.160 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:26:19.166 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:26:19.206 +03:00 [INF] Executed ViewResult - view Create executed in 40.653ms.
+2022-10-25 22:26:19.207 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 57.762ms
+2022-10-25 22:26:19.209 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:26:19.213 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 76.1639ms
+2022-10-25 22:26:19.242 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:26:19.242 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:26:19.246 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.1704ms
+2022-10-25 22:26:19.260 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.1323ms
+2022-10-25 22:26:19.326 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2022-10-25 22:26:19.331 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2022-10-25 22:26:19.333 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 7.7244ms
+2022-10-25 22:26:19.350 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-10-25 22:26:19.356 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-10-25 22:26:19.360 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 9.8756ms
+2022-10-25 22:27:35.822 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7298/FamilyMembers/Create application/x-www-form-urlencoded 342
+2022-10-25 22:27:35.829 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:27:35.839 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MedprMVC.Models.FamilyMemberModel) on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:27:35.844 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:28:35.677 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-25 22:28:35.841 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-25 22:28:35.843 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-25 22:28:35.846 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-25 22:28:35.847 +03:00 [INF] Hosting environment: Development
+2022-10-25 22:28:35.848 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-25 22:28:36.555 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-25 22:28:36.773 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:28:36.784 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:28:37.473 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-25 22:28:37.655 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:28:37.675 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-25 22:28:37.682 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 891.1354ms
+2022-10-25 22:28:37.687 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:28:37.711 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:28:37.715 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1163.1754ms
+2022-10-25 22:28:37.719 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:28:37.722 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:28:37.758 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:28:37.767 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:28:37.903 +03:00 [INF] Executed ViewResult - view Index executed in 140.3872ms.
+2022-10-25 22:28:37.909 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 184.1804ms
+2022-10-25 22:28:37.911 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:28:37.941 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 229.5219ms
+2022-10-25 22:28:37.975 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:28:37.982 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.6606ms
+2022-10-25 22:28:38.019 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:28:38.057 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.0032ms
+2022-10-25 22:28:41.816 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:28:41.828 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:28:41.838 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:28:41.850 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:28:42.466 +03:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:28:42.587 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:28:42.623 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:28:42.668 +03:00 [INF] Executed ViewResult - view Create executed in 46.034ms.
+2022-10-25 22:28:42.670 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 827.6611ms
+2022-10-25 22:28:42.672 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:28:42.676 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 858.8158ms
+2022-10-25 22:28:42.713 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:28:42.715 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9494ms
+2022-10-25 22:28:42.727 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:28:42.732 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.3594ms
+2022-10-25 22:28:52.530 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:28:52.532 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:28:52.536 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:28:52.540 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:28:52.545 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:28:52.551 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:28:52.556 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:28:52.591 +03:00 [INF] Executed ViewResult - view Create executed in 35.9036ms.
+2022-10-25 22:28:52.592 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 52.2525ms
+2022-10-25 22:28:52.594 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:28:52.597 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 67.5100ms
+2022-10-25 22:28:52.639 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:28:52.641 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:28:52.644 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.2198ms
+2022-10-25 22:28:52.650 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.3417ms
+2022-10-25 22:29:38.529 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:29:38.532 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:29:38.536 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:29:38.543 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:29:38.555 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:29:38.568 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:29:38.578 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:29:38.618 +03:00 [INF] Executed ViewResult - view Create executed in 41.2489ms.
+2022-10-25 22:29:38.620 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 80.5176ms
+2022-10-25 22:29:38.622 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:29:38.625 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 96.0567ms
+2022-10-25 22:29:38.659 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:29:38.659 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:29:38.661 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.7875ms
+2022-10-25 22:29:38.671 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.8375ms
+2022-10-25 22:29:42.707 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-10-25 22:29:42.714 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2022-10-25 22:29:42.750 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2022-10-25 22:29:42.750 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-10-25 22:29:42.753 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 39.0658ms
+2022-10-25 22:29:42.757 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 49.0362ms
+2022-10-25 22:32:11.520 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-25 22:32:11.687 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-25 22:32:11.688 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-25 22:32:11.692 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-25 22:32:11.693 +03:00 [INF] Hosting environment: Development
+2022-10-25 22:32:11.694 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-25 22:32:12.361 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-25 22:32:12.572 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:32:12.581 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:32:13.228 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-25 22:32:13.434 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:32:13.454 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-25 22:32:13.461 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 872.9696ms
+2022-10-25 22:32:13.467 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:32:13.488 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:32:13.491 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1132.7660ms
+2022-10-25 22:32:13.496 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:32:13.499 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:32:13.530 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:32:13.541 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:32:13.673 +03:00 [INF] Executed ViewResult - view Index executed in 137.6147ms.
+2022-10-25 22:32:13.681 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 179.995ms
+2022-10-25 22:32:13.684 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:32:13.705 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 216.9709ms
+2022-10-25 22:32:13.735 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:32:13.742 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.8121ms
+2022-10-25 22:32:13.774 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:32:13.807 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.5097ms
+2022-10-25 22:32:15.308 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:32:15.320 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:32:15.330 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:32:15.339 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:32:15.961 +03:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:32:16.081 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:32:16.117 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:32:16.161 +03:00 [INF] Executed ViewResult - view Create executed in 44.1023ms.
+2022-10-25 22:32:16.163 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 829.1699ms
+2022-10-25 22:32:16.165 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:32:16.169 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 861.3250ms
+2022-10-25 22:32:16.197 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:32:16.199 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.7617ms
+2022-10-25 22:32:16.211 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:32:16.220 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.3732ms
+2022-10-25 22:32:36.098 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:32:36.101 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:32:36.105 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:32:36.109 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:32:36.114 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:32:36.119 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:32:36.126 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:32:36.160 +03:00 [INF] Executed ViewResult - view Create executed in 35.3066ms.
+2022-10-25 22:32:36.161 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 52.548ms
+2022-10-25 22:32:36.163 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:32:36.167 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 68.2023ms
+2022-10-25 22:32:36.198 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:32:36.208 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.6138ms
+2022-10-25 22:34:03.338 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-25 22:34:03.504 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-25 22:34:03.507 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-25 22:34:03.511 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-25 22:34:03.512 +03:00 [INF] Hosting environment: Development
+2022-10-25 22:34:03.513 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-25 22:34:04.222 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-25 22:34:04.440 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:34:04.449 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:34:05.107 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-25 22:34:05.291 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:34:05.309 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-25 22:34:05.316 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 859.5458ms
+2022-10-25 22:34:05.322 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:34:05.344 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:34:05.347 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1127.0039ms
+2022-10-25 22:34:05.354 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:34:05.357 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:34:05.391 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:34:05.400 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:34:05.531 +03:00 [INF] Executed ViewResult - view Index executed in 135.0536ms.
+2022-10-25 22:34:05.539 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 178.9697ms
+2022-10-25 22:34:05.541 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:34:05.563 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 218.5782ms
+2022-10-25 22:34:05.597 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:34:05.602 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.4054ms
+2022-10-25 22:34:05.626 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:34:05.661 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.3304ms
+2022-10-25 22:34:06.991 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:34:07.003 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:34:07.013 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:34:07.024 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:34:07.650 +03:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:34:07.774 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:34:07.813 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:34:07.857 +03:00 [INF] Executed ViewResult - view Create executed in 44.7792ms.
+2022-10-25 22:34:07.859 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 840.8052ms
+2022-10-25 22:34:07.860 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:34:07.865 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 874.2236ms
+2022-10-25 22:34:07.910 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:34:07.911 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.5684ms
+2022-10-25 22:34:07.919 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:34:07.925 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 6.2930ms
+2022-10-25 22:34:24.131 +03:00 [INF] User profile is available. Using 'C:\Users\LKumb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-10-25 22:34:24.300 +03:00 [INF] Now listening on: https://localhost:7298
+2022-10-25 22:34:24.301 +03:00 [INF] Now listening on: http://localhost:5298
+2022-10-25 22:34:24.304 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-25 22:34:24.306 +03:00 [INF] Hosting environment: Development
+2022-10-25 22:34:24.307 +03:00 [INF] Content root path: C:\Skyrim\Code\ASPNET\Medpr\MedprMVC\
+2022-10-25 22:34:25.025 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/ - -
+2022-10-25 22:34:25.238 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:34:25.249 +03:00 [INF] Route matched with {action = "Login", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:34:25.919 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2022-10-25 22:34:26.110 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:34:26.128 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2022-10-25 22:34:26.134 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Login (MedprMVC) in 877.407ms
+2022-10-25 22:34:26.139 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Login (MedprMVC)'
+2022-10-25 22:34:26.162 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:34:26.163 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/ - - - 302 0 - 1140.9006ms
+2022-10-25 22:34:26.172 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:34:26.175 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:34:26.215 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:34:26.223 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:34:26.368 +03:00 [INF] Executed ViewResult - view Index executed in 148.0147ms.
+2022-10-25 22:34:26.374 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 196.7813ms
+2022-10-25 22:34:26.378 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:34:26.400 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 237.5188ms
+2022-10-25 22:34:26.505 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:34:26.509 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:34:26.511 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.7761ms
+2022-10-25 22:34:26.541 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 31.8644ms
+2022-10-25 22:35:44.127 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/Home/Index - -
+2022-10-25 22:35:44.140 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:35:44.142 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MedprMVC.Controllers.HomeController (MedprMVC).
+2022-10-25 22:35:44.153 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:35:44.160 +03:00 [INF] Executing ViewResult, running view Index.
+2022-10-25 22:35:44.171 +03:00 [INF] Executed ViewResult - view Index executed in 11.9461ms.
+2022-10-25 22:35:44.173 +03:00 [INF] Executed action MedprMVC.Controllers.HomeController.Index (MedprMVC) in 27.9189ms
+2022-10-25 22:35:44.175 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.HomeController.Index (MedprMVC)'
+2022-10-25 22:35:44.178 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/Home/Index - - - 200 - text/html;+charset=utf-8 50.9268ms
+2022-10-25 22:35:44.220 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:35:44.222 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 2.3276ms
+2022-10-25 22:35:44.228 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:35:44.248 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 19.8621ms
+2022-10-25 22:35:45.113 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:35:45.117 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:35:45.126 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:35:45.130 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:35:45.741 +03:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:35:45.866 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:35:45.902 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:35:45.964 +03:00 [INF] Executed ViewResult - view Create executed in 62.2969ms.
+2022-10-25 22:35:45.965 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 835.7867ms
+2022-10-25 22:35:45.967 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:35:45.971 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 857.8473ms
+2022-10-25 22:35:46.012 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:35:46.014 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.9006ms
+2022-10-25 22:35:46.022 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:35:46.032 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.2955ms
+2022-10-25 22:36:16.364 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/FamilyMembers/Create - -
+2022-10-25 22:36:16.367 +03:00 [INF] Executing endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:36:16.370 +03:00 [INF] Route matched with {action = "Create", controller = "FamilyMembers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller MedprMVC.Controllers.FamilyMembersController (MedprMVC).
+2022-10-25 22:36:16.373 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'MedprDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.9' with options: SensitiveDataLoggingEnabled 
+2022-10-25 22:36:16.378 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[Creator], [f].[Surname]
+FROM [Families] AS [f]
+2022-10-25 22:36:16.390 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DateOfBirth], [u].[FullName], [u].[Login]
+FROM [Users] AS [u]
+2022-10-25 22:36:16.394 +03:00 [INF] Executing ViewResult, running view Create.
+2022-10-25 22:36:16.433 +03:00 [INF] Executed ViewResult - view Create executed in 40.1965ms.
+2022-10-25 22:36:16.435 +03:00 [INF] Executed action MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC) in 61.8079ms
+2022-10-25 22:36:16.437 +03:00 [INF] Executed endpoint 'MedprMVC.Controllers.FamilyMembersController.Create (MedprMVC)'
+2022-10-25 22:36:16.440 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/FamilyMembers/Create - - - 200 - text/html;+charset=utf-8 76.2529ms
+2022-10-25 22:36:16.479 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - -
+2022-10-25 22:36:16.481 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 1.5714ms
+2022-10-25 22:36:16.489 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7298/_vs/browserLink - -
+2022-10-25 22:36:16.494 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7298/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.0782ms

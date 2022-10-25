@@ -4,8 +4,7 @@ namespace MedprCore.Abstractions;
 
 public interface IFamilyMemberService
 {
-    Task<List<FamilyMemberDTO>> GetFamilyMembersByPageNumberAndPageSizeAsync
-        (int pageNumber, int pageSize);
+    Task<List<FamilyMemberDTO>> GetAllFamilyMembers();
 
     Task<FamilyMemberDTO> GetFamilyMembersByIdAsync(Guid id);
 

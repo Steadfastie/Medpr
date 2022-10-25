@@ -4,8 +4,7 @@ namespace MedprCore.Abstractions
 {
     public interface IDoctorService
     {
-        Task<List<DoctorDTO>> GetDoctorsByPageNumberAndPageSizeAsync
-            (int pageNumber, int pageSize);
+        Task<List<DoctorDTO>> GetAllDoctors();
 
         Task<DoctorDTO> GetDoctorsByIdAsync(Guid id);
 

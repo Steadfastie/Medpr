@@ -42,16 +42,10 @@ public class UserService : PasswordHash, IUserService
         return dto;
     }
 
-    public Task<List<UserDTO>> GetUsersByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<UserDTO>> GetAllUsers()
     {
-        var list = _unitOfWork.Users
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .OrderBy(user => user.FullName)
-            .Select(user => _mapper.Map<UserDTO>(user))
-            .ToListAsync();
-        return list;
+        var list = _unitOfWork.Users.Get();
+        return await list.Select(user => _mapper.Map<UserDTO>(user)).ToListAsync();
     }
 
     public async Task<int> CreateUserAsync(UserDTO dto)
