@@ -3,27 +3,27 @@
 <div class="container text-center">
     <div class="row align-items-center">
         <div class="col">
-            <h5>User:</h5>
-            <p>@Model.User.FullName</p>
-            <p>@Model.User.Login</p>
+            <b>User:</b>
+            <div>@Model.User.FullName</div>
+            <div>@Model.User.Login</div>
         </div>
         <div class="col">
-            <h5>Doctor:</h5>
-            <p>@Model.Doctor.Name</p>
-            <p>who has <i>@Model.Doctor.Experience</i> years of experience</p>
+            <b>Doctor:</b>
+            <div>@Model.Doctor.Name</div>
+            <div>who has <i>@Model.Doctor.Experience</i> years of experience</div>
         </div>
         <div class="col">
-            <h5>Drug:</h5>
-            <p>@Model.Drug.Name</p>
-            <p>@Model.Drug.PharmGroup</p>
-            <p>$@Model.Drug.Price per pill</p>
-            <p>@Model.Dose pills per day</p>
+            <b>Drug:</b>
+            <div>@Model.Drug.Name</div>
+            <div>@Model.Drug.PharmGroup</div>
+            <div>$@Model.Drug.Price per pill</div>
+            <div>@Model.Dose pills per day</div>
         </div>
         <div class="col">
-            <h5>Begin:</h5>
-            <p>@Model.StartDate</p>
-            <h5>End:</h5>
-            <p>@Model.EndDate</p>
+            <b>Begin:</b>
+            <div>@Model.StartDate.ToString("dddd d MMMM yyyy")</div>
+            <b>End:</b>
+            <div>@Model.EndDate.ToString("dddd d MMMM yyyy")</div>
         </div>
     </div>
 </div>

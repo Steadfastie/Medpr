@@ -1,20 +1,38 @@
 ﻿@model VaccinationModel
-
-<div>
-    <h3>
-        @Html.DisplayFor(modelItem => Model.Date) (@Model.DaysOfProtection)
-    </h3>
-
-    <h5>Vaccine taken:</h5>
-    <div>
-        @Model.Vaccine.Name - 
-        @Model.Vaccine.Reason
+@{
+    var endDate = Model.Date.AddDays(Model.DaysOfProtection).ToString("dddd d MMMM yyyy");
+}
+<div class="container text-center">
+    <div class="row align-items-center">
+        <div class="col">
+            <h4>
+                @Html.DisplayFor(modelItem => Model.Date)
+            </h4>
+        </div>
+        <div class="col">
+            <b>Vaccine taken:</b>
+        </div>
+        <div class="col">
+            <b>User vaccinated:</b>
+        </div>
     </div>
-
-    <h5>User vaccinated:</h5>
-    <div>
-        @Model.User.FullName
-        @Model.User.Login
+    <div class="row align-items-start">
+        <div class="col">
+            <div>
+                Till @endDate (@Model.DaysOfProtection days)
+            </div>
+        </div>
+        <div class="col">
+            <div>
+                @Model.Vaccine.Name - @Model.Vaccine.Reason
+            </div>
+        </div>
+        <div class="col">
+            <div>
+                @Model.User.FullName 
+            </div>
+            <em>@Model.User.Login</em>
+        </div>
     </div>
 </div>
 

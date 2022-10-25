@@ -4,32 +4,36 @@
     ViewData["Title"] = "All appointments";
 }
 
-<table class="table table-borderless">
-    <tbody>
-        @if (Model != null)
-        {
-            foreach (var appointment in Model)
-            {
-                <tr>
-                    <td>
-                        @{await Html.RenderPartialAsync("AppointmentPartial", appointment);}
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" href="~/appointments/details/@appointment.Id">Read more</a>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <h2>No appointments found in database</h2>
-            <h4>Add new appointment to this app?</h4>
-        }
-    </tbody>
-</table>
+<div class="container text-center">
 
-<br>
-<br>
-<div>
-    <a class="btn btn-primary" asp-action="Create" asp-controller="Appointments">Add appointment</a>
+    @if (Model != null)
+    {
+        foreach (var appointment in Model)
+        {
+            <div class="row align-items-center">
+                <div class="col-10">
+                    @{
+                        await Html.RenderPartialAsync("AppointmentPartial", appointment);
+                    }
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-primary" href="~/appointments/details/@appointment.Id">Read more</a>
+                </div>
+            </div>
+            <br />
+        }
+    }
+    else
+    {
+        <h2>No vaccinations found in database</h2>
+        <h4>Add new vaccination to this app?</h4>
+    }
+    <br>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Appointments">Add appointment</a>
+        </div>
+    </div>
 </div>
+
+

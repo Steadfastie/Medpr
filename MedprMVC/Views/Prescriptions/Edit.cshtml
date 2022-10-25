@@ -10,17 +10,15 @@
     <form asp-controller="Prescriptions" asp-action="Edit" method="post" class="row gx-3 gy-2 align-items-center" id="mainform">
         <div class="row align-items-center">
             <div class="col">
-                <label for="doctor" class="form-label"></label>
-                <select asp-for="DoctorId" asp-items="@Model.Doctors" id="doctor">
+                <select asp-for="DoctorId" asp-items="@Model.Doctors" id="doctor" class="form-select">
                 </select>
             </div>
             <div class="col">
-                <label for="drug" class="form-label"></label>
-                <select asp-for="DrugId" asp-items="@Model.Drugs" id="drug">
+                <select asp-for="DrugId" asp-items="@Model.Drugs" id="drug" class="form-select">
                 </select>
             </div>
             <div class="col">
-                <label for="user" class="form-label">User: <em>@Model.User.Login</em></label>
+                <div>User: <em>@Model.User.Login</em></div>
                 <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
             </div>
         </div>
@@ -30,22 +28,26 @@
             <div class="col">
                 <label for="startDate" class="form-label">Start at</label>
                 <input asp-for="StartDate" type="date" class="form-control" id="startDate"
-                        min="@DateTime.Now.AddYears(-3).ToString("yyyy-MM-dd")"
-                        max="@DateTime.Now.AddYears(1).ToString(" yyyy-MM-dd")"
                         value="@Model.StartDate.ToString("yyyy-MM-dd")">
-                <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
             <div class="col">
                 <label for="endDate" class="form-label">End at</label>
                 <input asp-for="EndDate" type="date" class="form-control" id="endDate" 
-                        min="@DateTime.Now.AddYears(-3).ToString("yyyy-MM-dd")"
-                        max="@DateTime.Now.AddYears(1).ToString("yyyy-MM-dd")"
                         value="@Model.EndDate.ToString("yyyy-MM-dd")">
-                <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
             <div class="col">
                 <label for="dose" class="form-label">Pills per day</label>
                 <input asp-for="Dose" class="form-control" id="dose">
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col">
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="col">
                 <span asp-validation-for="Dose" class="text-danger"></span>
             </div>
         </div>

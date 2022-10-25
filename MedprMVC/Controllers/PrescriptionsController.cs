@@ -358,11 +358,6 @@ public class PrescriptionsController : Controller
         {
             if (id != Guid.Empty)
             {
-                if (!await CheckRelevancy(id))
-                {
-                    return RedirectToAction("Denied", "Home");
-                }
-
                 var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
 
                 await _prescriptionService.DeletePrescriptionAsync(dto);

@@ -339,11 +339,6 @@ public class AppointmentsController : Controller
         {
             if (id != Guid.Empty)
             {
-                if (!await CheckRelevancy(id))
-                {
-                    return RedirectToAction("Denied", "Home");
-                }
-
                 var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
 
                 await _appointmentService.DeleteAppointmentAsync(dto);

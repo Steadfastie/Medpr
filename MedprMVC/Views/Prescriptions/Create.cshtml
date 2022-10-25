@@ -10,22 +10,19 @@
     <form asp-controller="Prescriptions" asp-action="Create" method="post" class="row gx-3 gy-2 align-items-center" id="mainform">
         <div class="row align-items-center">
             <div class="col">
-                <label for="doctor" class="form-label"></label>
-                <select asp-for="DoctorId" asp-items="@Model.Doctors" id="doctor">
+                <select asp-for="DoctorId" asp-items="@Model.Doctors" id="doctor" class="form-select">
                     <option selected="selected" disabled="disabled">Select doctor</option>
                 </select>
             </div>
             <div class="col">
-                <label for="drug" class="form-label"></label>
-                <select asp-for="DrugId" asp-items="@Model.Drugs" id="drug">
+                <select asp-for="DrugId" asp-items="@Model.Drugs" id="drug" class="form-select">
                     <option selected="selected" disabled="disabled">Select drug</option> 
                 </select>
             </div>
             <div class="col">
                 @if (Model.Users != null)
                 {
-                    <label for="user" class="form-label">User</label>
-                    <select asp-for="UserId" asp-items="@Model.Users" id="user">
+                    <select asp-for="UserId" asp-items="@Model.Users" id="user" class="form-select">
                         @if (User.IsInRole("Admin"))
                         {
                             <option selected="selected" disabled="disabled">Select user</option>

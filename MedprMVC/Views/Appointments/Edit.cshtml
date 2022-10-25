@@ -3,38 +3,66 @@
     ViewData["Title"] = "Update appointment info";
 }
 
-<div>
-    <h1>Update appointment info</h1>
+<div class="container text-center">
+    <div class="row align-items-center">
+        <div class="col fs-1">Edit appointment</div>
+    </div>
+    <br />
 
-    <form asp-controller="Appointments" asp-action="Edit" method="post">
-        <div class="mb-3">
-            <label for="date" class="form-label">Date</label>
-            <input asp-for="Date" type="datetime-local" class="form-control" id="date"
-                   min="@DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd")"
-                   max="@DateTime.Now.AddYears(2).ToString("yyyy-MM-dd")"
-                   value="@Model.Date.ToString("yyyy-MM-dd")">
-            <span asp-validation-for="Date" class="text-danger"></span>
+    <form asp-controller="Appointments" asp-action="Edit" method="post" class="row gx-3 gy-2 align-items-center" id="mainform">
+        <div class="row align-items-center">
+            <div class="col fs-3">
+                <label for="date" class="form-label">Date</label>
+            </div>
+            <div class="col fs-3">
+                <label for="place" class="form-label">Place</label>
+            </div>
+            <div class="col fs-3">
+                <label for="doctor" class="form-label">Doctor</label>
+            </div>
+            <div class="col fs-3">
+                <label for="user" class="form-label">User</label>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="place" class="form-label">Place</label>
-            <input asp-for="Place" class="form-control" id="place">
-            <span asp-validation-for="Place" class="text-danger"></span>
+        <div class="row align-items-center">
+            <div class="col">
+                <input asp-for="Date" type="date" class="form-control" id="date"
+                       value="@Model.Date.ToString("yyyy-MM-dd")">
+            </div>
+            <div class="col">
+                <input asp-for="Place" class="form-control" id="place">
+            </div>
+            <div class="col">
+                <div>
+                    <select asp-for="DoctorId" asp-items="@Model.Doctors" id="doctor" class="form-select">
+                    </select>
+                </div>               
+            </div>
+            <div class="col">
+                <label for="user" class="form-label"><em>@Model.User.Login</em></label>
+                <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="doctor" class="form-label">Doctor</label>
-            <select asp-for="DoctorId" asp-items="@Model.Doctors" id="doctor">
-            </select>
-            <span asp-validation-for="DoctorId" class="text-danger"></span>
-            <a class="btn btn-primary" asp-action="Create" asp-controller="Doctors">Add doctor</a>
+        <div class="row align-items-center">
+            <div class="col">
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <span asp-validation-for="Place" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <span asp-validation-for="DoctorId" class="text-danger"></span>
+            </div>
+            <div class="col">
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="user" class="form-label">User: <em>@Model.User.Login</em></label>
-            <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
+        <br>
+        <div class="row align-items-center">
+            <div>
+                <input type="submit" form="mainform" class="btn btn-primary col-sm-2" value="Submit">
+                <a class="btn btn-outline-secondary" asp-action="Create" asp-controller="Doctors">Add doctor</a>
+            </div>
         </div>
-
-
-        <input type="submit" class="btn btn-primary" value="Submit">
-
     </form>
 </div>
 

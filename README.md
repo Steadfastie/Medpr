@@ -24,7 +24,8 @@ List of things that will be updated in my project next:
 			As for now validation works, but sticks to the field
 			last modified
   17. Add authentification and authorization (✔️)
-  18. Adjust views and controllers with authentification logic
+  18. Adjust views and controllers with authentification logic (✔️)
+  19. Add redirect to error page if soemthing goes wrong (✔️)
   
 Admin user seeded: admin@admin.com | Admin_1_Admin
 Main user: firstuser@gmail.com | 8yQD!yya

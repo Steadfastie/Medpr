@@ -338,11 +338,6 @@ public class VaccinationsController : Controller
         {
             if (id != Guid.Empty)
             {
-                if (!await CheckRelevancy(id))
-                {
-                    return RedirectToAction("Denied", "Home");
-                }
-
                 var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
 
                 await _vaccinationService.DeleteVaccinationAsync(dto);

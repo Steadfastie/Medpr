@@ -4,32 +4,34 @@
     ViewData["Title"] = "All vaccinations";
 }
 
-<table class="table table-borderless">
-    <tbody>
-        @if (Model != null)
+<div class="container text-center">
+    
+    @if (Model != null)
+    {
+        foreach (var vaccination in Model)
         {
-            foreach (var vaccination in Model)
-            {
-                <tr>
-                    <td>
-                        @{await Html.RenderPartialAsync("VaccinationPartial", vaccination);}
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" href="~/vaccinations/details/@vaccination.Id">Read more</a>
-                    </td>
-                </tr>
-            }
+            <div class="row align-items-center">
+                <div class="col-10">
+                    @{
+                        await Html.RenderPartialAsync("VaccinationPartial", vaccination);
+                    }
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-primary" href="~/vaccinations/details/@vaccination.Id">Read more</a>
+                </div>
+            </div>
+            <br />
         }
-        else
-        {
-            <h2>No vaccinations found in database</h2>
-            <h4>Add new vaccination to this app?</h4>
-        }
-    </tbody>
-</table>
-
-<br>
-<br>
-<div>
-    <a class="btn btn-primary" asp-action="Create" asp-controller="Vaccinations">Add vaccination</a>
+    }
+    else
+    {
+        <h2>No vaccinations found in database</h2>
+        <h4>Add new vaccination to this app?</h4>
+    }
+    <br>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Vaccinations">Add vaccination</a>
+        </div>
+    </div>
 </div>

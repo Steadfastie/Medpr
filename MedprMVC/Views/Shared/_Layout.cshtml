@@ -46,6 +46,7 @@
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
+                    <div class="navbar-brand">@User.Identity.Name</div>
                     <a class="navbar-brand" asp-controller="Home" asp-action="Logout">Logout</a>
                 }
                 else
