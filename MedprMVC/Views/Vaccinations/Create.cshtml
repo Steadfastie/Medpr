@@ -29,13 +29,19 @@
             <a class="btn btn-primary" asp-action="Create" asp-controller="Vaccines">Add vaccine</a>
         </div>
         <div class="mb-3">
-            <label for="user" class="form-label">User</label>
-            <select asp-for="UserId" asp-items="@Model.Users" id="user">
-                @if (User.IsInRole("Admin"))
-                {
-                    <option selected="selected" disabled="disabled">Select user</option>
-                }
-            </select>
+            @if (Model.Users.Count() > 1){
+                <label for="user" class="form-label">User</label>
+                <select asp-for="UserId" asp-items="@Model.Users" id="user">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <option selected="selected" disabled="disabled">Select user</option>
+                    }
+                </select>
+            }
+            else{
+                <input asp-for="UserId" type="hidden" value="@Model.UserId" id="user">
+            }
+            
             <span asp-validation-for="UserId" class="text-danger"></span>
             @if (User.IsInRole("Admin"))
             {

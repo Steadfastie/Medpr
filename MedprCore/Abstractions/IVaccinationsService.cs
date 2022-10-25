@@ -4,8 +4,7 @@ namespace MedprCore.Abstractions
 {
     public interface IVaccinationService
     {
-        Task<List<VaccinationDTO>> GetVaccinationsByPageNumberAndPageSizeAsync
-            (int pageNumber, int pageSize);
+        Task<List<VaccinationDTO>> GetAllVaccinations();
 
         Task<List<VaccinationDTO>> GetVaccinationsRelevantToUser(Guid id);
 

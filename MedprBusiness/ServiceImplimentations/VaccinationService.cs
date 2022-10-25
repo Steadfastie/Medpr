@@ -34,15 +34,10 @@ public class VaccinationService : IVaccinationService
         return dto;
     }
 
-    public Task<List<VaccinationDTO>> GetVaccinationsByPageNumberAndPageSizeAsync(int pageNumber, int pageSize)
+    public async Task<List<VaccinationDTO>> GetAllVaccinations()
     {
-        var list = _unitOfWork.Vaccinations
-            .Get()
-            .Skip(pageSize * pageNumber)
-            .Take(pageSize)
-            .Select(vaccination => _mapper.Map<VaccinationDTO>(vaccination))
-            .ToListAsync();
-        return list;
+        var dtos = _unitOfWork.Vaccinations.Get();
+        return await dtos.Select(vaccination => _mapper.Map<VaccinationDTO>(vaccination)).ToListAsync();
     }
 
     public Task<List<VaccinationDTO>> GetVaccinationsRelevantToUser(Guid id)
@@ -89,4 +84,6 @@ public class VaccinationService : IVaccinationService
             throw new ArgumentException(nameof(dto));
         }
     }
+
+    
 }

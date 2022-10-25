@@ -5,4 +5,12 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to Medpr!</h1>
     <p>WebApp is currently in development</a>.</p>
+    <br>
+    <p>You've logged in as <em>@User.Identity.Name</em></p>
+    @if (@User.IsInRole("Default")){
+    <p>Current user is in <em>default</em> role</p>
+    }
+    @if (@User.IsInRole("Admin")){
+    <p>Current user is an <em>admin</em></p>
+    }
 </div>
