@@ -26,6 +26,8 @@ List of things that will be updated in my project next:
   17. Add authentification and authorization (✔️)
   18. Adjust views and controllers with authentification logic (✔️)
   19. Add redirect to error page if soemthing goes wrong (✔️)
+  20. User profile feature
+  21. Find and add to surnames functionality
   
 Admin user seeded: admin@admin.com | Admin_1_Admin
 Main user: firstuser@gmail.com | 8yQD!yya
