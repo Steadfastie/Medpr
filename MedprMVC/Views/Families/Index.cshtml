@@ -2,12 +2,12 @@
 
 @{
     ViewData["Title"] = "All families";
-    var currentUser = Guid.Parse(ViewData["CurrentUser"].ToString());
 }
 
 <div class="container text-center">
     @if (Model != null)
     {
+        var currentUser = Guid.Parse(ViewData["CurrentUser"].ToString());
         foreach (var family in Model)
         {
             var creator = Guid.Parse(ViewData[$"Creator of {family.Surname}"].ToString());
