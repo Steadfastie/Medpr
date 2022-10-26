@@ -90,4 +90,26 @@ public class FamilyService : IFamilyService
             throw new ArgumentException(nameof(dto));
         }
     }
+
+    public async Task<int> DeleteAllCreatedFamilies(Guid userId)
+    {
+        var families = _unitOfWork.Families
+            .FindBy(family => family.Creator.Equals(userId))
+            .ToList();
+        
+        foreach (var family in families)
+        {
+            var members = _unitOfWork.FamilyMembers
+                .FindBy(member => member.FamilyId.Equals(family.Id))
+                .ToList();
+            foreach (var member in members)
+            {
+                _unitOfWork.FamilyMembers.Remove(member);
+            }
+
+            _unitOfWork.Families.Remove(family);
+        }
+
+        return await _unitOfWork.Commit();
+    }
 }

@@ -93,4 +93,18 @@ public class FamilyMemberService : IFamilyMemberService
             throw new ArgumentException(nameof(dto));
         }
     }
+
+    public async Task<int> DeleteMemberFromDBAsync(Guid userId)
+    {
+        var members = _unitOfWork.FamilyMembers
+            .FindBy(member => member.UserId == userId)
+            .ToList();
+
+        foreach (var member in members)
+        {
+            _unitOfWork.FamilyMembers.Remove(member);
+        }
+
+        return await _unitOfWork.Commit();
+    }
 }

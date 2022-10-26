@@ -12,6 +12,7 @@ using MedprCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
+using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC.Controllers;
 
@@ -21,8 +22,12 @@ public class UsersController : Controller
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly RoleManager<IdentityRole<Guid>> _roleManager;
     private readonly IUserService _userService;
+    private readonly IFamilyService _familyService;
+    private readonly IFamilyMemberService _familyMemberService;
     private readonly IMapper _mapper;
     public UsersController(IUserService userService,
+        IFamilyService familyService,
+        IFamilyMemberService familyMemberService,
         IMapper mapper,
         UserManager<IdentityUser<Guid>> userManager,
         RoleManager<IdentityRole<Guid>> roleManager)
@@ -31,6 +36,8 @@ public class UsersController : Controller
         _mapper = mapper;
         _userManager = userManager;
         _roleManager = roleManager;
+        _familyService = familyService;
+        _familyMemberService = familyMemberService;
     }
 
     [HttpGet]
@@ -270,6 +277,9 @@ public class UsersController : Controller
                 await _userService.DeleteUserAsync(dto);
 
                 var user = await _userManager.FindByIdAsync(id.ToString());
+
+                await _familyService.DeleteAllCreatedFamilies(user.Id);
+                await _familyMemberService.DeleteMemberFromDBAsync(user.Id);
                 await _userManager.DeleteAsync(user);
 
                 return RedirectToAction("Index", "Users");
