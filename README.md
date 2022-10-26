@@ -30,4 +30,5 @@ List of things that will be updated in my project next:
   21. Find and add to surnames functionality
   
 Admin user seeded: admin@admin.com | Admin_1_Admin
+
 Main user: firstuser@gmail.com | 8yQD!yya
