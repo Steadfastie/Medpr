@@ -3,3 +3,9 @@
 ################################################################################
 
 /Logs
+/MedprAbstractions/bin/Debug/net6.0
+/MedprBusiness/bin/Debug/net6.0
+/MedprCore/bin/Debug/net6.0
+/MedprRepositories/bin/Debug/net6.0
+/MedprMVC/bin/Debug/net6.0
+/.vs/Medpr/FileContentIndex
