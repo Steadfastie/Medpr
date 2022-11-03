@@ -14,7 +14,6 @@ namespace MedprMVC.Controllers;
 [Authorize]
 public class VaccinesController : Controller
 {
-    private readonly int somerandomvalue = 81;
     private readonly IVaccineService _vaccineService;
     private readonly IMapper _mapper;
     public VaccinesController(IVaccineService VaccineService, IMapper mapper)
