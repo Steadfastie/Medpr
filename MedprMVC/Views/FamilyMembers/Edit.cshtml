@@ -46,7 +46,7 @@
                     @if (currentUser == Model.UserId){
                         <input type="submit" class="btn btn-outline-danger" value="Remove me from @Model.Family.Surname">
                     }
-                    else{
+                    else if (isAdmin){
                         <input type="submit" class="btn btn-outline-danger" value="Remove">
                     }
                 </div>
