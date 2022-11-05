@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MedprWebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:MedprWebAPI.Controllers.WeatherForecastController">
+            <summary>
+            Comment to the only action at that time
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.WeatherForecastController.Get">
+            <summary>
+            Get some kind of data 
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
