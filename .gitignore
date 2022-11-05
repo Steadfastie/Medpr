@@ -10,6 +10,14 @@
 *.userosscache
 *.sln.docstates
 
+/Logs
+/MedprAbstractions/bin/Debug/net6.0
+/MedprBusiness/bin/Debug/net6.0
+/MedprCore/bin/Debug/net6.0
+/MedprRepositories/bin/Debug/net6.0
+/MedprMVC/bin/Debug/net6.0
+/.vs/Medpr/FileContentIndex
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -18,6 +26,7 @@ mono_crash.*
 
 # Build results
 [Dd]ebug/
+/[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/

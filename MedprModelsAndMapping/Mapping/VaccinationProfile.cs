@@ -18,10 +18,8 @@ public class VaccinationProfile : Profile
             .ForMember(model => model.DaysOfProtection, opt => opt.MapFrom(dto => dto.DaysOfProtection))
             .ForMember(model => model.Vaccine, opt => opt.Ignore())
             .ForMember(model => model.VaccineId, opt => opt.MapFrom(dto => dto.VaccineId))
-            .ForMember(model => model.Vaccines, opt => opt.Ignore())
             .ForMember(model => model.User, opt => opt.Ignore())
-            .ForMember(model => model.UserId, opt => opt.MapFrom(dto => dto.UserId))
-            .ForMember(model => model.Users, opt => opt.Ignore());
+            .ForMember(model => model.UserId, opt => opt.MapFrom(dto => dto.UserId));
 
         CreateMap<VaccinationModel, VaccinationDTO>()
             .ForMember(dto => dto.Id, opt => opt.MapFrom(model => model.Id))

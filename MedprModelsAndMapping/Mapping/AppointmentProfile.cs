@@ -18,10 +18,8 @@ public class AppointmentProfile : Profile
             .ForMember(model => model.Place, opt => opt.MapFrom(dto => dto.Place))
             .ForMember(model => model.Doctor, opt => opt.Ignore())
             .ForMember(model => model.DoctorId, opt => opt.MapFrom(dto => dto.DoctorId))
-            .ForMember(model => model.Doctors, opt => opt.Ignore())
             .ForMember(model => model.User, opt => opt.Ignore())
-            .ForMember(model => model.UserId, opt => opt.MapFrom(dto => dto.UserId))
-            .ForMember(model => model.Users, opt => opt.Ignore());
+            .ForMember(model => model.UserId, opt => opt.MapFrom(dto => dto.UserId));
 
         CreateMap<AppointmentModel, AppointmentDTO>()
             .ForMember(dto => dto.Id, opt => opt.MapFrom(model => model.Id))
