@@ -27,7 +27,7 @@ public class Program
 
         builder.Host.UseSerilog((ctx, lc) =>
         lc.WriteTo.File(
-            @"C:\Skyrim\Code\ASPNET\Medpr\Logs\data.log",
+            builder.Configuration["Serilog"],
             LogEventLevel.Information,
             retainedFileCountLimit: 20,
             rollingInterval: RollingInterval.Hour)

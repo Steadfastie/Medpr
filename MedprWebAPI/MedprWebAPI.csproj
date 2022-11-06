@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -31,7 +31,7 @@
     <ProjectReference Include="..\MedprBusiness\MedprBusiness.csproj" />
     <ProjectReference Include="..\MedprCOre\MedprCore.csproj" />
     <ProjectReference Include="..\MedprDB\MedprDB\MedprDB.csproj" />
-    <ProjectReference Include="..\MedprModelsAndMapping\MedprModelsAndMapping.csproj" />
+    <ProjectReference Include="..\MedprModels\MedprModels.csproj" />
     <ProjectReference Include="..\MedprMVC\MedprMVC.csproj" />
     <ProjectReference Include="..\MedprRepositories\MedprDataRepositories.csproj" />
   </ItemGroup>

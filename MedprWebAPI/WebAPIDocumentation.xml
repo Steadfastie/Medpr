@@ -4,6 +4,38 @@
         <name>MedprWebAPI</name>
     </assembly>
     <members>
+        <member name="T:MedprWebAPI.Controllers.DrugsController">
+            <summary>
+            Controller for drugs
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DrugsController.Index">
+            <summary>
+            Get all drugs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DrugsController.Details(System.Guid)">
+            <summary>
+            Find info on one particular resourse
+            </summary>
+            <param name="id">Id of the drug</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DrugsController.Create(MedprModels.Requests.DrugModel)">
+            <summary>
+            Create new drug for the app. Forbids creation of drug with existing in app name
+            </summary>
+            <param name="model">Model with drug parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DrugsController.Edit(MedprModels.Requests.DrugModel)">
+            <summary>
+            Edit some data about drug. Forbids drug's name change. Returns SC304 if there is nothing to patch.
+            </summary>
+            <param name="model">Drug parameters. Name should not change</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.WeatherForecastController">
             <summary>
             Comment to the only action at that time
@@ -13,6 +45,26 @@
             <summary>
             Get some kind of data 
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Utils.LinkCover.GenerateLinks(System.String,System.String)">
+            <summary>
+            Method return HATEOAS cover for some model from app
+            </summary>
+            <param name="controller">Controller name</param>
+            <param name="id">ID of model</param>
+            <returns></returns>
+        </member>
+        <member name="T:MedprMVC.Controllers.HomeController">
+            <summary>
+            Controller for users and errors
+            </summary>
+        </member>
+        <member name="M:MedprMVC.Controllers.HomeController.Error(MedprModels.Responses.ErrorModel)">
+            <summary>
+            Error handler
+            </summary>
+            <param name="errorModel">Model for message and status code</param>
             <returns></returns>
         </member>
     </members>
