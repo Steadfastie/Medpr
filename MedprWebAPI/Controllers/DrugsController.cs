@@ -74,7 +74,7 @@ public class DrugsController : ControllerBase
     [ProducesResponseType(typeof(DrugModel), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Details([FromQuery] Guid id)
+    public async Task<IActionResult> Details(Guid id)
     {
         try
         {
@@ -120,7 +120,7 @@ public class DrugsController : ControllerBase
         {
             if (ModelState.IsValid)
             {
-                var alreadyCreated = _drugService.GetDrugsByNameAsync(model.Name);
+                var alreadyCreated = await _drugService.GetDrugsByNameAsync(model.Name);
                 if (alreadyCreated != null)
                 {
                     return Forbid();

@@ -34,9 +34,9 @@ public class DrugService : IDrugService
         return dto;
     }
 
-    public DrugDTO? GetDrugsByNameAsync(string name)
+    public async Task<DrugDTO?> GetDrugsByNameAsync(string name)
     {
-        var entity = _unitOfWork.Drugs.FindBy(drug => drug.Name.Equals(name));
+        var entity = await _unitOfWork.Drugs.FindBy(drug => drug.Name.Equals(name)).FirstOrDefaultAsync();
         return _mapper.Map<DrugDTO>(entity);
     }
 

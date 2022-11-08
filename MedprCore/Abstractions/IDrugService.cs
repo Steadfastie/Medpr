@@ -6,7 +6,7 @@ namespace MedprCore.Abstractions
     {
         Task<List<DrugDTO>> GetAllDrugs();
         Task<DrugDTO> GetDrugsByIdAsync(Guid id);
-        DrugDTO? GetDrugsByNameAsync(string name);
+        Task<DrugDTO?> GetDrugsByNameAsync(string name);
         Task<List<DrugDTO>> GetAllDrugsAsync();
         Task<int> CreateDrugAsync(DrugDTO dto);
         Task<int> PatchDrugAsync(Guid id, List<PatchModel> patchList);
