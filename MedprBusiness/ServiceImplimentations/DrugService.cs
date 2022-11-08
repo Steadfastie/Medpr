@@ -34,6 +34,12 @@ public class DrugService : IDrugService
         return dto;
     }
 
+    public DrugDTO? GetDrugsByNameAsync(string name)
+    {
+        var entity = _unitOfWork.Drugs.FindBy(drug => drug.Name.Equals(name));
+        return _mapper.Map<DrugDTO>(entity);
+    }
+
     public async Task<List<DrugDTO>> GetAllDrugsAsync()
     {
         var entities = await _unitOfWork.Drugs.GetAllAsync();
@@ -83,4 +89,6 @@ public class DrugService : IDrugService
             throw new ArgumentException(nameof(dto));
         }
     }
+
+    
 }
