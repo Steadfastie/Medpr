@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using MedprModels.Responses;
 using MedprModels;
 using MedprModels.Requests;
-using MedprWebAPI.Utils;
+using MedprModels.Links;
 
 namespace MedprWebAPI.Controllers;
 
@@ -46,7 +46,7 @@ public class DrugsController : ControllerBase
 
             if (models.Any())
             {
-                return Ok(models);
+                return Ok(models.Select(model => model.GenerateLinks("drugs")));
             }
             else
             {
@@ -83,7 +83,7 @@ public class DrugsController : ControllerBase
             {
                 var model = _mapper.Map<DrugModel>(dto);
 
-                model.Links = LinkCover.GenerateLinks("drugs", $"{model.Id}");
+                model.GenerateLinks("drugs");
 
                 return Ok(model);
             }

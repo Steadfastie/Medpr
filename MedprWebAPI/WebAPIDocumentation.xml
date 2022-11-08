@@ -36,25 +36,6 @@
             <param name="model">Drug parameters. Name should not change</param>
             <returns></returns>
         </member>
-        <member name="T:MedprWebAPI.Controllers.WeatherForecastController">
-            <summary>
-            Comment to the only action at that time
-            </summary>
-        </member>
-        <member name="M:MedprWebAPI.Controllers.WeatherForecastController.Get">
-            <summary>
-            Get some kind of data 
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MedprWebAPI.Utils.LinkCover.GenerateLinks(System.String,System.String)">
-            <summary>
-            Method return HATEOAS cover for some model from app
-            </summary>
-            <param name="controller">Controller name</param>
-            <param name="id">ID of model</param>
-            <returns></returns>
-        </member>
         <member name="T:MedprMVC.Controllers.HomeController">
             <summary>
             Controller for users and errors

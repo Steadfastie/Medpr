@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using MedprModels.Interfaces;
+using MedprModels.Links;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedprModels.Requests;
 
-public class DrugModel
+public class DrugModel: IHateoas
 {
     public Guid Id { get; set; }
     [Required(ErrorMessage = "Name is required")]

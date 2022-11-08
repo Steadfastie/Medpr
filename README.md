@@ -29,7 +29,8 @@ List of things that will be updated in my project next:
   20. (Postponed) User profile feature
   21. Find and add to surnames functionality (✔️)
   22. WebAPI CRUD status codes unification
-  23. HATEOAS link generator as extension method
+  23. HATEOAS link generator as extension method (✔️)
+  24. Host name configuration
   
 Admin user seeded: admin@admin.com | Admin_1_Admin
 
