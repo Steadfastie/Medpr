@@ -132,7 +132,9 @@ public class DrugsController : ControllerBase
 
                 await _drugService.CreateDrugAsync(dto);
 
-                return CreatedAtAction(nameof(Details), new { id = dto.Id }, dto);
+                var returnModel = _mapper.Map<DrugModel>(dto);
+
+                return CreatedAtAction(nameof(Details), new { id = dto.Id }, returnModel.GenerateLinks("drugs"));
             }
             else
             {
@@ -201,7 +203,9 @@ public class DrugsController : ControllerBase
 
                 var updatedDrug = _drugService.GetDrugsByIdAsync(model.Id);
 
-                return Ok(updatedDrug);
+                var returnModel = _mapper.Map<DrugModel>(updatedDrug);
+
+                return Ok(returnModel.GenerateLinks("drugs"));
             }
             else
             {
@@ -221,10 +225,8 @@ public class DrugsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    [ProducesResponseType(typeof(DrugModel), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(DrugModel), StatusCodes.Status304NotModified)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Delete([FromQuery]Guid id)
     {
@@ -234,9 +236,14 @@ public class DrugsController : ControllerBase
             {
                 var dto = await _drugService.GetDrugsByIdAsync(id);
 
+                if(dto == null)
+                {
+                    return BadRequest();
+                }
+
                 await _drugService.DeleteDrugAsync(dto);
 
-                return RedirectToAction("Index", "Drugs");
+                return Ok();
             }
             else
             {
@@ -246,7 +253,12 @@ public class DrugsController : ControllerBase
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return RedirectToAction("Error", "Home");
+            ErrorModel errorModel = new()
+            {
+                Message = "Could not delete drug from app",
+                StatusCode = StatusCodes.Status500InternalServerError,
+            };
+            return RedirectToAction("Error", "Home", errorModel);
         }
     }
 }

@@ -13,28 +13,30 @@ public static class LinkCover
     /// <returns></returns>
     public static T GenerateLinks<T>(this T model, string controller) where T : IHateoas
     {
-        model.Links = new List<Link>()
+        if (!model.Links.Any())
         {
-            new Link()
+            model.Links = new List<Link>()
             {
-                Href = $"https://localhost:7259/{controller}/{model.Id}",
-                Rel = "self",
-                Type = "GET"
-            },
-            new Link()
-            {
-                Href = $"https://localhost:7259/{controller}/{model.Id}",
-                Rel = "update",
-                Type = "PATCH"
-            },
-            new Link()
-            {
-                Href = $"https://localhost:7259/{controller}/{model.Id}",
-                Rel = "delete",
-                Type = "DELETE"
-            }
-        };
-
+                new Link()
+                {
+                    Href = $"https://localhost:7259/{controller}/{model.Id}",
+                    Rel = "self",
+                    Type = "GET"
+                },
+                new Link()
+                {
+                    Href = $"https://localhost:7259/{controller}/{model.Id}",
+                    Rel = "update",
+                    Type = "PATCH"
+                },
+                new Link()
+                {
+                    Href = $"https://localhost:7259/{controller}/{model.Id}",
+                    Rel = "delete",
+                    Type = "DELETE"
+                }
+            };
+        }
         return model;
     }
 }
