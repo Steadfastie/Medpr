@@ -114,7 +114,7 @@ public class DrugsController : ControllerBase
     [ProducesResponseType(typeof(DrugModel), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromBody] DrugModel model)
+    public async Task<IActionResult> Create([FromForm] DrugModel model)
     {
         try
         {
@@ -164,7 +164,7 @@ public class DrugsController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromBody] DrugModel model)
+    public async Task<IActionResult> Edit([FromForm] DrugModel model)
     {
         try
         {
@@ -228,7 +228,7 @@ public class DrugsController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Delete([FromQuery]Guid id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         try
         {
