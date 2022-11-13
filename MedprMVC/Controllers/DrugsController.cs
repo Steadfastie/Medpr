@@ -26,7 +26,7 @@ public class DrugsController : Controller
     {
         try
         {
-            var dtos = await _drugService.GetAllDrugs();
+            var dtos = await _drugService.GetAllDrugsAsync();
 
             var models = _mapper.Map<List<DrugModel>>(dtos);
 
@@ -51,7 +51,7 @@ public class DrugsController : Controller
     {
         try
         {
-            var dto = await _drugService.GetDrugsByIdAsync(id);
+            var dto = await _drugService.GetDrugByIdAsync(id);
             if (dto != null)
             {
                 var model = _mapper.Map<DrugModel>(dto);
@@ -82,7 +82,7 @@ public class DrugsController : Controller
         {
             if (ModelState.IsValid)
             {
-                var alreadyCreated = await _drugService.GetDrugsByIdAsync(model.Id);
+                var alreadyCreated = await _drugService.GetDrugByIdAsync(model.Id);
                 if (alreadyCreated != null)
                 {
                     RedirectToAction("Details", "Drugs", model.Id);
@@ -116,7 +116,7 @@ public class DrugsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _drugService.GetDrugsByIdAsync(id);
+                var dto = await _drugService.GetDrugByIdAsync(id);
                 if (dto == null)
                 {
                     return BadRequest();
@@ -145,7 +145,7 @@ public class DrugsController : Controller
         {
             if (model != null)
             {
-                var alreadyCreated = await _drugService.GetDrugsByIdAsync(model.Id);
+                var alreadyCreated = await _drugService.GetDrugByIdAsync(model.Id);
                 if (alreadyCreated != null)
                 {
                     RedirectToAction("Details", "Drugs", model.Id);
@@ -153,7 +153,7 @@ public class DrugsController : Controller
 
                 var dto = _mapper.Map<DrugDTO>(model);
 
-                var sourceDto = await _drugService.GetDrugsByIdAsync(model.Id);
+                var sourceDto = await _drugService.GetDrugByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
@@ -195,7 +195,7 @@ public class DrugsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _drugService.GetDrugsByIdAsync(id);
+                var dto = await _drugService.GetDrugByIdAsync(id);
 
                 if (dto == null)
                 {
@@ -226,7 +226,7 @@ public class DrugsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _drugService.GetDrugsByIdAsync(id);
+                var dto = await _drugService.GetDrugByIdAsync(id);
 
                 await _drugService.DeleteDrugAsync(dto);
 

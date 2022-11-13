@@ -10,7 +10,6 @@ using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using MedprBusiness.ServiceImplementations;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MedprMVC.Controllers;

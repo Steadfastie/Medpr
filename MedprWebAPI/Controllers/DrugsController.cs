@@ -33,16 +33,16 @@ public class DrugsController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    [ProducesResponseType(typeof(List<DrugModel>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<DrugModelResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Index()
     {
         try
         {
-            var dtos = await _drugService.GetAllDrugs();
+            var dtos = await _drugService.GetAllDrugsAsync();
 
-            var models = _mapper.Map<List<DrugModel>>(dtos);
+            var models = _mapper.Map<List<DrugModelResponse>>(dtos);
 
             if (models.Any())
             {
@@ -71,17 +71,17 @@ public class DrugsController : ControllerBase
     /// <param name="id">Id of the drug</param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    [ProducesResponseType(typeof(DrugModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(DrugModelResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Details(Guid id)
     {
         try
         {
-            var dto = await _drugService.GetDrugsByIdAsync(id);
+            var dto = await _drugService.GetDrugByIdAsync(id);
             if (dto != null)
             {
-                var model = _mapper.Map<DrugModel>(dto);
+                var model = _mapper.Map<DrugModelResponse>(dto);
 
                 model.GenerateLinks("drugs");
 
@@ -110,17 +110,17 @@ public class DrugsController : ControllerBase
     /// <param name="model">Model with drug parameters</param>
     /// <returns></returns>
     [HttpPost]
-    [ProducesResponseType(typeof(DrugModel), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(DrugModel), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(DrugModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(DrugModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] DrugModel model)
+    public async Task<IActionResult> Create([FromForm] DrugModelRequest model)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var alreadyCreated = await _drugService.GetDrugsByNameAsync(model.Name);
+                var alreadyCreated = await _drugService.GetDrugByNameAsync(model.Name);
                 if (alreadyCreated != null)
                 {
                     return Forbid();
@@ -132,9 +132,9 @@ public class DrugsController : ControllerBase
 
                 await _drugService.CreateDrugAsync(dto);
 
-                var returnModel = _mapper.Map<DrugModel>(dto);
+                var responseModel = _mapper.Map<DrugModelResponse>(dto);
 
-                return CreatedAtAction(nameof(Details), new { id = dto.Id }, returnModel.GenerateLinks("drugs"));
+                return CreatedAtAction(nameof(Details), new { id = dto.Id }, responseModel.GenerateLinks("drugs"));
             }
             else
             {
@@ -159,18 +159,18 @@ public class DrugsController : ControllerBase
     /// <param name="model">Drug parameters. Name should not change</param>
     /// <returns></returns>
     [HttpPatch("{id}")]
-    [ProducesResponseType(typeof(DrugModel), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(DrugModel), StatusCodes.Status304NotModified)]
+    [ProducesResponseType(typeof(DrugModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(DrugModelResponse), StatusCodes.Status304NotModified)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromForm] DrugModel model)
+    public async Task<IActionResult> Edit([FromForm] DrugModelRequest model)
     {
         try
         {
             if (model != null)
             {
-                var sourceDto = await _drugService.GetDrugsByIdAsync(model.Id);
+                var sourceDto = await _drugService.GetDrugByIdAsync(model.Id);
                 if (sourceDto.Name != model.Name)
                 {
                     return Forbid();
@@ -201,11 +201,11 @@ public class DrugsController : ControllerBase
                     return StatusCode(StatusCodes.Status304NotModified, model);
                 }
 
-                var updatedDrug = _drugService.GetDrugsByIdAsync(model.Id);
+                var updatedDrug = await _drugService.GetDrugByIdAsync(model.Id);
 
-                var returnModel = _mapper.Map<DrugModel>(updatedDrug);
+                var responseModel = _mapper.Map<DrugModelResponse>(updatedDrug);
 
-                return Ok(returnModel.GenerateLinks("drugs"));
+                return Ok(responseModel.GenerateLinks("drugs"));
             }
             else
             {
@@ -234,7 +234,7 @@ public class DrugsController : ControllerBase
         {
             if (id != Guid.Empty)
             {
-                var dto = await _drugService.GetDrugsByIdAsync(id);
+                var dto = await _drugService.GetDrugByIdAsync(id);
 
                 if(dto == null)
                 {

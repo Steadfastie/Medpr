@@ -12,7 +12,6 @@ using MedprCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
-using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC.Controllers;
 

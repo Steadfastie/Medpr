@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using MedprDB;
 using MedprDB.Entities;
 using MedprBusiness;
-using MedprBusiness.ServiceImplementations;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
@@ -16,6 +15,7 @@ using MedprDataRepositories;
 using MedprMVC.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using MedprBusiness.ServiceImplimentations.Repository;
 
 namespace MedprMVC;
 
@@ -67,7 +67,7 @@ public class Program
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         builder.Services.AddScoped<IUserService, UserService>();
-        builder.Services.AddScoped<IDrugService, DrugService>();
+        builder.Services.AddScoped<IDrugService, DrugServiceRepository>();
         builder.Services.AddScoped<IDoctorService, DoctorService>();
         builder.Services.AddScoped<IFamilyService, FamilyService>();
         builder.Services.AddScoped<IVaccineService, VaccineService>();

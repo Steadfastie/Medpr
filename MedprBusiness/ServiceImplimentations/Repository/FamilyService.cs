@@ -13,7 +13,7 @@ using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace MedprBusiness.ServiceImplementations;
+namespace MedprBusiness.ServiceImplimentations.Repository;
 
 public class FamilyService : IFamilyService
 {
@@ -96,7 +96,7 @@ public class FamilyService : IFamilyService
         var families = _unitOfWork.Families
             .FindBy(family => family.Creator.Equals(userId))
             .ToList();
-        
+
         foreach (var family in families)
         {
             var members = _unitOfWork.FamilyMembers

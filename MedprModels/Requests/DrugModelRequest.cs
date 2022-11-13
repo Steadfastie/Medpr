@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedprModels.Requests;
 
-public class DrugModel: IHateoas
+public class DrugModelRequest
 {
     public Guid Id { get; set; }
 
@@ -22,6 +22,4 @@ public class DrugModel: IHateoas
     [Column(TypeName = "decimal(18, 2)")]
     [Range(1, int.MaxValue, ErrorMessage = "Input something greater than 0"), DataType(DataType.Currency)]
     public int Price { get; set; }
-
-    public List<Link>? Links { get; set; }
 }

@@ -13,20 +13,20 @@ using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace MedprBusiness.ServiceImplementations;
+namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class DrugService : IDrugService
+public class DrugServiceRepository : IDrugService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public DrugService(IMapper mapper, IUnitOfWork unitOfWork)
+    public DrugServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<DrugDTO> GetDrugsByIdAsync(Guid id)
+    public async Task<DrugDTO> GetDrugByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Drugs.GetByIdAsync(id);
         var dto = _mapper.Map<DrugDTO>(entity);
@@ -34,7 +34,7 @@ public class DrugService : IDrugService
         return dto;
     }
 
-    public async Task<DrugDTO?> GetDrugsByNameAsync(string name)
+    public async Task<DrugDTO?> GetDrugByNameAsync(string name)
     {
         var entity = await _unitOfWork.Drugs.FindBy(drug => drug.Name.Equals(name)).FirstOrDefaultAsync();
         return _mapper.Map<DrugDTO>(entity);
@@ -46,12 +46,6 @@ public class DrugService : IDrugService
         var dtos = _mapper.Map<List<DrugDTO>>(entities);
 
         return dtos;
-    }
-
-    public async Task<List<DrugDTO>> GetAllDrugs()
-    {
-        var list = _unitOfWork.Drugs.Get();
-        return await list.Select(drug => _mapper.Map<DrugDTO>(drug)).ToListAsync();
     }
 
     public async Task<int> CreateDrugAsync(DrugDTO dto)
@@ -90,5 +84,5 @@ public class DrugService : IDrugService
         }
     }
 
-    
+
 }

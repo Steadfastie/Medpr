@@ -10,7 +10,6 @@ using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using MedprBusiness.ServiceImplementations;
 
 namespace MedprMVC.Controllers;
 
@@ -58,7 +57,7 @@ public class PrescriptionsController : Controller
             {
                 var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-                var drugSelected = await _drugService.GetDrugsByIdAsync(dto.DrugId);
+                var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
                 var model = _mapper.Map<PrescriptionModel>(dto);
 
@@ -101,7 +100,7 @@ public class PrescriptionsController : Controller
             {
                 var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-                var drugSelected = await _drugService.GetDrugsByIdAsync(dto.DrugId);
+                var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
                 var model = _mapper.Map<PrescriptionModel>(dto);
 
@@ -230,7 +229,7 @@ public class PrescriptionsController : Controller
                 var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
                 var allDoctors = await _doctorService.GetAllDoctorsAsync();
 
-                var drugSelected = await _drugService.GetDrugsByIdAsync(dto.DrugId);
+                var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
                 var allDrugs = await _drugService.GetAllDrugsAsync();
 
                 var editModel = _mapper.Map<PrescriptionModel>(dto);
@@ -328,7 +327,7 @@ public class PrescriptionsController : Controller
 
                 var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
-                var drugSelected = await _drugService.GetDrugsByIdAsync(dto.DrugId);
+                var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
                 var deleteModel = _mapper.Map<PrescriptionModel>(dto);
 

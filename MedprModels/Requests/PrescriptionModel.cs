@@ -44,5 +44,5 @@ public class PrescriptionModel
     [Required(ErrorMessage = "What will the patien take?")]
     public Guid DrugId { get; set; }
 
-    public DrugModel Drug { get; set; }
+    public DrugModelRequest Drug { get; set; }
 }

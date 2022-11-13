@@ -22,14 +22,14 @@
             <param name="id">Id of the drug</param>
             <returns></returns>
         </member>
-        <member name="M:MedprWebAPI.Controllers.DrugsController.Create(MedprModels.Requests.DrugModel)">
+        <member name="M:MedprWebAPI.Controllers.DrugsController.Create(MedprModels.Requests.DrugModelRequest)">
             <summary>
             Create new drug for the app. Forbids creation of drug with existing in app name
             </summary>
             <param name="model">Model with drug parameters</param>
             <returns></returns>
         </member>
-        <member name="M:MedprWebAPI.Controllers.DrugsController.Edit(MedprModels.Requests.DrugModel)">
+        <member name="M:MedprWebAPI.Controllers.DrugsController.Edit(MedprModels.Requests.DrugModelRequest)">
             <summary>
             Edit some data about drug. Forbids drug's name change. Returns SC304 if there is nothing to patch.
             </summary>

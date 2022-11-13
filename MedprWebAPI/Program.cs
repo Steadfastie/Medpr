@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using MedprDB;
 using MedprDB.Entities;
 using MedprBusiness;
-using MedprBusiness.ServiceImplementations;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
@@ -16,6 +15,11 @@ using MedprDataRepositories;
 using MedprMVC.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using MedprBusiness.ServiceImplimentations.CQS;
+using MediatR;
+using System.Reflection;
+using MedprBusiness.ServiceImplimentations.Repository;
+using MedprCQS.Queries.Drugs;
 
 namespace MedprWebAPI;
 
@@ -65,7 +69,7 @@ public class Program
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         builder.Services.AddScoped<IUserService, UserService>();
-        builder.Services.AddScoped<IDrugService, DrugService>();
+        builder.Services.AddScoped<IDrugService, DrugServiceCqs>();
         builder.Services.AddScoped<IDoctorService, DoctorService>();
         builder.Services.AddScoped<IFamilyService, FamilyService>();
         builder.Services.AddScoped<IVaccineService, VaccineService>();
@@ -85,6 +89,9 @@ public class Program
         builder.Services.AddScoped<IRepository<Prescription>, Repository<Prescription>>();
 
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+        builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+        builder.Services.AddMediatR(typeof(GetAllDrugsQuery).Assembly);
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

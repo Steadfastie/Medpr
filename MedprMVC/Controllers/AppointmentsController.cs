@@ -6,12 +6,9 @@ using AutoMapper;
 using MedprMVC.Models;
 using Serilog;
 using System.Reflection;
-using MedprDB.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using MedprBusiness.ServiceImplementations;
-
 namespace MedprMVC.Controllers;
 
 [Authorize]

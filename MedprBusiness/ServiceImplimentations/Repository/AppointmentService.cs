@@ -13,7 +13,7 @@ using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace MedprBusiness.ServiceImplementations;
+namespace MedprBusiness.ServiceImplimentations.Repository;
 
 public class AppointmentService : IAppointmentService
 {
