@@ -82,6 +82,45 @@
             <param name="id">Drug's id</param>
             <returns></returns>
         </member>
+        <member name="T:MedprWebAPI.Controllers.VaccinesController">
+            <summary>
+            Controller for vaccines
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinesController.Index">
+            <summary>
+            Get all vaccines
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinesController.Details(System.Guid)">
+            <summary>
+            Find info on one particular resourse
+            </summary>
+            <param name="id">Id of the vaccine</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinesController.Create(MedprModels.Requests.VaccineModelRequest)">
+            <summary>
+            Create new vaccine for the app. Forbids creation of vaccine with existing in app name
+            </summary>
+            <param name="model">Model with vaccine parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinesController.Edit(MedprModels.Requests.VaccineModelRequest)">
+            <summary>
+            Edit some data about vaccine. Forbids vaccine's name change. Returns SC304 if there is nothing to patch.
+            </summary>
+            <param name="model">Vaccine parameters. Name should not change</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinesController.Delete(System.Guid)">
+            <summary>
+            Remove vaccine from app
+            </summary>
+            <param name="id">Vaccine's id</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprMVC.Controllers.HomeController">
             <summary>
             Controller for users and errors

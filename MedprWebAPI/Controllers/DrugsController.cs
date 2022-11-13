@@ -168,7 +168,7 @@ public class DrugsController : ControllerBase
     {
         try
         {
-            if (model != null)
+            if (ModelState.IsValid)
             {
                 var sourceDto = await _drugService.GetDrugByIdAsync(model.Id);
                 if (sourceDto.Name != model.Name)

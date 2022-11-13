@@ -70,7 +70,7 @@ public class Program
         builder.Services.AddScoped<IDrugService, DrugServiceRepository>();
         builder.Services.AddScoped<IDoctorService, DoctorServiceRepository>();
         builder.Services.AddScoped<IFamilyService, FamilyService>();
-        builder.Services.AddScoped<IVaccineService, VaccineService>();
+        builder.Services.AddScoped<IVaccineService, VaccineServiceRepository>();
         builder.Services.AddScoped<IVaccinationService, VaccinationService>();
         builder.Services.AddScoped<IAppointmentService, AppointmentService>();
         builder.Services.AddScoped<IFamilyMemberService, FamilyMemberService>();

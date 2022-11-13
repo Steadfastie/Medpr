@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedprModels.Requests;
 
-public class VaccineModel
+public class VaccineModelRequest
 {
     public Guid Id { get; set; }
     [Required(ErrorMessage = "It couldn't be nameless")]

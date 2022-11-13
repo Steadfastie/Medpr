@@ -14,39 +14,39 @@ using MedprModels.Links;
 namespace MedprWebAPI.Controllers;
 
 /// <summary>
-/// Controller for doctors
+/// Controller for vaccines
 /// </summary>
-[Route("doctors")]
+[Route("vaccines")]
 [ApiController]
-public class DoctorsController : ControllerBase
+public class VaccinesController : ControllerBase
 {
-    private readonly IDoctorService _doctorService;
+    private readonly IVaccineService _vaccineService;
     private readonly IMapper _mapper;
-    public DoctorsController(IDoctorService doctorService, IMapper mapper)
+    public VaccinesController(IVaccineService vaccineService, IMapper mapper)
     {
-        _doctorService = doctorService;
+        _vaccineService = vaccineService;
         _mapper = mapper;
     }
 
     /// <summary>
-    /// Get all doctors
+    /// Get all vaccines
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    [ProducesResponseType(typeof(List<DoctorModelResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<VaccineModelResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Index()
     {
         try
         {
-            var dtos = await _doctorService.GetAllDoctorsAsync();
+            var dtos = await _vaccineService.GetAllVaccinesAsync();
 
-            var models = _mapper.Map<List<DoctorModelResponse>>(dtos);
+            var models = _mapper.Map<List<VaccineModelResponse>>(dtos);
 
             if (models.Any())
             {
-                return Ok(models.Select(model => model.GenerateLinks("doctors")));
+                return Ok(models.Select(model => model.GenerateLinks("vaccines")));
             }
             else
             {
@@ -58,7 +58,7 @@ public class DoctorsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not load doctors",
+                Message = "Could not load vaccines",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -68,22 +68,22 @@ public class DoctorsController : ControllerBase
     /// <summary>
     /// Find info on one particular resourse
     /// </summary>
-    /// <param name="id">Id of the doctor</param>
+    /// <param name="id">Id of the vaccine</param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    [ProducesResponseType(typeof(DoctorModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(VaccineModelResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Details(Guid id)
     {
         try
         {
-            var dto = await _doctorService.GetDoctorByIdAsync(id);
+            var dto = await _vaccineService.GetVaccineByIdAsync(id);
             if (dto != null)
             {
-                var model = _mapper.Map<DoctorModelResponse>(dto);
+                var model = _mapper.Map<VaccineModelResponse>(dto);
 
-                model.GenerateLinks("doctors");
+                model.GenerateLinks("vaccines");
 
                 return Ok(model);
             }
@@ -97,7 +97,7 @@ public class DoctorsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not load doctor",
+                Message = "Could not load vaccine",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -105,22 +105,22 @@ public class DoctorsController : ControllerBase
     }
 
     /// <summary>
-    /// Create new doctor for the app. Forbids creation of doctor with existing in app name
+    /// Create new vaccine for the app. Forbids creation of vaccine with existing in app name
     /// </summary>
-    /// <param name="model">Model with doctor parameters</param>
+    /// <param name="model">Model with vaccine parameters</param>
     /// <returns></returns>
     [HttpPost]
-    [ProducesResponseType(typeof(DoctorModelResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(DoctorModelResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(VaccineModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(VaccineModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] DoctorModelRequest model)
+    public async Task<IActionResult> Create([FromForm] VaccineModelRequest model)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var alreadyCreated = await _doctorService.GetDoctorByNameAsync(model.Name);
+                var alreadyCreated = await _vaccineService.GetVaccineByNameAsync(model.Name);
                 if (alreadyCreated != null)
                 {
                     return Forbid();
@@ -128,13 +128,13 @@ public class DoctorsController : ControllerBase
 
                 model.Id = Guid.NewGuid();
 
-                var dto = _mapper.Map<DoctorDTO>(model);
+                var dto = _mapper.Map<VaccineDTO>(model);
 
-                await _doctorService.CreateDoctorAsync(dto);
+                await _vaccineService.CreateVaccineAsync(dto);
 
-                var responseModel = _mapper.Map<DoctorModelResponse>(dto);
+                var responseModel = _mapper.Map<VaccineModelResponse>(dto);
 
-                return CreatedAtAction(nameof(Details), new { id = dto.Id }, responseModel.GenerateLinks("doctors"));
+                return CreatedAtAction(nameof(Details), new { id = dto.Id }, responseModel.GenerateLinks("vaccines"));
             }
             else
             {
@@ -146,7 +146,7 @@ public class DoctorsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not create doctor",
+                Message = "Could not create vaccine",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -154,33 +154,33 @@ public class DoctorsController : ControllerBase
     }
 
     /// <summary>
-    /// Edit some data about doctor. Forbids doctor's name change. Returns SC304 if there is nothing to patch.
+    /// Edit some data about vaccine. Forbids vaccine's name change. Returns SC304 if there is nothing to patch.
     /// </summary>
-    /// <param name="model">Doctor parameters. Name should not change</param>
+    /// <param name="model">Vaccine parameters. Name should not change</param>
     /// <returns></returns>
     [HttpPatch("{id}")]
-    [ProducesResponseType(typeof(DoctorModelResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(DoctorModelResponse), StatusCodes.Status304NotModified)]
+    [ProducesResponseType(typeof(VaccineModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(VaccineModelResponse), StatusCodes.Status304NotModified)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromForm] DoctorModelRequest model)
+    public async Task<IActionResult> Edit([FromForm] VaccineModelRequest model)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var sourceDto = await _doctorService.GetDoctorByIdAsync(model.Id);
+                var sourceDto = await _vaccineService.GetVaccineByIdAsync(model.Id);
                 if (sourceDto.Name != model.Name)
                 {
                     return Forbid();
                 }
 
-                var dto = _mapper.Map<DoctorDTO>(model);
+                var dto = _mapper.Map<VaccineDTO>(model);
 
                 var patchList = new List<PatchModel>();
 
-                foreach (PropertyInfo property in typeof(DoctorDTO).GetProperties())
+                foreach (PropertyInfo property in typeof(VaccineDTO).GetProperties())
                 {
                     if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
                     {
@@ -194,18 +194,18 @@ public class DoctorsController : ControllerBase
 
                 if (patchList.Any())
                 {
-                    await _doctorService.PatchDoctorAsync(model.Id, patchList);
+                    await _vaccineService.PatchVaccineAsync(model.Id, patchList);
                 }
                 else
                 {
                     return StatusCode(StatusCodes.Status304NotModified, model);
                 }
 
-                var updatedDoctor = await _doctorService.GetDoctorByIdAsync(model.Id);
+                var updatedVaccine = await _vaccineService.GetVaccineByIdAsync(model.Id);
 
-                var responseModel = _mapper.Map<DoctorModelResponse>(updatedDoctor);
+                var responseModel = _mapper.Map<VaccineModelResponse>(updatedVaccine);
 
-                return Ok(responseModel.GenerateLinks("doctors"));
+                return Ok(responseModel.GenerateLinks("vaccines"));
             }
             else
             {
@@ -217,7 +217,7 @@ public class DoctorsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not update doctor info",
+                Message = "Could not update vaccine info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -225,9 +225,9 @@ public class DoctorsController : ControllerBase
     }
 
     /// <summary>
-    /// Remove doctor from app
+    /// Remove vaccine from app
     /// </summary>
-    /// <param name="id">Doctor's id</param>
+    /// <param name="id">Vaccine's id</param>
     /// <returns></returns>
     [HttpDelete("{id}")]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
@@ -239,14 +239,14 @@ public class DoctorsController : ControllerBase
         {
             if (id != Guid.Empty)
             {
-                var dto = await _doctorService.GetDoctorByIdAsync(id);
+                var dto = await _vaccineService.GetVaccineByIdAsync(id);
 
                 if(dto == null)
                 {
                     return BadRequest();
                 }
 
-                await _doctorService.DeleteDoctorAsync(dto);
+                await _vaccineService.DeleteVaccineAsync(dto);
 
                 return Ok();
             }
@@ -260,7 +260,7 @@ public class DoctorsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not delete doctor from app",
+                Message = "Could not delete vaccine from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);

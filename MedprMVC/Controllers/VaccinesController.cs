@@ -26,7 +26,7 @@ public class VaccinesController : Controller
     {
         try
         {
-            var dtos = await _vaccineService.GetAllVaccines();
+            var dtos = await _vaccineService.GetAllVaccinesAsync();
 
             var models = _mapper.Map<List<VaccineModel>>(dtos);
 
@@ -51,7 +51,7 @@ public class VaccinesController : Controller
     {
         try
         {
-            var dto = await _vaccineService.GetVaccinesByIdAsync(id);
+            var dto = await _vaccineService.GetVaccineByIdAsync(id);
             if (dto != null)
             {
                 var model = _mapper.Map<VaccineModel>(dto);
@@ -82,7 +82,7 @@ public class VaccinesController : Controller
         {
             if (ModelState.IsValid)
             {
-                var alreadyCreated = await _vaccineService.GetVaccinesByIdAsync(model.Id);
+                var alreadyCreated = await _vaccineService.GetVaccineByIdAsync(model.Id);
                 if (alreadyCreated != null)
                 {
                     RedirectToAction("Details", "Drugs", model.Id);
@@ -116,7 +116,7 @@ public class VaccinesController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _vaccineService.GetVaccinesByIdAsync(id);
+                var dto = await _vaccineService.GetVaccineByIdAsync(id);
                 if (dto == null)
                 {
                     return BadRequest();
@@ -145,7 +145,7 @@ public class VaccinesController : Controller
         {
             if (model != null)
             {
-                var alreadyCreated = await _vaccineService.GetVaccinesByIdAsync(model.Id);
+                var alreadyCreated = await _vaccineService.GetVaccineByIdAsync(model.Id);
                 if (alreadyCreated != null)
                 {
                     RedirectToAction("Details", "Drugs", model.Id);
@@ -153,7 +153,7 @@ public class VaccinesController : Controller
 
                 var dto = _mapper.Map<VaccineDTO>(model);
 
-                var sourceDto = await _vaccineService.GetVaccinesByIdAsync(model.Id);
+                var sourceDto = await _vaccineService.GetVaccineByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
@@ -194,7 +194,7 @@ public class VaccinesController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _vaccineService.GetVaccinesByIdAsync(id);
+                var dto = await _vaccineService.GetVaccineByIdAsync(id);
 
                 if (dto == null)
                 {
@@ -225,7 +225,7 @@ public class VaccinesController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _vaccineService.GetVaccinesByIdAsync(id);
+                var dto = await _vaccineService.GetVaccineByIdAsync(id);
 
                 await _vaccineService.DeleteVaccineAsync(dto);
 

@@ -31,5 +31,5 @@ public class VaccinationModel
     [Required(ErrorMessage = "Shot had a name, didn't it?")]
     public Guid VaccineId { get; set; }
 
-    public VaccineModel Vaccine { get; set; }
+    public VaccineModelRequest Vaccine { get; set; }
 }

@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MedprCQS.Commands.Doctors
+namespace MedprCQS.Commands.Doctors;
+
+public class DeleteDoctorCommand: IRequest<int>
 {
-    public class DeleteDoctorCommand: IRequest<int>
-    {
-        public DoctorDTO Doctor { get; set; }
-    }
+    public DoctorDTO Doctor { get; set; }
 }

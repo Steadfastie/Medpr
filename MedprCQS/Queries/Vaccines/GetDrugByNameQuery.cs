@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MedprCQS.Queries.Drugs;
+namespace MedprCQS.Queries.Vaccines;
 
-public class GetAllDrugsQuery: IRequest<List<DrugDTO>>
+public class GetVaccineByNameQuery: IRequest<VaccineDTO>
 {
+    public string Name { get; set; }
 }

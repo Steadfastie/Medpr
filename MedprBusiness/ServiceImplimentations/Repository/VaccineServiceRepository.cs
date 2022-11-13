@@ -15,23 +15,29 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class VaccineService : IVaccineService
+public class VaccineServiceRepository : IVaccineService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public VaccineService(IMapper mapper, IUnitOfWork unitOfWork)
+    public VaccineServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<VaccineDTO> GetVaccinesByIdAsync(Guid id)
+    public async Task<VaccineDTO> GetVaccineByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Vaccines.GetByIdAsync(id);
         var dto = _mapper.Map<VaccineDTO>(entity);
 
         return dto;
+    }
+
+    public async Task<VaccineDTO> GetVaccineByNameAsync(string name)
+    {
+        var entity = await _unitOfWork.Vaccines.FindBy(vac => vac.Name.Equals(name)).FirstOrDefaultAsync();
+        return _mapper.Map<VaccineDTO>(entity);
     }
 
     public async Task<List<VaccineDTO>> GetAllVaccinesAsync()
@@ -40,12 +46,6 @@ public class VaccineService : IVaccineService
         var dtos = _mapper.Map<List<VaccineDTO>>(entities);
 
         return dtos;
-    }
-
-    public async Task<List<VaccineDTO>> GetAllVaccines()
-    {
-        var list = _unitOfWork.Vaccines.Get();
-        return await list.Select(vaccine => _mapper.Map<VaccineDTO>(vaccine)).ToListAsync();
     }
 
     public async Task<int> CreateVaccineAsync(VaccineDTO dto)

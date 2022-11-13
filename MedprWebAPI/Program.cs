@@ -19,7 +19,8 @@ using MedprBusiness.ServiceImplimentations.CQS;
 using MediatR;
 using System.Reflection;
 using MedprBusiness.ServiceImplimentations.Repository;
-using MedprCQS.Queries.Drugs;
+using MedprCQS.Queries;
+using MedprCQS;
 
 namespace MedprWebAPI;
 
@@ -72,7 +73,7 @@ public class Program
         builder.Services.AddScoped<IDrugService, DrugServiceCqs>();
         builder.Services.AddScoped<IDoctorService, DoctorServiceCqs>();
         builder.Services.AddScoped<IFamilyService, FamilyService>();
-        builder.Services.AddScoped<IVaccineService, VaccineService>();
+        builder.Services.AddScoped<IVaccineService, VaccineServiceCqs>();
         builder.Services.AddScoped<IVaccinationService, VaccinationService>();
         builder.Services.AddScoped<IAppointmentService, AppointmentService>();
         builder.Services.AddScoped<IFamilyMemberService, FamilyMemberService>();
@@ -91,7 +92,8 @@ public class Program
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-        builder.Services.AddMediatR(typeof(GetAllDrugsQuery).Assembly);
+        builder.Services.AddMediatR(typeof(ClassToAddMediator).Assembly);
+
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
