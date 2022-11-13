@@ -24,16 +24,14 @@ public class PatchDrugCommandHandler : IRequestHandler<PatchDrugCommand, int>
     }
     public async Task<int> Handle(PatchDrugCommand request, CancellationToken cancellationToken)
     {
-        var model = await _context.Drugs
-            .FirstOrDefaultAsync(entity => entity.Id.Equals(request.Id),
-            cancellationToken: cancellationToken);
+        var entity = _mapper.Map<Drug>(request.Drug);
 
         var nameValuePropertiesPairs = request.PatchList
             .ToDictionary(
                 patchModel => patchModel.PropertyName,
                 patchModel => patchModel.PropertyValue);
 
-        var dbEntityEntry = _context.Entry(model);
+        var dbEntityEntry = _context.Entry(entity);
         dbEntityEntry.CurrentValues.SetValues(nameValuePropertiesPairs);
         dbEntityEntry.State = EntityState.Modified;
 

@@ -60,9 +60,14 @@ public class DrugServiceCqs : IDrugService
 
     public async Task<int> PatchDrugAsync(Guid id, List<PatchModel> patchList)
     {
+        var drug = await _mediator.Send(new GetDrugByIdQuery()
+        {
+            Id = id
+        });
+
         return await _mediator.Send(new PatchDrugCommand()
         {
-            Id = id,
+            Drug = drug,
             PatchList = patchList
         });
     }

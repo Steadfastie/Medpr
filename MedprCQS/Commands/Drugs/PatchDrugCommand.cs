@@ -11,6 +11,6 @@ namespace MedprCQS.Commands.Drugs;
 
 public class PatchDrugCommand: IRequest<int>
 {
-    public Guid Id { get; set; }
+    public DrugDTO Drug { get; set; }
     public List<PatchModel> PatchList { get; set; }
 }
