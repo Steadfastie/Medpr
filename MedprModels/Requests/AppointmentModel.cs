@@ -31,5 +31,5 @@ public class AppointmentModel
     [Required(ErrorMessage = "Some doctor was assigned to it, wasn't he?")]
     public Guid DoctorId { get; set; }
 
-    public DoctorModel Doctor { get; set; }
+    public DoctorModelResponse Doctor { get; set; }
 }

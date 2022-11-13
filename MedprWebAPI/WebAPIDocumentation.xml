@@ -4,6 +4,45 @@
         <name>MedprWebAPI</name>
     </assembly>
     <members>
+        <member name="T:MedprWebAPI.Controllers.DoctorsController">
+            <summary>
+            Controller for doctors
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DoctorsController.Index">
+            <summary>
+            Get all doctors
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DoctorsController.Details(System.Guid)">
+            <summary>
+            Find info on one particular resourse
+            </summary>
+            <param name="id">Id of the doctor</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DoctorsController.Create(MedprModels.Requests.DoctorModelRequest)">
+            <summary>
+            Create new doctor for the app. Forbids creation of doctor with existing in app name
+            </summary>
+            <param name="model">Model with doctor parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DoctorsController.Edit(MedprModels.Requests.DoctorModelRequest)">
+            <summary>
+            Edit some data about doctor. Forbids doctor's name change. Returns SC304 if there is nothing to patch.
+            </summary>
+            <param name="model">Doctor parameters. Name should not change</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DoctorsController.Delete(System.Guid)">
+            <summary>
+            Remove doctor from app
+            </summary>
+            <param name="id">Doctor's id</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.DrugsController">
             <summary>
             Controller for drugs
@@ -34,6 +73,13 @@
             Edit some data about drug. Forbids drug's name change. Returns SC304 if there is nothing to patch.
             </summary>
             <param name="model">Drug parameters. Name should not change</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.DrugsController.Delete(System.Guid)">
+            <summary>
+            Remove drug from app
+            </summary>
+            <param name="id">Drug's id</param>
             <returns></returns>
         </member>
         <member name="T:MedprMVC.Controllers.HomeController">

@@ -49,7 +49,7 @@ public class AppointmentsController : Controller
 
             foreach (var dto in dtos)
             {
-                var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
+                var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
 
                 var model = _mapper.Map<AppointmentModel>(dto);
@@ -90,7 +90,7 @@ public class AppointmentsController : Controller
 
             if (dto != null)
             {
-                var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
+                var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
 
                 var model = _mapper.Map<AppointmentModel>(dto);
@@ -214,7 +214,7 @@ public class AppointmentsController : Controller
                     return BadRequest();
                 }
 
-                var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
+                var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
                 var allDoctors = await _doctorService.GetAllDoctorsAsync();
 
                 var editModel = _mapper.Map<AppointmentModel>(dto);
@@ -306,7 +306,7 @@ public class AppointmentsController : Controller
                     return BadRequest();
                 }
 
-                var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
+                var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
 
                 var deleteModel = _mapper.Map<AppointmentModel>(dto);

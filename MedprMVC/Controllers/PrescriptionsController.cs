@@ -55,7 +55,7 @@ public class PrescriptionsController : Controller
 
             foreach (var dto in dtos)
             {
-                var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
+                var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
                 var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
@@ -98,7 +98,7 @@ public class PrescriptionsController : Controller
 
             if (dto != null)
             {
-                var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
+                var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
                 var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
@@ -226,7 +226,7 @@ public class PrescriptionsController : Controller
                     return BadRequest();
                 }
 
-                var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
+                var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
                 var allDoctors = await _doctorService.GetAllDoctorsAsync();
 
                 var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
@@ -325,7 +325,7 @@ public class PrescriptionsController : Controller
                     return BadRequest();
                 }
 
-                var doctorSelected = await _doctorService.GetDoctorsByIdAsync(dto.DoctorId);
+                var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
                 var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
                 var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 

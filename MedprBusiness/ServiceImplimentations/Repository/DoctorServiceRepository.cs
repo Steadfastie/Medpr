@@ -15,23 +15,29 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class DoctorService : IDoctorService
+public class DoctorServiceRepository : IDoctorService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public DoctorService(IMapper mapper, IUnitOfWork unitOfWork)
+    public DoctorServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<DoctorDTO> GetDoctorsByIdAsync(Guid id)
+    public async Task<DoctorDTO> GetDoctorByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Doctors.GetByIdAsync(id);
         var dto = _mapper.Map<DoctorDTO>(entity);
 
         return dto;
+    }
+
+    public async Task<DoctorDTO> GetDoctorByNameAsync(string name)
+    {
+        var entity = await _unitOfWork.Doctors.FindBy(doc => doc.Name.Equals(name)).FirstOrDefaultAsync();
+        return _mapper.Map<DoctorDTO>(entity);
     }
 
     public async Task<List<DoctorDTO>> GetAllDoctorsAsync()

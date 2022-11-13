@@ -70,7 +70,7 @@ public class Program
 
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IDrugService, DrugServiceCqs>();
-        builder.Services.AddScoped<IDoctorService, DoctorService>();
+        builder.Services.AddScoped<IDoctorService, DoctorServiceCqs>();
         builder.Services.AddScoped<IFamilyService, FamilyService>();
         builder.Services.AddScoped<IVaccineService, VaccineService>();
         builder.Services.AddScoped<IVaccinationService, VaccinationService>();

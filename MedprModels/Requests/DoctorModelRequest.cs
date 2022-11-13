@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedprModels.Requests;
 
-public class DoctorModel
+public class DoctorModelRequest
 {
     public Guid Id { get; set; }
     [Required(ErrorMessage = "Name is required")]

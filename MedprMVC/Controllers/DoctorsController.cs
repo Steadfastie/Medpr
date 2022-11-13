@@ -26,7 +26,7 @@ public class DoctorsController : Controller
     {
         try
         {
-            var dtos = await _doctorService.GetAllDoctors();
+            var dtos = await _doctorService.GetAllDoctorsAsync();
 
             var models = _mapper.Map<List<DoctorModel>>(dtos);
 
@@ -51,7 +51,7 @@ public class DoctorsController : Controller
     {
         try
         {
-            var dto = await _doctorService.GetDoctorsByIdAsync(id);
+            var dto = await _doctorService.GetDoctorByIdAsync(id);
             if (dto != null)
             {
                 var model = _mapper.Map<DoctorModel>(dto);
@@ -82,7 +82,7 @@ public class DoctorsController : Controller
         {
             if (ModelState.IsValid)
             {
-                var alreadyCreated = await _doctorService.GetDoctorsByIdAsync(model.Id);
+                var alreadyCreated = await _doctorService.GetDoctorByIdAsync(model.Id);
                 if (alreadyCreated != null)
                 {
                     RedirectToAction("Details", "Drugs", model.Id);
@@ -116,7 +116,7 @@ public class DoctorsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _doctorService.GetDoctorsByIdAsync(id);
+                var dto = await _doctorService.GetDoctorByIdAsync(id);
                 if (dto == null)
                 {
                     return BadRequest();
@@ -145,7 +145,7 @@ public class DoctorsController : Controller
         {
             if (model != null)
             {
-                var alreadyCreated = await _doctorService.GetDoctorsByIdAsync(model.Id);
+                var alreadyCreated = await _doctorService.GetDoctorByIdAsync(model.Id);
                 if (alreadyCreated != null)
                 {
                     RedirectToAction("Details", "Drugs", model.Id);
@@ -153,7 +153,7 @@ public class DoctorsController : Controller
 
                 var dto = _mapper.Map<DoctorDTO>(model);
 
-                var sourceDto = await _doctorService.GetDoctorsByIdAsync(model.Id);
+                var sourceDto = await _doctorService.GetDoctorByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
@@ -194,7 +194,7 @@ public class DoctorsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _doctorService.GetDoctorsByIdAsync(id);
+                var dto = await _doctorService.GetDoctorByIdAsync(id);
 
                 if (dto == null)
                 {
@@ -225,7 +225,7 @@ public class DoctorsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _doctorService.GetDoctorsByIdAsync(id);
+                var dto = await _doctorService.GetDoctorByIdAsync(id);
 
                 await _doctorService.DeleteDoctorAsync(dto);
 

@@ -37,7 +37,7 @@ public class PrescriptionModel
     [Required(ErrorMessage = "Some is a doctor here, isn't he?")]
     public Guid DoctorId { get; set; }
 
-    public DoctorModel Doctor { get; set; }
+    public DoctorModelResponse Doctor { get; set; }
 
     public List<string> Drugs { get; set; }
 
