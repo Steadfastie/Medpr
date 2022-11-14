@@ -24,6 +24,7 @@ using MedprCQS;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AspNetSample.WebAPI.Utils;
 
 namespace MedprWebAPI;
 
@@ -112,6 +113,8 @@ public class Program
         builder.Services.AddScoped<IRepository<Prescription>, Repository<Prescription>>();
 
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+        builder.Services.AddScoped<IJwtUtil, JwtUtilSha256>();
 
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
         builder.Services.AddMediatR(typeof(ClassToAddMediator).Assembly);

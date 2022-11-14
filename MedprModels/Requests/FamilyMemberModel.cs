@@ -1,4 +1,5 @@
 ﻿using MedprDB.Entities;
+using MedprModels.Responses;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,7 +18,7 @@ public class FamilyMemberModel
     [Required(ErrorMessage = "Someone is in this family, isn't he?")]
     public Guid UserId { get; set; }
 
-    public UserModel User { get; set; }
+    public UserModelResponse User { get; set; }
 
     public List<string> Families { get; set; }
 

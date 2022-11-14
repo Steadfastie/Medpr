@@ -44,7 +44,7 @@ public class UsersController : Controller
     {
         try
         {
-            var dtos = await _userService.GetAllUsers();
+            var dtos = await _userService.GetAllUsersAsync();
 
             var models = _mapper.Map<List<UserModel>>(dtos);
 

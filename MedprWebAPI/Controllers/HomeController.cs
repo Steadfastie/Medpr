@@ -24,13 +24,14 @@ namespace MedprMVC.Controllers;
 /// <summary>
 /// Controller for users and errors
 /// </summary>
-[Route("[controller]")]
+[Route("app")]
 [ApiController]
 public class AppController : ControllerBase
 {
     private readonly ILogger<HomeController> _logger;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly RoleManager<IdentityRole<Guid>> _roleManager;
+    private readonly SignInManager<IdentityUser<Guid>> _signInManager;
     private readonly IJwtUtil _jwtUtil;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
@@ -38,6 +39,7 @@ public class AppController : ControllerBase
     public AppController(ILogger<HomeController> logger,
         UserManager<IdentityUser<Guid>> userManager,
         RoleManager<IdentityRole<Guid>> roleManager,
+        SignInManager<IdentityUser<Guid>> signInManager,
         IJwtUtil jwtUtil,
         IMapper mapper,
         IUserService userService)
@@ -45,6 +47,7 @@ public class AppController : ControllerBase
         _logger = logger;
         _userManager = userManager;
         _roleManager = roleManager;
+        _signInManager = signInManager;
         _jwtUtil = jwtUtil;
         _mapper = mapper;
         _userService = userService;
@@ -68,6 +71,8 @@ public class AppController : ControllerBase
     /// <returns></returns>
     [AllowAnonymous]
     [HttpPost]
+    [ProducesResponseType(typeof(TokenResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> SignUp([FromForm]UserModelRequest model)
     {
         try
@@ -92,35 +97,31 @@ public class AppController : ControllerBase
                         }
                     }
                     await CreateAdmin();
+                    await _signInManager.SignInAsync(identityUser, isPersistent: false);
 
-                    var user = await _userService.GetUserByIdAsync()
-                    var response = _jwtUtil.GenerateToken();
-                    return RedirectToAction("Index", "Home");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    var userModel = await _userService.GetUserByIdAsync(identityUser.Id);
+                    var userResponse = _mapper.Map<UserModelResponse>(userModel);
+
+                    var userRole = await _userManager.GetRolesAsync(identityUser);
+                    userResponse.Role = userRole[0];
+
+                    var response = _jwtUtil.GenerateToken(userResponse);
+                    return CreatedAtAction(nameof(SignUp), new { id = identityUser.Id }, response);
                 }
             }
-            return View(model);
+            return Ok();
         }
         catch (Exception ex)
         {
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-            return RedirectToAction("Error", "Home");
+            ErrorModel errorModel = new()
+            {
+                Message = "Could not register new user",
+                StatusCode = StatusCodes.Status500InternalServerError,
+            };
+            return RedirectToAction("Error", "Home", errorModel);
         }
     }
-
-    //[AllowAnonymous]
-    //[HttpGet]
-    //public IActionResult Login()
-    //{
-    //    if (!User.Identity.IsAuthenticated)
-    //    {
-    //        return View();
-    //    }
-    //    return RedirectToAction("Index");
-    //}
 
     //[AllowAnonymous]
     //[HttpPost]
@@ -181,30 +182,6 @@ public class AppController : ControllerBase
     //        await _roleManager.CreateAsync(newRole);
     //    }
     //    return true;
-    //}
-
-    //private async Task CreateAdmin()
-    //{
-    //    if (await _userManager.FindByEmailAsync("admin@admin.com") == null
-    //        && await EnsureRoleCreatedAsync("Admin"))
-    //    {
-    //        var admin = new IdentityUser<Guid>("admin@admin.com");
-    //        var result = await _userManager.CreateAsync(admin, "Admin_1_Admin");
-    //        if (result.Succeeded)
-    //        {
-    //            var role = await _roleManager.FindByNameAsync("Admin");
-    //            var roleResult = await _userManager.AddToRoleAsync(admin, role.Name);
-
-    //            if (roleResult.Succeeded)
-    //            {
-    //                _logger.LogTrace("Admin seeded");
-    //            }
-    //        }
-    //    }
-    //    else
-    //    {
-    //        _logger.LogTrace("Admin is not seeded");
-    //    }
     //}
 
     private async Task<bool> EnsureRoleCreatedAsync(string roleName)

@@ -121,16 +121,23 @@
             <param name="id">Vaccine's id</param>
             <returns></returns>
         </member>
-        <member name="T:MedprMVC.Controllers.HomeController">
+        <member name="T:MedprMVC.Controllers.AppController">
             <summary>
             Controller for users and errors
             </summary>
         </member>
-        <member name="M:MedprMVC.Controllers.HomeController.Error(MedprModels.Responses.ErrorModel)">
+        <member name="M:MedprMVC.Controllers.AppController.Error(MedprModels.Responses.ErrorModel)">
             <summary>
             Error handler
             </summary>
             <param name="errorModel">Model for message and status code</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprMVC.Controllers.AppController.SignUp(MedprModels.Requests.UserModelRequest)">
+            <summary>
+            Register user in the app
+            </summary>
+            <param name="model">User credentials</param>
             <returns></returns>
         </member>
     </members>
