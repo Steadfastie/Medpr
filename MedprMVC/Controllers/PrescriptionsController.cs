@@ -56,7 +56,7 @@ public class PrescriptionsController : Controller
             foreach (var dto in dtos)
             {
                 var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
                 var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
                 var model = _mapper.Map<PrescriptionModel>(dto);
@@ -99,7 +99,7 @@ public class PrescriptionsController : Controller
             if (dto != null)
             {
                 var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
                 var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
                 var model = _mapper.Map<PrescriptionModel>(dto);
@@ -150,7 +150,7 @@ public class PrescriptionsController : Controller
                     List<UserDTO> userList = new();
                     foreach (var id in ids)
                     {
-                        userList.Add(await _userService.GetUsersByIdAsync(id));
+                        userList.Add(await _userService.GetUserByIdAsync(id));
                     }
                     model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
                 }
@@ -240,7 +240,7 @@ public class PrescriptionsController : Controller
                 editModel.Drug = _mapper.Map<DrugModel>(drugSelected);
                 editModel.Drugs = new SelectList(_mapper.Map<List<DrugModel>>(allDrugs), "Id", "Name", drugSelected.Id.ToString());
 
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
                 editModel.User = _mapper.Map<UserModel>(userSelected);
 
                 return View(editModel);
@@ -326,7 +326,7 @@ public class PrescriptionsController : Controller
                 }
 
                 var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
                 var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
                 var deleteModel = _mapper.Map<PrescriptionModel>(dto);

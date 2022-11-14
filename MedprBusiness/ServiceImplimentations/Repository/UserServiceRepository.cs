@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using AutoMapper;
 using MedprAbstractions;
 using MedprCore;
@@ -15,20 +16,28 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class UserService : PasswordHash, IUserService
+public class UserServiceRepository : PasswordHash, IUserService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public UserService(IMapper mapper, IUnitOfWork unitOfWork)
+    public UserServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<UserDTO> GetUsersByIdAsync(Guid id)
+    public async Task<UserDTO> GetUserByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Users.GetByIdAsync(id);
+        var dto = _mapper.Map<UserDTO>(entity);
+
+        return dto;
+    }
+
+    public async Task<UserDTO> GetUserByLoginAsync(string login)
+    {
+        var entity = await _unitOfWork.Users.FindBy(user => user.Login.Equals(login)).FirstOrDefaultAsync();
         var dto = _mapper.Map<UserDTO>(entity);
 
         return dto;

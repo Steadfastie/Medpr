@@ -50,7 +50,7 @@ public class AppointmentsController : Controller
             foreach (var dto in dtos)
             {
                 var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
 
                 var model = _mapper.Map<AppointmentModel>(dto);
 
@@ -91,7 +91,7 @@ public class AppointmentsController : Controller
             if (dto != null)
             {
                 var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
 
                 var model = _mapper.Map<AppointmentModel>(dto);
 
@@ -138,7 +138,7 @@ public class AppointmentsController : Controller
                     List<UserDTO> userList = new();
                     foreach (var id in ids)
                     {
-                        userList.Add(await _userService.GetUsersByIdAsync(id));
+                        userList.Add(await _userService.GetUserByIdAsync(id));
                     }
                     model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
                 }
@@ -221,7 +221,7 @@ public class AppointmentsController : Controller
                 editModel.Doctor = _mapper.Map<DoctorModel>(doctorSelected);
                 editModel.Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name", doctorSelected.Id.ToString());
 
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
                 editModel.User = _mapper.Map<UserModel>(userSelected);
 
                 return View(editModel);
@@ -307,7 +307,7 @@ public class AppointmentsController : Controller
                 }
 
                 var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
 
                 var deleteModel = _mapper.Map<AppointmentModel>(dto);
 

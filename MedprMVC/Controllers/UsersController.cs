@@ -69,7 +69,7 @@ public class UsersController : Controller
     {
         try
         {
-            var dto = await _userService.GetUsersByIdAsync(id);
+            var dto = await _userService.GetUserByIdAsync(id);
             if (dto != null)
             {
                 var model = _mapper.Map<UserModel>(dto);
@@ -163,7 +163,7 @@ public class UsersController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _userService.GetUsersByIdAsync(id);
+                var dto = await _userService.GetUserByIdAsync(id);
                 if (dto == null)
                 {
                     return BadRequest();
@@ -204,7 +204,7 @@ public class UsersController : Controller
     public async Task<IActionResult> Edit(UserModel model)
     {
         var currentUser = await _userManager.FindByIdAsync(model.Id.ToString());
-        var currentDTO = await _userService.GetUsersByIdAsync(model.Id);
+        var currentDTO = await _userService.GetUserByIdAsync(model.Id);
         try
         {
             if (model.Login != null)
@@ -240,7 +240,7 @@ public class UsersController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _userService.GetUsersByIdAsync(id);
+                var dto = await _userService.GetUserByIdAsync(id);
 
                 if (dto == null)
                 {
@@ -271,7 +271,7 @@ public class UsersController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _userService.GetUsersByIdAsync(id);
+                var dto = await _userService.GetUserByIdAsync(id);
 
                 await _userService.DeleteUserAsync(dto);
 
@@ -315,7 +315,7 @@ public class UsersController : Controller
 
         var patchList = new List<PatchModel>();
 
-        var sourceDto = await _userService.GetUsersByIdAsync(dto.Id);
+        var sourceDto = await _userService.GetUserByIdAsync(dto.Id);
 
         foreach (PropertyInfo property in typeof(UserDTO).GetProperties())
         {

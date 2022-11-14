@@ -16,6 +16,8 @@ using Microsoft.Extensions.Logging;
 using MedprDB.Entities;
 using Serilog;
 using MedprModels.Responses;
+using MedprModels.Requests;
+using AspNetSample.WebAPI.Utils;
 
 namespace MedprMVC.Controllers;
 
@@ -24,40 +26,29 @@ namespace MedprMVC.Controllers;
 /// </summary>
 [Route("[controller]")]
 [ApiController]
-public class HomeController : ControllerBase
+public class AppController : ControllerBase
 {
     private readonly ILogger<HomeController> _logger;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly RoleManager<IdentityRole<Guid>> _roleManager;
-    private readonly SignInManager<IdentityUser<Guid>> _signInManager;
+    private readonly IJwtUtil _jwtUtil;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
 
-    public HomeController(ILogger<HomeController> logger,
+    public AppController(ILogger<HomeController> logger,
         UserManager<IdentityUser<Guid>> userManager,
         RoleManager<IdentityRole<Guid>> roleManager,
-        SignInManager<IdentityUser<Guid>> signInManager,
+        IJwtUtil jwtUtil,
         IMapper mapper,
         IUserService userService)
     {
         _logger = logger;
         _userManager = userManager;
         _roleManager = roleManager;
-        _signInManager = signInManager;
+        _jwtUtil = jwtUtil;
         _mapper = mapper;
         _userService = userService;
     }
-
-    [HttpGet]
-    public IActionResult Index()
-    {
-        return Ok();
-    }
-
-    //public IActionResult Privacy()
-    //{
-    //    return View();
-    //}
 
     /// <summary>
     /// Error handler
@@ -70,60 +61,55 @@ public class HomeController : ControllerBase
         return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
     }
 
-    //[AllowAnonymous]
-    //[HttpGet]
-    //public IActionResult SignUp()
-    //{
-    //    if (!User.Identity.IsAuthenticated)
-    //    {
-    //        return View();
-    //    }
-    //    return RedirectToAction("Index");
-    //}
+    /// <summary>
+    /// Register user in the app
+    /// </summary>
+    /// <param name="model">User credentials</param>
+    /// <returns></returns>
+    [AllowAnonymous]
+    [HttpPost]
+    public async Task<IActionResult> SignUp([FromForm]UserModelRequest model)
+    {
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                var identityUser = new IdentityUser<Guid>(model.Login);
+                var result = await _userManager.CreateAsync(identityUser, model.Password);
 
-    //[AllowAnonymous]
-    //[HttpPost]
-    //public async Task<IActionResult> SignUp(UserModel model)
-    //{
-    //    try
-    //    {
-    //        if (model.Login.Any() && model.Password.Any())
-    //        {
-    //            var identityUser = new IdentityUser<Guid>(model.Login);
-    //            var result = await _userManager.CreateAsync(identityUser, model.Password);
+                if (result.Succeeded)
+                {
+                    if (await EnsureRoleCreatedAsync("Default"))
+                    {
+                        var role = await _roleManager.FindByNameAsync("Default");
+                        var roleResult = await _userManager.AddToRoleAsync(identityUser, role.Name);
 
-    //            if (result.Succeeded)
-    //            {
-    //                if (await EnsureRoleCreatedAsync("Default"))
-    //                {
-    //                    var role = await _roleManager.FindByNameAsync("Default");
-    //                    var roleResult = await _userManager.AddToRoleAsync(identityUser, role.Name);
+                        if (roleResult.Succeeded)
+                        {
+                            var dto = _mapper.Map<UserDTO>(model);
+                            dto.Id = Guid.Parse(await _userManager.GetUserIdAsync(identityUser));
+                            await _userService.CreateUserAsync(dto);
+                        }
+                    }
+                    await CreateAdmin();
 
-    //                    if (roleResult.Succeeded)
-    //                    {
-    //                        var dto = _mapper.Map<UserDTO>(model);
-    //                        dto.Id = Guid.Parse(await _userManager.GetUserIdAsync(identityUser));
-    //                        await _userService.CreateUserAsync(dto);
-    //                    }
-    //                    // TODO: User should be removed from Identity DB
-    //                }
-    //                await CreateAdmin();
-    //                await _signInManager.SignInAsync(identityUser, isPersistent: false);
-    //                return RedirectToAction("Index", "Home");
-    //            }
-    //            foreach (var error in result.Errors)
-    //            {
-    //                ModelState.AddModelError(string.Empty, error.Description);
-    //            }
-    //        }
-    //        return View(model);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-    //        return RedirectToAction("Error", "Home");
-    //    }
-    //}
+                    var user = await _userService.GetUserByIdAsync()
+                    var response = _jwtUtil.GenerateToken();
+                    return RedirectToAction("Index", "Home");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+            return View(model);
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            return RedirectToAction("Error", "Home");
+        }
+    }
 
     //[AllowAnonymous]
     //[HttpGet]
@@ -220,4 +206,42 @@ public class HomeController : ControllerBase
     //        _logger.LogTrace("Admin is not seeded");
     //    }
     //}
+
+    private async Task<bool> EnsureRoleCreatedAsync(string roleName)
+    {
+        var role = await _roleManager.FindByNameAsync(roleName);
+        bool check =
+            role != null && await _roleManager.RoleExistsAsync(role.Name);
+
+        if (!check)
+        {
+            var newRole = new IdentityRole<Guid>(roleName);
+            await _roleManager.CreateAsync(newRole);
+        }
+        return true;
+    }
+
+    private async Task CreateAdmin()
+    {
+        if (await _userManager.FindByEmailAsync("admin@admin.com") == null
+            && await EnsureRoleCreatedAsync("Admin"))
+        {
+            var admin = new IdentityUser<Guid>("admin@admin.com");
+            var result = await _userManager.CreateAsync(admin, "Admin_1_Admin");
+            if (result.Succeeded)
+            {
+                var role = await _roleManager.FindByNameAsync("Admin");
+                var roleResult = await _userManager.AddToRoleAsync(admin, role.Name);
+
+                if (roleResult.Succeeded)
+                {
+                    _logger.LogTrace("Admin seeded");
+                }
+            }
+        }
+        else
+        {
+            _logger.LogTrace("Admin is not seeded");
+        }
+    }
 }

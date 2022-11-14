@@ -68,7 +68,7 @@ public class FamiliesController : Controller
                             ViewData[$"{family.Surname}"] = true;
                         }
 
-                        var userDTO = await _userService.GetUsersByIdAsync(member.UserId);
+                        var userDTO = await _userService.GetUserByIdAsync(member.UserId);
                         var userModel = _mapper.Map<UserModel>(userDTO);
                         member.User = userModel;
 

@@ -66,7 +66,7 @@ public class Program
 
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-        builder.Services.AddScoped<IUserService, UserService>();
+        builder.Services.AddScoped<IUserService, UserServiceRepository>();
         builder.Services.AddScoped<IDrugService, DrugServiceRepository>();
         builder.Services.AddScoped<IDoctorService, DoctorServiceRepository>();
         builder.Services.AddScoped<IFamilyService, FamilyService>();

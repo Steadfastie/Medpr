@@ -53,7 +53,7 @@ public class VaccinationsController : Controller
             foreach (var dto in dtos)
             {
                 var vaccineSelected = await _vaccineService.GetVaccineByIdAsync(dto.VaccineId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
 
                 var model = _mapper.Map<VaccinationModel>(dto);
 
@@ -94,7 +94,7 @@ public class VaccinationsController : Controller
             if (dto != null)
             {
                 var vaccineSelected = await _vaccineService.GetVaccineByIdAsync(dto.VaccineId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
 
                 var model = _mapper.Map<VaccinationModel>(dto);
 
@@ -141,7 +141,7 @@ public class VaccinationsController : Controller
                     List<UserDTO> userList = new();
                     foreach (var id in ids)
                     {
-                        userList.Add(await _userService.GetUsersByIdAsync(id));
+                        userList.Add(await _userService.GetUserByIdAsync(id));
                     }
                     model.Users = new SelectList(_mapper.Map<List<UserModel>>(userList), "Id", "Login");
                 }
@@ -222,7 +222,7 @@ public class VaccinationsController : Controller
                 editModel.Vaccine = _mapper.Map<VaccineModel>(vaccineSelected);
                 editModel.Vaccines = new SelectList(_mapper.Map<List<VaccineModel>>(allVaccines), "Id", "Name", vaccineSelected.Id.ToString());
 
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
                 editModel.User = _mapper.Map<UserModel>(userSelected);
 
                 return View(editModel);
@@ -308,7 +308,7 @@ public class VaccinationsController : Controller
                 }
 
                 var vaccineSelected = await _vaccineService.GetVaccineByIdAsync(dto.VaccineId);
-                var userSelected = await _userService.GetUsersByIdAsync(dto.UserId);
+                var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
 
                 var deleteModel = _mapper.Map<VaccinationModel>(dto);
 

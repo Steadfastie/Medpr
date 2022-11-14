@@ -21,6 +21,9 @@ using System.Reflection;
 using MedprBusiness.ServiceImplimentations.Repository;
 using MedprCQS.Queries;
 using MedprCQS;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MedprWebAPI;
 
@@ -38,19 +41,38 @@ public class Program
             rollingInterval: RollingInterval.Hour)
             .WriteTo.Console(LogEventLevel.Verbose));
 
-        var connectionString = builder.Configuration.GetConnectionString("Default");
-
+        // Main database
         builder.Services.AddDbContext<MedprDBContext>(
-            optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
-
-        var connectionStringIdentity = builder.Configuration.GetConnectionString("Identity");
-
+            optionsBuilder => optionsBuilder.UseSqlServer(
+                builder.Configuration.GetConnectionString("Default")));
+        // Identity database
         builder.Services.AddDbContext<IdentityDBContext>(
-            optionsBuilder => optionsBuilder.UseSqlServer(connectionStringIdentity));
+            optionsBuilder => optionsBuilder.UseSqlServer(
+                builder.Configuration.GetConnectionString("Identity")));
 
         builder.Services.AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>()
             .AddEntityFrameworkStores<IdentityDBContext>()
             .AddDefaultTokenProviders();
+
+        builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+            .AddJwtBearer(opt =>
+        {
+            opt.RequireHttpsMetadata = false;
+            opt.SaveToken = true;
+            opt.TokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidIssuer = builder.Configuration["Token:Project"],
+                ValidAudience = builder.Configuration["Token:Project"],
+                IssuerSigningKey =
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:JwtSecret"])),
+                ClockSkew = TimeSpan.Zero
+            };
+        });
 
         builder.Services.AddAuthorization(options =>
         {
@@ -69,7 +91,7 @@ public class Program
 
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-        builder.Services.AddScoped<IUserService, UserService>();
+        builder.Services.AddScoped<IUserService, UserServiceRepository>();
         builder.Services.AddScoped<IDrugService, DrugServiceCqs>();
         builder.Services.AddScoped<IDoctorService, DoctorServiceCqs>();
         builder.Services.AddScoped<IFamilyService, FamilyService>();
@@ -114,6 +136,7 @@ public class Program
 
         app.UseHttpsRedirection();
 
+        app.UseAuthentication();
         app.UseAuthorization();
 
 
