@@ -18,6 +18,7 @@ namespace MedprWebAPI.Controllers;
 /// </summary>
 [Route("vaccines")]
 [ApiController]
+[Authorize]
 public class VaccinesController : ControllerBase
 {
     private readonly IVaccineService _vaccineService;

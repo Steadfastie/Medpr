@@ -72,7 +72,7 @@ public class FamiliesController : Controller
                         var userModel = _mapper.Map<UserModel>(userDTO);
                         member.User = userModel;
 
-                        var FamilyDTO = await _familyService.GetFamiliesByIdAsync(member.FamilyId);
+                        var FamilyDTO = await _familyService.GetFamilyByIdAsync(member.FamilyId);
                         var familyModel = _mapper.Map<FamilyModel>(FamilyDTO);
                         member.Family = familyModel;
                     }
@@ -152,7 +152,7 @@ public class FamiliesController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _familyService.GetFamiliesByIdAsync(id);
+                var dto = await _familyService.GetFamilyByIdAsync(id);
                 var currentUser = await _userManager.GetUserAsync(User);
                 var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 

@@ -86,7 +86,7 @@ public class FamilyMembersController : Controller
             {
                 var dto = _mapper.Map<FamilyMemberDTO>(model);
 
-                var sourceDto = await _familyMemberService.GetFamilyMembersByIdAsync(model.Id);
+                var sourceDto = await _familyMemberService.GetFamilyMemberByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
@@ -128,8 +128,8 @@ public class FamilyMembersController : Controller
         {
             if (MemberId != Guid.Empty)
             {
-                var memberDTO = await _familyMemberService.GetFamilyMembersByIdAsync(MemberId);
-                var familyDTO = await _familyService.GetFamiliesByIdAsync(memberDTO.FamilyId);
+                var memberDTO = await _familyMemberService.GetFamilyMemberByIdAsync(MemberId);
+                var familyDTO = await _familyService.GetFamilyByIdAsync(memberDTO.FamilyId);
                 var currentUser = await _userManager.GetUserAsync(User);
                 var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 

@@ -19,7 +19,7 @@ using MedprModels.Responses;
 using MedprModels.Requests;
 using AspNetSample.WebAPI.Utils;
 
-namespace MedprMVC.Controllers;
+namespace MedprWebAPI.Controllers;
 
 /// <summary>
 /// Controller for users and errors
@@ -28,7 +28,7 @@ namespace MedprMVC.Controllers;
 [ApiController]
 public class AppController : ControllerBase
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<AppController> _logger;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly RoleManager<IdentityRole<Guid>> _roleManager;
     private readonly SignInManager<IdentityUser<Guid>> _signInManager;
@@ -36,7 +36,7 @@ public class AppController : ControllerBase
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
 
-    public AppController(ILogger<HomeController> logger,
+    public AppController(ILogger<AppController> logger,
         UserManager<IdentityUser<Guid>> userManager,
         RoleManager<IdentityRole<Guid>> roleManager,
         SignInManager<IdentityUser<Guid>> signInManager,
@@ -97,7 +97,6 @@ public class AppController : ControllerBase
                         }
                     }
                     await CreateAdmin();
-                    await _signInManager.SignInAsync(identityUser, isPersistent: false);
 
                     var userModel = await _userService.GetUserByIdAsync(identityUser.Id);
                     var userResponse = _mapper.Map<UserModelResponse>(userModel);
@@ -168,40 +167,6 @@ public class AppController : ControllerBase
             return RedirectToAction("Error", "Home", errorModel);
         }
     }
-
-    //public async Task<IActionResult> Logout()
-    //{
-    //    try
-    //    {
-    //        await _signInManager.SignOutAsync();
-    //        return RedirectToAction("Login", "Home");
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-    //        return RedirectToAction("Error", "Home");
-    //    }
-    //}
-
-    //[HttpGet]
-    //public IActionResult Denied()
-    //{
-    //    return View();
-    //}
-
-    //private async Task<bool> EnsureRoleCreatedAsync(string roleName)
-    //{
-    //    var role = await _roleManager.FindByNameAsync(roleName);
-    //    bool check =
-    //        role != null && await _roleManager.RoleExistsAsync(role.Name);
-
-    //    if (!check)
-    //    {
-    //        var newRole = new IdentityRole<Guid>(roleName);
-    //        await _roleManager.CreateAsync(newRole);
-    //    }
-    //    return true;
-    //}
 
     private async Task<bool> EnsureRoleCreatedAsync(string roleName)
     {

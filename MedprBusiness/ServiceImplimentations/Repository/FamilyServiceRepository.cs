@@ -15,18 +15,18 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class FamilyService : IFamilyService
+public class FamilyServiceRepository : IFamilyService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public FamilyService(IMapper mapper, IUnitOfWork unitOfWork)
+    public FamilyServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<FamilyDTO> GetFamiliesByIdAsync(Guid id)
+    public async Task<FamilyDTO> GetFamilyByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Families.GetByIdAsync(id);
         var dto = _mapper.Map<FamilyDTO>(entity);
@@ -91,7 +91,7 @@ public class FamilyService : IFamilyService
         }
     }
 
-    public async Task<int> DeleteAllCreatedFamilies(Guid userId)
+    public async Task DeleteAllCreatedFamilies(Guid userId)
     {
         var families = _unitOfWork.Families
             .FindBy(family => family.Creator.Equals(userId))
@@ -109,7 +109,6 @@ public class FamilyService : IFamilyService
 
             _unitOfWork.Families.Remove(family);
         }
-
-        return await _unitOfWork.Commit();
+        await _unitOfWork.Commit();
     }
 }

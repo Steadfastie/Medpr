@@ -18,6 +18,7 @@ namespace MedprWebAPI.Controllers;
 /// </summary>
 [Route("doctors")]
 [ApiController]
+[Authorize]
 public class DoctorsController : ControllerBase
 {
     private readonly IDoctorService _doctorService;

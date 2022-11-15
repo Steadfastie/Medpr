@@ -69,11 +69,11 @@ public class Program
         builder.Services.AddScoped<IUserService, UserServiceRepository>();
         builder.Services.AddScoped<IDrugService, DrugServiceRepository>();
         builder.Services.AddScoped<IDoctorService, DoctorServiceRepository>();
-        builder.Services.AddScoped<IFamilyService, FamilyService>();
+        builder.Services.AddScoped<IFamilyService, FamilyServiceRepository>();
         builder.Services.AddScoped<IVaccineService, VaccineServiceRepository>();
         builder.Services.AddScoped<IVaccinationService, VaccinationService>();
         builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-        builder.Services.AddScoped<IFamilyMemberService, FamilyMemberService>();
+        builder.Services.AddScoped<IFamilyMemberService, FamilyMemberServiceRepository>();
         builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
 
         builder.Services.AddScoped<IRepository<User>, Repository<User>>();

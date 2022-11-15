@@ -15,18 +15,18 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class FamilyMemberService : IFamilyMemberService
+public class FamilyMemberServiceRepository : IFamilyMemberService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public FamilyMemberService(IMapper mapper, IUnitOfWork unitOfWork)
+    public FamilyMemberServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<FamilyMemberDTO> GetFamilyMembersByIdAsync(Guid id)
+    public async Task<FamilyMemberDTO> GetFamilyMemberByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.FamilyMembers.GetByIdAsync(id);
         var dto = _mapper.Map<FamilyMemberDTO>(entity);
@@ -34,7 +34,7 @@ public class FamilyMemberService : IFamilyMemberService
         return dto;
     }
 
-    public async Task<List<FamilyMemberDTO>> GetAllFamilyMembers()
+    public async Task<List<FamilyMemberDTO>> GetAllFamilyMembersAsync()
     {
         var list = _unitOfWork.FamilyMembers.Get();
         return await list.Select(member => _mapper.Map<FamilyMemberDTO>(member)).ToListAsync();
@@ -94,7 +94,7 @@ public class FamilyMemberService : IFamilyMemberService
         }
     }
 
-    public async Task<int> DeleteMemberFromDBAsync(Guid userId)
+    public async Task DeleteMemberFromDBAsync(Guid userId)
     {
         var members = _unitOfWork.FamilyMembers
             .FindBy(member => member.UserId == userId)
@@ -105,6 +105,6 @@ public class FamilyMemberService : IFamilyMemberService
             _unitOfWork.FamilyMembers.Remove(member);
         }
 
-        return await _unitOfWork.Commit();
+        await _unitOfWork.Commit();
     }
 }

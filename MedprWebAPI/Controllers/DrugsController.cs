@@ -41,6 +41,7 @@ public class DrugsController : ControllerBase
     {
         try
         {
+            var user = User;
             var dtos = await _drugService.GetAllDrugsAsync();
 
             var models = _mapper.Map<List<DrugModelResponse>>(dtos);

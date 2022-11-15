@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AspNetSample.WebAPI.Utils;
+using MedprBusiness.ServiceImplimentations.Cqs;
 
 namespace MedprWebAPI;
 
@@ -92,14 +93,14 @@ public class Program
 
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-        builder.Services.AddScoped<IUserService, UserServiceRepository>();
+        builder.Services.AddScoped<IUserService, UserServiceCqs>();
         builder.Services.AddScoped<IDrugService, DrugServiceCqs>();
         builder.Services.AddScoped<IDoctorService, DoctorServiceCqs>();
-        builder.Services.AddScoped<IFamilyService, FamilyService>();
+        builder.Services.AddScoped<IFamilyService, FamilyServiceCqs>();
         builder.Services.AddScoped<IVaccineService, VaccineServiceCqs>();
         builder.Services.AddScoped<IVaccinationService, VaccinationService>();
         builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-        builder.Services.AddScoped<IFamilyMemberService, FamilyMemberService>();
+        builder.Services.AddScoped<IFamilyMemberService, FamilyMemberServiceCqs>();
         builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
 
         builder.Services.AddScoped<IRepository<User>, Repository<User>>();
