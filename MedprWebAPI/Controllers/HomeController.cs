@@ -70,7 +70,7 @@ public class AppController : ControllerBase
     /// <param name="model">User credentials</param>
     /// <returns></returns>
     [AllowAnonymous]
-    [HttpPost]
+    [HttpPost("/signup")]
     [ProducesResponseType(typeof(TokenResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> SignUp([FromForm]UserModelRequest model)
@@ -123,32 +123,51 @@ public class AppController : ControllerBase
         }
     }
 
-    //[AllowAnonymous]
-    //[HttpPost]
-    //public async Task<IActionResult> Login(UserModel model)
-    //{
-    //    try
-    //    {
-    //        if (model.Login.Any() && model.Password.Any())
-    //        {
-    //            var result = await _signInManager
-    //                .PasswordSignInAsync(model.Login, model.Password, isPersistent: false, lockoutOnFailure: false);
+    /// <summary>
+    /// Login user
+    /// </summary>
+    /// <param name="model">User credentials</param>
+    /// <returns></returns>
+    [AllowAnonymous]
+    [HttpPost("/signin")]
+    [ProducesResponseType(typeof(TokenResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> SingIn([FromForm] UserModelRequest model)
+    {
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                var signInResult = await _signInManager
+                    .PasswordSignInAsync(model.Login, model.Password, isPersistent: false, lockoutOnFailure: false);
 
-    //            if (result.Succeeded)
-    //            {
-    //                return RedirectToAction("Index", "Home");
-    //            }
-    //            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-    //            return View(model);
-    //        }
-    //        return View(model);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
-    //        return RedirectToAction("Error", "Home");
-    //    }
-    //}
+                if (signInResult.Succeeded)
+                {
+                    var identityUser = await _userManager.FindByNameAsync(model.Login);
+
+                    var userModel = await _userService.GetUserByIdAsync(identityUser.Id);
+                    var userResponse = _mapper.Map<UserModelResponse>(userModel);
+
+                    var userRole = await _userManager.GetRolesAsync(identityUser);
+                    userResponse.Role = userRole[0];
+
+                    var response = _jwtUtil.GenerateToken(userResponse);
+                    return Ok(response);
+                }
+            }
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            ErrorModel errorModel = new()
+            {
+                Message = "Could not register new user",
+                StatusCode = StatusCodes.Status500InternalServerError,
+            };
+            return RedirectToAction("Error", "Home", errorModel);
+        }
+    }
 
     //public async Task<IActionResult> Logout()
     //{

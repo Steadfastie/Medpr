@@ -27,6 +27,8 @@ public class JwtUtilSha256 : IJwtUtil
         var claims = new List<Claim>()
         {
             new Claim(JwtRegisteredClaimNames.Sub, model.Login),
+            new Claim(JwtRegisteredClaimNames.Iss, _configuration["Token:Project"]),
+            new Claim(JwtRegisteredClaimNames.Aud, _configuration["Token:Project"]),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("D")), //jwt uniq id from spec
             new Claim(JwtRegisteredClaimNames.Exp, exp.ToString())
         };

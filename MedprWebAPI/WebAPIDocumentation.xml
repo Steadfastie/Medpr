@@ -140,5 +140,12 @@
             <param name="model">User credentials</param>
             <returns></returns>
         </member>
+        <member name="M:MedprMVC.Controllers.AppController.SingIn(MedprModels.Requests.UserModelRequest)">
+            <summary>
+            Login user
+            </summary>
+            <param name="model">User credentials</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
