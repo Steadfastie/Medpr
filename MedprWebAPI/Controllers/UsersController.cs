@@ -127,7 +127,6 @@ public class UsersController : ControllerBase
     /// <returns></returns>
     [HttpPatch("{id}")]
     [ProducesResponseType(typeof(UserModelResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(UserModelResponse), StatusCodes.Status304NotModified)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
