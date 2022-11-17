@@ -26,6 +26,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AspNetSample.WebAPI.Utils;
 using MedprBusiness.ServiceImplimentations.Cqs;
+using Microsoft.OpenApi.Models;
 
 namespace MedprWebAPI;
 
@@ -127,6 +128,26 @@ public class Program
         builder.Services.AddSwaggerGen(options =>
         {
             options.IncludeXmlComments(builder.Configuration["Documentation"]);
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Example: \"Bearer 1safsfsdfdfd\"",
+            });
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement {
+            {
+                new OpenApiSecurityScheme {
+                    Reference = new OpenApiReference {
+                        Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+            });
         });
 
         var app = builder.Build();

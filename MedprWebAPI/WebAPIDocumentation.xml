@@ -108,6 +108,31 @@
             <param name="id">Drug's id</param>
             <returns></returns>
         </member>
+        <member name="T:MedprWebAPI.Controllers.FamiliesController">
+            <summary>
+            Controller for families
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.FamiliesController.Index">
+            <summary>
+            Get list of families with creatorId and added to each family users
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.FamiliesController.Create(MedprModels.Requests.FamilyModelRequest)">
+            <summary>
+            Create new family for the app. Forbids creation of family with existing in app name
+            </summary>
+            <param name="model">Model with family parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.FamiliesController.Delete(System.Guid)">
+            <summary>
+            Remove family from app
+            </summary>
+            <param name="id">Family's id</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.VaccinesController">
             <summary>
             Controller for vaccines

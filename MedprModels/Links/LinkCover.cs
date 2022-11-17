@@ -1,4 +1,5 @@
 ﻿using MedprModels.Interfaces;
+using MedprModels.Responses;
 
 namespace MedprModels.Links;
 
@@ -15,27 +16,42 @@ public static class LinkCover
     {
         if (model.Links == null)
         {
-            model.Links = new List<Link>()
+            if(model is FamilyModelResponse || model is FamilyMemberModelResponse)
             {
-                new Link()
+                model.Links = new List<Link>()
                 {
-                    Href = $"https://localhost:7295/{controller}/{model.Id}",
-                    Rel = "self",
-                    Type = "GET"
-                },
-                new Link()
+                    new Link()
+                    {
+                        Href = $"https://localhost:7295/{controller}/{model.Id}",
+                        Rel = "delete",
+                        Type = "DELETE"
+                    }
+                };
+            }
+            else
+            {
+                model.Links = new List<Link>()
                 {
-                    Href = $"https://localhost:7295/{controller}/{model.Id}",
-                    Rel = "update",
-                    Type = "PATCH"
-                },
-                new Link()
-                {
-                    Href = $"https://localhost:7295/{controller}/{model.Id}",
-                    Rel = "delete",
-                    Type = "DELETE"
-                }
-            };
+                    new Link()
+                    {
+                        Href = $"https://localhost:7295/{controller}/{model.Id}",
+                        Rel = "self",
+                        Type = "GET"
+                    },
+                    new Link()
+                    {
+                        Href = $"https://localhost:7295/{controller}/{model.Id}",
+                        Rel = "update",
+                        Type = "PATCH"
+                    },
+                    new Link()
+                    {
+                        Href = $"https://localhost:7295/{controller}/{model.Id}",
+                        Rel = "delete",
+                        Type = "DELETE"
+                    }
+                };
+            }
         }
         return model;
     }

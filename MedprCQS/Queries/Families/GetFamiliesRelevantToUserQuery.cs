@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MedprCQS.Queries.FamilyMembers;
+namespace MedprCQS.Queries.Families;
 
-public class GetFamilyMemberByIdQuery: IRequest<FamilyMemberDTO>
+public class GetFamiliesRelevantToUserQuery : IRequest<List<FamilyDTO>>
 {
-    public Guid Id { get; set; }
+    public Guid UserId { get; set; }
 }

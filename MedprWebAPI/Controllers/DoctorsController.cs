@@ -35,7 +35,6 @@ public class DoctorsController : ControllerBase
     /// <returns></returns>
     [HttpGet]
     [ProducesResponseType(typeof(List<DoctorModelResponse>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Index()
     {
@@ -135,7 +134,7 @@ public class DoctorsController : ControllerBase
 
                 var responseModel = _mapper.Map<DoctorModelResponse>(dto);
 
-                return CreatedAtAction(nameof(Details), new { id = dto.Id }, responseModel.GenerateLinks("doctors"));
+                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("doctors"));
             }
             else
             {

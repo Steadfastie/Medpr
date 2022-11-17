@@ -48,7 +48,7 @@ public class FamilyServiceCqs : IFamilyService
 
     public async Task<List<FamilyDTO>> GetFamiliesRelevantToUser(Guid userId)
     {
-        var familyList = await _mediator.Send(new GetFamiliesByUserIdQuery()
+        var familyList = await _mediator.Send(new GetFamiliesRelevantToUserQuery()
         {
             UserId = userId,
         });

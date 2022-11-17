@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MedprCQS.Queries.FamilyMembers;
 
-public class GetFamiliesByUserIdQuery: IRequest<List<FamilyDTO>>
+public class GetFamilyMemberByIdQuery: IRequest<FamilyMemberDTO>
 {
-    public Guid UserId { get; set; }
+    public Guid Id { get; set; }
 }
