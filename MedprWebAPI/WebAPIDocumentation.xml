@@ -30,6 +30,45 @@
             <param name="model">User credentials</param>
             <returns></returns>
         </member>
+        <member name="T:MedprWebAPI.Controllers.AppointmentsController">
+            <summary>
+            Controller for appointments
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.AppointmentsController.Index">
+            <summary>
+            Get all appointments
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.AppointmentsController.Details(System.Guid)">
+            <summary>
+            Find info on one particular resourse
+            </summary>
+            <param name="id">Id of the appointment</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.AppointmentsController.Create(MedprModels.Requests.AppointmentModelRequest)">
+            <summary>
+            Create new appointment for the app
+            </summary>
+            <param name="model">Model with appointment parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.AppointmentsController.Edit(MedprModels.Requests.AppointmentModelRequest)">
+            <summary>
+            Edit some data about appointment
+            </summary>
+            <param name="model">Appointment parameters. Name should not change</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.AppointmentsController.Delete(System.Guid)">
+            <summary>
+            Remove appointment from app
+            </summary>
+            <param name="id">Appointment's id</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.DoctorsController">
             <summary>
             Controller for doctors
@@ -152,6 +191,45 @@
             <param name="id">Family's id</param>
             <returns></returns>
         </member>
+        <member name="T:MedprWebAPI.Controllers.PrescriptionsController">
+            <summary>
+            Controller for prescriptions
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.PrescriptionsController.Index">
+            <summary>
+            Get all prescriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.PrescriptionsController.Details(System.Guid)">
+            <summary>
+            Find info on one particular resourse
+            </summary>
+            <param name="id">Id of the prescription</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.PrescriptionsController.Create(MedprModels.Requests.PrescriptionModelRequest)">
+            <summary>
+            Create new prescription for the app
+            </summary>
+            <param name="model">Model with prescription parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.PrescriptionsController.Edit(MedprModels.Requests.PrescriptionModelRequest)">
+            <summary>
+            Edit some data about prescription
+            </summary>
+            <param name="model">Prescription parameters. Name should not change</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.PrescriptionsController.Delete(System.Guid)">
+            <summary>
+            Remove prescription from app
+            </summary>
+            <param name="id">Prescription's id</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.UsersController">
             <summary>
             Controller for users
@@ -191,6 +269,45 @@
             <param name="userId">Id of user to change</param>
             <returns></returns>
         </member>
+        <member name="T:MedprWebAPI.Controllers.VaccinationsController">
+            <summary>
+            Controller for vaccinations
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinationsController.Index">
+            <summary>
+            Get all vaccinations
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinationsController.Details(System.Guid)">
+            <summary>
+            Find info on one particular resourse
+            </summary>
+            <param name="id">Id of the vaccination</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinationsController.Create(MedprModels.Requests.VaccinationModelRequest)">
+            <summary>
+            Create new vaccination for the app
+            </summary>
+            <param name="model">Model with vaccination parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinationsController.Edit(MedprModels.Requests.VaccinationModelRequest)">
+            <summary>
+            Edit some data about vaccination
+            </summary>
+            <param name="model">Vaccination parameters. Name should not change</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.VaccinationsController.Delete(System.Guid)">
+            <summary>
+            Remove vaccination from app
+            </summary>
+            <param name="id">Vaccination's id</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.VaccinesController">
             <summary>
             Controller for vaccines
@@ -228,6 +345,18 @@
             Remove vaccine from app
             </summary>
             <param name="id">Vaccine's id</param>
+            <returns></returns>
+        </member>
+        <member name="T:MedprWebAPI.Utils.WardedPeople">
+            <summary>
+            Class to check what info user is allowed to see
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Utils.WardedPeople.GetWardedByUserPeople(System.Guid)">
+            <summary>
+            Method returns list of user IDs whose information user is allowed to see
+            </summary>
+            <param name="userId"></param>
             <returns></returns>
         </member>
     </members>

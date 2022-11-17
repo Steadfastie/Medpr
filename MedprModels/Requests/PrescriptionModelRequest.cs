@@ -34,3 +34,4 @@ public class PrescriptionModelRequest
 
     [Required(ErrorMessage = "What will the patien take?")]
     public Guid DrugId { get; set; }
+}

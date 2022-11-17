@@ -16,31 +16,34 @@ using MedprWebAPI.Utils;
 namespace MedprWebAPI.Controllers;
 
 /// <summary>
-/// Controller for appointments
+/// Controller for prescriptions
 /// </summary>
-[Route("appointments")]
+[Route("prescriptions")]
 [ApiController]
 [Authorize]
-public class AppointmentsController : ControllerBase
+public class PrescriptionsController : ControllerBase
 {
-    private readonly IAppointmentService _appointmentService;
+    private readonly IPrescriptionService _prescriptionService;
     private readonly IFamilyService _familyService;
     private readonly IFamilyMemberService _familyMemberService;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IDoctorService _doctorService;
+    private readonly IDrugService _drugService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
-    public AppointmentsController(IAppointmentService appointmentService,
+    public PrescriptionsController(IPrescriptionService prescriptionService,
         IDoctorService doctorService,
+        IDrugService drugService,
         IFamilyService familyService,
         IFamilyMemberService familyMemberService,
         IUserService userService,
         IMapper mapper,
         UserManager<IdentityUser<Guid>> userManager)
     {
-        _appointmentService = appointmentService;
+        _prescriptionService = prescriptionService;
         _doctorService = doctorService;
+        _drugService = drugService;
         _mapper = mapper;
         _userService = userService;
         _userManager = userManager;
@@ -49,25 +52,25 @@ public class AppointmentsController : ControllerBase
     }
 
     /// <summary>
-    /// Get all appointments
+    /// Get all prescriptions
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    [ProducesResponseType(typeof(List<AppointmentModelResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<PrescriptionModelResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Index()
     {
         try
         {
-            List<AppointmentDTO> dtos = await GetRelevantAppointments();
+            List<PrescriptionDTO> dtos = await GetRelevantPrescriptions();
 
-            List<AppointmentModelResponse> models = new();
+            List<PrescriptionModelResponse> models = new();
 
             foreach (var dto in dtos)
             {
                 var responseModel = await FillResponseModel(dto);
 
-                models.Add(responseModel.GenerateLinks("appointments"));
+                models.Add(responseModel.GenerateLinks("prescriptions"));
             }
 
             if (models.Any())
@@ -84,7 +87,7 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not load appointments",
+                Message = "Could not load prescriptions",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -94,10 +97,10 @@ public class AppointmentsController : ControllerBase
     /// <summary>
     /// Find info on one particular resourse
     /// </summary>
-    /// <param name="id">Id of the appointment</param>
+    /// <param name="id">Id of the prescription</param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PrescriptionModelResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
@@ -105,7 +108,7 @@ public class AppointmentsController : ControllerBase
     {
         try
         {
-            var dto = await _appointmentService.GetAppointmentByIdAsync(id);
+            var dto = await _prescriptionService.GetPrescriptionByIdAsync(id);
 
             var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
             var currentUser = await _userManager.FindByNameAsync(userName);
@@ -120,7 +123,7 @@ public class AppointmentsController : ControllerBase
             {
                 var responseModel = await FillResponseModel(dto);
 
-                return Ok(responseModel.GenerateLinks("appontments"));
+                return Ok(responseModel.GenerateLinks("prescriptions"));
             }
             else
             {
@@ -132,7 +135,7 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not load appointment",
+                Message = "Could not load prescription",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -140,16 +143,16 @@ public class AppointmentsController : ControllerBase
     }
 
     /// <summary>
-    /// Create new appointment for the app
+    /// Create new prescription for the app
     /// </summary>
-    /// <param name="model">Model with appointment parameters</param>
+    /// <param name="model">Model with prescription parameters</param>
     /// <returns></returns>
     [HttpPost]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(PrescriptionModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PrescriptionModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] AppointmentModelRequest model)
+    public async Task<IActionResult> Create([FromForm] PrescriptionModelRequest model)
     {
         try
         {
@@ -166,13 +169,13 @@ public class AppointmentsController : ControllerBase
 
                 model.Id = Guid.NewGuid();
 
-                var dto = _mapper.Map<AppointmentDTO>(model);
+                var dto = _mapper.Map<PrescriptionDTO>(model);
 
-                await _appointmentService.CreateAppointmentAsync(dto);
+                await _prescriptionService.CreatePrescriptionAsync(dto);
 
                 var responseModel = await FillResponseModel(dto);
 
-                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("appointments"));
+                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("prescriptions"));
             }
             else
             {
@@ -184,7 +187,7 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not create appointment",
+                Message = "Could not create prescription",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -192,40 +195,40 @@ public class AppointmentsController : ControllerBase
     }
 
     /// <summary>
-    /// Edit some data about appointment
+    /// Edit some data about prescription
     /// </summary>
-    /// <param name="model">Appointment parameters. Name should not change</param>
+    /// <param name="model">Prescription parameters. Name should not change</param>
     /// <returns></returns>
     [HttpPatch("{id}")]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status304NotModified)]
+    [ProducesResponseType(typeof(PrescriptionModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PrescriptionModelResponse), StatusCodes.Status304NotModified)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromForm] AppointmentModelRequest model)
+    public async Task<IActionResult> Edit([FromForm] PrescriptionModelRequest model)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var dto = _mapper.Map<AppointmentDTO>(model);
-
                 var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
                 var currentUser = await _userManager.FindByNameAsync(userName);
 
                 var ids = await WardedPeople.GetWardedByUserPeople(currentUser.Id);
-                if (!ids.Contains(dto.UserId))
+                if (!ids.Contains(model.UserId))
                 {
                     return Forbid();
                 }
 
-                var sourceDto = await _appointmentService.GetAppointmentByIdAsync(model.Id);
+                var dto = _mapper.Map<PrescriptionDTO>(model);
+
+                var sourceDto = await _prescriptionService.GetPrescriptionByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
                 if (dto != null)
                 {
-                    foreach (PropertyInfo property in typeof(AppointmentDTO).GetProperties())
+                    foreach (PropertyInfo property in typeof(PrescriptionDTO).GetProperties())
                     {
                         if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
                         {
@@ -238,11 +241,11 @@ public class AppointmentsController : ControllerBase
                     }
                 }
 
-                await _appointmentService.PatchAppointmentAsync(model.Id, patchList);
+                await _prescriptionService.PatchPrescriptionAsync(model.Id, patchList);
 
                 var responseModel = await FillResponseModel(dto);
 
-                return Ok(responseModel.GenerateLinks("appointments"));
+                return Ok(responseModel.GenerateLinks("prescriptions"));
             }
             else
             {
@@ -254,7 +257,7 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not update appointment info",
+                Message = "Could not update prescription info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -262,9 +265,9 @@ public class AppointmentsController : ControllerBase
     }
 
     /// <summary>
-    /// Remove appointment from app
+    /// Remove prescription from app
     /// </summary>
-    /// <param name="id">Appointment's id</param>
+    /// <param name="id">Prescription's id</param>
     /// <returns></returns>
     [HttpDelete("{id}")]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
@@ -276,7 +279,7 @@ public class AppointmentsController : ControllerBase
         {
             if (id != Guid.Empty)
             {
-                var dto = await _appointmentService.GetAppointmentByIdAsync(id);
+                var dto = await _prescriptionService.GetPrescriptionByIdAsync(id);
 
                 var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
                 var currentUser = await _userManager.FindByNameAsync(userName);
@@ -292,7 +295,7 @@ public class AppointmentsController : ControllerBase
                     return BadRequest();
                 }
 
-                await _appointmentService.DeleteAppointmentAsync(dto);
+                await _prescriptionService.DeletePrescriptionAsync(dto);
 
                 return Ok();
             }
@@ -306,63 +309,52 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not delete appointment from app",
+                Message = "Could not delete prescription from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
         }
     }
 
-    private async Task<List<AppointmentDTO>> GetRelevantAppointments()
+    private async Task<List<PrescriptionDTO>> GetRelevantPrescriptions()
     {
         var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
         var currentUser = await _userManager.FindByNameAsync(userName);
         var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-        List<AppointmentDTO> dtos = new();
+        List<PrescriptionDTO> dtos = new();
         if (currentUserRole[0] == "Default")
         {
             List<Guid> users = await WardedPeople.GetWardedByUserPeople(currentUser.Id);
 
             foreach (Guid userId in users)
             {
-                var userAppointments = await _appointmentService.GetAppointmentsByUserIdAsync(userId);
-                dtos.AddRange(userAppointments);
+                var userPrescriptions = await _prescriptionService.GetPrescriptionsByUserIdAsync(userId);
+                dtos.AddRange(userPrescriptions);
             }
             return dtos;
         }
         else
         {
-            return await _appointmentService.GetAllAppointmentsAsync();
+            return await _prescriptionService.GetAllPrescriptionsAsync();
         }
 
     }
 
-    private async Task<bool> CheckRelevancy(Guid appointmentId)
-    {
-        var dtos = await GetRelevantAppointments();
-
-        var ids = dtos.Select(dto => dto.Id).ToList();
-
-        if (!ids.Contains(appointmentId))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private async Task<AppointmentModelResponse> FillResponseModel(AppointmentDTO dto)
+    private async Task<PrescriptionModelResponse> FillResponseModel(PrescriptionDTO dto)
     {
         var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
         var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
+        var drugSelected = await _drugService.GetDrugByIdAsync(dto.DrugId);
 
-        var responseModel = _mapper.Map<AppointmentModelResponse>(dto);
+        var responseModel = _mapper.Map<PrescriptionModelResponse>(dto);
 
         responseModel.Doctor = _mapper.Map<DoctorModelResponse>(doctorSelected)
             .GenerateLinks("doctors");
         responseModel.User = _mapper.Map<UserModelResponse>(userSelected)
             .GenerateLinks("users");
+        responseModel.Drug = _mapper.Map<DrugModelResponse>(drugSelected)
+            .GenerateLinks("drugs");
 
         return responseModel;
     }

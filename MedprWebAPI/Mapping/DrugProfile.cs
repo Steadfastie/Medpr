@@ -2,6 +2,7 @@
 using MedprCore.DTO;
 using MedprDB.Entities;
 using MedprModels.Requests;
+using MedprModels.Responses;
 
 namespace MedprWebAPI.Mapping;
 

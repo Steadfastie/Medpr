@@ -60,6 +60,15 @@ public class MembersController : ControllerBase
         {
             if (ModelState.IsValid)
             {
+                var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
+                var currentUser = await _userManager.FindByNameAsync(userName);
+                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+                if (model.UserId != currentUser.Id || currentUserRole[0] != "Admin")
+                {
+                    return Forbid();
+                }
+
                 model.Id = Guid.NewGuid();
                 var dto = _mapper.Map<FamilyMemberDTO>(model);
 

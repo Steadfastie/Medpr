@@ -3,6 +3,7 @@ using MedprCore.DTO;
 using MedprDB.Entities;
 using MedprModels;
 using MedprModels.Requests;
+using MedprModels.Responses;
 
 namespace MedprModels.Mapping;
 
@@ -13,19 +14,17 @@ public class PrescriptionProfile : Profile
         CreateMap<Prescription, PrescriptionDTO>();
         CreateMap<PrescriptionDTO, Prescription>();
 
-        CreateMap<PrescriptionDTO, PrescriptionModel>()
+        CreateMap<PrescriptionDTO, PrescriptionModelResponse>()
             .ForMember(model => model.Id, opt => opt.MapFrom(dto => dto.Id))
             .ForMember(model => model.StartDate, opt => opt.MapFrom(dto => dto.StartDate))
             .ForMember(model => model.EndDate, opt => opt.MapFrom(dto => dto.EndDate))
             .ForMember(model => model.Dose, opt => opt.MapFrom(dto => dto.Dose))
             .ForMember(model => model.Doctor, opt => opt.Ignore())
-            .ForMember(model => model.DoctorId, opt => opt.MapFrom(dto => dto.DoctorId))
             .ForMember(model => model.User, opt => opt.Ignore())
-            .ForMember(model => model.UserId, opt => opt.MapFrom(dto => dto.UserId))
             .ForMember(model => model.Drug, opt => opt.Ignore())
-            .ForMember(model => model.DrugId, opt => opt.MapFrom(dto => dto.DrugId));
+            .ForMember(model => model.Links, opt => opt.Ignore());
 
-        CreateMap<PrescriptionModel, PrescriptionDTO>()
+        CreateMap<PrescriptionModelRequest, PrescriptionDTO>()
             .ForMember(dto => dto.Id, opt => opt.MapFrom(model => model.Id))
             .ForMember(dto => dto.StartDate, opt => opt.MapFrom(model => model.StartDate))
             .ForMember(dto => dto.EndDate, opt => opt.MapFrom(model => model.EndDate))

@@ -3,6 +3,7 @@ using MedprCore.DTO;
 using MedprDB.Entities;
 using MedprModels;
 using MedprModels.Requests;
+using MedprModels.Responses;
 
 namespace MedprModels.Mapping;
 

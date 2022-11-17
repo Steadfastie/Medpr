@@ -16,31 +16,31 @@ using MedprWebAPI.Utils;
 namespace MedprWebAPI.Controllers;
 
 /// <summary>
-/// Controller for appointments
+/// Controller for vaccinations
 /// </summary>
-[Route("appointments")]
+[Route("vaccinations")]
 [ApiController]
 [Authorize]
-public class AppointmentsController : ControllerBase
+public class VaccinationsController : ControllerBase
 {
-    private readonly IAppointmentService _appointmentService;
+    private readonly IVaccinationService _vaccinationService;
     private readonly IFamilyService _familyService;
     private readonly IFamilyMemberService _familyMemberService;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
-    private readonly IDoctorService _doctorService;
+    private readonly IVaccineService _vaccineService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
-    public AppointmentsController(IAppointmentService appointmentService,
-        IDoctorService doctorService,
+    public VaccinationsController(IVaccinationService vaccinationService,
+        IVaccineService vaccineService,
         IFamilyService familyService,
         IFamilyMemberService familyMemberService,
         IUserService userService,
         IMapper mapper,
         UserManager<IdentityUser<Guid>> userManager)
     {
-        _appointmentService = appointmentService;
-        _doctorService = doctorService;
+        _vaccinationService = vaccinationService;
+        _vaccineService = vaccineService;
         _mapper = mapper;
         _userService = userService;
         _userManager = userManager;
@@ -49,25 +49,25 @@ public class AppointmentsController : ControllerBase
     }
 
     /// <summary>
-    /// Get all appointments
+    /// Get all vaccinations
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    [ProducesResponseType(typeof(List<AppointmentModelResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<VaccinationModelResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Index()
     {
         try
         {
-            List<AppointmentDTO> dtos = await GetRelevantAppointments();
+            List<VaccinationDTO> dtos = await GetRelevantVaccinations();
 
-            List<AppointmentModelResponse> models = new();
+            List<VaccinationModelResponse> models = new();
 
             foreach (var dto in dtos)
             {
                 var responseModel = await FillResponseModel(dto);
 
-                models.Add(responseModel.GenerateLinks("appointments"));
+                models.Add(responseModel.GenerateLinks("vaccinations"));
             }
 
             if (models.Any())
@@ -84,7 +84,7 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not load appointments",
+                Message = "Could not load vaccinations",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -94,10 +94,10 @@ public class AppointmentsController : ControllerBase
     /// <summary>
     /// Find info on one particular resourse
     /// </summary>
-    /// <param name="id">Id of the appointment</param>
+    /// <param name="id">Id of the vaccination</param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(VaccinationModelResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
@@ -105,7 +105,7 @@ public class AppointmentsController : ControllerBase
     {
         try
         {
-            var dto = await _appointmentService.GetAppointmentByIdAsync(id);
+            var dto = await _vaccinationService.GetVaccinationByIdAsync(id);
 
             var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
             var currentUser = await _userManager.FindByNameAsync(userName);
@@ -132,7 +132,7 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not load appointment",
+                Message = "Could not load vaccination",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -140,16 +140,16 @@ public class AppointmentsController : ControllerBase
     }
 
     /// <summary>
-    /// Create new appointment for the app
+    /// Create new vaccination for the app
     /// </summary>
-    /// <param name="model">Model with appointment parameters</param>
+    /// <param name="model">Model with vaccination parameters</param>
     /// <returns></returns>
     [HttpPost]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(VaccinationModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(VaccinationModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] AppointmentModelRequest model)
+    public async Task<IActionResult> Create([FromForm] VaccinationModelRequest model)
     {
         try
         {
@@ -166,13 +166,13 @@ public class AppointmentsController : ControllerBase
 
                 model.Id = Guid.NewGuid();
 
-                var dto = _mapper.Map<AppointmentDTO>(model);
+                var dto = _mapper.Map<VaccinationDTO>(model);
 
-                await _appointmentService.CreateAppointmentAsync(dto);
+                await _vaccinationService.CreateVaccinationAsync(dto);
 
                 var responseModel = await FillResponseModel(dto);
 
-                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("appointments"));
+                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("vaccinations"));
             }
             else
             {
@@ -184,7 +184,7 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not create appointment",
+                Message = "Could not create vaccination",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -192,23 +192,23 @@ public class AppointmentsController : ControllerBase
     }
 
     /// <summary>
-    /// Edit some data about appointment
+    /// Edit some data about vaccination
     /// </summary>
-    /// <param name="model">Appointment parameters. Name should not change</param>
+    /// <param name="model">Vaccination parameters. Name should not change</param>
     /// <returns></returns>
     [HttpPatch("{id}")]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status304NotModified)]
+    [ProducesResponseType(typeof(VaccinationModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(VaccinationModelResponse), StatusCodes.Status304NotModified)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromForm] AppointmentModelRequest model)
+    public async Task<IActionResult> Edit([FromForm] VaccinationModelRequest model)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var dto = _mapper.Map<AppointmentDTO>(model);
+                var dto = _mapper.Map<VaccinationDTO>(model);
 
                 var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
                 var currentUser = await _userManager.FindByNameAsync(userName);
@@ -219,13 +219,13 @@ public class AppointmentsController : ControllerBase
                     return Forbid();
                 }
 
-                var sourceDto = await _appointmentService.GetAppointmentByIdAsync(model.Id);
+                var sourceDto = await _vaccinationService.GetVaccinationByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
                 if (dto != null)
                 {
-                    foreach (PropertyInfo property in typeof(AppointmentDTO).GetProperties())
+                    foreach (PropertyInfo property in typeof(VaccinationDTO).GetProperties())
                     {
                         if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
                         {
@@ -238,11 +238,11 @@ public class AppointmentsController : ControllerBase
                     }
                 }
 
-                await _appointmentService.PatchAppointmentAsync(model.Id, patchList);
+                await _vaccinationService.PatchVaccinationAsync(model.Id, patchList);
 
                 var responseModel = await FillResponseModel(dto);
 
-                return Ok(responseModel.GenerateLinks("appointments"));
+                return Ok(responseModel.GenerateLinks("vaccinations"));
             }
             else
             {
@@ -254,7 +254,7 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not update appointment info",
+                Message = "Could not update vaccination info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
@@ -262,9 +262,9 @@ public class AppointmentsController : ControllerBase
     }
 
     /// <summary>
-    /// Remove appointment from app
+    /// Remove vaccination from app
     /// </summary>
-    /// <param name="id">Appointment's id</param>
+    /// <param name="id">Vaccination's id</param>
     /// <returns></returns>
     [HttpDelete("{id}")]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
@@ -276,7 +276,7 @@ public class AppointmentsController : ControllerBase
         {
             if (id != Guid.Empty)
             {
-                var dto = await _appointmentService.GetAppointmentByIdAsync(id);
+                var dto = await _vaccinationService.GetVaccinationByIdAsync(id);
 
                 var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
                 var currentUser = await _userManager.FindByNameAsync(userName);
@@ -292,7 +292,7 @@ public class AppointmentsController : ControllerBase
                     return BadRequest();
                 }
 
-                await _appointmentService.DeleteAppointmentAsync(dto);
+                await _vaccinationService.DeleteVaccinationAsync(dto);
 
                 return Ok();
             }
@@ -306,45 +306,45 @@ public class AppointmentsController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not delete appointment from app",
+                Message = "Could not delete vaccination from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
         }
     }
 
-    private async Task<List<AppointmentDTO>> GetRelevantAppointments()
+    private async Task<List<VaccinationDTO>> GetRelevantVaccinations()
     {
         var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
         var currentUser = await _userManager.FindByNameAsync(userName);
         var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-        List<AppointmentDTO> dtos = new();
+        List<VaccinationDTO> dtos = new();
         if (currentUserRole[0] == "Default")
         {
             List<Guid> users = await WardedPeople.GetWardedByUserPeople(currentUser.Id);
 
             foreach (Guid userId in users)
             {
-                var userAppointments = await _appointmentService.GetAppointmentsByUserIdAsync(userId);
-                dtos.AddRange(userAppointments);
+                var userVaccinations = await _vaccinationService.GetVaccinationsByUserIdAsync(userId);
+                dtos.AddRange(userVaccinations);
             }
             return dtos;
         }
         else
         {
-            return await _appointmentService.GetAllAppointmentsAsync();
+            return await _vaccinationService.GetAllVaccinationsAsync();
         }
 
     }
 
-    private async Task<bool> CheckRelevancy(Guid appointmentId)
+    private async Task<bool> CheckRelevancy(Guid vaccinationId)
     {
-        var dtos = await GetRelevantAppointments();
+        var dtos = await GetRelevantVaccinations();
 
         var ids = dtos.Select(dto => dto.Id).ToList();
 
-        if (!ids.Contains(appointmentId))
+        if (!ids.Contains(vaccinationId))
         {
             return false;
         }
@@ -352,14 +352,14 @@ public class AppointmentsController : ControllerBase
         return true;
     }
 
-    private async Task<AppointmentModelResponse> FillResponseModel(AppointmentDTO dto)
+    private async Task<VaccinationModelResponse> FillResponseModel(VaccinationDTO dto)
     {
-        var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);
+        var vaccineSelected = await _vaccineService.GetVaccineByIdAsync(dto.VaccineId);
         var userSelected = await _userService.GetUserByIdAsync(dto.UserId);
 
-        var responseModel = _mapper.Map<AppointmentModelResponse>(dto);
+        var responseModel = _mapper.Map<VaccinationModelResponse>(dto);
 
-        responseModel.Doctor = _mapper.Map<DoctorModelResponse>(doctorSelected)
+        responseModel.Vaccine = _mapper.Map<VaccineModelResponse>(vaccineSelected)
             .GenerateLinks("doctors");
         responseModel.User = _mapper.Map<UserModelResponse>(userSelected)
             .GenerateLinks("users");
