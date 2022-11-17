@@ -152,6 +152,45 @@
             <param name="id">Family's id</param>
             <returns></returns>
         </member>
+        <member name="T:MedprWebAPI.Controllers.UsersController">
+            <summary>
+            Controller for users
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.UsersController.Index">
+            <summary>
+            Get all users
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.UsersController.Details(System.Guid)">
+            <summary>
+            Find info on one particular resourse
+            </summary>
+            <param name="id">Id of the user</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.UsersController.Edit(MedprModels.Requests.UserModelRequest)">
+            <summary>
+            Edit some data about user. Forbids user's name change. Returns SC304 if there is nothing to patch.
+            </summary>
+            <param name="model">User parameters. Name should not change</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.UsersController.Delete(System.Guid)">
+            <summary>
+            Remove user from app
+            </summary>
+            <param name="id">User's id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.UsersController.CheckAccess(System.Guid)">
+            <summary>
+            Returns true if current user has access to user's CRUD
+            </summary>
+            <param name="userId">Id of user to change</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.VaccinesController">
             <summary>
             Controller for vaccines

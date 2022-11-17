@@ -21,9 +21,18 @@ public class UserProfile : Profile
             .ForMember(model => model.DateOfBirth, opt => opt.MapFrom(dto => dto.DateOfBirth))
             .ForMember(model => model.Links, opt => opt.Ignore());
         CreateMap<UserModelRequest, UserDTO>()
-            .ForMember(dto => dto.Id, opt => opt.Ignore())
+            .ForMember(dto => dto.Id, opt => {
+                opt.Condition(src => src.Id != Guid.Empty);
+                opt.MapFrom(model => model.Id);
+            })
             .ForMember(dto => dto.Login, opt => opt.MapFrom(model => model.Login))
-            .ForMember(dto => dto.FullName, opt => opt.Ignore())
-            .ForMember(dto => dto.DateOfBirth, opt => opt.Ignore());
+            .ForMember(dto => dto.FullName, opt => {
+                opt.Condition(src => src.FullName != null);
+                opt.MapFrom(model => model.FullName);
+            })
+            .ForMember(dto => dto.DateOfBirth, opt => {
+                opt.Condition(src => src.DateOfBirth != null);
+                opt.MapFrom(model => model.DateOfBirth);
+            });
     }
 }

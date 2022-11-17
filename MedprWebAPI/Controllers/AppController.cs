@@ -18,6 +18,7 @@ using Serilog;
 using MedprModels.Responses;
 using MedprModels.Requests;
 using AspNetSample.WebAPI.Utils;
+using MedprModels.Links;
 
 namespace MedprWebAPI.Controllers;
 
@@ -143,12 +144,26 @@ public class AppController : ControllerBase
                 if (signInResult.Succeeded)
                 {
                     var identityUser = await _userManager.FindByNameAsync(model.Login);
+                    var identityUserRole = await _userManager.GetRolesAsync(identityUser);
 
-                    var userModel = await _userService.GetUserByIdAsync(identityUser.Id);
-                    var userResponse = _mapper.Map<UserModelResponse>(userModel);
+                    UserModelResponse userResponse;
+                    if (identityUser.UserName != "admin@admin.com")
+                    {
+                        var userModel = await _userService.GetUserByIdAsync(identityUser.Id);
+                        userResponse = _mapper.Map<UserModelResponse>(userModel);
 
-                    var userRole = await _userManager.GetRolesAsync(identityUser);
-                    userResponse.Role = userRole[0];
+                        var userRole = await _userManager.GetRolesAsync(identityUser);
+                        userResponse.Role = userRole[0];
+                    }
+                    else
+                    {
+                        userResponse = new UserModelResponse()
+                        {
+                            Id = identityUser.Id,
+                            Login  = identityUser.UserName,
+                            Role = identityUserRole[0]    
+                        };
+                    }
 
                     var response = _jwtUtil.GenerateToken(userResponse);
                     return Ok(response);
