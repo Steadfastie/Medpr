@@ -40,4 +40,4 @@ List of things that will be updated in my project next:
   27. Angular App
   28. Redux
   29. Authentication and authorization for WebAPI using JWT (✔️)
-  30. Reimplement MVC app fucntionality for WebAPI project (in progress)
+  30. Reimplement MVC app fucntionality for WebAPI project (✔️)
