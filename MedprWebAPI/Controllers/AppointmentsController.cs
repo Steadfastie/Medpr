@@ -338,20 +338,6 @@ public class AppointmentsController : ControllerBase
 
     }
 
-    private async Task<bool> CheckRelevancy(Guid appointmentId)
-    {
-        var dtos = await GetRelevantAppointments();
-
-        var ids = dtos.Select(dto => dto.Id).ToList();
-
-        if (!ids.Contains(appointmentId))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     private async Task<AppointmentModelResponse> FillResponseModel(AppointmentDTO dto)
     {
         var doctorSelected = await _doctorService.GetDoctorByIdAsync(dto.DoctorId);

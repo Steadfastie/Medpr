@@ -338,20 +338,6 @@ public class VaccinationsController : ControllerBase
 
     }
 
-    private async Task<bool> CheckRelevancy(Guid vaccinationId)
-    {
-        var dtos = await GetRelevantVaccinations();
-
-        var ids = dtos.Select(dto => dto.Id).ToList();
-
-        if (!ids.Contains(vaccinationId))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     private async Task<VaccinationModelResponse> FillResponseModel(VaccinationDTO dto)
     {
         var vaccineSelected = await _vaccineService.GetVaccineByIdAsync(dto.VaccineId);
