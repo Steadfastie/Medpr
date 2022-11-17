@@ -15,18 +15,18 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class PrescriptionService : IPrescriptionService
+public class PrescriptionServiceRepository : IPrescriptionService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public PrescriptionService(IMapper mapper, IUnitOfWork unitOfWork)
+    public PrescriptionServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<PrescriptionDTO> GetPrescriptionsByIdAsync(Guid id)
+    public async Task<PrescriptionDTO> GetPrescriptionByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Prescriptions.GetByIdAsync(id);
         var dto = _mapper.Map<PrescriptionDTO>(entity);
@@ -34,13 +34,13 @@ public class PrescriptionService : IPrescriptionService
         return dto;
     }
 
-    public async Task<List<PrescriptionDTO>> GetAllPrescriptions()
+    public async Task<List<PrescriptionDTO>> GetAllPrescriptionsAsync()
     {
         var list = _unitOfWork.Prescriptions.Get();
         return await list.Select(prescription => _mapper.Map<PrescriptionDTO>(prescription)).ToListAsync();
     }
 
-    public Task<List<PrescriptionDTO>> GetPrescriptionsRelevantToUser(Guid id)
+    public Task<List<PrescriptionDTO>> GetPrescriptionsByUserIdAsync(Guid id)
     {
         var list = _unitOfWork.Prescriptions
             .FindBy(prescription => prescription.UserId == id)

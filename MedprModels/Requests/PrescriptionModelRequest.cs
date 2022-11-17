@@ -7,7 +7,7 @@ using System.Net;
 
 namespace MedprModels.Requests;
 
-public class PrescriptionModel
+public class PrescriptionModelRequest
 {
     public Guid Id { get; set; }
 
@@ -26,24 +26,11 @@ public class PrescriptionModel
     [Range(1, int.MaxValue, ErrorMessage = "Input something greater than 0")]
     public int Dose { get; set; }
 
-    public List<string> Users { get; set; }
-
     [Required(ErrorMessage = "Someone is a patien here, isn't he?")]
     public Guid UserId { get; set; }
-
-    public UserModelResponse User { get; set; }
-
-    public List<string> Doctors { get; set; }
 
     [Required(ErrorMessage = "Some is a doctor here, isn't he?")]
     public Guid DoctorId { get; set; }
 
-    public DoctorModelResponse Doctor { get; set; }
-
-    public List<string> Drugs { get; set; }
-
     [Required(ErrorMessage = "What will the patien take?")]
     public Guid DrugId { get; set; }
-
-    public DrugModelRequest Drug { get; set; }
-}

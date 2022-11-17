@@ -94,7 +94,7 @@ public class PrescriptionsController : Controller
                 return RedirectToAction("Denied", "Home");
             }
 
-            var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
+            var dto = await _prescriptionService.GetPrescriptionByIdAsync(id);
 
             if (dto != null)
             {
@@ -220,7 +220,7 @@ public class PrescriptionsController : Controller
                     return RedirectToAction("Denied", "Home");
                 }
 
-                var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
+                var dto = await _prescriptionService.GetPrescriptionByIdAsync(id);
                 if (dto == null)
                 {
                     return BadRequest();
@@ -271,7 +271,7 @@ public class PrescriptionsController : Controller
 
                 var dto = _mapper.Map<PrescriptionDTO>(model);
 
-                var sourceDto = await _prescriptionService.GetPrescriptionsByIdAsync(model.Id);
+                var sourceDto = await _prescriptionService.GetPrescriptionByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
@@ -318,7 +318,7 @@ public class PrescriptionsController : Controller
                     return RedirectToAction("Denied", "Home");
                 }
 
-                var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
+                var dto = await _prescriptionService.GetPrescriptionByIdAsync(id);
 
                 if (dto == null)
                 {
@@ -357,7 +357,7 @@ public class PrescriptionsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _prescriptionService.GetPrescriptionsByIdAsync(id);
+                var dto = await _prescriptionService.GetPrescriptionByIdAsync(id);
 
                 await _prescriptionService.DeletePrescriptionAsync(dto);
 
@@ -409,14 +409,14 @@ public class PrescriptionsController : Controller
 
             foreach (var user in users)
             {
-                var userPrescriptions = await _prescriptionService.GetPrescriptionsRelevantToUser(user);
+                var userPrescriptions = await _prescriptionService.GetPrescriptionsByUserIdAsync(user);
                 dtos.AddRange(userPrescriptions);
             }
             return dtos;
         }
         else
         {
-            return await _prescriptionService.GetAllPrescriptions();
+            return await _prescriptionService.GetAllPrescriptionsAsync();
         }
 
     }

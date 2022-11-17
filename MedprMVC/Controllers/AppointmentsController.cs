@@ -86,7 +86,7 @@ public class AppointmentsController : Controller
                 return RedirectToAction("Denied", "Home");
             }
 
-            var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
+            var dto = await _appointmentService.GetAppointmentByIdAsync(id);
 
             if (dto != null)
             {
@@ -208,7 +208,7 @@ public class AppointmentsController : Controller
                     return RedirectToAction("Denied", "Home");
                 }
 
-                var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
+                var dto = await _appointmentService.GetAppointmentByIdAsync(id);
                 if (dto == null)
                 {
                     return BadRequest();
@@ -252,7 +252,7 @@ public class AppointmentsController : Controller
 
                 var dto = _mapper.Map<AppointmentDTO>(model);
 
-                var sourceDto = await _appointmentService.GetAppointmentsByIdAsync(model.Id);
+                var sourceDto = await _appointmentService.GetAppointmentByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
@@ -299,7 +299,7 @@ public class AppointmentsController : Controller
                     return RedirectToAction("Denied", "Home");
                 }
 
-                var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
+                var dto = await _appointmentService.GetAppointmentByIdAsync(id);
 
                 if (dto == null)
                 {
@@ -336,7 +336,7 @@ public class AppointmentsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _appointmentService.GetAppointmentsByIdAsync(id);
+                var dto = await _appointmentService.GetAppointmentByIdAsync(id);
 
                 await _appointmentService.DeleteAppointmentAsync(dto);
 
@@ -367,14 +367,14 @@ public class AppointmentsController : Controller
 
             foreach (var user in users)
             {
-                var userAppointments = await _appointmentService.GetAppointmentsRelevantToUser(user);
+                var userAppointments = await _appointmentService.GetAppointmentsByUserIdAsync(user);
                 dtos.AddRange(userAppointments);
             }
             return dtos;
         }
         else
         {
-            return await _appointmentService.GetAllAppointments();
+            return await _appointmentService.GetAllAppointmentsAsync();
         }
 
     }

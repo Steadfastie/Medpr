@@ -15,18 +15,18 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class AppointmentService : IAppointmentService
+public class AppointmentServiceRepository : IAppointmentService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public AppointmentService(IMapper mapper, IUnitOfWork unitOfWork)
+    public AppointmentServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<AppointmentDTO> GetAppointmentsByIdAsync(Guid id)
+    public async Task<AppointmentDTO> GetAppointmentByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Appointments.GetByIdAsync(id);
         var dto = _mapper.Map<AppointmentDTO>(entity);
@@ -34,7 +34,7 @@ public class AppointmentService : IAppointmentService
         return dto;
     }
 
-    public Task<List<AppointmentDTO>> GetAppointmentsRelevantToUser(Guid id)
+    public Task<List<AppointmentDTO>> GetAppointmentsByUserIdAsync(Guid id)
     {
         var list = _unitOfWork.Appointments
             .FindBy(appointment => appointment.UserId == id)
@@ -43,7 +43,7 @@ public class AppointmentService : IAppointmentService
         return list;
     }
 
-    public async Task<List<AppointmentDTO>> GetAllAppointments()
+    public async Task<List<AppointmentDTO>> GetAllAppointmentsAsync()
     {
         var list = await _unitOfWork.Appointments.Get().ToListAsync();
         return list.Select(appointment => _mapper.Map<AppointmentDTO>(appointment)).ToList();

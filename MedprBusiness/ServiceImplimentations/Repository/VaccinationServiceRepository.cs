@@ -15,18 +15,18 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 
-public class VaccinationService : IVaccinationService
+public class VaccinationServiceRepository : IVaccinationService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public VaccinationService(IMapper mapper, IUnitOfWork unitOfWork)
+    public VaccinationServiceRepository(IMapper mapper, IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<VaccinationDTO> GetVaccinationsByIdAsync(Guid id)
+    public async Task<VaccinationDTO> GetVaccinationByIdAsync(Guid id)
     {
         var entity = await _unitOfWork.Vaccinations.GetByIdAsync(id);
         var dto = _mapper.Map<VaccinationDTO>(entity);
@@ -34,13 +34,13 @@ public class VaccinationService : IVaccinationService
         return dto;
     }
 
-    public async Task<List<VaccinationDTO>> GetAllVaccinations()
+    public async Task<List<VaccinationDTO>> GetAllVaccinationsAsync()
     {
         var dtos = _unitOfWork.Vaccinations.Get();
         return await dtos.Select(vaccination => _mapper.Map<VaccinationDTO>(vaccination)).ToListAsync();
     }
 
-    public Task<List<VaccinationDTO>> GetVaccinationsRelevantToUser(Guid id)
+    public Task<List<VaccinationDTO>> GetVaccinationsByUserIdAsync(Guid id)
     {
         var list = _unitOfWork.Vaccinations
             .FindBy(vaccination => vaccination.UserId == id)

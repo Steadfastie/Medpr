@@ -99,22 +99,10 @@ public class Program
         builder.Services.AddScoped<IDoctorService, DoctorServiceCqs>();
         builder.Services.AddScoped<IFamilyService, FamilyServiceCqs>();
         builder.Services.AddScoped<IVaccineService, VaccineServiceCqs>();
-        builder.Services.AddScoped<IVaccinationService, VaccinationService>();
-        builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+        builder.Services.AddScoped<IVaccinationService, VaccinationServiceCqs>();
+        builder.Services.AddScoped<IAppointmentService, AppointmentServiceCqs>();
         builder.Services.AddScoped<IFamilyMemberService, FamilyMemberServiceCqs>();
-        builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
-
-        builder.Services.AddScoped<IRepository<User>, Repository<User>>();
-        builder.Services.AddScoped<IRepository<Drug>, Repository<Drug>>();
-        builder.Services.AddScoped<IRepository<Doctor>, Repository<Doctor>>();
-        builder.Services.AddScoped<IRepository<Family>, Repository<Family>>();
-        builder.Services.AddScoped<IRepository<Vaccine>, Repository<Vaccine>>();
-        builder.Services.AddScoped<IRepository<Vaccination>, Repository<Vaccination>>();
-        builder.Services.AddScoped<IRepository<Appointment>, Repository<Appointment>>();
-        builder.Services.AddScoped<IRepository<FamilyMember>, Repository<FamilyMember>>();
-        builder.Services.AddScoped<IRepository<Prescription>, Repository<Prescription>>();
-
-        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+        builder.Services.AddScoped<IPrescriptionService, PrescriptionServiceCqs>();
 
         builder.Services.AddScoped<IJwtUtil, JwtUtilSha256>();
 

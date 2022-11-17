@@ -89,7 +89,7 @@ public class VaccinationsController : Controller
                 return RedirectToAction("Denied", "Home");
             }
 
-            var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
+            var dto = await _vaccinationService.GetVaccinationByIdAsync(id);
 
             if (dto != null)
             {
@@ -212,7 +212,7 @@ public class VaccinationsController : Controller
                     return RedirectToAction("Denied", "Home");
                 }
 
-                var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
+                var dto = await _vaccinationService.GetVaccinationByIdAsync(id);
 
                 var vaccineSelected = await _vaccineService.GetVaccineByIdAsync(dto.VaccineId);
                 var allVaccines = await _vaccineService.GetAllVaccinesAsync();
@@ -253,7 +253,7 @@ public class VaccinationsController : Controller
 
                 var dto = _mapper.Map<VaccinationDTO>(model);
 
-                var sourceDto = await _vaccinationService.GetVaccinationsByIdAsync(model.Id);
+                var sourceDto = await _vaccinationService.GetVaccinationByIdAsync(model.Id);
 
                 var patchList = new List<PatchModel>();
 
@@ -300,7 +300,7 @@ public class VaccinationsController : Controller
                     return RedirectToAction("Denied", "Home");
                 }
 
-                var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
+                var dto = await _vaccinationService.GetVaccinationByIdAsync(id);
 
                 if (dto == null)
                 {
@@ -337,7 +337,7 @@ public class VaccinationsController : Controller
         {
             if (id != Guid.Empty)
             {
-                var dto = await _vaccinationService.GetVaccinationsByIdAsync(id);
+                var dto = await _vaccinationService.GetVaccinationByIdAsync(id);
 
                 await _vaccinationService.DeleteVaccinationAsync(dto);
 
@@ -368,14 +368,14 @@ public class VaccinationsController : Controller
 
             foreach (var user in users)
             {
-                var userVaccinations = await _vaccinationService.GetVaccinationsRelevantToUser(user);
+                var userVaccinations = await _vaccinationService.GetVaccinationsByUserIdAsync(user);
                 dtos.AddRange(userVaccinations);
             }
             return dtos;
         }
         else
         {
-            return await _vaccinationService.GetAllVaccinations();
+            return await _vaccinationService.GetAllVaccinationsAsync();
         }
         
     }

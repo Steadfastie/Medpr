@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedprModels.Requests;
 
-public class AppointmentModel
+public class AppointmentModelRequest
 {
     public Guid Id { get; set; }
 
@@ -20,17 +20,9 @@ public class AppointmentModel
     [StringLength(30, MinimumLength = 2)]
     public string Place { get; set; }
 
-    public List<string> Users { get; set; }
-
     [Required(ErrorMessage = "Someone took a shot, didn't he?")]
     public Guid UserId { get; set; }
 
-    public UserModelResponse User { get; set; }
-
-    public List<string> Doctors { get; set; }
-
     [Required(ErrorMessage = "Some doctor was assigned to it, wasn't he?")]
     public Guid DoctorId { get; set; }
-
-    public DoctorModelResponse Doctor { get; set; }
 }
