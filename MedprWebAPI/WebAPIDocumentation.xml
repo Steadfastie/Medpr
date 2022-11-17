@@ -133,6 +133,25 @@
             <param name="id">Family's id</param>
             <returns></returns>
         </member>
+        <member name="T:MedprWebAPI.Controllers.MembersController">
+            <summary>
+            Controller for members of families
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.MembersController.Create(MedprModels.Requests.FamilyMemberModelRequest)">
+            <summary>
+            Attach user to family
+            </summary>
+            <param name="model">Model with familyMember parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.MembersController.Delete(System.Guid)">
+            <summary>
+            Detach member from family
+            </summary>
+            <param name="id">Family's id</param>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.VaccinesController">
             <summary>
             Controller for vaccines
