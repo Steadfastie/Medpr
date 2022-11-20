@@ -36,11 +36,11 @@ public class OpenFDAService
         var path = _configuration["OpenFDA:APIkeyPath"];
         var file = await File.ReadAllTextAsync(path);
 
-        var key = JsonConvert.DeserializeObject<APIKey>(file);
+        var secret = JsonConvert.DeserializeObject<APIKey>(file);
 
         _httpClient.BaseAddress = new Uri(
             $"{_configuration["OpenFDA:Base"]}?" +
-            $"{key.Key}&");
+            $"api_key={secret.Key}&");
 
         var total = await GetDrugAmount();
         var randomDrug = await GetDrug(total);
