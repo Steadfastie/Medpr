@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -15,6 +16,7 @@ using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Configuration;
 
 namespace MedprBusiness.ServiceImplimentations.CQS;
 
@@ -22,11 +24,15 @@ public class DrugServiceCqs : IDrugService
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
+    private readonly IConfiguration _configuration;
 
-    public DrugServiceCqs(IMapper mapper, IMediator mediator)
+    public DrugServiceCqs(IMapper mapper, 
+        IMediator mediator,
+        IConfiguration configuration)
     {
         _mapper = mapper;
         _mediator = mediator;
+        _configuration = configuration;
     }
 
     public async Task<DrugDTO> GetDrugByIdAsync(Guid id)
@@ -76,6 +82,4 @@ public class DrugServiceCqs : IDrugService
     {
         return await _mediator.Send(new DeleteDrugCommand() { Drug = dto });
     }
-
-
 }

@@ -138,6 +138,8 @@ public class Program
             });
         });
 
+        builder.Services.AddHttpClient<OpenFDAService>();
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

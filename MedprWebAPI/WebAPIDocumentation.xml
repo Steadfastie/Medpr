@@ -147,6 +147,12 @@
             <param name="id">Drug's id</param>
             <returns></returns>
         </member>
+        <member name="M:MedprWebAPI.Controllers.DrugsController.GetOpenFDA">
+            <summary>
+            Get random drug from openFDA API
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.FamiliesController">
             <summary>
             Controller for families

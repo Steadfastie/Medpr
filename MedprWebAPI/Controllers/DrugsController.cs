@@ -10,6 +10,7 @@ using MedprModels.Responses;
 using MedprModels;
 using MedprModels.Requests;
 using MedprModels.Links;
+using MedprBusiness;
 
 namespace MedprWebAPI.Controllers;
 
@@ -23,10 +24,14 @@ public class DrugsController : ControllerBase
 {
     private readonly IDrugService _drugService;
     private readonly IMapper _mapper;
-    public DrugsController(IDrugService drugService, IMapper mapper)
+    private readonly OpenFDAService _openFDA;
+    public DrugsController(IDrugService drugService,
+        IMapper mapper,
+        OpenFDAService openFDA)
     {
         _drugService = drugService;
         _mapper = mapper;
+        _openFDA = openFDA;
     }
 
     /// <summary>
@@ -262,6 +267,40 @@ public class DrugsController : ControllerBase
             ErrorModel errorModel = new()
             {
                 Message = "Could not delete drug from app",
+                StatusCode = StatusCodes.Status500InternalServerError,
+            };
+            return RedirectToAction("Error", "Home", errorModel);
+        }
+    }
+
+    /// <summary>
+    /// Get random drug from openFDA API
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("random")]
+    public async Task<IActionResult> GetOpenFDA()
+    {
+        try
+        {
+            var dto = await _openFDA.GetRandomDrug();
+            if (dto != null)
+            {
+                var model = _mapper.Map<DrugModelResponse>(dto);
+
+                return Ok(model);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            ErrorModel errorModel = new()
+            {
+                Message = "Could not load drug",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
             return RedirectToAction("Error", "Home", errorModel);
