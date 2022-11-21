@@ -35,9 +35,10 @@ List of things that will be updated in my project next:
   22. HATEOAS link generator as extension method (✔️)
   23. Host name configuration
   24. Rebuild services on CQS base for WebAPI (✔️)
-  25. Notifications with Hangfire for appointments, prescriptions and vaccinations
-  26. Generate drug from external WebAPI
+  25. Notifications with Hangfire for appointments, prescriptions and vaccinations (✔️)
+  26. Generate drug from external WebAPI (✔️)
   27. Angular App
   28. Redux
   29. Authentication and authorization for WebAPI using JWT (✔️)
   30. Reimplement MVC app fucntionality for WebAPI project (✔️)
+  31. Notifications with SignalR for appointments, prescriptions and vaccinations
