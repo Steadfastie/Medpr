@@ -7,7 +7,7 @@ namespace MedprModels.Responses;
 public class PrescriptionModelResponse: IHateoas
 {
     public Guid Id { get; set; }
-    public DateTime StartDate { get; set; }
+    public DateTime Date { get; set; }
     public DateTime EndDate { get; set; }
     public int Dose { get; set; }
     public UserModelResponse User { get; set; }

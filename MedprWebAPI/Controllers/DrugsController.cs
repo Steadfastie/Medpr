@@ -279,6 +279,9 @@ public class DrugsController : ControllerBase
     /// <returns></returns>
     [HttpGet]
     [Route("random")]
+    [ProducesResponseType(typeof(RandomDrugModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetOpenFDA()
     {
         try
@@ -286,7 +289,7 @@ public class DrugsController : ControllerBase
             var dto = await _openFDA.GetRandomDrug();
             if (dto != null)
             {
-                var model = _mapper.Map<DrugModelResponse>(dto);
+                var model = _mapper.Map<RandomDrugModel>(dto);
 
                 return Ok(model);
             }

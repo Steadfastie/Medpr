@@ -26,7 +26,7 @@ public class PrescriptionModel
     [Remote("CheckDate", "Prescriptions",
         HttpMethod = WebRequestMethods.Http.Post,
         ErrorMessage = "Starting date should be before ending",
-        AdditionalFields = "StartDate")]
+        AdditionalFields = "Date")]
     [DisplayFormat(DataFormatString = "{0:dddd d MMMM yyyy}")]
     public DateTime EndDate { get; set; }
 

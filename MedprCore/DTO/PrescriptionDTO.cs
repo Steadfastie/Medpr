@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace MedprCore.DTO;
 
-public class PrescriptionDTO
+public class PrescriptionDTO: INotifyUser
 {
     public Guid Id { get; set; }
+    public string? NotificationId { get; set; }
 
     [Column(TypeName = "DateTime2")]
-    public DateTime StartDate { get; set; }
+    public DateTime Date { get; set; }
 
     [Column(TypeName = "DateTime2")]
     public DateTime EndDate { get; set; }

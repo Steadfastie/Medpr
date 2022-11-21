@@ -11,6 +11,7 @@ namespace MedprDB.Entities
     public class Appointment : IBaseEntity
     {
         public Guid Id { get; set; }
+        public string? NotificationId { get; set; }
 
         [Column(TypeName = "DateTime2")]
         public DateTime Date { get; set; }

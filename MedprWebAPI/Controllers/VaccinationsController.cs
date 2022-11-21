@@ -12,6 +12,7 @@ using MedprModels.Links;
 using Microsoft.AspNetCore.Identity;
 using NuGet.Packaging;
 using MedprWebAPI.Utils;
+using Hangfire;
 
 namespace MedprWebAPI.Controllers;
 
@@ -168,6 +169,13 @@ public class VaccinationsController : ControllerBase
 
                 var dto = _mapper.Map<VaccinationDTO>(model);
 
+                if (model.Date > DateTime.Now)
+                {
+                    dto.NotificationId = BackgroundJob
+                    .Schedule(() => UserNotification.NotifyUser(dto),
+                    dto.Date - DateTime.Now);
+                }
+
                 await _vaccinationService.CreateVaccinationAsync(dto);
 
                 var responseModel = await FillResponseModel(dto);
@@ -220,6 +228,24 @@ public class VaccinationsController : ControllerBase
                 }
 
                 var sourceDto = await _vaccinationService.GetVaccinationByIdAsync(model.Id);
+
+                // Refresh notification
+                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date > DateTime.Now)
+                {
+                    BackgroundJob.Delete(sourceDto.NotificationId);
+                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto), dto.Date - DateTime.Now);
+                }
+                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date < DateTime.Now)
+                {
+                    BackgroundJob.Delete(sourceDto.NotificationId);
+                    dto.NotificationId = null;
+                }
+                if (sourceDto.NotificationId == null && dto.Date > DateTime.Now)
+                {
+                    dto.NotificationId = BackgroundJob
+                    .Schedule(() => UserNotification.NotifyUser(dto),
+                    dto.Date - DateTime.Now);
+                }
 
                 var patchList = new List<PatchModel>();
 
@@ -293,6 +319,7 @@ public class VaccinationsController : ControllerBase
                 }
 
                 await _vaccinationService.DeleteVaccinationAsync(dto);
+                BackgroundJob.Delete(dto.NotificationId);
 
                 return Ok();
             }

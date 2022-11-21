@@ -14,7 +14,7 @@ public class PrescriptionModelRequest
     [Required(ErrorMessage = "Cmon, it should have the beginning date!")]
     [Column(TypeName = "DateTime2"), DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:dddd d MMMM yyyy}")]
-    public DateTime StartDate { get; set; }
+    public DateTime Date { get; set; }
 
     [Required(ErrorMessage = "Cmon, it should have the ending date!")]
     [Column(TypeName = "DateTime2"), DataType(DataType.Date)]

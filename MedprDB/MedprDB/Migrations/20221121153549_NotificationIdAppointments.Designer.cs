@@ -4,6 +4,7 @@ using MedprDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedprDB.Migrations
 {
     [DbContext(typeof(MedprDBContext))]
-    partial class MedprDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221121153549_NotificationIdAppointments")]
+    partial class NotificationIdAppointments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +35,6 @@ namespace MedprDB.Migrations
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("NotificationId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Place")
                         .IsRequired()
@@ -79,6 +78,9 @@ namespace MedprDB.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotificationId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PharmGroup")
@@ -141,9 +143,6 @@ namespace MedprDB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("DateTime2");
-
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
 
@@ -156,8 +155,8 @@ namespace MedprDB.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("DateTime2");
 
-                    b.Property<string>("NotificationId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("DateTime2");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -205,9 +204,6 @@ namespace MedprDB.Migrations
 
                     b.Property<int>("DaysOfProtection")
                         .HasColumnType("int");
-
-                    b.Property<string>("NotificationId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");

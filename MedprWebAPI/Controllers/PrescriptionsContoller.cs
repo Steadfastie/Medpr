@@ -12,6 +12,7 @@ using MedprModels.Links;
 using Microsoft.AspNetCore.Identity;
 using NuGet.Packaging;
 using MedprWebAPI.Utils;
+using Hangfire;
 
 namespace MedprWebAPI.Controllers;
 
@@ -171,6 +172,13 @@ public class PrescriptionsController : ControllerBase
 
                 var dto = _mapper.Map<PrescriptionDTO>(model);
 
+                if (model.Date > DateTime.Now)
+                {
+                    dto.NotificationId = BackgroundJob
+                    .Schedule(() => UserNotification.NotifyUser(dto),
+                    dto.Date - DateTime.Now);
+                }
+
                 await _prescriptionService.CreatePrescriptionAsync(dto);
 
                 var responseModel = await FillResponseModel(dto);
@@ -223,6 +231,24 @@ public class PrescriptionsController : ControllerBase
                 var dto = _mapper.Map<PrescriptionDTO>(model);
 
                 var sourceDto = await _prescriptionService.GetPrescriptionByIdAsync(model.Id);
+
+                // Refresh notification
+                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date > DateTime.Now)
+                {
+                    BackgroundJob.Delete(sourceDto.NotificationId);
+                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto), dto.Date - DateTime.Now);
+                }
+                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date < DateTime.Now)
+                {
+                    BackgroundJob.Delete(sourceDto.NotificationId);
+                    dto.NotificationId = null;
+                }
+                if (sourceDto.NotificationId == null && dto.Date > DateTime.Now)
+                {
+                    dto.NotificationId = BackgroundJob
+                    .Schedule(() => UserNotification.NotifyUser(dto),
+                    dto.Date - DateTime.Now);
+                }
 
                 var patchList = new List<PatchModel>();
 
@@ -296,6 +322,7 @@ public class PrescriptionsController : ControllerBase
                 }
 
                 await _prescriptionService.DeletePrescriptionAsync(dto);
+                BackgroundJob.Delete(dto.NotificationId);
 
                 return Ok();
             }

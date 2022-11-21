@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace MedprCore.DTO;
 
-public class AppointmentDTO
+public class AppointmentDTO: INotifyUser
 {
     public Guid Id { get; set; }
+    public string? NotificationId { get; set; }
 
     [Column(TypeName = "DateTime2")]
     public DateTime Date { get; set; }

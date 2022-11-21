@@ -55,10 +55,11 @@
             <param name="model">Model with appointment parameters</param>
             <returns></returns>
         </member>
-        <member name="M:MedprWebAPI.Controllers.AppointmentsController.Edit(MedprModels.Requests.AppointmentModelRequest)">
+        <member name="M:MedprWebAPI.Controllers.AppointmentsController.Edit(System.Guid,MedprModels.Requests.AppointmentModelRequest)">
             <summary>
             Edit some data about appointment
             </summary>
+            <param name="appointmentId">URL check</param>
             <param name="model">Appointment parameters. Name should not change</param>
             <returns></returns>
         </member>
@@ -352,6 +353,13 @@
             </summary>
             <param name="id">Vaccine's id</param>
             <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Utils.UserNotification.NotifyUser``1(``0)">
+            <summary>
+            Plug method for future SignalR functionality
+            </summary>
+            <typeparam name="T">Model with date, user info and notification id</typeparam>
+            <param name="model">Model</param>
         </member>
         <member name="T:MedprWebAPI.Utils.WardedPeople">
             <summary>

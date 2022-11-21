@@ -27,6 +27,8 @@ using System.Text;
 using AspNetSample.WebAPI.Utils;
 using MedprBusiness.ServiceImplimentations.Cqs;
 using Microsoft.OpenApi.Models;
+using Hangfire;
+using Hangfire.SqlServer;
 
 namespace MedprWebAPI;
 
@@ -92,6 +94,23 @@ public class Program
             opts.AccessDeniedPath = new PathString("/Home/Denied");
         });
 
+        // Add Hangfire services.
+        builder.Services.AddHangfire(configuration => configuration
+            .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseRecommendedSerializerSettings()
+            .UseSqlServerStorage(builder.Configuration.GetConnectionString("Default"), new SqlServerStorageOptions
+            {
+                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                QueuePollInterval = TimeSpan.Zero,
+                UseRecommendedIsolationLevel = true,
+                DisableGlobalLocks = true
+            }));
+
+        // Add the processing server as IHostedService
+        builder.Services.AddHangfireServer();
+
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         builder.Services.AddScoped<IUserService, UserServiceCqs>();
@@ -149,11 +168,13 @@ public class Program
             app.UseSwaggerUI();
         }
 
+        app.UseStaticFiles();
+        app.UseHangfireDashboard();
+
         app.UseHttpsRedirection();
 
         app.UseAuthentication();
         app.UseAuthorization();
-
 
         app.MapControllers();
 

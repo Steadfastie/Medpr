@@ -12,6 +12,7 @@ using MedprModels.Links;
 using Microsoft.AspNetCore.Identity;
 using NuGet.Packaging;
 using MedprWebAPI.Utils;
+using Hangfire;
 
 namespace MedprWebAPI.Controllers;
 
@@ -168,6 +169,13 @@ public class AppointmentsController : ControllerBase
 
                 var dto = _mapper.Map<AppointmentDTO>(model);
 
+                if(model.Date > DateTime.Now)
+                {
+                    dto.NotificationId = BackgroundJob
+                    .Schedule(() => UserNotification.NotifyUser(dto),
+                    dto.Date - DateTime.Now);
+                }
+
                 await _appointmentService.CreateAppointmentAsync(dto);
 
                 var responseModel = await FillResponseModel(dto);
@@ -194,6 +202,7 @@ public class AppointmentsController : ControllerBase
     /// <summary>
     /// Edit some data about appointment
     /// </summary>
+    /// <param name="appointmentId">URL check</param>
     /// <param name="model">Appointment parameters. Name should not change</param>
     /// <returns></returns>
     [HttpPatch("{id}")]
@@ -202,11 +211,11 @@ public class AppointmentsController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromForm] AppointmentModelRequest model)
+    public async Task<IActionResult> Edit(Guid appointmentId, [FromForm] AppointmentModelRequest model)
     {
         try
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && appointmentId == model.Id)
             {
                 var dto = _mapper.Map<AppointmentDTO>(model);
 
@@ -220,6 +229,24 @@ public class AppointmentsController : ControllerBase
                 }
 
                 var sourceDto = await _appointmentService.GetAppointmentByIdAsync(model.Id);
+
+                // Refresh notification
+                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date > DateTime.Now)
+                {
+                    BackgroundJob.Delete(sourceDto.NotificationId);
+                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto), dto.Date - DateTime.Now);
+                }
+                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date < DateTime.Now)
+                {
+                    BackgroundJob.Delete(sourceDto.NotificationId);
+                    dto.NotificationId = null;
+                }
+                if (sourceDto.NotificationId == null && dto.Date > DateTime.Now)
+                {
+                    dto.NotificationId = BackgroundJob
+                    .Schedule(() => UserNotification.NotifyUser(dto),
+                    dto.Date - DateTime.Now);
+                }
 
                 var patchList = new List<PatchModel>();
 
@@ -291,8 +318,9 @@ public class AppointmentsController : ControllerBase
                 {
                     return BadRequest();
                 }
-
+                
                 await _appointmentService.DeleteAppointmentAsync(dto);
+                BackgroundJob.Delete(dto.NotificationId);
 
                 return Ok();
             }

@@ -14,7 +14,7 @@ public class PrescriptionProfile : Profile
 
         CreateMap<PrescriptionDTO, PrescriptionModel>()
             .ForMember(model => model.Id, opt => opt.MapFrom(dto => dto.Id))
-            .ForMember(model => model.StartDate, opt => opt.MapFrom(dto => dto.StartDate))
+            .ForMember(model => model.StartDate, opt => opt.MapFrom(dto => dto.Date))
             .ForMember(model => model.EndDate, opt => opt.MapFrom(dto => dto.EndDate))
             .ForMember(model => model.Dose, opt => opt.MapFrom(dto => dto.Dose))
             .ForMember(model => model.Doctor, opt => opt.Ignore())
@@ -29,7 +29,7 @@ public class PrescriptionProfile : Profile
 
         CreateMap<PrescriptionModel, PrescriptionDTO>()
             .ForMember(dto => dto.Id, opt => opt.MapFrom(model => model.Id))
-            .ForMember(dto => dto.StartDate, opt => opt.MapFrom(model => model.StartDate))
+            .ForMember(dto => dto.Date, opt => opt.MapFrom(model => model.StartDate))
             .ForMember(dto => dto.EndDate, opt => opt.MapFrom(model => model.EndDate))
             .ForMember(dto => dto.Dose, opt => opt.MapFrom(model => model.Dose))
             .ForMember(dto => dto.DoctorId, opt => opt.MapFrom(model => model.DoctorId))
