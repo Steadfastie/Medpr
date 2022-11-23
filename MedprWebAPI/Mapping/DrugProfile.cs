@@ -19,6 +19,9 @@ public class DrugProfile : Profile
             .ForMember(model => model.PharmGroup, opt => opt.MapFrom(dto => dto.PharmGroup))
             .ForMember(model => model.Price, opt => opt.MapFrom(dto => dto.Price))
             .ForMember(model => model.Links, opt => opt.Ignore());
+        CreateMap<DrugDTO, RandomDrugModel>()
+            .ForMember(model => model.Name, opt => opt.MapFrom(dto => dto.Name))
+            .ForMember(model => model.PharmGroup, opt => opt.MapFrom(dto => dto.PharmGroup));
         CreateMap<DrugModelRequest, DrugDTO>()
             .ForMember(dto => dto.Id, opt => opt.MapFrom(model => model.Id))
             .ForMember(dto => dto.Name, opt => opt.MapFrom(model => model.Name))

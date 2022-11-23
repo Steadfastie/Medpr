@@ -169,11 +169,11 @@ public class VaccinationsController : ControllerBase
 
                 var dto = _mapper.Map<VaccinationDTO>(model);
 
-                if (model.Date > DateTime.Now)
+                if (model.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
                     .Schedule(() => UserNotification.NotifyUser(dto),
-                    dto.Date - DateTime.Now);
+                    dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
                 await _vaccinationService.CreateVaccinationAsync(dto);
@@ -202,6 +202,7 @@ public class VaccinationsController : ControllerBase
     /// <summary>
     /// Edit some data about vaccination
     /// </summary>
+    /// <param name="id">URL check</param>
     /// <param name="model">Vaccination parameters. Name should not change</param>
     /// <returns></returns>
     [HttpPatch("{id}")]
@@ -210,11 +211,11 @@ public class VaccinationsController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromForm] VaccinationModelRequest model)
+    public async Task<IActionResult> Edit(Guid id, [FromForm] VaccinationModelRequest model)
     {
         try
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && id == model.Id)
             {
                 var dto = _mapper.Map<VaccinationDTO>(model);
 
@@ -230,21 +231,22 @@ public class VaccinationsController : ControllerBase
                 var sourceDto = await _vaccinationService.GetVaccinationByIdAsync(model.Id);
 
                 // Refresh notification
-                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date > DateTime.Now)
+                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto), dto.Date - DateTime.Now);
+                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto), 
+                        dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
-                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date < DateTime.Now)
+                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
                 {
                     BackgroundJob.Delete(sourceDto.NotificationId);
                     dto.NotificationId = null;
                 }
-                if (sourceDto.NotificationId == null && dto.Date > DateTime.Now)
+                if (sourceDto.NotificationId == null && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
                     .Schedule(() => UserNotification.NotifyUser(dto),
-                    dto.Date - DateTime.Now);
+                    dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
                 var patchList = new List<PatchModel>();
