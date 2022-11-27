@@ -59,7 +59,7 @@
             <summary>
             Edit some data about appointment
             </summary>
-            <param name="appointmentId">URL check</param>
+            <param name="id">URL check</param>
             <param name="model">Appointment parameters. Name should not change</param>
             <returns></returns>
         </member>
@@ -223,10 +223,11 @@
             <param name="model">Model with prescription parameters</param>
             <returns></returns>
         </member>
-        <member name="M:MedprWebAPI.Controllers.PrescriptionsController.Edit(MedprModels.Requests.PrescriptionModelRequest)">
+        <member name="M:MedprWebAPI.Controllers.PrescriptionsController.Edit(System.Guid,MedprModels.Requests.PrescriptionModelRequest)">
             <summary>
             Edit some data about prescription
             </summary>
+            <param name="id">URL check</param>
             <param name="model">Prescription parameters. Name should not change</param>
             <returns></returns>
         </member>
@@ -301,10 +302,11 @@
             <param name="model">Model with vaccination parameters</param>
             <returns></returns>
         </member>
-        <member name="M:MedprWebAPI.Controllers.VaccinationsController.Edit(MedprModels.Requests.VaccinationModelRequest)">
+        <member name="M:MedprWebAPI.Controllers.VaccinationsController.Edit(System.Guid,MedprModels.Requests.VaccinationModelRequest)">
             <summary>
             Edit some data about vaccination
             </summary>
+            <param name="id">URL check</param>
             <param name="model">Vaccination parameters. Name should not change</param>
             <returns></returns>
         </member>

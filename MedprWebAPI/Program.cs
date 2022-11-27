@@ -46,6 +46,17 @@ public class Program
             rollingInterval: RollingInterval.Hour)
             .WriteTo.Console(LogEventLevel.Verbose));
 
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("medpr", policyBuilder =>
+            {
+                policyBuilder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+            });
+        });
+
         // Main database
         builder.Services.AddDbContext<MedprDBContext>(
             optionsBuilder => optionsBuilder.UseSqlServer(
@@ -172,6 +183,8 @@ public class Program
         app.UseHangfireDashboard();
 
         app.UseHttpsRedirection();
+
+        app.UseCors("medpr");
 
         app.UseAuthentication();
         app.UseAuthorization();
