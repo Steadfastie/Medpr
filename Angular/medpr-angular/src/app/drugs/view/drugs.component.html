@@ -1,0 +1,22 @@
+<div class="container text-center">
+
+  <div *ngIf="randomDrug" class="row align-items-center">
+    <mat-card>
+      <mat-card-header>{{randomDrug.name}}</mat-card-header>
+      <mat-card-content>{{randomDrug.pharmGroup}}</mat-card-content>
+    </mat-card>
+  </div>
+
+  <mat-grid-list cols="{{drugs.length}}" >
+    <mat-grid-tile *ngFor="let drug of drugs; let i = index">
+      <mat-card>
+        <mat-card-content>{{drug.name | trim}}</mat-card-content>
+        <mat-card-subtitle>{{i}}</mat-card-subtitle>
+        <mat-card-content>{{drug.pharmGroup}}</mat-card-content>
+        <mat-card-footer>{{drug.price | currency}}</mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
