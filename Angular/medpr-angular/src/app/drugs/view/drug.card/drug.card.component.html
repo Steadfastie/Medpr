@@ -1,0 +1,9 @@
+<mat-card *ngIf="drug">
+  <mat-card-header>
+    <mat-card-title>{{drug.name | trim}}</mat-card-title>
+    <mat-card-subtitle>{{index}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>{{drug.pharmGroup}}</mat-card-content>
+  <mat-card-content>{{drug.price | currency}}</mat-card-content>
+</mat-card>
+

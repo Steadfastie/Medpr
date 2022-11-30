@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Drug } from 'src/app/models/drug';
 
 @Component({
-  selector: 'app-drugs',
+  selector: 'drugs',
   templateUrl: './drugs.component.html',
   styleUrls: ['./drugs.component.scss'],
 })

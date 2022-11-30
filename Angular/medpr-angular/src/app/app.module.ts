@@ -9,12 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 
 import { TrimPipe } from './pipes/trim';
+import { DrugCardComponent } from './drugs/view/drug.card/drug.card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DrugsComponent,
-    TrimPipe
+    TrimPipe,
+    DrugCardComponent
   ],
   imports: [
     BrowserModule,

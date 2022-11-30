@@ -1,0 +1,14 @@
+mat-card{
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px;
+  padding: 10px;
+  justify-content: flex-start;
+  transition-duration: 1s;
+}
+
+mat-card:hover{
+  background-color: rgb(232, 232, 232);
+  scale: 110%;
+  transition-duration: 1s;
+}
