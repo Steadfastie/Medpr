@@ -1,1 +1,16 @@
-<drugs></drugs>
+<div class="materialistic">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        This should change colors
+        <button [routerLink]="['/login']" class="btn btn-primary">Log in</button>
+      </mat-card-title>
+      <mat-card-title class="selected">
+        This should be selected
+        <button [routerLink]="['/signup']" class="btn btn-primary">Sign up</button>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@import '../styles.scss';
+$color-config: mat.get-color-config($medpr-angular-theme);
+
+$primary: map.get($color-config, 'primary');
+
+.materialistic{
+  margin: 2rem;
+  padding: 1rem;
+  border-radius: 4px;
+  .selected{
+    border: 2px;
+    color: mat.get-color-from-palette($primary, 800);
+  }
+
+  color: mat.get-color-from-palette($primary, 200);
+  background-color: mat.get-color-from-palette($primary, 300);
+}
+

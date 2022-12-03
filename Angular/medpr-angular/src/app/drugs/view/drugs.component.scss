@@ -1,3 +1,9 @@
+@use '@angular/material' as mat;
+@import '/src/styles.scss';
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
 .cardContainer{
   margin: 1rem;
   padding: 1rem;
@@ -6,4 +12,9 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: baseline;
+}
+
+.mat-typography{
+  display: flex;
+  justify-content: center;
 }

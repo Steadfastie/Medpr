@@ -8,6 +8,7 @@ mat-card{
 }
 
 mat-card:hover{
+  z-index: 1;
   background-color: rgb(232, 232, 232);
   scale: 110%;
   transition-duration: 1s;
