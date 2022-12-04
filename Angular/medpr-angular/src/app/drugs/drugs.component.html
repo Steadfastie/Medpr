@@ -1,12 +1,9 @@
+<div class="cardContainer first">
+  <drug-card></drug-card>
+  <drug-card [random]="randomDrug"></drug-card>
+</div>
+
 <div class="cardContainer">
-  <create-drug></create-drug>
-
-  <div *ngIf="randomDrug">
-    <drug-card
-      [drug]="randomDrug">
-    </drug-card>
-  </div>
-
   <drug-card
     *ngFor="let drug of drugs"
     [drug]="drug">

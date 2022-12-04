@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
 import { DrugsService } from './../../services/drugs/drugs.service';
+
 
 @Component({
   selector: 'edit-drug',
@@ -11,6 +12,8 @@ import { DrugsService } from './../../services/drugs/drugs.service';
 })
 export class EditDrugComponent implements OnInit {
   @Input() drug?: Drug;
+  @Output() deselect = new EventEmitter<void>();
+
   drugForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
     pharmGroup: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
@@ -20,7 +23,7 @@ export class EditDrugComponent implements OnInit {
   constructor(private fb: FormBuilder, private DrugsService: DrugsService) { }
 
   ngOnInit(): void {
-    this.reset();
+    this.initialize();
   }
 
   modifiedDrug: Drug = {
@@ -38,7 +41,7 @@ export class EditDrugComponent implements OnInit {
     this.DrugsService.delete(this.modifiedDrug.id.toString());
   }
 
-  reset() {
+  initialize() {
     if (this.drug) {
       this.drugForm.setValue({
         name: this.drug.name,
@@ -46,5 +49,9 @@ export class EditDrugComponent implements OnInit {
         price: this.drug.price.toString()
       })
     }
+  }
+
+  closeEdit(){
+    this.deselect.emit();
   }
 }

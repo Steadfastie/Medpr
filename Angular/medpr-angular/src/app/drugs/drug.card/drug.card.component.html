@@ -1,8 +1,27 @@
+<mat-card *ngIf="!drug && !random && !selected">
+  <mat-card-content>
+    <button mat-flat-button (click)="createFromBlank()">
+      <mat-icon>add</mat-icon>
+      Create from blank
+    </button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="random && !selected" (click)="createFromRandom()">
+  <mat-card-header>
+    <mat-card-title class="row">
+      <div>&lt;{{random.name | trim}}&gt;</div>
+      <div><mat-icon> scatter_plot</mat-icon></div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>&lt;{{random.pharmGroup}}&gt;</mat-card-content>
+</mat-card>
+
 <mat-card *ngIf="drug && !selected">
   <mat-card-header>
     <mat-card-title class="row">
       <div>{{drug.name | trim}}</div>
-      <button mat-mini-fab class="edit-button" (click)="select()">
+      <button mat-mini-fab class="edit-button" (click)="selectToggle()">
         <mat-icon>edit</mat-icon>
       </button>
     </mat-card-title>
@@ -11,4 +30,8 @@
   <mat-card-content>{{drug.price | currency}}</mat-card-content>
 </mat-card>
 
-<edit-drug *ngIf="selected" [drug]="drug"></edit-drug>
+<edit-drug *ngIf="drug && selected" [drug]="drug" (deselect)="selectToggle()"></edit-drug>
+
+<create-drug *ngIf="!random && !drug && selected" (deselect)="selectToggle()"></create-drug>
+
+<create-drug *ngIf="random && selected" [randomDrug]="random" (deselect)="selectToggle()"></create-drug>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
@@ -9,7 +9,20 @@ import { DrugsService } from './../../services/drugs/drugs.service';
   templateUrl: './create.drug.component.html',
   styleUrls: ['./create.drug.component.scss']
 })
-export class CreateDrugComponent {
+export class CreateDrugComponent implements OnInit {
+  @Input() randomDrug?: Drug;
+  @Output() deselect = new EventEmitter<void>();
+
+  ngOnInit(): void {
+    if (this.randomDrug) {
+      this.drugForm.setValue({
+        name: this.randomDrug.name,
+        pharmGroup: this.randomDrug.pharmGroup,
+        price: this.randomDrug.price.toString()
+      })
+    }
+  }
+
   drugForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
     pharmGroup: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
@@ -30,6 +43,19 @@ export class CreateDrugComponent {
   }
 
   cancel() {
-    this.drugForm.reset();
+    if (this.randomDrug){
+      this.drugForm.setValue({
+        name: this.randomDrug.name,
+        pharmGroup: this.randomDrug.pharmGroup,
+        price: this.randomDrug.price.toString()
+      })
+    }
+    else{
+      this.drugForm.reset();
+    }
+  }
+
+  closeCreate(){
+    this.deselect.emit();
   }
 }

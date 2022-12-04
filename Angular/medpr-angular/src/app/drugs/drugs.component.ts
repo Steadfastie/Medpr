@@ -17,5 +17,4 @@ export class DrugsComponent {
     this.DrugsService.getAllDrugs().subscribe(drugs => this.drugs = drugs);
     this.DrugsService.getRandomDrug().subscribe(random => this.randomDrug = random);
   }
-
 }

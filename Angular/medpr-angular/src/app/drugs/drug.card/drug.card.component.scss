@@ -22,6 +22,9 @@ mat-card-header {
   width: auto;
   justify-content: space-between;
   align-items: center;
+  .disclaimer{
+    font-size: 12px;
+  }
 }
 
 .edit-button{
@@ -31,4 +34,9 @@ mat-card-header {
     opacity: 100;
   transition-duration: 0.5s;
   }
+}
+
+.create-button{
+  display: flex;
+  justify-content:center;
 }

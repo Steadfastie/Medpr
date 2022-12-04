@@ -11,6 +11,9 @@ $font-family: mat.font-family($typography-config);
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: baseline;
+  align-items: center;
+  &.first{
+    justify-content: center;
+  }
 }
 
