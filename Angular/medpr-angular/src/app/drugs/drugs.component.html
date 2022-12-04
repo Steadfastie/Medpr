@@ -1,6 +1,5 @@
-<create-drug></create-drug>
-
 <div class="cardContainer">
+  <create-drug></create-drug>
 
   <div *ngIf="randomDrug">
     <drug-card
@@ -9,8 +8,8 @@
   </div>
 
   <drug-card
-    *ngFor="let drug of drugs; let i = index"
-    [drug]="drug" [index]="i">
+    *ngFor="let drug of drugs"
+    [drug]="drug">
   </drug-card>
 </div>
 

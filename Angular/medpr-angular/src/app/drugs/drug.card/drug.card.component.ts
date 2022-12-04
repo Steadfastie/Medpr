@@ -9,5 +9,9 @@ import { Drug } from 'src/app/models/drug';
 })
 export class DrugCardComponent {
   @Input() drug?: Drug;
-  @Input() index?: number;
+  selected: boolean = false;
+
+  select(){
+    this.selected = !this.selected;
+  }
 }

@@ -1,0 +1,14 @@
+<mat-card *ngIf="drug && !selected">
+  <mat-card-header>
+    <mat-card-title class="row">
+      <div>{{drug.name | trim}}</div>
+      <button mat-mini-fab class="edit-button" (click)="select()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>{{drug.pharmGroup}}</mat-card-content>
+  <mat-card-content>{{drug.price | currency}}</mat-card-content>
+</mat-card>
+
+<edit-drug *ngIf="selected" [drug]="drug"></edit-drug>

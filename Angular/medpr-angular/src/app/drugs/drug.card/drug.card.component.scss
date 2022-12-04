@@ -1,0 +1,34 @@
+mat-card{
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px;
+  padding: 10px;
+  justify-content: flex-start;
+  transition-duration: 1s;
+}
+
+mat-card:hover{
+  z-index: 1;
+  scale: 105%;
+  transition-duration: 1s;
+}
+
+mat-card-header {
+  display: block;
+}
+
+.row{
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-button{
+  opacity : 0;
+  transition-duration: 0.5s;
+  &:hover, &:focus{
+    opacity: 100;
+  transition-duration: 0.5s;
+  }
+}

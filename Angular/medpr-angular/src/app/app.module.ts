@@ -5,12 +5,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DrugsComponent } from './drugs/view/drugs.component';
+import { DrugsComponent } from './drugs/drugs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 
 import { TrimPipe } from './pipes/trim';
-import { DrugCardComponent } from './drugs/view/drug.card/drug.card.component';
+import { DrugCardComponent } from './drugs/drug.card/drug.card.component';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './user/signup/signup.component';
 import { LoginComponent } from './user/login/login.component';
@@ -23,6 +23,7 @@ import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { TokenInterceptor } from './services/auth/token.interceptor';
 import { CreateDrugComponent } from './drugs/create.drug/create.drug.component';
+import { EditDrugComponent } from './drugs/edit.drug/edit.drug.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CreateDrugComponent } from './drugs/create.drug/create.drug.component';
     SignupComponent,
     TrimPipe,
     DrugCardComponent,
-    CreateDrugComponent
+    CreateDrugComponent,
+    EditDrugComponent
   ],
   imports: [
     BrowserModule,

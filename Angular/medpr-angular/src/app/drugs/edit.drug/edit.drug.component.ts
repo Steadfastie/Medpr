@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
 import { DrugsService } from './../../services/drugs/drugs.service';
 
 @Component({
-  selector: 'create-drug',
-  templateUrl: './create.drug.component.html',
-  styleUrls: ['./create.drug.component.scss']
+  selector: 'edit-drug',
+  templateUrl: './edit.drug.component.html',
+  styleUrls: ['./edit.drug.component.scss']
 })
-export class CreateDrugComponent {
+export class EditDrugComponent implements OnInit {
+  @Input() drug?: Drug;
   drugForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
     pharmGroup: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
@@ -18,18 +19,32 @@ export class CreateDrugComponent {
 
   constructor(private fb: FormBuilder, private DrugsService: DrugsService) { }
 
-  drug: Drug = {
-    id: Guid.createEmpty(),
+  ngOnInit(): void {
+    this.reset();
+  }
+
+  modifiedDrug: Drug = {
+    id: this.drug?.id!,
     name: this.drugForm.value.name!,
     pharmGroup: this.drugForm.value.pharmGroup!,
     price: Number(this.drugForm.value.price!)
   }
 
-  submit(){
-    this.DrugsService.create(this.drug);
+  edit(){
+    this.DrugsService.patch(this.modifiedDrug);
   }
 
-  cancel() {
-    this.drugForm.reset();
+  remove(){
+    this.DrugsService.delete(this.modifiedDrug.id.toString());
+  }
+
+  reset() {
+    if (this.drug) {
+      this.drugForm.setValue({
+        name: this.drug.name,
+        pharmGroup: this.drug.pharmGroup,
+        price: this.drug.price.toString()
+      })
+    }
   }
 }

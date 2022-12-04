@@ -22,10 +22,13 @@
     </mat-form-field>
   </form>
   <mat-card-actions>
-    <button mat-icon-button (click)="cancel()">
+    <button mat-icon-button (click)="remove()">
+      <mat-icon>remove_circle</mat-icon>
+    </button>
+    <button mat-icon-button (click)="reset()">
       <mat-icon>clear</mat-icon>
     </button>
-    <button mat-icon-button (click)="submit()">
+    <button mat-icon-button (click)="edit()">
       <mat-icon>send</mat-icon>
     </button>
   </mat-card-actions>
