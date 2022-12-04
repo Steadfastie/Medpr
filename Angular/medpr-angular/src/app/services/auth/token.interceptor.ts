@@ -3,7 +3,6 @@ import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest
 } from '@angular/common/http';
 import { Observable} from 'rxjs';
-import 'rxjs/add/operator/do';
 
 import { AuthService } from './auth.service';
 

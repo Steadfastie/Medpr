@@ -14,7 +14,7 @@ export class AuthGuardService implements CanActivate {
     private store: Store<auth.State>
   ) {}
   canActivate(): boolean {
-    if (!this.store.token) {
+    if (!this.store.select('token')) {
       this.router.navigateByUrl('/login');
       return false;
     }

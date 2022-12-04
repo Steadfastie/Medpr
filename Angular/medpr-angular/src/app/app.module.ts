@@ -22,6 +22,7 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { TokenInterceptor } from './services/auth/token.interceptor';
+import { CreateDrugComponent } from './drugs/create.drug/create.drug.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TokenInterceptor } from './services/auth/token.interceptor';
     LoginComponent,
     SignupComponent,
     TrimPipe,
-    DrugCardComponent
+    DrugCardComponent,
+    CreateDrugComponent
   ],
   imports: [
     BrowserModule,
