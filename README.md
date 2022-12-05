@@ -7,7 +7,8 @@ Admin user seeded: admin@admin.com | Admin_1_Admin
 
 Main user: firstuser@gmail.com | 8yQD!yya
 
-List of things that will be updated in my project next:
+# Patch history
+  ## MVC
   1. password -> password hash migration (✔️)
   2. basic MVC stracture (✔️)
   3. CRUD for 1 db branch (✔️)
@@ -31,14 +32,18 @@ List of things that will be updated in my project next:
   18. Add redirect to error page if soemthing goes wrong (✔️)
   19. (Postponed) User profile feature
   20. Find and add to surnames functionality (✔️)
+  ## Web API
   21. WebAPI CRUD status codes unification (✔️)
   22. HATEOAS link generator as extension method (✔️)
   23. Host name configuration
   24. Rebuild services on CQS base for WebAPI (✔️)
   25. Notifications with Hangfire for appointments, prescriptions and vaccinations (✔️)
   26. Generate drug from external WebAPI (✔️)
-  27. Angular App
-  28. Redux
-  29. Authentication and authorization for WebAPI using JWT (✔️)
-  30. Reimplement MVC app fucntionality for WebAPI project (✔️)
-  31. Notifications with SignalR for appointments, prescriptions and vaccinations
+
+  27. Authentication and authorization for WebAPI using JWT (✔️)
+  28. Reimplement MVC app fucntionality for WebAPI project (✔️)
+  29. Notifications with SignalR for appointments, prescriptions and vaccinations
+  
+  ## Angular
+  30. Angular App
+  31. Redux
