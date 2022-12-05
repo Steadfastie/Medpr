@@ -7,8 +7,7 @@ Admin user seeded: admin@admin.com | Admin_1_Admin
 
 Main user: firstuser@gmail.com | 8yQD!yya
 
-# Patch history
-  ## MVC
+  ## MVC project history
   1. password -> password hash migration (✔️)
   2. basic MVC stracture (✔️)
   3. CRUD for 1 db branch (✔️)
@@ -32,18 +31,20 @@ Main user: firstuser@gmail.com | 8yQD!yya
   18. Add redirect to error page if soemthing goes wrong (✔️)
   19. (Postponed) User profile feature
   20. Find and add to surnames functionality (✔️)
-  ## Web API
-  21. WebAPI CRUD status codes unification (✔️)
-  22. HATEOAS link generator as extension method (✔️)
-  23. Host name configuration
-  24. Rebuild services on CQS base for WebAPI (✔️)
-  25. Notifications with Hangfire for appointments, prescriptions and vaccinations (✔️)
-  26. Generate drug from external WebAPI (✔️)
-
-  27. Authentication and authorization for WebAPI using JWT (✔️)
-  28. Reimplement MVC app fucntionality for WebAPI project (✔️)
-  29. Notifications with SignalR for appointments, prescriptions and vaccinations
-  
-  ## Angular
-  30. Angular App
-  31. Redux
+  ## Web API project history
+  1. WebAPI CRUD status codes unification (✔️)
+  2. HATEOAS link generator as extension method (✔️)
+  3. Host name configuration
+  4. Rebuild services on CQS base for WebAPI (✔️)
+  5. Notifications with Hangfire for appointments, prescriptions and vaccinations (✔️)
+  6. Generate drug from external WebAPI (✔️)
+  7. Authentication and authorization for WebAPI using JWT (✔️)
+  8. Reimplement MVC app fucntionality for WebAPI project (✔️)
+  9. Notifications with SignalR for appointments, prescriptions and vaccinations
+  ## Angular project history
+  1. Angular Material (✔️)
+  2. Routing (✔️)
+  3. Consistent layout
+  4. Redux/NgRx store
+  5. Authentication guard
+  6. Interceptors adding JWT to requests
