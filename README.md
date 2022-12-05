@@ -40,7 +40,8 @@ Main user: firstuser@gmail.com | 8yQD!yya
   6. Generate drug from external WebAPI (✔️)
   7. Authentication and authorization for WebAPI using JWT (✔️)
   8. Reimplement MVC app fucntionality for WebAPI project (✔️)
-  9. Notifications with SignalR for appointments, prescriptions and vaccinations
+  9. Notifications Hangfire part (✔️)
+  10. Notifications with SignalR for appointments, prescriptions and vaccinations
   ## Angular project history
   1. Angular Material (✔️)
   2. Routing (✔️)
