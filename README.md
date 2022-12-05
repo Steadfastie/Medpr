@@ -44,8 +44,9 @@ Main user: firstuser@gmail.com | 8yQD!yya
   10. Notifications with SignalR for appointments, prescriptions and vaccinations
   ## Angular project history
   1. Angular Material (✔️)
-  2. Routing (✔️)
-  3. Consistent layout
-  4. Redux/NgRx store
-  5. Authentication guard
-  6. Interceptors adding JWT to requests
+  2. Reactive forms (✔️)
+  3. Routing (✔️)
+  4. Consistent layout
+  5. Redux/NgRx store
+  6. Authentication guard
+  7. Interceptors adding JWT to requests
