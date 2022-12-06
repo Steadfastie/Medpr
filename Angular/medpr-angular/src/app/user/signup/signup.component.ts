@@ -8,7 +8,7 @@ import { AppState, selectAuthState } from 'src/app/store/app.states';
 
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
+  template: `<p>Blank</p>`,
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {

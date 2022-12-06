@@ -6,7 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { User } from 'src/app/models/user';
 
 @Injectable()
 export class AuthEffects {
@@ -15,8 +15,8 @@ export class AuthEffects {
       ofType(userActions.signin),
       exhaustMap((user) =>
         this.authService.signIn(user).pipe(
-          map((user) => userActions.signin_success(user)),
-          catchError((error) => of(userActions.signin_error(error)))
+          map((user:User) => userActions.signin_success(user)),
+          catchError((error:string) => of(userActions.signin_error({message: error})))
         )
       )
     )

@@ -18,4 +18,3 @@ $primary: map.get($color-config, 'primary');
   color: mat.get-color-from-palette($primary, 200);
   background-color: mat.get-color-from-palette($primary, 300);
 }
-

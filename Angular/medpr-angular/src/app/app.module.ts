@@ -1,5 +1,5 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -8,7 +8,7 @@ import { MaterialModule } from './modules/material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { SignupComponent } from './user/signup/signup.component';
+import { SignupComponent } from './pages/auth/signup/signup.component';
 import { LoginComponent } from './user/login/login.component';
 
 import { TrimPipe } from './pipes/trim';
@@ -26,6 +26,7 @@ import { DrugCardComponent } from './pages/drugs/drug.card/drug.card.component';
 import { CreateDrugComponent } from './pages/drugs/create.drug/create.drug.component';
 import { EditDrugComponent } from './pages/drugs/edit.drug/edit.drug.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ErrorComponent } from './pages/error/error.component';
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
     ]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
     AuthService,

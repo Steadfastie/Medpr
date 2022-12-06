@@ -10,12 +10,11 @@ export interface State {
 }
 
 export const initialState: State = {
-  isAuthenticated: false
+  isAuthenticated: false,
 };
 
 export const authReducer = createReducer(
   initialState,
-
   on(userActions.signin_success, (state, user: User) => ({
     ...state,
     isAuthenticated: true,
