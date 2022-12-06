@@ -63,7 +63,7 @@ public class AppController : ControllerBase
     [HttpPost("/signup")]
     [ProducesResponseType(typeof(TokenResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> SignUp([FromForm]UserModelRequest model)
+    public async Task<IActionResult> SignUp([FromBody]UserModelRequest model)
     {
         try
         {
@@ -121,7 +121,7 @@ public class AppController : ControllerBase
     [HttpPost("/signin")]
     [ProducesResponseType(typeof(TokenResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> SingIn([FromForm] UserModelRequest model)
+    public async Task<IActionResult> SingIn([FromBody] UserModelRequest model)
     {
         try
         {

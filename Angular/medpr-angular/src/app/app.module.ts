@@ -9,7 +9,7 @@ import { MaterialModule } from './modules/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './pages/auth/signup/signup.component';
-import { LoginComponent } from './user/login/login.component';
+import { SigninComponent } from './pages/auth/signin/signin.component';
 
 import { TrimPipe } from './pipes/trim';
 
@@ -27,11 +27,12 @@ import { CreateDrugComponent } from './pages/drugs/create.drug/create.drug.compo
 import { EditDrugComponent } from './pages/drugs/edit.drug/edit.drug.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { UserComponent } from './pages/user/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    SigninComponent,
     SignupComponent,
     TrimPipe,
 
@@ -39,7 +40,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     DrugCardComponent,
     CreateDrugComponent,
     EditDrugComponent,
-    ErrorComponent
+    ErrorComponent,
+    UserComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     RouterModule.forRoot([
       // { path: '', component: DrugsComponent, canActivate: [AuthGuardService] },
       { path: '', component: DrugsComponent},
-      { path: 'login', component: LoginComponent },
+      { path: 'user', component: UserComponent},
+      { path: 'signin', component: SigninComponent },
       { path: 'signup', component: SignupComponent },
     ]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

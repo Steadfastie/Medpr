@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/internal/Observable';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -8,11 +7,11 @@ import * as userActions from 'src/app/store/actions/auth.actions';
 import { User } from 'src/app/models/user';
 
 @Component({
-  selector: 'signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SigninComponent implements OnInit {
   selected: boolean = false;
   isAuthenticated: boolean;
 
@@ -40,7 +39,7 @@ export class SignupComponent implements OnInit {
         login: this.signUpForm.value.login!,
         password: this.signUpForm.value.password!,
       }
-      this.store.dispatch(userActions.signup(user));
+      this.store.dispatch(userActions.signin(user));
     }
   }
 

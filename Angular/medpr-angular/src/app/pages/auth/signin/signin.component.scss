@@ -1,0 +1,62 @@
+@use '@angular/material' as mat;
+@import '/src/styles.scss';
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
+.super{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px;
+  padding: 10px;
+  justify-content: center;
+  max-width: fit-content;
+  transition-duration: 0.5s;
+  &.selected{
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 4px rgba(0, 0, 0, 0.19);
+    transition-duration: 0.5s;
+  }
+  &:hover{
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 4px rgba(0, 0, 0, 0.19);
+    transition-duration: 0.5s;
+  }
+}
+
+.signup{
+  display: flex;
+  align-self: center;
+  font-size: 32px;
+  margin-bottom: 1rem;
+}
+
+.signUpForm{
+  display: flex;
+  width: 100%;
+  max-width: fit-content;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: $font-family;
+}
+
+mat-card-content{
+  display: flex;
+  flex-direction: column;
+}
+
+mat-flat-button{
+  margin-top: 1rem;
+}
+
+.login{
+  margin-bottom: 0.25rem;
+}

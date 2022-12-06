@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { ApiService } from '../api.service';
 import * as auth from 'src/app/store/reducers/auth.reducers';
+import { selectStateToken } from 'src/app/store/app.states';
 
 
 @Injectable()
@@ -12,8 +13,8 @@ export class AuthService {
   private token?: string;
 
   constructor(private apiService: ApiService,
-    private store: Store<auth.State>) {
-      this.store.select('token').subscribe((token?: string) => this.token = token);
+    private store: Store) {
+      this.store.select(selectStateToken).subscribe((token?: string) => this.token = token);
      }
 
   getToken(): string {
@@ -25,10 +26,10 @@ export class AuthService {
   }
 
   signIn(user: User): Observable<User> {
-    return this.apiService.post("singin", user);
+    return this.apiService.post("signin", user);
   }
 
   signUp(user: User): Observable<User> {
-    return this.apiService.post("singun", user);
+    return this.apiService.post("signup", user);
   }
 }
