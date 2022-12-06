@@ -45,8 +45,9 @@ Main user: firstuser@gmail.com | 8yQD!yya
   ## Angular project history
   1. Angular Material (✔️)
   2. Reactive forms (✔️)
-  3. Routing (✔️)
-  4. Consistent layout
-  5. Redux/NgRx store
-  6. Authentication guard
-  7. Interceptors adding JWT to requests
+  3. Spinner & errors (✔️)
+  4. Routing (✔️)
+  5. Consistent layout
+  6. Redux/NgRx store
+  7. Authentication guard
+  8. Interceptors adding JWT to requests
