@@ -20,16 +20,16 @@ Main user: firstuser@gmail.com | 8yQD!yya
   10. CRUD for table with select (✔️)
   11. CRUD for all tables with select (✔️)
   12. CRUD for all tables (✔️)
-  13. Layout for every table
+  13. Layout for every table (🖐) 
   14. Date validation on input (✔️)
-  15. (Postponed) Add simultaneous remote checking for 
-			beginning and ending dates on presctiption CRUD.
-			As for now validation works, but sticks to the field
-			last modified
+  15. Add simultaneous remote checking for 
+	beginning and ending dates on presctiption CRUD.
+	As for now validation works, but sticks to the field
+	last modified (🖐) 
   16. Add authentification and authorization (✔️)
   17. Adjust views and controllers with authentification logic (✔️)
   18. Add redirect to error page if soemthing goes wrong (✔️)
-  19. (Postponed) User profile feature
+  19. User profile feature (🖐) 
   20. Find and add to surnames functionality (✔️)
   ## Web API project history
   1. WebAPI CRUD status codes unification (✔️)
@@ -47,7 +47,7 @@ Main user: firstuser@gmail.com | 8yQD!yya
   2. Reactive forms (✔️)
   3. Spinner & errors (✔️)
   4. Routing (✔️)
-  5. Consistent layout
-  6. Redux/NgRx store
-  7. Authentication guard
-  8. Interceptors adding JWT to requests
+  5. Consistent layout (🚧 ⬅ 13)
+  6. Redux/NgRx store (✔️)
+  7. Authentication guard (🚧)
+  8. Interceptors adding JWT to requests (🚧) 
