@@ -11,7 +11,6 @@ import { Drug } from 'src/app/models/drug';
 export class DrugCardComponent{
   @Input() random?: Drug;
   @Input() drug?: Drug;
-  @Output() destroyCard = new EventEmitter<Drug>();
 
   selected: boolean;
 

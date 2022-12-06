@@ -1,4 +1,4 @@
-import { DrugsService } from './../services/drugs/drugs.service';
+import { DrugsService } from 'src/app/services/drugs/drugs.service';
 import { Component } from '@angular/core';
 import { Drug } from 'src/app/models/drug';
 

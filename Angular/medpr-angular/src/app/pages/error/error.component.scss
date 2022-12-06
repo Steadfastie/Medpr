@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+@import '/src/styles.scss';
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
