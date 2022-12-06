@@ -34,20 +34,21 @@ Main user: firstuser@gmail.com | 8yQD!yya
   ## Web API project history
   1. WebAPI CRUD status codes unification (✔️)
   2. HATEOAS link generator as extension method (✔️)
-  3. Host name configuration
+  3. Host name configuration (🖐) 
   4. Rebuild services on CQS base for WebAPI (✔️)
   5. Notifications with Hangfire for appointments, prescriptions and vaccinations (✔️)
   6. Generate drug from external WebAPI (✔️)
   7. Authentication and authorization for WebAPI using JWT (✔️)
   8. Reimplement MVC app fucntionality for WebAPI project (✔️)
   9. Notifications Hangfire part (✔️)
-  10. Notifications with SignalR for appointments, prescriptions and vaccinations
+  10. Notifications with SignalR for appointments, prescriptions and vaccinations (🚧)
   ## Angular project history
   1. Angular Material (✔️)
   2. Reactive forms (✔️)
   3. Spinner & errors (✔️)
   4. Routing (✔️)
-  5. Consistent layout (🚧 ⬅ 13)
+  5. Consistent layout (🚧 ⬅ 1.13)
   6. Redux/NgRx store (✔️)
   7. Authentication guard (🚧)
-  8. Interceptors adding JWT to requests (🚧) 
+  8. Interceptors adding JWT to requests (🚧)
+  9. SignalR notifications (🚧 ⬅ 2.10)
