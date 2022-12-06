@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
 import { DrugsService } from './../../services/drugs/drugs.service';
@@ -29,17 +30,20 @@ export class CreateDrugComponent implements OnInit {
     price: ['', [Validators.required, Validators.min(1)]],
   });
 
-  constructor(private fb: FormBuilder, private DrugsService: DrugsService) { }
-
-  drug: Drug = {
-    id: Guid.createEmpty(),
-    name: this.drugForm.value.name!,
-    pharmGroup: this.drugForm.value.pharmGroup!,
-    price: Number(this.drugForm.value.price!)
-  }
+  constructor(private fb: FormBuilder,
+    private drugsService: DrugsService) { }
 
   submit(){
-    this.DrugsService.create(this.drug);
+    const drug: Drug = {
+      id: Guid.createEmpty().toString(),
+      name: this.drugForm.value.name!,
+      pharmGroup: this.drugForm.value.pharmGroup!,
+      price: Number(this.drugForm.value.price!)
+    };
+    this.drugsService.create(drug).pipe().subscribe({
+      next: () => window.location.reload(),
+      error: (err) => console.log(`${err.message}`),
+    });
   }
 
   cancel() {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
 
@@ -11,20 +11,22 @@ import { Drug } from 'src/app/models/drug';
 export class DrugCardComponent{
   @Input() random?: Drug;
   @Input() drug?: Drug;
-  selected: boolean;
+  @Output() destroyCard = new EventEmitter<Drug>();
 
-  selectToggle(){
-    this.selected = !this.selected;
-  }
+  selected: boolean;
 
   constructor() {
     this.selected = false;
   }
 
+  selectToggle(){
+    this.selected = !this.selected;
+  }
+
   createFromRandom(){
     if(this.random){
-      this.random.id = Guid.createEmpty();
-      this.random.price = Math.floor(Math.random() * 10);
+      this.random.id = Guid.createEmpty().toString();
+      this.random.price = Math.floor((Math.random() + 0.1) * 10);
     };
     this.selectToggle();
   }

@@ -23,10 +23,10 @@ export class DrugsService {
   }
 
   patch(drug: Drug): Observable<Drug> {
-    return this.apiService.patch('drugs/${drug.id.toString()}', drug).pipe();
+    return this.apiService.patch(`drugs/${drug.id.toString()}`, drug).pipe();
   }
 
   delete(id: string): Observable<Drug> {
-    return this.apiService.delete('drugs/${id}').pipe();
+    return this.apiService.delete(`drugs/${id}`).pipe();
   }
 }

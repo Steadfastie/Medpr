@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DrugsComponent } from './drugs/drugs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './modules/material/material.module';
+import { MaterialModule } from './modules/material.module';
 
 import { TrimPipe } from './pipes/trim';
 import { DrugCardComponent } from './drugs/drug.card/drug.card.component';
@@ -46,19 +46,20 @@ import { EditDrugComponent } from './drugs/edit.drug/edit.drug.component';
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects]),
     RouterModule.forRoot([
-      { path: '', component: DrugsComponent, canActivate: [AuthGuardService] },
+      // { path: '', component: DrugsComponent, canActivate: [AuthGuardService] },
+      { path: '', component: DrugsComponent},
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
     ]),
   ],
   providers: [
     AuthService,
-    AuthGuardService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    // AuthGuardService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

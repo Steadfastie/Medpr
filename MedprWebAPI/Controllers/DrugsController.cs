@@ -120,7 +120,7 @@ public class DrugsController : ControllerBase
     [ProducesResponseType(typeof(DrugModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] DrugModelRequest model)
+    public async Task<IActionResult> Create([FromBody] DrugModelRequest model)
     {
         try
         {
@@ -170,7 +170,7 @@ public class DrugsController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromForm] DrugModelRequest model)
+    public async Task<IActionResult> Edit([FromBody] DrugModelRequest model)
     {
         try
         {
