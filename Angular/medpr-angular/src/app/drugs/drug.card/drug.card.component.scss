@@ -4,13 +4,18 @@ mat-card{
   margin: 10px;
   padding: 10px;
   justify-content: flex-start;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
+  &.selected{
+    z-index: 1;
+    scale: 105%;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 4px rgba(0, 0, 0, 0.19);
+    transition-duration: 0.5s;
+  }
 }
 
 mat-card:hover{
-  z-index: 1;
-  scale: 105%;
-  transition-duration: 1s;
+  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 4px rgba(0, 0, 0, 0.19);
+  transition-duration: 0.5s;
 }
 
 mat-card-header {

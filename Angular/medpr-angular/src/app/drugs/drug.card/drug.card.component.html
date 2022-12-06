@@ -1,37 +1,58 @@
-<mat-card *ngIf="!drug && !random && !selected">
-  <mat-card-content>
-    <button mat-flat-button (click)="createFromBlank()">
-      <mat-icon>add</mat-icon>
-      Create from blank
-    </button>
-  </mat-card-content>
-</mat-card>
-
-<mat-card *ngIf="random && !selected" (click)="createFromRandom()">
-  <mat-card-header>
-    <mat-card-title class="row">
-      <div>&lt;{{random.name | trim}}&gt;</div>
-      <div><mat-icon> scatter_plot</mat-icon></div>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>&lt;{{random.pharmGroup}}&gt;</mat-card-content>
-</mat-card>
-
-<mat-card *ngIf="drug && !selected">
-  <mat-card-header>
-    <mat-card-title class="row">
-      <div>{{drug.name | trim}}</div>
-      <button mat-mini-fab class="edit-button" (click)="selectToggle()">
-        <mat-icon>edit</mat-icon>
+<mat-card [class.selected]="selected">
+  <!-- Blank creation -->
+  <div *ngIf="!drug && !random && !selected">
+    <mat-card-content>
+      <button mat-flat-button (click)="createFromBlank()">
+        <mat-icon>add</mat-icon>
+        Create from blank
       </button>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>{{drug.pharmGroup}}</mat-card-content>
-  <mat-card-content>{{drug.price | currency}}</mat-card-content>
+    </mat-card-content>
+  </div>
+
+  <!-- Selected blank creation  -->
+  <div *ngIf="!drug && !random && selected">
+    <create-drug  (deselect)="selectToggle()"></create-drug>
+  </div>
+
+  <!-- Random creation -->
+  <div *ngIf="random && !selected" (click)="createFromRandom()">
+    <mat-card-header>
+      <mat-card-title class="row">
+        <div>&lt;{{random.name | trim}}&gt;</div>
+        <div><mat-icon> scatter_plot</mat-icon></div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>&lt;{{random.pharmGroup}}&gt;</mat-card-content>
+  </div>
+
+  <!-- Selected random creation  -->
+  <div *ngIf="random && selected">
+    <create-drug [randomDrug]="random" (deselect)="selectToggle()"></create-drug>
+  </div>
+
+  <!-- Drug -->
+  <div *ngIf="drug && !selected">
+    <mat-card-header>
+      <mat-card-title class="row">
+        <div>{{drug.name | trim}}</div>
+        <button mat-mini-fab class="edit-button" (click)="selectToggle()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{drug.pharmGroup}}</mat-card-content>
+    <mat-card-content>{{drug.price | currency}}</mat-card-content>
+  </div>
+
+  <!-- Selected drug  -->
+  <div *ngIf="drug && selected">
+    <edit-drug [drug]="drug" (deselect)="selectToggle()"></edit-drug>
+  </div>
 </mat-card>
 
-<edit-drug *ngIf="drug && selected" [drug]="drug" (deselect)="selectToggle()"></edit-drug>
 
-<create-drug *ngIf="!random && !drug && selected" (deselect)="selectToggle()"></create-drug>
 
-<create-drug *ngIf="random && selected" [randomDrug]="random" (deselect)="selectToggle()"></create-drug>
+
+
+
+

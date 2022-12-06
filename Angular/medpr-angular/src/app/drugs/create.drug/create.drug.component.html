@@ -1,35 +1,33 @@
-<mat-card class="create-form">
-  <form class="form" [formGroup]="drugForm">
-    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="..name" formControlName="name">
-      <mat-error *ngIf="drugForm.controls['name'].errors?.['minlength']">Name is too short</mat-error>
-      <mat-error *ngIf="drugForm.controls['name'].errors?.['required']">Name is required</mat-error>
-    </mat-form-field>
+<form class="form" [formGroup]="drugForm">
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="..name" formControlName="name">
+    <mat-error *ngIf="drugForm.controls['name'].errors?.['minlength']">Name is too short</mat-error>
+    <mat-error *ngIf="drugForm.controls['name'].errors?.['required']">Name is required</mat-error>
+  </mat-form-field>
 
-    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-      <mat-label>Group</mat-label>
-      <input matInput placeholder="..group" formControlName="pharmGroup">
-      <mat-error *ngIf="drugForm.controls['pharmGroup'].errors?.['minlength']">Group is too short</mat-error>
-      <mat-error *ngIf="drugForm.controls['pharmGroup'].errors?.['required']">Group is required</mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Group</mat-label>
+    <input matInput placeholder="..group" formControlName="pharmGroup">
+    <mat-error *ngIf="drugForm.controls['pharmGroup'].errors?.['minlength']">Group is too short</mat-error>
+    <mat-error *ngIf="drugForm.controls['pharmGroup'].errors?.['required']">Group is required</mat-error>
+  </mat-form-field>
 
-    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-      <mat-label>Price</mat-label>
-      <input matInput formControlName="price" type="number">
-      <mat-error *ngIf="drugForm.controls['price'].errors?.['required']">Price is required</mat-error>
-      <mat-error *ngIf="drugForm.controls['price'].errors?.['min']">Invalid price</mat-error>
-    </mat-form-field>
-  </form>
-  <mat-card-actions>
-    <button mat-icon-button (click)="cancel()">
-      <mat-icon>undo</mat-icon>
-    </button>
-    <button mat-icon-button (click)="closeCreate()">
-      <mat-icon>clear</mat-icon>
-    </button>
-    <button mat-icon-button (click)="submit()">
-      <mat-icon>send</mat-icon>
-    </button>
-  </mat-card-actions>
-</mat-card>
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" type="number">
+    <mat-error *ngIf="drugForm.controls['price'].errors?.['required']">Price is required</mat-error>
+    <mat-error *ngIf="drugForm.controls['price'].errors?.['min']">Invalid price</mat-error>
+  </mat-form-field>
+</form>
+<mat-card-actions>
+  <button mat-icon-button (click)="cancel()">
+    <mat-icon>undo</mat-icon>
+  </button>
+  <button mat-icon-button (click)="closeCreate()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button mat-icon-button (click)="submit()">
+    <mat-icon>send</mat-icon>
+  </button>
+</mat-card-actions>
