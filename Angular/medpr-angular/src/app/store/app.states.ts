@@ -2,33 +2,29 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import * as auth from './reducers/auth.reducers';
 
-export interface AppState {
-  authState: auth.State;
-}
-
 export const reducers = {
   auth: auth.authReducer
 };
 
-export const selectAuthState = createFeatureSelector<AppState>('auth');
+export const selectAuthState = createFeatureSelector<auth.State>('auth');
 
 export const selectStateToken = createSelector(
   selectAuthState,
-  state => state.authState.user?.accessToken
+  state => state.user?.accessToken
 );
 
 export const selectStateAuthStatus = createSelector(
   selectAuthState,
-  state => state.authState.isAuthenticated
+  (state:auth.State) => state.isAuthenticated
 );
 
 export const selectStateUser = createSelector(
   selectAuthState,
-  state => state.authState.user
+  state => state.user
 );
 
 export const selectStateErrorMessage = createSelector(
   selectAuthState,
-  state => state.authState.errorMessage
+  state => state.errorMessage
 );
 

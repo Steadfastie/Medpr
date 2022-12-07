@@ -8,7 +8,9 @@ export interface State {
   errorMessage?: string;
 }
 
-export const userFromLocalStorage = localStorage.getItem('user') != null ? (localStorage.getItem("user") as string) : undefined;
+export const userFromLocalStorage =
+  localStorage.getItem('user') != null ?
+ (localStorage.getItem("user") as string) : undefined;
 
 export const initialState: State = {
   isAuthenticated: userFromLocalStorage != undefined ? true : false,
