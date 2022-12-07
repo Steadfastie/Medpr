@@ -5,13 +5,16 @@ import * as userActions from '../actions/auth.actions';
 export interface State {
   isAuthenticated: boolean;
   user?: User;
-  token?: string;
   errorMessage?: string;
 }
 
+export const userFromLocalStorage = localStorage.getItem('user') != null ? (localStorage.getItem("user") as string) : undefined;
+
 export const initialState: State = {
-  isAuthenticated: false,
+  isAuthenticated: userFromLocalStorage != undefined ? true : false,
+  user: userFromLocalStorage != undefined ? JSON.parse(userFromLocalStorage) : undefined
 };
+
 
 export const authReducer = createReducer(
   initialState,
@@ -19,7 +22,6 @@ export const authReducer = createReducer(
     ...state,
     isAuthenticated: true,
     user: user,
-    token: user.token,
     errorMessage: undefined
   })),
   on(userActions.signin_error, (state, {message}) => ({
@@ -30,7 +32,6 @@ export const authReducer = createReducer(
     ...state,
     isAuthenticated: true,
     user: user,
-    token: user.token,
     errorMessage: undefined
   })),
   on(userActions.signup_error, (state, {message}) => ({

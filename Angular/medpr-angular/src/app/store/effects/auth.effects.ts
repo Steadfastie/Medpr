@@ -26,7 +26,8 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(userActions.signin_success),
-        tap(() => {
+        tap((user) => {
+          localStorage.setItem(`user`, JSON.stringify(user));
           this.router.navigate(['']);
         })
       ),
@@ -54,7 +55,8 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(userActions.signup_success),
-        tap(() => {
+        tap((user) => {
+          localStorage.setItem(`user`, JSON.stringify(user));
           this.router.navigate(['']);
         })
       ),
@@ -63,6 +65,16 @@ export class AuthEffects {
 
   signup_error$ = createEffect(
     () => this.actions$.pipe(ofType(userActions.signup_error)),
+    { dispatch: false }
+  );
+
+  logout$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(userActions.logout),
+      tap((user) => {
+        localStorage.removeItem(`user`);
+        this.router.navigate(['/signin']);
+      })),
     { dispatch: false }
   );
 

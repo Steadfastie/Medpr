@@ -14,7 +14,7 @@ export const selectAuthState = createFeatureSelector<AppState>('auth');
 
 export const selectStateToken = createSelector(
   selectAuthState,
-  state => state.authState.token
+  state => state.authState.user?.accessToken
 );
 
 export const selectStateAuthStatus = createSelector(
