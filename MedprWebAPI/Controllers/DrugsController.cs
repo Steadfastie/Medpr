@@ -19,7 +19,7 @@ namespace MedprWebAPI.Controllers;
 /// </summary>
 [Route("drugs")]
 [ApiController]
-//[Authorize]
+[Authorize]
 public class DrugsController : ControllerBase
 {
     private readonly IDrugService _drugService;
@@ -67,7 +67,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not load drugs",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -106,7 +106,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not load drug",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -155,7 +155,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not create drug",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -226,7 +226,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not update drug info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -269,7 +269,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not delete drug from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -306,7 +306,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not load drug",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 }

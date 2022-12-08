@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +18,8 @@ export class CreateDrugComponent implements OnInit {
   errorMessage?: string;
 
   constructor(private fb: FormBuilder,
-    private drugsService: DrugsService) { }
+    private drugsService: DrugsService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     if (this.randomDrug) {

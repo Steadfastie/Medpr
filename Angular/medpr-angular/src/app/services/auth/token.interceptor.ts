@@ -5,23 +5,27 @@ import {
 import { Observable} from 'rxjs';
 
 import { AuthService } from './auth.service';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  private authService?: AuthService;
+  constructor(private authService: AuthService) {}
 
-  constructor(private injector: Injector) {}
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.authService = this.injector.get(AuthService);
-    const token: string = this.authService.getToken();
-    request = request.clone({
-      setHeaders: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    });
+    const token = this.authService.getToken();
+    const isApiUrl = request.url.startsWith(environment.apiUrl);
+    const isAuthenticated = this.authService.getStatus();
+
+    if (isApiUrl && isAuthenticated) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+    }
+
     return next.handle(request);
   }
 }

@@ -13,13 +13,11 @@ import { User } from 'src/app/models/user';
 })
 export class SigninComponent implements OnInit {
   selected: boolean = false;
-  isAuthenticated: boolean;
+  isAuthenticated: boolean = false;
 
   constructor(private router: Router,
     private store: Store,
-    private fb: FormBuilder,) {
-    this.isAuthenticated = false;
-  }
+    private fb: FormBuilder,) {}
 
   ngOnInit() {
     this.store.select(selectStateAuthStatus).pipe()

@@ -1,6 +1,6 @@
 <div class="cardContainer first">
   <drug-card></drug-card>
-  <drug-card [random]="randomDrug"></drug-card>
+  <drug-card *ngIf="randomDrug" [random]="randomDrug"></drug-card>
 </div>
 
 <div class="cardContainer">

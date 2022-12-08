@@ -91,7 +91,7 @@ public class PrescriptionsController : ControllerBase
                 Message = "Could not load prescriptions",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -139,7 +139,7 @@ public class PrescriptionsController : ControllerBase
                 Message = "Could not load prescription",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -198,7 +198,7 @@ public class PrescriptionsController : ControllerBase
                 Message = "Could not create prescription",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -288,7 +288,7 @@ public class PrescriptionsController : ControllerBase
                 Message = "Could not update prescription info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -341,7 +341,7 @@ public class PrescriptionsController : ControllerBase
                 Message = "Could not delete prescription from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 

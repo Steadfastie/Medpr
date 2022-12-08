@@ -108,7 +108,7 @@ public class AppController : ControllerBase
                 Message = "Could not register new user",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
@@ -168,7 +168,7 @@ public class AppController : ControllerBase
                 Message = "Could not register new user",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "Home", errorModel);
+            return RedirectToAction("Error", "App", errorModel);
         }
     }
 
