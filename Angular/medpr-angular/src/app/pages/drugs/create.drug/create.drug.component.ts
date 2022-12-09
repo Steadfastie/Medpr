@@ -1,7 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
 import { DrugsService } from 'src/app/services/drugs/drugs.service';

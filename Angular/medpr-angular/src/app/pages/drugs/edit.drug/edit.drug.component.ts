@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
 import { DrugsService } from 'src/app/services/drugs/drugs.service';
 
@@ -42,7 +41,7 @@ export class EditDrugComponent implements OnInit {
   }
 
   edit(){
-    if (!this.showSpinner){
+    if (!this.showSpinner && this.drugForm.valid){
       this.showSpinner = true;
       const initialDrug = {
         id: this.drug!.id,

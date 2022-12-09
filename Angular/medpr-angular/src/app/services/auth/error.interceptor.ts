@@ -20,10 +20,10 @@ export class ErrorInterceptor implements HttpInterceptor {
     this.toastr = this.injector.get(ToastrService);
     return next.handle(request).pipe(
       catchError(err => {
-        const errorMessage = err.error.detail || err.error.title;
+        const errorMessage = err.error?.detail || err.error?.title || err.status;
         switch (err.status) {
           case 401:
-            this.toastr?.error(`${errorMessage}`);
+            this.toastr?.error(`Sorry`, `Looks like it's time to signin again`);
             this.store.dispatch(userActions.logout());
             break;
           case 500:

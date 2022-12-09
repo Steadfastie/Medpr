@@ -1,0 +1,12 @@
+<div class="cardContainer first">
+  <doctor-card></doctor-card>
+</div>
+
+<div class="cardContainer">
+  <doctor-card
+    *ngFor="let doctor of doctors"
+    [doctor]="doctor">
+  </doctor-card>
+</div>
+
+

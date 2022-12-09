@@ -26,6 +26,12 @@ import { DrugsComponent } from './pages/drugs/drugs.component';
 import { DrugCardComponent } from './pages/drugs/drug.card/drug.card.component';
 import { CreateDrugComponent } from './pages/drugs/create.drug/create.drug.component';
 import { EditDrugComponent } from './pages/drugs/edit.drug/edit.drug.component';
+
+import { DoctorsComponent } from './pages/doctors/doctors.component';
+import { DoctorCardComponent } from './pages/doctors/doctor.card/doctor.card.component';
+import { CreateDoctorComponent } from './pages/doctors/create.doctor/create.doctor.component';
+import { EditDoctorComponent } from './pages/doctors/edit.doctor/edit.doctor.component';
+
 import { ErrorComponent } from './pages/error/error.component';
 import { UserComponent } from './pages/user/user/user.component';
 import { AdminGuardService } from './services/auth/admin.guard';
@@ -44,6 +50,12 @@ import { ToastrModule } from 'ngx-toastr';
     DrugCardComponent,
     CreateDrugComponent,
     EditDrugComponent,
+
+    DoctorsComponent,
+    DoctorCardComponent,
+    CreateDoctorComponent,
+    EditDoctorComponent,
+
     ErrorComponent,
     UserComponent,
     SigninComponent
@@ -66,7 +78,9 @@ import { ToastrModule } from 'ngx-toastr';
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects]),
     RouterModule.forRoot([
-      { path: '', component: DrugsComponent, canActivate: [AuthGuardService] },
+      { path: '', component: AppComponent, canActivate: [AuthGuardService] },
+      { path: 'drugs', component: DrugsComponent, canActivate: [AuthGuardService] },
+      { path: 'doctors', component: DoctorsComponent, canActivate: [AuthGuardService] },
       { path: 'error', component: ErrorComponent },
       { path: 'user', component: UserComponent, canActivate: [AdminGuardService] },
       { path: 'signin', component: SigninComponent, canActivate: [AuthReverseGuardService] },
