@@ -1,0 +1,12 @@
+<div class="cardContainer first">
+  <appointment-card></appointment-card>
+</div>
+
+<div class="cardContainer">
+  <appointment-card
+    *ngFor="let appointment of appointments"
+    [appointment]="appointment">
+  </appointment-card>
+</div>
+
+

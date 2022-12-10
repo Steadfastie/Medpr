@@ -1,0 +1,34 @@
+<mat-spinner *ngIf="showSpinner" color="accent"></mat-spinner>
+
+<form *ngIf="!showSpinner && !errorMessage" class="form" [formGroup]="appointmentForm">
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="..name" formControlName="name">
+    <mat-error *ngIf="appointmentForm.controls['name'].errors?.['minlength']">Name is too short</mat-error>
+    <mat-error *ngIf="appointmentForm.controls['name'].errors?.['required']">Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Experience</mat-label>
+    <input matInput formControlName="experience" type="number">
+    <mat-error *ngIf="appointmentForm.controls['experience'].errors?.['required']">Price is required</mat-error>
+    <mat-error *ngIf="appointmentForm.controls['experience'].errors?.['min']">Let her/him leave uni first</mat-error>
+    <mat-error *ngIf="appointmentForm.controls['experience'].errors?.['max']">Appointments don't live that much</mat-error>
+  </mat-form-field>
+</form>
+<mat-card-actions *ngIf="!showSpinner && !errorMessage">
+  <!-- <button mat-icon-button (click)="remove()">
+    <mat-icon>remove_circle</mat-icon>
+  </button>
+  <button mat-icon-button (click)="initialize()">
+    <mat-icon>undo</mat-icon>
+  </button>
+  <button mat-icon-button (click)="closeEdit()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button mat-icon-button (click)="edit()">
+    <mat-icon>send</mat-icon>
+  </button> -->
+</mat-card-actions>
+
+<error *ngIf="errorMessage" [message]="errorMessage"></error>

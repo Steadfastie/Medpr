@@ -32,6 +32,11 @@ import { DoctorCardComponent } from './pages/doctors/doctor.card/doctor.card.com
 import { CreateDoctorComponent } from './pages/doctors/create.doctor/create.doctor.component';
 import { EditDoctorComponent } from './pages/doctors/edit.doctor/edit.doctor.component';
 
+import { AppointmentsComponent } from './pages/appointments/appointments.component';
+import { AppointmentCardComponent } from './pages/appointments/appointment.card/appointment.card.component';
+import { CreateAppointmentComponent } from './pages/appointments/create.appointment/create.appointment.component';
+import { EditAppointmentComponent } from './pages/appointments/edit.appointment/edit.appointment.component';
+
 import { ErrorComponent } from './pages/error/error.component';
 import { UserComponent } from './pages/user/user/user.component';
 import { AdminGuardService } from './services/auth/admin.guard';
@@ -55,6 +60,11 @@ import { ToastrModule } from 'ngx-toastr';
     DoctorCardComponent,
     CreateDoctorComponent,
     EditDoctorComponent,
+
+    AppointmentsComponent,
+    AppointmentCardComponent,
+    CreateAppointmentComponent,
+    EditAppointmentComponent,
 
     ErrorComponent,
     UserComponent,
@@ -81,6 +91,7 @@ import { ToastrModule } from 'ngx-toastr';
       { path: '', component: AppComponent, canActivate: [AuthGuardService] },
       { path: 'drugs', component: DrugsComponent, canActivate: [AuthGuardService] },
       { path: 'doctors', component: DoctorsComponent, canActivate: [AuthGuardService] },
+      { path: 'appointments', component: AppointmentsComponent, canActivate: [AuthGuardService] },
       { path: 'error', component: ErrorComponent },
       { path: 'user', component: UserComponent, canActivate: [AdminGuardService] },
       { path: 'signin', component: SigninComponent, canActivate: [AuthReverseGuardService] },

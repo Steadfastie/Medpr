@@ -46,6 +46,7 @@ public class JwtUtilSha256 : IJwtUtil
 
         return new TokenResponse()
         {
+            UserId = model.Id,
             AccessToken = accessToken,
             Login = model.Login,
             Role = model.Role,
