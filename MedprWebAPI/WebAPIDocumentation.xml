@@ -9,7 +9,7 @@
             Controller for users and errors
             </summary>
         </member>
-        <member name="M:MedprWebAPI.Controllers.AppController.Error(MedprModels.Responses.ErrorModel)">
+        <member name="M:MedprWebAPI.Controllers.AppController.Error">
             <summary>
             Error handler
             </summary>

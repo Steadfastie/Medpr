@@ -13,6 +13,7 @@ export class AppointmentsComponent {
   constructor(private appointmentsService: AppointmentsService) {}
 
   ngOnInit() {
-    this.appointmentsService.getAllAppointments().subscribe(appointments => this.appointments = appointments);
+    this.appointmentsService.getAllAppointments()
+      .subscribe(appointments => this.appointments = appointments);
   }
 }

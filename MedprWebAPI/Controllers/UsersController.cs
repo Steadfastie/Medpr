@@ -130,7 +130,7 @@ public class UsersController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit([FromForm] UserModelRequest model)
+    public async Task<IActionResult> Edit([FromBody] UserModelRequest model)
     {
         try
         {

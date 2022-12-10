@@ -18,3 +18,11 @@ $primary: map.get($color-config, 'primary');
   color: mat.get-color-from-palette($primary, 200);
   background-color: mat.get-color-from-palette($primary, 300);
 }
+
+.nav-spacer {
+  flex: 1 1 auto;
+}
+.nav-icon{
+  margin-left: 5px;
+  margin-right: 5px;
+}

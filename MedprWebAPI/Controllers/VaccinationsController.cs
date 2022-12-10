@@ -150,7 +150,7 @@ public class VaccinationsController : ControllerBase
     [ProducesResponseType(typeof(VaccinationModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] VaccinationModelRequest model)
+    public async Task<IActionResult> Create([FromBody] VaccinationModelRequest model)
     {
         try
         {
@@ -211,7 +211,7 @@ public class VaccinationsController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit(Guid id, [FromForm] VaccinationModelRequest model)
+    public async Task<IActionResult> Edit(Guid id, [FromBody] VaccinationModelRequest model)
     {
         try
         {

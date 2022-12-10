@@ -14,6 +14,10 @@ $font-family: mat.font-family($typography-config);
   font-family: $font-family;
 }
 
+.mat-mdc-form-field{
+  width: 100%;
+}
+
 mat-card-actions{
   justify-content: space-evenly;
 }

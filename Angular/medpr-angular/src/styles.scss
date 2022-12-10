@@ -13,8 +13,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$medpr-angular-primary: mat.define-palette(mat.$green-palette, 50, 400, 800);
-$medpr-angular-accent: mat.define-palette(mat.$gray-palette, 100, 400, 800);
+$medpr-angular-primary: mat.define-palette(mat.$green-palette, 300, 700, 800);
+$medpr-angular-accent: mat.define-palette(mat.$gray-palette, 300, 700, 800);
 $medpr-angular-warn: mat.define-palette(mat.$deep-orange-palette);
 
 $medpr-angular-typography: mat.define-typography-config(

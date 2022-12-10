@@ -8,6 +8,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 const MaterialComponents = [
   MatCardModule,
@@ -19,6 +22,9 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatButtonToggleModule,
   MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatToolbarModule,
 ]
 
 @NgModule({

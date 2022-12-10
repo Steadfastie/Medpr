@@ -5,12 +5,14 @@ import { catchError, delayWhen, interval, mergeMap, Observable, of, retry, retry
 import { AuthService } from './auth.service';
 import * as userActions from 'src/app/store/actions/auth.actions';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ErrorInterceptor implements HttpInterceptor {
   private toastr?: ToastrService;
+  private router?: Router;
   constructor(private store: Store, private injector: Injector) {}
 
   intercept(
@@ -18,12 +20,14 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     this.toastr = this.injector.get(ToastrService);
+    this.router = this.injector.get(Router);
     return next.handle(request).pipe(
       catchError(err => {
         const errorMessage = err.error?.detail || err.error?.title || err.status;
         switch (err.status) {
           case 401:
             this.toastr?.error(`Sorry`, `Looks like it's time to signin again`);
+            this.router?.navigateByUrl('/signin');
             this.store.dispatch(userActions.logout());
             break;
           case 500:
@@ -33,8 +37,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.toastr?.error(`${errorMessage}`);
         }
         return throwError(() => errorMessage);
-      }),
-      retry(1)
+      })
     );
   }
 }

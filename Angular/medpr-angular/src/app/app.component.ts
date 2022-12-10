@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from './models/user';
+import * as userActions from 'src/app/store/actions/auth.actions';
 import { selectStateUser } from './store/app.states';
 
 @Component({
@@ -17,5 +18,9 @@ export class AppComponent implements OnInit {
       .subscribe((authStatus) => {
         this.user = authStatus;
       });
+  }
+
+  logout(){
+    this.store.dispatch(userActions.logout());
   }
 }

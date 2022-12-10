@@ -10,7 +10,7 @@ import { User } from 'src/app/models/user';
 
 @Injectable()
 export class AuthEffects {
-  signip$ = createEffect(() =>
+  signin$ = createEffect(() =>
     this.actions$.pipe(
       ofType(userActions.signin),
       exhaustMap((user) =>
@@ -75,7 +75,6 @@ export class AuthEffects {
         localStorage.removeItem(`user`);
         this.router.navigate(['/signin']);
       })),
-    { dispatch: false }
   );
 
   constructor(

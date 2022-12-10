@@ -25,7 +25,7 @@ export const selectStateUser = createSelector(
 
 export const selectUserId = createSelector(
   selectAuthState,
-  state => state.user?.id
+  state => state.user?.userId
 );
 
 export const selectUserRole = createSelector(

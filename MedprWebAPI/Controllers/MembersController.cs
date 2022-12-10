@@ -54,7 +54,7 @@ public class MembersController : ControllerBase
     [ProducesResponseType(typeof(FamilyModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] FamilyMemberModelRequest model)
+    public async Task<IActionResult> Create([FromBody] FamilyMemberModelRequest model)
     {
         try
         {

@@ -153,7 +153,7 @@ public class PrescriptionsController : ControllerBase
     [ProducesResponseType(typeof(PrescriptionModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] PrescriptionModelRequest model)
+    public async Task<IActionResult> Create([FromBody] PrescriptionModelRequest model)
     {
         try
         {
@@ -214,7 +214,7 @@ public class PrescriptionsController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit(Guid id, [FromForm] PrescriptionModelRequest model)
+    public async Task<IActionResult> Edit(Guid id, [FromBody] PrescriptionModelRequest model)
     {
         try
         {

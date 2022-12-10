@@ -150,7 +150,7 @@ public class AppointmentsController : ControllerBase
     [ProducesResponseType(typeof(AppointmentModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] AppointmentModelRequest model)
+    public async Task<IActionResult> Create([FromBody] AppointmentModelRequest model)
     {
         try
         {
@@ -211,7 +211,7 @@ public class AppointmentsController : ControllerBase
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Edit(Guid id, [FromForm] AppointmentModelRequest model)
+    public async Task<IActionResult> Edit(Guid id, [FromBody] AppointmentModelRequest model)
     {
         try
         {
@@ -229,6 +229,7 @@ public class AppointmentsController : ControllerBase
                 }
 
                 var sourceDto = await _appointmentService.GetAppointmentByIdAsync(model.Id);
+                dto.NotificationId = sourceDto.NotificationId;
 
                 // Refresh notification
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)

@@ -106,7 +106,7 @@ public class FamiliesController : ControllerBase
     [ProducesResponseType(typeof(FamilyModelResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Create([FromForm] FamilyModelRequest model)
+    public async Task<IActionResult> Create([FromBody] FamilyModelRequest model)
     {
         try
         {

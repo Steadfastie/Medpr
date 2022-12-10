@@ -8,8 +8,7 @@ $font-family: mat.font-family($typography-config);
   margin: 1rem;
   padding: 1rem;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   &.first{

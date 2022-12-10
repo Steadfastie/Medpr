@@ -23,7 +23,6 @@ export class CreateAppointmentComponent implements OnInit {
   doctors: Doctor[] = [];
   @Output() selectedDoctor = new EventEmitter<string>();
   userId?: string;
-  doctorChange?: Observable<string | null | undefined>;
 
   showSpinner: boolean = false;
   errorMessage?: string;
@@ -34,9 +33,7 @@ export class CreateAppointmentComponent implements OnInit {
     private DoctorsService: DoctorsService,
     private store: Store,
     private toastr: ToastrService
-  ) {
-    this.doctorChange = of(this.appointmentForm.value.doctorId);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.DoctorsService.getAllDoctors().subscribe(
@@ -47,12 +44,6 @@ export class CreateAppointmentComponent implements OnInit {
       .subscribe((userId) => {
         this.userId = userId;
       });
-
-      this.doctorChange?.pipe().subscribe(doctorId => {
-        if(typeof doctorId === "string") {
-          this.selectedDoctor.emit(doctorId);
-        }
-      })
   }
 
   appointmentForm = this.fb.group({
@@ -65,17 +56,22 @@ export class CreateAppointmentComponent implements OnInit {
     if (!this.showSpinner && this.appointmentForm.valid) {
       this.showSpinner = true;
 
+      let date = new Date(this.appointmentForm.value.date!);
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+
+      let dateTime = year + '-' + month + '-' + day + 'T21:00:00'
+
       const appointment: Appointment = {
         id: Guid.createEmpty().toString(),
-        date: new Date(this.appointmentForm.value.date!),
+        date: dateTime,
         place: this.appointmentForm.value.place!,
         userId: this.userId!,
         doctorId: this.appointmentForm.value.doctorId!,
       };
 
-      this.appointmentsService
-        .create(appointment)
-        .pipe()
+      this.appointmentsService.create(appointment).pipe()
         .subscribe({
           next: () => {
             this.showSpinner = false;
@@ -90,9 +86,19 @@ export class CreateAppointmentComponent implements OnInit {
     }
   }
 
+  selectDoctor(doctorId: any) {
+    if (doctorId.source){
+      this.selectedDoctor.emit(doctorId.source.value)
+    }
+    else{
+      this.selectedDoctor.emit(doctorId)
+    }
+  }
+
   cancel() {
     if (!this.showSpinner) {
       this.appointmentForm.reset();
+      this.selectDoctor('');
     }
   }
 

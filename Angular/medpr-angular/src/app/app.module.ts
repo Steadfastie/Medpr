@@ -43,6 +43,8 @@ import { AdminGuardService } from './services/auth/admin.guard';
 import { AuthReverseGuardService } from './services/auth/auth.reverse.guard';
 import { ErrorInterceptor } from './services/auth/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { DoctorInfoComponent } from './pages/doctors/doctor.info/doctor.info.component';
+import { HomeComponent } from './pages/home/home/home.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { ToastrModule } from 'ngx-toastr';
     DoctorCardComponent,
     CreateDoctorComponent,
     EditDoctorComponent,
+    DoctorInfoComponent,
 
     AppointmentsComponent,
     AppointmentCardComponent,
@@ -68,7 +71,8 @@ import { ToastrModule } from 'ngx-toastr';
 
     ErrorComponent,
     UserComponent,
-    SigninComponent
+    SigninComponent,
+    DoctorInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +92,7 @@ import { ToastrModule } from 'ngx-toastr';
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects]),
     RouterModule.forRoot([
-      { path: '', component: AppComponent, canActivate: [AuthGuardService] },
+      { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
       { path: 'drugs', component: DrugsComponent, canActivate: [AuthGuardService] },
       { path: 'doctors', component: DoctorsComponent, canActivate: [AuthGuardService] },
       { path: 'appointments', component: AppointmentsComponent, canActivate: [AuthGuardService] },

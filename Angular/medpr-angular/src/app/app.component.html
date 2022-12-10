@@ -1,2 +1,18 @@
-<div *ngIf="user">Hello, {{user.login}}</div>
+<mat-toolbar color="primary">
+    <mat-icon>add</mat-icon>
+    <div *ngIf="!user">
+        <button mat-flat-button class="nav-icon" color="accent" disabled>Medpr</button>
+    </div>
+
+    <div *ngIf="user">
+        <button mat-flat-button class="nav-icon" color="primary" routerLink="/">Medpr</button>
+        <button mat-flat-button class="nav-icon" color="primary" routerLink="/drugs">Drugs</button>
+        <button mat-flat-button class="nav-icon" color="primary" routerLink="/doctors">Doctors</button>
+        <button mat-flat-button class="nav-icon" color="primary" routerLink="/appointments">Appointments</button>
+        <span class="nav-spacer"></span>
+        <button mat-flat-button class="nav-icon" color="accent" routerLink="/user">{{user.login}}</button>
+        <button mat-flat-button class="nav-icon" color="warn" (click)="logout()">Sign out</button>
+    </div>
+
+  </mat-toolbar>
 <router-outlet></router-outlet>

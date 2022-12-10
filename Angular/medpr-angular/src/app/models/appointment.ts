@@ -3,8 +3,10 @@ import { User } from "./user";
 
 export interface Appointment {
   id: string;
-  date: Date;
+  date: string;
   place: string;
   userId: string;
   doctorId: string;
+  doctor?: Doctor;
+  user?: User;
 }
