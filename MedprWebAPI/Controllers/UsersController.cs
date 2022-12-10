@@ -70,7 +70,7 @@ public class UsersController : ControllerBase
                 Message = "Could not load users",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -116,7 +116,7 @@ public class UsersController : ControllerBase
                 Message = "Could not load user",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -213,7 +213,7 @@ public class UsersController : ControllerBase
                 Message = "Could not update user info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -263,7 +263,7 @@ public class UsersController : ControllerBase
                 Message = "Could not delete user from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 

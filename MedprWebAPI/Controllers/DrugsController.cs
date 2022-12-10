@@ -67,7 +67,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not load drugs",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -106,7 +106,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not load drug",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -155,7 +155,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not create drug",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -226,7 +226,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not update drug info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -269,7 +269,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not delete drug from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -306,7 +306,7 @@ public class DrugsController : ControllerBase
                 Message = "Could not load drug",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 }

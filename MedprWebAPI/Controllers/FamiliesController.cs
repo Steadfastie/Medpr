@@ -92,7 +92,7 @@ public class FamiliesController : ControllerBase
                 Message = "Could not load families",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -151,7 +151,7 @@ public class FamiliesController : ControllerBase
                 Message = "Could not create family",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -198,7 +198,7 @@ public class FamiliesController : ControllerBase
                 Message = "Could not delete family from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 

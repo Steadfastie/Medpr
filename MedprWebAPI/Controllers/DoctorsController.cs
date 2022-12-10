@@ -61,7 +61,7 @@ public class DoctorsController : ControllerBase
                 Message = "Could not load doctors",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -100,7 +100,7 @@ public class DoctorsController : ControllerBase
                 Message = "Could not load doctor",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -149,7 +149,7 @@ public class DoctorsController : ControllerBase
                 Message = "Could not create doctor",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -220,7 +220,7 @@ public class DoctorsController : ControllerBase
                 Message = "Could not update doctor info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -263,7 +263,7 @@ public class DoctorsController : ControllerBase
                 Message = "Could not delete doctor from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 }

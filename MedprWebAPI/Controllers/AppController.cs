@@ -49,8 +49,13 @@ public class AppController : ControllerBase
     /// <param name="errorModel">Model for message and status code</param>
     /// <returns></returns>
     [ApiExplorerSettings(IgnoreApi = true)]
-    public IActionResult Error(ErrorModel errorModel)
+    public IActionResult Error()
     {
+        ErrorModel errorModel = new()
+        {
+            Message = "Error was intentionally created",
+            StatusCode = StatusCodes.Status500InternalServerError,
+        };
         return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
     }
 
@@ -108,7 +113,7 @@ public class AppController : ControllerBase
                 Message = "Could not register new user",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -165,10 +170,10 @@ public class AppController : ControllerBase
             Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
             ErrorModel errorModel = new()
             {
-                Message = "Could not register new user",
+                Message = "Could not signin",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 

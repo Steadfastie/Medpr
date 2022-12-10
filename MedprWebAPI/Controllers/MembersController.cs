@@ -97,7 +97,7 @@ public class MembersController : ControllerBase
                 Message = "Could not attach user to family",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -156,7 +156,7 @@ public class MembersController : ControllerBase
                 Message = "Could not delete familyMember from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 

@@ -88,7 +88,7 @@ public class AppointmentsController : ControllerBase
                 Message = "Could not load appointments",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -136,7 +136,7 @@ public class AppointmentsController : ControllerBase
                 Message = "Could not load appointment",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -195,7 +195,7 @@ public class AppointmentsController : ControllerBase
                 Message = "Could not create appointment",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -284,7 +284,7 @@ public class AppointmentsController : ControllerBase
                 Message = "Could not update appointment info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -337,7 +337,7 @@ public class AppointmentsController : ControllerBase
                 Message = "Could not delete appointment from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 

@@ -88,7 +88,7 @@ public class VaccinationsController : ControllerBase
                 Message = "Could not load vaccinations",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -136,7 +136,7 @@ public class VaccinationsController : ControllerBase
                 Message = "Could not load vaccination",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -195,7 +195,7 @@ public class VaccinationsController : ControllerBase
                 Message = "Could not create vaccination",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -285,7 +285,7 @@ public class VaccinationsController : ControllerBase
                 Message = "Could not update vaccination info",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
@@ -338,7 +338,7 @@ public class VaccinationsController : ControllerBase
                 Message = "Could not delete vaccination from app",
                 StatusCode = StatusCodes.Status500InternalServerError,
             };
-            return RedirectToAction("Error", "App", errorModel);
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
         }
     }
 
