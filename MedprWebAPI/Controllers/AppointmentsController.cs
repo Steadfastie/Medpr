@@ -35,6 +35,8 @@ public class AppointmentsController : ControllerBase
     private readonly IMapper _mapper;
     private readonly INotificationService _notificationService;
     private readonly IHubContext<EventNotificationHub, INotificationHub> _eventNotification;
+    private readonly string NotificationMessage = "It's time for an appointment";
+    private readonly string MainEntityType = "appointments";
 
 
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
@@ -78,7 +80,7 @@ public class AppointmentsController : ControllerBase
             {
                 var responseModel = await FillResponseModel(dto);
 
-                models.Add(responseModel.GenerateLinks("appointments"));
+                models.Add(responseModel.GenerateLinks(MainEntityType));
             }
 
             if (models.Any())
@@ -131,7 +133,7 @@ public class AppointmentsController : ControllerBase
             {
                 var responseModel = await FillResponseModel(dto);
 
-                return Ok(responseModel.GenerateLinks("appontments"));
+                return Ok(responseModel.GenerateLinks(MainEntityType));
             }
             else
             {
@@ -182,7 +184,7 @@ public class AppointmentsController : ControllerBase
                 if(model.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                        .Schedule(() => _notificationService.SendNotification($"It's time for appointment planned on {dto.Date}"),
+                        .Schedule(() => _notificationService.SendNotification(NotificationMessage, MainEntityType, $"{dto.Id}"),
                         dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
@@ -190,7 +192,7 @@ public class AppointmentsController : ControllerBase
 
                 var responseModel = await FillResponseModel(dto);
 
-                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("appointments"));
+                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks(MainEntityType));
             }
             else
             {
@@ -245,7 +247,9 @@ public class AppointmentsController : ControllerBase
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto, _notificationService), dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                    dto.NotificationId = BackgroundJob.Schedule(
+                        () => _notificationService.SendNotification(NotificationMessage, MainEntityType, $"{dto.Id}"),
+                        dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
                 {
@@ -254,9 +258,9 @@ public class AppointmentsController : ControllerBase
                 }
                 if (sourceDto.NotificationId == null && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
-                    dto.NotificationId = BackgroundJob
-                    .Schedule(() => UserNotification.NotifyUser(dto, _notificationService),
-                    dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                    dto.NotificationId = BackgroundJob.Schedule(
+                        () => _notificationService.SendNotification(NotificationMessage, MainEntityType, $"{dto.Id}"),
+                        dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
                 var patchList = new List<PatchModel>();
@@ -280,7 +284,7 @@ public class AppointmentsController : ControllerBase
 
                 var responseModel = await FillResponseModel(dto);
 
-                return Ok(responseModel.GenerateLinks("appointments"));
+                return Ok(responseModel.GenerateLinks(MainEntityType));
             }
             else
             {

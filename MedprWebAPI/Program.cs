@@ -1,4 +1,3 @@
-using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
 using Microsoft.EntityFrameworkCore;

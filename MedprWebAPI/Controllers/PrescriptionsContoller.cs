@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Identity;
 using NuGet.Packaging;
 using MedprWebAPI.Utils;
 using Hangfire;
-using MedprWebAPI.Utils.Notifications;
 
 namespace MedprWebAPI.Controllers;
 
@@ -34,6 +33,8 @@ public class PrescriptionsController : ControllerBase
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
     private readonly INotificationService _notificationService;
+    private readonly string NotificationMessage = "It's time to take a pill";
+    private readonly string NotificationType = "prescription";
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
     public PrescriptionsController(IPrescriptionService prescriptionService,
         IDoctorService doctorService,
@@ -179,7 +180,7 @@ public class PrescriptionsController : ControllerBase
                 if (model.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                    .Schedule(() => UserNotification.NotifyUser(dto, _notificationService),
+                    .Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
                     dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
@@ -241,7 +242,7 @@ public class PrescriptionsController : ControllerBase
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto, _notificationService), 
+                    dto.NotificationId = BackgroundJob.Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"), 
                         dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
@@ -252,7 +253,7 @@ public class PrescriptionsController : ControllerBase
                 if (sourceDto.NotificationId == null && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                    .Schedule(() => UserNotification.NotifyUser(dto, _notificationService),
+                    .Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
                     dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 

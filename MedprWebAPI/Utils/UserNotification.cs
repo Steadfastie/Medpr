@@ -4,7 +4,6 @@ using MedprCore.Abstractions;
 using MedprCore.DTO;
 using MedprModels;
 using MedprModels.Interfaces;
-using MedprWebAPI.Utils.Notifications;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 
@@ -22,9 +21,5 @@ public static class UserNotification
     public static async Task NotifyUser<T>(T dto, INotificationService notificationService) where T : INotifyUser
     {
         Console.WriteLine($"User will be notified {dto.Date}");
-        if(notificationService != null)
-        {
-            await notificationService.SendNotification($"It's time for appointment planned on {dto.Date}");
-        }
     }
 }

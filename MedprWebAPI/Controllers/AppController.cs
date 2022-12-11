@@ -7,7 +7,6 @@ using MedprCore.DTO;
 using Serilog;
 using MedprModels.Responses;
 using MedprModels.Requests;
-using AspNetSample.WebAPI.Utils;
 
 namespace MedprWebAPI.Controllers;
 

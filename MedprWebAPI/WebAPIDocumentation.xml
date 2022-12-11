@@ -356,7 +356,16 @@
             <param name="id">Vaccine's id</param>
             <returns></returns>
         </member>
-        <member name="M:MedprWebAPI.Utils.UserNotification.NotifyUser``1(``0,MedprWebAPI.Utils.Notifications.INotificationService)">
+        <member name="M:MedprWebAPI.Utils.Notifications.NotificationService.SendNotification(System.String,System.String,System.String)">
+            <summary>
+            This method created and sends notification to Angular client
+            </summary>
+            <param name="message">Message to send in notification</param>
+            <param name="type">Entity type</param>
+            <param name="eventId">Id of entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Utils.UserNotification.NotifyUser``1(``0,MedprCore.Abstractions.INotificationService)">
             <summary>
             Plug method for future SignalR functionality
             </summary>

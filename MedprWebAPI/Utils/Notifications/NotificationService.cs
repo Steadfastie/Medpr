@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using MedprCore.Abstractions;
+using Microsoft.AspNetCore.SignalR;
 
 namespace MedprWebAPI.Utils.Notifications;
 
@@ -11,11 +12,20 @@ public class NotificationService: INotificationService
         _eventNotification = eventNotificationHub;
     }
 
-    public async Task SendNotification(string message)
+    /// <summary>
+    /// This method created and sends notification to Angular client
+    /// </summary>
+    /// <param name="message">Message to send in notification</param>
+    /// <param name="type">Entity type</param>
+    /// <param name="eventId">Id of entity</param>
+    /// <returns></returns>
+    public async Task SendNotification(string message, string type, string eventId)
     {
         var notification = new Notification
         {
-            Message = message
+            Message = message,
+            Type = type,
+            EventId = eventId
         };
         await _eventNotification.Clients.All.SendMessage(notification);
     }

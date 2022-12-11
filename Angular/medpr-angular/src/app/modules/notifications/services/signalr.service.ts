@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Notification } from '../models/notification';
 
@@ -11,7 +13,8 @@ export class SignalrService {
   private hubConnection!: signalR.HubConnection;
 
   constructor(
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
   ) {}
 
   public startConnection = () => {
@@ -36,6 +39,10 @@ export class SignalrService {
   showNotification(notification: Notification) {
     this.toastr.success(
       notification.message
-    );
+    ).onTap
+    .pipe(take(1))
+    .subscribe(()=> {
+      this.router.navigateByUrl(`${notification.type}/${notification.eventId}`);
+    })
   }
 }

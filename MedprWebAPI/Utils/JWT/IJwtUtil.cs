@@ -1,6 +1,6 @@
 ﻿using MedprModels.Responses;
 
-namespace AspNetSample.WebAPI.Utils;
+namespace MedprCore.Abstractions;
 
 public interface IJwtUtil
 {

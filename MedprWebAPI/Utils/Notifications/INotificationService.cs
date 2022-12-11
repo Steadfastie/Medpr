@@ -1,6 +1,6 @@
-﻿namespace MedprWebAPI.Utils.Notifications;
+﻿namespace MedprCore.Abstractions;
 
 public interface INotificationService
 {
-    Task SendNotification(string message);
+    Task SendNotification(string message, string type, string eventId);
 }

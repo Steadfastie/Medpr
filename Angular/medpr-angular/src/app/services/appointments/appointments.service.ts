@@ -15,6 +15,10 @@ export class AppointmentsService {
     return this.apiService.get('appointments', {}).pipe();
   }
 
+  getAppointmentById(id: string): Observable<Appointment> {
+    return this.apiService.get(`appointments/${id}`, {}).pipe();
+  }
+
   create(appointment: Appointment): Observable<Appointment> {
     return this.apiService.post('appointments', appointment).pipe();
   }

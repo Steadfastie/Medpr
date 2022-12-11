@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using MedprCore.Abstractions;
 using MedprDB.Entities;
 using MedprModels.Responses;
 using Microsoft.IdentityModel.Tokens;
