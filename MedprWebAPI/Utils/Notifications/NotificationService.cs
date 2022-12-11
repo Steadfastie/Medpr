@@ -19,5 +19,4 @@ public class NotificationService: INotificationService
         };
         await _eventNotification.Clients.All.SendMessage(notification);
     }
-
 }

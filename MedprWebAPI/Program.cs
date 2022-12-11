@@ -139,7 +139,7 @@ public class Program
         builder.Services.AddScoped<IPrescriptionService, PrescriptionServiceCqs>();
 
         builder.Services.AddScoped<IJwtUtil, JwtUtilSha256>();
-        builder.Services.AddSingleton<INotificationService, NotificationService>();
+        builder.Services.AddScoped<INotificationService, NotificationService>();
 
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
         builder.Services.AddMediatR(typeof(ClassToAddMediator).Assembly);

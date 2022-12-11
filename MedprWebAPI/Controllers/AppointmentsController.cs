@@ -182,7 +182,7 @@ public class AppointmentsController : ControllerBase
                 if(model.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                        .Schedule(() => UserNotification.NotifyUser(dto, _notificationService),
+                        .Schedule(() => _notificationService.SendNotification($"It's time for appointment planned on {dto.Date}"),
                         dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
