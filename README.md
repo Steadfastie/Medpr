@@ -41,7 +41,7 @@ Main user: firstuser@gmail.com | 8yQD!yya
   7. Authentication and authorization for WebAPI using JWT (✔️)
   8. Reimplement MVC app fucntionality for WebAPI project (✔️)
   9. Notifications Hangfire part (✔️)
-  10. Notifications with SignalR for appointments, prescriptions and vaccinations (🚧)
+  10. Notifications with SignalR for appointments, prescriptions and vaccinations (✔️)
   ## Angular project history
   1. Angular Material (✔️)
   2. Reactive forms (✔️)
@@ -52,4 +52,5 @@ Main user: firstuser@gmail.com | 8yQD!yya
   7. Authentication guard (✔️)
   8. Interceptors adding JWT to requests (✔️)
   9. Notifications toastr (✔️)
-  9. SignalR notifications (🚧 ⬅ 2.10)
+  10. SignalR notifications (✔️ ⬅ 2.10)
+  11. Scale Angular client to every entity provided (🚧)
