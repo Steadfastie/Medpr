@@ -356,11 +356,13 @@
             <param name="id">Vaccine's id</param>
             <returns></returns>
         </member>
-        <member name="M:MedprWebAPI.Utils.UserNotification.NotifyUser``1(``0)">
+        <member name="M:MedprWebAPI.Utils.UserNotification.NotifyUser``1(``0,MedprWebAPI.Utils.Notifications.INotificationService)">
             <summary>
             Plug method for future SignalR functionality
             </summary>
             <typeparam name="T">Model with date, user info and notification id</typeparam>
+            <param name="dto">Object to form notification</param>
+            <param name="notificationService">SignalR service</param>
             <param name="model">Model</param>
         </member>
         <member name="T:MedprWebAPI.Utils.WardedPeople">

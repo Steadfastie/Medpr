@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Identity;
 using NuGet.Packaging;
 using MedprWebAPI.Utils;
 using Hangfire;
+using MedprWebAPI.Utils.Notifications;
+using Microsoft.AspNetCore.SignalR;
 
 namespace MedprWebAPI.Controllers;
 
@@ -31,6 +33,10 @@ public class AppointmentsController : ControllerBase
     private readonly IDoctorService _doctorService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
+    private readonly INotificationService _notificationService;
+    private readonly IHubContext<EventNotificationHub, INotificationHub> _eventNotification;
+
+
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
     public AppointmentsController(IAppointmentService appointmentService,
         IDoctorService doctorService,
@@ -38,7 +44,9 @@ public class AppointmentsController : ControllerBase
         IFamilyMemberService familyMemberService,
         IUserService userService,
         IMapper mapper,
-        UserManager<IdentityUser<Guid>> userManager)
+        UserManager<IdentityUser<Guid>> userManager,
+        INotificationService notificationService,
+        IHubContext<EventNotificationHub, INotificationHub> eventNotificationHub)
     {
         _appointmentService = appointmentService;
         _doctorService = doctorService;
@@ -47,6 +55,8 @@ public class AppointmentsController : ControllerBase
         _userManager = userManager;
         _familyMemberService = familyMemberService;
         _familyService = familyService;
+        _notificationService = notificationService;
+        _eventNotification = eventNotificationHub;
     }
 
     /// <summary>
@@ -172,8 +182,8 @@ public class AppointmentsController : ControllerBase
                 if(model.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                    .Schedule(() => UserNotification.NotifyUser(dto),
-                    dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                        .Schedule(() => UserNotification.NotifyUser(dto, _notificationService),
+                        dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
                 await _appointmentService.CreateAppointmentAsync(dto);
@@ -235,7 +245,7 @@ public class AppointmentsController : ControllerBase
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto), dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                    dto.NotificationId = BackgroundJob.Schedule(() => UserNotification.NotifyUser(dto, _notificationService), dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
                 {
@@ -245,7 +255,7 @@ public class AppointmentsController : ControllerBase
                 if (sourceDto.NotificationId == null && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                    .Schedule(() => UserNotification.NotifyUser(dto),
+                    .Schedule(() => UserNotification.NotifyUser(dto, _notificationService),
                     dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 

@@ -4,25 +4,27 @@ using MedprCore.Abstractions;
 using MedprCore.DTO;
 using MedprModels;
 using MedprModels.Interfaces;
+using MedprWebAPI.Utils.Notifications;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 
 namespace MedprWebAPI.Utils;
 
 public static class UserNotification
 {
-    //private readonly IUserService _userService;
-    //public UserNotification(IUserService userService)
-    //{
-    //    _userService = userService;
-    //}
-
     /// <summary>
     /// Plug method for future SignalR functionality
     /// </summary>
     /// <typeparam name="T">Model with date, user info and notification id</typeparam>
+    /// <param name="dto">Object to form notification</param>
+    /// <param name="notificationService">SignalR service</param>
     /// <param name="model">Model</param>
-    public static async Task NotifyUser<T>(T dto) where T : INotifyUser
+    public static async Task NotifyUser<T>(T dto, INotificationService notificationService) where T : INotifyUser
     {
         Console.WriteLine($"User will be notified {dto.Date}");
+        if(notificationService != null)
+        {
+            await notificationService.SendNotification($"It's time for appointment planned on {dto.Date}");
+        }
     }
 }

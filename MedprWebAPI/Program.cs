@@ -29,6 +29,7 @@ using MedprBusiness.ServiceImplimentations.Cqs;
 using Microsoft.OpenApi.Models;
 using Hangfire;
 using Hangfire.SqlServer;
+using MedprWebAPI.Utils.Notifications;
 
 namespace MedprWebAPI;
 
@@ -37,6 +38,8 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddSignalR();
 
         builder.Host.UseSerilog((ctx, lc) =>
         lc.WriteTo.File(
@@ -51,9 +54,10 @@ public class Program
             options.AddPolicy("medpr", policyBuilder =>
             {
                 policyBuilder
+                    .WithOrigins("http://localhost:4200")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowAnyOrigin();
+                    .AllowCredentials();
             });
         });
 
@@ -135,6 +139,7 @@ public class Program
         builder.Services.AddScoped<IPrescriptionService, PrescriptionServiceCqs>();
 
         builder.Services.AddScoped<IJwtUtil, JwtUtilSha256>();
+        builder.Services.AddSingleton<INotificationService, NotificationService>();
 
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
         builder.Services.AddMediatR(typeof(ClassToAddMediator).Assembly);
@@ -179,15 +184,17 @@ public class Program
             app.UseSwaggerUI();
         }
 
+        app.UseDefaultFiles();
         app.UseStaticFiles();
         app.UseHangfireDashboard();
 
         app.UseHttpsRedirection();
-
         app.UseCors("medpr");
 
         app.UseAuthentication();
         app.UseAuthorization();
+
+        app.MapHub<EventNotificationHub>("/notify");
 
         app.MapControllers();
 
