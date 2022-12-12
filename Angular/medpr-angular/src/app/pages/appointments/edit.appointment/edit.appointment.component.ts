@@ -3,9 +3,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
 import { Appointment } from 'src/app/models/appointment';
 import { Doctor } from 'src/app/models/doctor';
+import { AppointmentsActionsService } from 'src/app/services/appointments/appointments.actions.service';
 import { AppointmentsService } from 'src/app/services/appointments/appointments.service';
+import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 import { selectUserId } from 'src/app/store/app.states';
 
@@ -18,7 +21,6 @@ import { selectUserId } from 'src/app/store/app.states';
 export class EditAppointmentComponent implements OnInit {
   @Input() appointment?: Appointment;
   @Output() deselect = new EventEmitter<void>();
-  @Output() selectedDoctor = new EventEmitter<string>();
   showSpinner: boolean = false;
   errorMessage?: string;
   userId?: string;
@@ -26,9 +28,12 @@ export class EditAppointmentComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private AppointmentsService: AppointmentsService,
+    private actions: AppointmentsActionsService,
     private DoctorsService: DoctorsService,
+    private doctorActions: DoctorsActionsService,
     private store: Store,
-    private router: Router) { }
+    private toastr: ToastrService,
+    ) { }
 
   ngOnInit(): void {
     this.initialize();
@@ -56,7 +61,7 @@ export class EditAppointmentComponent implements OnInit {
         place: this.appointment.place,
         doctorId: this.appointment.doctor?.id!,
       })
-      this.selectDoctor(this.appointment.doctor?.id!)
+      this.doctorActions.emitDoctorSelect(this.appointment.doctor?.id!)
     }
   }
 
@@ -87,14 +92,15 @@ export class EditAppointmentComponent implements OnInit {
       if (JSON.stringify(modifiedAppointment) !== JSON.stringify(initialAppointment)){
         this.AppointmentsService.patch(modifiedAppointment).pipe().subscribe({
           next: (appointment) => {
-            this.appointment = appointment;
-            this.initialize();
             this.showSpinner = false;
-            window.location.reload();
+            this.actions.emitAppointmentResponse(appointment);
+            this.toastr.success(`Success`,`${appointment.date} updated`);
+            this.closeEdit();
           },
           error: (err) => {
             this.showSpinner = false;
             console.log(`${err}`);
+            this.toastr.success(`Failed`,`${modifiedAppointment.date} is still the same`);
             this.errorMessage = "Could not modify appointment";
           },
         });
@@ -118,16 +124,12 @@ export class EditAppointmentComponent implements OnInit {
 
   closeEdit(){
     if (!this.showSpinner){
+      this.initialize();
       this.deselect.emit();
     }
   }
 
   selectDoctor(doctorId: any) {
-    if (doctorId.source){
-      this.selectedDoctor.emit(doctorId.source.value)
-    }
-    else{
-      this.selectedDoctor.emit(doctorId)
-    }
+    this.doctorActions.emitDoctorSelect(doctorId.source.value)
   }
 }

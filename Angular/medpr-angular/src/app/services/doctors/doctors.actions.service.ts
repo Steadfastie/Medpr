@@ -6,14 +6,22 @@ import { Doctor } from 'src/app/models/doctor';
   providedIn: 'root',
 })
 export class DoctorsActionsService {
-
-  private doctorEvent = new Subject<Doctor>();
+  private responseDoctorEvent = new Subject<Doctor>();
+  private selectDoctorEvent = new Subject<string>();
 
   emitDoctorResponse(doctor: Doctor) {
-    this.doctorEvent.next(doctor);
+    this.responseDoctorEvent.next(doctor);
   }
 
   doctorResponseListner() {
-    return this.doctorEvent.asObservable();
+    return this.responseDoctorEvent.asObservable();
+  }
+
+  emitDoctorSelect(doctorId: string) {
+    this.selectDoctorEvent.next(doctorId);
+  }
+
+  doctorSelectListner() {
+    return this.selectDoctorEvent.asObservable();
   }
 }

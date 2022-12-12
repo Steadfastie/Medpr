@@ -12,16 +12,17 @@ import { Doctor } from 'src/app/models/doctor';
 import { Store } from '@ngrx/store';
 import { selectStateUser } from 'src/app/store/app.states';
 import { MatOptionSelectionChange } from '@angular/material/core';
+import { AppointmentsActionsService } from 'src/app/services/appointments/appointments.actions.service';
+import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 
 @Component({
   selector: 'create-appointment',
   templateUrl: './create.appointment.component.html',
-  styleUrls: ['./create.appointment.component.scss'],
+  styleUrls: ['./create.appointment.component.scss']
 })
 export class CreateAppointmentComponent implements OnInit {
   @Output() deselect = new EventEmitter<void>();
   doctors: Doctor[] = [];
-  @Output() selectedDoctor = new EventEmitter<string>();
   userId?: string;
 
   showSpinner: boolean = false;
@@ -32,7 +33,9 @@ export class CreateAppointmentComponent implements OnInit {
     private appointmentsService: AppointmentsService,
     private DoctorsService: DoctorsService,
     private store: Store,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private appointmentActions: AppointmentsActionsService,
+    private doctorActions: DoctorsActionsService,
   ) {}
 
   ngOnInit(): void {
@@ -75,11 +78,14 @@ export class CreateAppointmentComponent implements OnInit {
         .subscribe({
           next: () => {
             this.showSpinner = false;
-            window.location.reload();
+            this.appointmentActions.emitAppointmentResponse(appointment);
+            this.toastr.success(`Created`,`${appointment.date} is now in the app`);
+            this.deselect.emit();
           },
           error: (err) => {
             this.showSpinner = false;
             console.log(err);
+            this.toastr.success(`Failed`,`${appointment.date} is still in your dreams`);
             this.errorMessage = 'Could not create appointment';
           },
         });
@@ -87,23 +93,19 @@ export class CreateAppointmentComponent implements OnInit {
   }
 
   selectDoctor(doctorId: any) {
-    if (doctorId.source){
-      this.selectedDoctor.emit(doctorId.source.value)
-    }
-    else{
-      this.selectedDoctor.emit(doctorId)
-    }
+    this.doctorActions.emitDoctorSelect(doctorId.source.value)
   }
 
   cancel() {
     if (!this.showSpinner) {
       this.appointmentForm.reset();
-      this.selectDoctor('');
+      this.doctorActions.emitDoctorSelect('');
     }
   }
 
   closeCreate() {
     if (!this.showSpinner) {
+      this.doctorActions.emitDoctorSelect('');
       this.deselect.emit();
     }
   }

@@ -11,7 +11,7 @@
     <!-- Blank creation -->
     <div *ngIf="!appointment && !selected">
       <mat-card-content>
-        <button mat-flat-button (click)="createFromBlank()">
+        <button mat-flat-button (click)="selectToggle()">
           <mat-icon>add</mat-icon>
           Create from blank
         </button>
@@ -20,7 +20,7 @@
 
     <!-- Selected blank creation  -->
     <div *ngIf="!appointment && selected">
-      <create-appointment (deselect)="selectToggle()" (selectedDoctor)="selectDoctor($event)"></create-appointment>
+      <create-appointment (deselect)="selectToggle()"></create-appointment>
     </div>
 
     <!-- Appointment -->
@@ -39,8 +39,7 @@
     <!-- Selected appointment  -->
     <div *ngIf="appointment && selected">
       <edit-appointment [appointment]="appointment"
-        (deselect)="selectToggle()"
-        (selectedDoctor)="selectDoctor($event)">
+        (deselect)="selectToggle()">
       </edit-appointment>
     </div>
   </mat-card>
