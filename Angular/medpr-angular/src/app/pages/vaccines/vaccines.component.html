@@ -1,0 +1,12 @@
+<div class="cardContainer first">
+  <vaccine-card></vaccine-card>
+</div>
+
+<div class="cardContainer">
+  <vaccine-card
+    *ngFor="let vaccine of vaccines"
+    [vaccine]="vaccine">
+  </vaccine-card>
+</div>
+
+

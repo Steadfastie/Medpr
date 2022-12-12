@@ -1,0 +1,39 @@
+<mat-spinner *ngIf="showSpinner" color="accent"></mat-spinner>
+
+<form *ngIf="!showSpinner && !errorMessage" class="form" [formGroup]="vaccineForm">
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="..name" formControlName="name">
+    <mat-error *ngIf="vaccineForm.controls['name'].errors?.['minlength']">Name is too short</mat-error>
+    <mat-error *ngIf="vaccineForm.controls['name'].errors?.['maxlength']">Name is too long</mat-error>
+    <mat-error *ngIf="vaccineForm.controls['name'].errors?.['required']">Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Reason</mat-label>
+    <input matInput placeholder="..saves from" formControlName="reason">
+    <mat-error *ngIf="vaccineForm.controls['reason'].errors?.['minlength']">Reason is too short</mat-error>
+    <mat-error *ngIf="vaccineForm.controls['reason'].errors?.['maxlength']">Reason is too short</mat-error>
+    <mat-error *ngIf="vaccineForm.controls['reason'].errors?.['required']">Reason is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" type="number">
+    <mat-error *ngIf="vaccineForm.controls['price'].errors?.['required']">Experience is required</mat-error>
+    <mat-error *ngIf="vaccineForm.controls['price'].errors?.['min']">Let her/him leave uni first</mat-error>
+  </mat-form-field>
+</form>
+<mat-card-actions *ngIf="!showSpinner && !errorMessage">
+  <button mat-icon-button (click)="cancel()">
+    <mat-icon>undo</mat-icon>
+  </button>
+  <button mat-icon-button (click)="closeCreate()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button mat-icon-button (click)="submit()">
+    <mat-icon>send</mat-icon>
+  </button>
+</mat-card-actions>
+
+<error *ngIf="errorMessage" [message]="errorMessage"></error>

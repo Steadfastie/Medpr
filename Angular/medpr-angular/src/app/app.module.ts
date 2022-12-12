@@ -29,6 +29,13 @@ import { DoctorsComponent } from './pages/doctors/doctors.component';
 import { DoctorCardComponent } from './pages/doctors/doctor.card/doctor.card.component';
 import { CreateDoctorComponent } from './pages/doctors/create.doctor/create.doctor.component';
 import { EditDoctorComponent } from './pages/doctors/edit.doctor/edit.doctor.component';
+import { DoctorInfoComponent } from './pages/doctors/doctor.info/doctor.info.component';
+
+import { VaccinesComponent } from './pages/vaccines/vaccines.component';
+import { VaccineCardComponent } from './pages/vaccines/vaccine.card/vaccine.card.component';
+import { CreateVaccineComponent } from './pages/vaccines/create.vaccine/create.vaccine.component';
+import { EditVaccineComponent } from './pages/vaccines/edit.vaccine/edit.vaccine.component';
+import { VaccineInfoComponent } from './pages/vaccines/vaccine.info/vaccine.info.component';
 
 import { AppointmentsComponent } from './pages/appointments/appointments.component';
 import { AppointmentCardComponent } from './pages/appointments/appointment.card/appointment.card.component';
@@ -39,7 +46,6 @@ import { ErrorComponent } from './pages/error/error.component';
 import { UserComponent } from './pages/user/user/user.component';
 import { ErrorInterceptor } from './services/auth/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { DoctorInfoComponent } from './pages/doctors/doctor.info/doctor.info.component';
 import { HomeComponent } from './pages/home/home/home.component';
 
 @NgModule({
@@ -60,6 +66,12 @@ import { HomeComponent } from './pages/home/home/home.component';
     CreateDoctorComponent,
     EditDoctorComponent,
     DoctorInfoComponent,
+
+    VaccinesComponent,
+    VaccineCardComponent,
+    CreateVaccineComponent,
+    EditVaccineComponent,
+    VaccineInfoComponent,
 
     AppointmentsComponent,
     AppointmentCardComponent,
