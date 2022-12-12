@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Doctor } from 'src/app/models/doctor';
+import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 
 
@@ -18,7 +20,9 @@ export class EditDoctorComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private DoctorsService: DoctorsService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService,
+    private actions: DoctorsActionsService) { }
 
   ngOnInit(): void {
     this.initialize();
@@ -54,14 +58,15 @@ export class EditDoctorComponent implements OnInit {
       if (JSON.stringify(modifiedDoctor) !== JSON.stringify(initialDoctor)){
         this.DoctorsService.patch(modifiedDoctor).pipe().subscribe({
           next: (doctor) => {
-            this.doctor = doctor;
-            this.initialize();
             this.showSpinner = false;
+            this.actions.emitDoctorResponse(doctor);
+            this.toastr.success(`Success`,`${doctor.name} updated`);
             this.closeEdit();
           },
           error: (err) => {
             this.showSpinner = false;
             console.log(`${err}`);
+            this.toastr.success(`Failed`,`${modifiedDoctor.name} is still the same`);
             this.errorMessage = "Could not modify doctor";
           },
         });

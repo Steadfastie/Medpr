@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import { Doctor } from 'src/app/models/doctor';
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
+import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 
 @Component({
   selector: 'create-doctor',
@@ -17,7 +18,8 @@ export class CreateDoctorComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private doctorsService: DoctorsService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private actions: DoctorsActionsService) { }
 
   ngOnInit(): void {
   }
@@ -36,13 +38,16 @@ export class CreateDoctorComponent implements OnInit {
         experience: Number(this.doctorForm.value.experience!)
       };
       this.doctorsService.create(doctor).pipe().subscribe({
-        next: () => {
+        next: (doctor) => {
           this.showSpinner = false;
-          window.location.reload();
+          this.actions.emitDoctorResponse(doctor);
+          this.toastr.success(`Created`,`${doctor.name} is now in the app`);
+          this.deselect.emit();
         },
         error: (err) => {
           this.showSpinner = false;
           console.log(err);
+          this.toastr.success(`Failed`,`${doctor.name} is still in your dreams`);
           this.errorMessage = "Could not create doctor";
         },
       });
