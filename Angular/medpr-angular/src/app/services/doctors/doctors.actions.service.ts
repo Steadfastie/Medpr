@@ -8,6 +8,7 @@ import { Doctor } from 'src/app/models/doctor';
 export class DoctorsActionsService {
   private responseDoctorEvent = new Subject<Doctor>();
   private selectDoctorEvent = new Subject<string>();
+  private deleteDoctorEvent = new Subject<string>();
 
   emitDoctorResponse(doctor: Doctor) {
     this.responseDoctorEvent.next(doctor);
@@ -15,6 +16,14 @@ export class DoctorsActionsService {
 
   doctorResponseListner() {
     return this.responseDoctorEvent.asObservable();
+  }
+
+  emitDoctorDelete(id: string) {
+    this.deleteDoctorEvent.next(id);
+  }
+
+  doctorDeleteListner() {
+    return this.deleteDoctorEvent.asObservable();
   }
 
   emitDoctorSelect(doctorId: string) {

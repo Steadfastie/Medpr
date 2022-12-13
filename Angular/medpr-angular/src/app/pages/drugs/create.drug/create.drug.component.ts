@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
 import { DrugsService } from 'src/app/services/drugs/drugs.service';
+import { DrugsActionsService } from 'src/app/services/drugs/drugs.actions.service';
 
 @Component({
   selector: 'create-drug',
@@ -18,6 +19,7 @@ export class CreateDrugComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private drugsService: DrugsService,
+    private actions: DrugsActionsService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -46,13 +48,16 @@ export class CreateDrugComponent implements OnInit {
         price: Number(this.drugForm.value.price!)
       };
       this.drugsService.create(drug).pipe().subscribe({
-        next: () => {
+        next: (drug) => {
           this.showSpinner = false;
-          window.location.reload();
+          this.actions.emitDrugResponse(drug);
+          this.toastr.success(`Created`,`${drug.name} is now in the app`);
+          this.deselect.emit();
         },
         error: (err) => {
           this.showSpinner = false;
           console.log(err);
+          this.toastr.error(`Failed`,`${drug.name} is still in your dreams`);
           this.errorMessage = "Could not create drug";
         },
       });

@@ -47,7 +47,7 @@ export class CreateDoctorComponent implements OnInit {
         error: (err) => {
           this.showSpinner = false;
           console.log(err);
-          this.toastr.success(`Failed`,`${doctor.name} is still in your dreams`);
+          this.toastr.error(`Failed`,`${doctor.name} is still in your dreams`);
           this.errorMessage = "Could not create doctor";
         },
       });

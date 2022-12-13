@@ -16,6 +16,7 @@ export class VaccinesComponent {
 
   ngOnInit() {
     this.vaccinesService.getAllVaccines().subscribe(vaccines => this.vaccines = vaccines);
+
     this.actions.vaccineResponseListner().subscribe(vaccineFromAction => {
       const presentVaccine = this.vaccines.find((presentVaccine) => {
         return presentVaccine.id === vaccineFromAction.id;
@@ -26,6 +27,13 @@ export class VaccinesComponent {
       else{
         this.vaccines.splice(this.vaccines.indexOf(presentVaccine), 1, vaccineFromAction);
       }
+    });
+
+    this.actions.vaccineDeleteListner().subscribe(vaccineId => {
+      const presentVaccine = this.vaccines.find((presentVaccine) => {
+        return presentVaccine.id === vaccineId;
+      })
+      this.vaccines.splice(this.vaccines.indexOf(presentVaccine!), 1);
     });
   }
 }

@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Drug } from 'src/app/models/drug';
+import { DrugsActionsService } from 'src/app/services/drugs/drugs.actions.service';
 import { DrugsService } from 'src/app/services/drugs/drugs.service';
 
 
@@ -18,7 +20,8 @@ export class EditDrugComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private DrugsService: DrugsService,
-    private router: Router) { }
+    private actions: DrugsActionsService,
+    private toastr: ToastrService,) { }
 
   ngOnInit(): void {
     this.initialize();
@@ -58,14 +61,15 @@ export class EditDrugComponent implements OnInit {
       if (JSON.stringify(modifiedDrug) !== JSON.stringify(initialDrug)){
         this.DrugsService.patch(modifiedDrug).pipe().subscribe({
           next: (drug) => {
-            this.drug = drug;
-            this.initialize();
             this.showSpinner = false;
+            this.actions.emitDrugResponse(drug);
+            this.toastr.success(`Success`,`${drug.name} updated`);
             this.closeEdit();
           },
           error: (err) => {
             this.showSpinner = false;
             console.log(`${err}`);
+            this.toastr.error(`Failed`,`${modifiedDrug.name} is still the same`);
             this.errorMessage = "Could not modify drug";
           },
         });
@@ -80,9 +84,13 @@ export class EditDrugComponent implements OnInit {
       this.DrugsService.delete(this.drug!.id).pipe().subscribe({
         next: () => {
           this.showSpinner = false;
-          window.location.reload();
+          this.toastr.success(`Success`, `${this.drug!.name} removed`);
+          this.actions.emitDrugDelete(this.drug!.id);
         },
-        error: (err) => console.log(`${err.message}`),
+        error: (err) => {
+          this.toastr.warning(`Failed`, `${this.drug!.name} still persist`);
+          console.log(`${err.message}`);
+        },
       });
     }
   }

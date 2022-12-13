@@ -1,0 +1,12 @@
+<div class="cardContainer first" *ngIf="!idProvided">
+  <vaccination-card></vaccination-card>
+</div>
+
+<div class="cardContainer">
+  <vaccination-card
+    *ngFor="let vaccination of vaccinations"
+    [vaccination]="vaccination">
+  </vaccination-card>
+</div>
+
+

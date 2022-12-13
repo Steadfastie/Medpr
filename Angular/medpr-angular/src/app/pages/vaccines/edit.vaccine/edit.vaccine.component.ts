@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Vaccine } from 'src/app/models/vaccine';
 import { VaccinesActionsService } from 'src/app/services/vaccines/vaccines.actions.service';
@@ -20,7 +19,6 @@ export class EditVaccineComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private VaccinesService: VaccinesService,
-    private router: Router,
     private toastr: ToastrService,
     private actions: VaccinesActionsService) { }
 
@@ -84,9 +82,13 @@ export class EditVaccineComponent implements OnInit {
       this.VaccinesService.delete(this.vaccine!.id).pipe().subscribe({
         next: () => {
           this.showSpinner = false;
-          window.location.reload();
+          this.toastr.success(`Success`, `${this.vaccine!.name} removed`);
+          this.actions.emitVaccineDelete(this.vaccine!.id);
         },
-        error: (err) => console.log(`${err.message}`),
+        error: (err) => {
+          this.toastr.error(`Failed`, `${this.vaccine!.name} still persist`);
+          console.log(`${err.message}`);
+        },
       });
     }
   }

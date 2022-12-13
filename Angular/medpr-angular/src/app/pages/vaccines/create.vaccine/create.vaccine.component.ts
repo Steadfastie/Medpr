@@ -49,7 +49,7 @@ export class CreateVaccineComponent implements OnInit {
         error: (err) => {
           this.showSpinner = false;
           console.log(err);
-          this.toastr.success(`Failed`,`${vaccine.name} is still in your dreams`);
+          this.toastr.error(`Failed`,`${vaccine.name} is still in your dreams`);
           this.errorMessage = "Could not create vaccine";
         },
       });

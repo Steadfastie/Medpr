@@ -1,8 +1,11 @@
 <div class="container">
-  <mat-icon>error_outline</mat-icon>
-  <div>{{message}}</div>
-  <mat-button-toggle-group>
-    <mat-button-toggle (click)="reloadPage()">Reload page</mat-button-toggle>
-    <mat-button-toggle (click)="back()">Go back</mat-button-toggle>
-  </mat-button-toggle-group>
+  <mat-card-content>
+    <mat-icon>error_outline</mat-icon> {{message}}
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-button-toggle-group>
+      <mat-button-toggle (click)="reloadPage()">Reload page</mat-button-toggle>
+      <mat-button-toggle (click)="back()">Go back</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card-footer>
 </div>

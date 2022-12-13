@@ -1,0 +1,54 @@
+<div class="container">
+  <mat-card *ngIf="vaccine"  class="drugInfo">
+    <vaccine-info [vaccine]="vaccine"></vaccine-info>
+  </mat-card>
+
+  <div *ngIf="vaccine" class="connect">
+    <mat-icon color="accent">attachment</mat-icon>
+  </div>
+
+  <mat-card [class.selected]="selected" class="main">
+    <!-- Blank creation -->
+    <div *ngIf="!vaccination && !selected">
+      <mat-card-content>
+        <button mat-flat-button (click)="selectToggle()">
+          <mat-icon>add</mat-icon>
+          Create from blank
+        </button>
+      </mat-card-content>
+    </div>
+
+    <!-- Selected blank creation  -->
+    <div *ngIf="!vaccination && selected">
+      <create-vaccination (deselect)="selectToggle()"></create-vaccination>
+    </div>
+
+    <!-- Vaccination -->
+    <div *ngIf="vaccination && !selected">
+      <mat-card-header>
+        <mat-card-title class="row">
+          <div>{{vaccination.date | date:'fullDate'}}</div>
+          <button mat-mini-fab color="warn" class="edit-button" (click)="selectToggle()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Protection until {{vaccination.date + vaccination.daysOfProtection | date:'fullDate'}}<mat-icon>location_on</mat-icon></mat-card-content>
+    </div>
+
+    <!-- Selected vaccination  -->
+    <div *ngIf="vaccination && selected">
+      <edit-vaccination [vaccination]="vaccination"
+        (deselect)="selectToggle()">
+      </edit-vaccination>
+    </div>
+  </mat-card>
+</div>
+
+
+
+
+
+
+
+

@@ -23,7 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     this.router = this.injector.get(Router);
     return next.handle(request).pipe(
       catchError(err => {
-        const errorMessage = err.error?.detail || err.error?.title || err.status;
+        const errorMessage = err.error?.detail || err.error?.title || err.status || "Something went wrong";
         switch (err.status) {
           case 401:
             this.toastr?.error(`Sorry`, `Looks like it's time to signin again`);

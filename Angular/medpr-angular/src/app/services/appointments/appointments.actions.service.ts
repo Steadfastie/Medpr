@@ -7,6 +7,7 @@ import { Appointment } from 'src/app/models/appointment';
 })
 export class AppointmentsActionsService {
   private appointmentEvent = new Subject<Appointment>();
+  private deleteAppointmentEvent = new Subject<string>();
 
   emitAppointmentResponse(appointment: Appointment) {
     this.appointmentEvent.next(appointment);
@@ -14,5 +15,13 @@ export class AppointmentsActionsService {
 
   appointmentResponseListner() {
     return this.appointmentEvent.asObservable();
+  }
+
+  emitAppointmentDelete(id: string) {
+    this.deleteAppointmentEvent.next(id);
+  }
+
+  appointmentDeleteListner() {
+    return this.deleteAppointmentEvent.asObservable();
   }
 }

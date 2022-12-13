@@ -1,4 +1,3 @@
-import { map, Observable, of } from 'rxjs';
 import { selectUserId } from './../../../store/app.states';
 import { ToastrService } from 'ngx-toastr';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -10,10 +9,9 @@ import { AppointmentsService } from 'src/app/services/appointments/appointments.
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 import { Doctor } from 'src/app/models/doctor';
 import { Store } from '@ngrx/store';
-import { selectStateUser } from 'src/app/store/app.states';
-import { MatOptionSelectionChange } from '@angular/material/core';
 import { AppointmentsActionsService } from 'src/app/services/appointments/appointments.actions.service';
 import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'create-appointment',
@@ -76,16 +74,16 @@ export class CreateAppointmentComponent implements OnInit {
 
       this.appointmentsService.create(appointment).pipe()
         .subscribe({
-          next: () => {
+          next: (responseAppointment) => {
             this.showSpinner = false;
-            this.appointmentActions.emitAppointmentResponse(appointment);
-            this.toastr.success(`Created`,`${appointment.date} is now in the app`);
-            this.deselect.emit();
+            this.appointmentActions.emitAppointmentResponse(responseAppointment);
+            this.toastr.success(`Appointment on ${formatDate(responseAppointment.date, 'longDate', 'en-US')} is now in the app`, `Created`);
+            this.closeCreate();
           },
           error: (err) => {
             this.showSpinner = false;
             console.log(err);
-            this.toastr.success(`Failed`,`${appointment.date} is still in your dreams`);
+            this.toastr.error(`Appointment on ${formatDate(appointment.date, 'longDate', 'en-US')} is still in your dreams`, `Failed`);
             this.errorMessage = 'Could not create appointment';
           },
         });

@@ -234,6 +234,7 @@ public class VaccinationsController : ControllerBase
                 }
 
                 var sourceDto = await _vaccinationService.GetVaccinationByIdAsync(model.Id);
+                dto.NotificationId = sourceDto.NotificationId;
 
                 // Refresh notification
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)

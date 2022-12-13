@@ -94,13 +94,14 @@ export class EditAppointmentComponent implements OnInit {
           next: (appointment) => {
             this.showSpinner = false;
             this.actions.emitAppointmentResponse(appointment);
-            this.toastr.success(`Success`,`${appointment.date} updated`);
+            this.toastr.info(`Appointment on ${formatDate(appointment.date, 'longDate', 'en-US')} updated`, `Updated`);
             this.closeEdit();
           },
           error: (err) => {
             this.showSpinner = false;
             console.log(`${err}`);
-            this.toastr.success(`Failed`,`${modifiedAppointment.date} is still the same`);
+            this.toastr.error(`Appointment on ${formatDate(modifiedAppointment.date, 'longDate', 'en-US')} is still the same`, `Failed`);
+            this.doctorActions.emitDoctorSelect('');
             this.errorMessage = "Could not modify appointment";
           },
         });
@@ -115,12 +116,16 @@ export class EditAppointmentComponent implements OnInit {
       this.AppointmentsService.delete(this.appointment!.id).pipe().subscribe({
         next: () => {
           this.showSpinner = false;
-          window.location.reload();
+          this.toastr.success(`Appointment on ${formatDate(this.appointment?.date!, 'longDate', 'en-US')} removed`, `Success`);
+          this.actions.emitAppointmentDelete(this.appointment!.id);
         },
-        error: (err) => console.log(`${err.message}`),
-      });
-    }
+        error: (err) => {
+          this.toastr.warning(`Appointment on ${formatDate(this.appointment?.date!, 'longDate', 'en-US')} still persist`, `Failed`);
+          console.log(`${err.message}`);
+        },
+    });
   }
+}
 
   closeEdit(){
     if (!this.showSpinner){

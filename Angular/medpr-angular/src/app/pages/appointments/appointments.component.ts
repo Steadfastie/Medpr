@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { Appointment } from 'src/app/models/appointment';
 import { ActivatedRoute } from '@angular/router';
 import { AppointmentsActionsService } from 'src/app/services/appointments/appointments.actions.service';
-import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 
 @Component({
   selector: 'appointments',
@@ -44,6 +43,13 @@ export class AppointmentsComponent {
             this.appointments.indexOf(presentAppointment), 1, appointmentFromAction
           );
         }
+      });
+
+      this.actions.appointmentDeleteListner().subscribe(appointmentId => {
+        const presentAppointment = this.appointments.find((presentAppointment) => {
+          return presentAppointment.id === appointmentId;
+        })
+        this.appointments.splice(this.appointments.indexOf(presentAppointment!), 1);
       });
   }
 }

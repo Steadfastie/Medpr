@@ -237,6 +237,7 @@ public class PrescriptionsController : ControllerBase
                 var dto = _mapper.Map<PrescriptionDTO>(model);
 
                 var sourceDto = await _prescriptionService.GetPrescriptionByIdAsync(model.Id);
+                dto.NotificationId = sourceDto.NotificationId;
 
                 // Refresh notification
                 if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)

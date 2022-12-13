@@ -20,7 +20,6 @@ export class EditDoctorComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private DoctorsService: DoctorsService,
-    private router: Router,
     private toastr: ToastrService,
     private actions: DoctorsActionsService) { }
 
@@ -66,7 +65,7 @@ export class EditDoctorComponent implements OnInit {
           error: (err) => {
             this.showSpinner = false;
             console.log(`${err}`);
-            this.toastr.success(`Failed`,`${modifiedDoctor.name} is still the same`);
+            this.toastr.error(`Failed`,`${modifiedDoctor.name} is still the same`);
             this.errorMessage = "Could not modify doctor";
           },
         });
@@ -81,9 +80,13 @@ export class EditDoctorComponent implements OnInit {
       this.DoctorsService.delete(this.doctor!.id).pipe().subscribe({
         next: () => {
           this.showSpinner = false;
-          window.location.reload();
+          this.toastr.success(`Success`, `${this.doctor!.name} removed`);
+          this.actions.emitDoctorDelete(this.doctor!.id);
         },
-        error: (err) => console.log(`${err.message}`),
+        error: (err) => {
+          this.toastr.warning(`Failed`, `${this.doctor!.name} still persist`);
+          console.log(`${err.message}`);
+        },
       });
     }
   }

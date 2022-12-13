@@ -42,6 +42,11 @@ import { AppointmentCardComponent } from './pages/appointments/appointment.card/
 import { CreateAppointmentComponent } from './pages/appointments/create.appointment/create.appointment.component';
 import { EditAppointmentComponent } from './pages/appointments/edit.appointment/edit.appointment.component';
 
+import { VaccinationsComponent } from './pages/vaccinations/vaccinations.component';
+import { VaccinationCardComponent } from './pages/vaccinations/vaccination.card/vaccination.card.component';
+import { CreateVaccinationComponent } from './pages/vaccinations/create.vaccination/create.vaccination.component';
+import { EditVaccinationComponent } from './pages/vaccinations/edit.vaccination/edit.vaccination.component';
+
 import { ErrorComponent } from './pages/error/error.component';
 import { UserComponent } from './pages/user/user/user.component';
 import { ErrorInterceptor } from './services/auth/error.interceptor';
@@ -78,6 +83,11 @@ import { HomeComponent } from './pages/home/home/home.component';
     CreateAppointmentComponent,
     EditAppointmentComponent,
 
+    VaccinationsComponent,
+    VaccinationCardComponent,
+    CreateVaccinationComponent,
+    EditVaccinationComponent,
+
     ErrorComponent,
     UserComponent,
     SigninComponent,
@@ -90,9 +100,11 @@ import { HomeComponent } from './pages/home/home/home.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      disableTimeOut: true,
+      timeOut: 7000,
+      extendedTimeOut: 3000,
       preventDuplicates: true,
       resetTimeoutOnDuplicate: true,
+      progressBar: true,
       maxOpened: 5,
       autoDismiss: true,
       positionClass: 'toast-bottom-right',

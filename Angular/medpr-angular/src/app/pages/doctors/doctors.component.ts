@@ -16,6 +16,7 @@ export class DoctorsComponent {
 
   ngOnInit() {
     this.DoctorsService.getAllDoctors().subscribe(doctors => this.doctors = doctors);
+
     this.actions.doctorResponseListner().subscribe(doctorFromAction => {
       const presentDoctor = this.doctors.find((presentDoctor) => {
         return presentDoctor.id === doctorFromAction.id;
@@ -26,6 +27,13 @@ export class DoctorsComponent {
       else{
         this.doctors.splice(this.doctors.indexOf(presentDoctor), 1, doctorFromAction);
       }
+    });
+
+    this.actions.doctorDeleteListner().subscribe(doctorId => {
+      const presentDoctor = this.doctors.find((presentDoctor) => {
+        return presentDoctor.id === doctorId;
+      })
+      this.doctors.splice(this.doctors.indexOf(presentDoctor!), 1);
     });
   }
 }

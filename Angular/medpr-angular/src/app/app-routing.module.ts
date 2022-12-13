@@ -8,6 +8,7 @@ import { DrugsComponent } from './pages/drugs/drugs.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home/home.component';
 import { UserComponent } from './pages/user/user/user.component';
+import { VaccinationsComponent } from './pages/vaccinations/vaccinations.component';
 import { VaccinesComponent } from './pages/vaccines/vaccines.component';
 import { AdminGuardService } from './services/auth/admin.guard';
 import { AuthGuardService } from './services/auth/auth.guard';
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'doctors', component: DoctorsComponent, canActivate: [AuthGuardService] },
   { path: 'appointments', component: AppointmentsComponent, canActivate: [AuthGuardService] },
   { path: 'appointments/:id', component: AppointmentsComponent, canActivate: [AuthGuardService] },
+  { path: 'vaccinations', component: VaccinationsComponent, canActivate: [AuthGuardService] },
+  { path: 'vaccinations/:id', component: VaccinationsComponent, canActivate: [AuthGuardService] },
   { path: 'error', component: ErrorComponent },
   { path: 'user', component: UserComponent, canActivate: [AdminGuardService] },
   { path: 'signin', component: SigninComponent, canActivate: [AuthReverseGuardService] },

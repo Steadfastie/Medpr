@@ -1,0 +1,40 @@
+<mat-spinner *ngIf="showSpinner" color="primary"></mat-spinner>
+
+<form *ngIf="!showSpinner && !errorMessage" class="form" [formGroup]="vaccinationForm">
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true" color="primary">
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="vaccinationForm.controls['date'].errors?.['required']">Date is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Days of protection</mat-label>
+    <input matInput formControlName="daysOfProtection" type="number">
+    <mat-error *ngIf="vaccinationForm.controls['daysOfProtection'].errors?.['required']">It have to save for some time</mat-error>
+    <mat-error *ngIf="vaccinationForm.controls['daysOfProtection'].errors?.['min']">Can't be negative</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Vaccine</mat-label>
+    <mat-select formControlName="vaccineId" (selectionChange)="selectVaccine($event)">
+      <mat-option *ngFor="let vaccine of vaccines"
+        value="{{vaccine.id}}">{{vaccine.name}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="vaccinationForm.controls['vaccineId'].errors?.['required']">Vaccine is required</mat-error>
+  </mat-form-field>
+</form>
+<mat-card-actions *ngIf="!showSpinner && !errorMessage">
+  <button mat-icon-button (click)="cancel()">
+    <mat-icon>undo</mat-icon>
+  </button>
+  <button mat-icon-button (click)="closeCreate()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button mat-icon-button (click)="submit()">
+    <mat-icon>send</mat-icon>
+  </button>
+</mat-card-actions>
+
+<error *ngIf="errorMessage" [message]="errorMessage"></error>
