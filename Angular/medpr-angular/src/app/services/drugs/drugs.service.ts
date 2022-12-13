@@ -19,6 +19,10 @@ export class DrugsService {
     return this.apiService.get('drugs/random', {}).pipe();
   }
 
+  getDrugById(id: string): Observable<Drug>{
+    return this.apiService.get(`drugs/${id}`, {}).pipe();
+  }
+
   create(drug: Drug): Observable<Drug> {
     return this.apiService.post('drugs', drug).pipe();
   }

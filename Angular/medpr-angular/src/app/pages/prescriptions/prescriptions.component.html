@@ -1,0 +1,12 @@
+<div class="cardContainer first" *ngIf="!idProvided">
+  <prescription-card></prescription-card>
+</div>
+
+<div class="cardContainer">
+  <prescription-card
+    *ngFor="let prescription of prescriptions"
+    [prescription]="prescription">
+  </prescription-card>
+</div>
+
+

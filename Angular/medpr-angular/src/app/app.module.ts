@@ -24,6 +24,7 @@ import { DrugsComponent } from './pages/drugs/drugs.component';
 import { DrugCardComponent } from './pages/drugs/drug.card/drug.card.component';
 import { CreateDrugComponent } from './pages/drugs/create.drug/create.drug.component';
 import { EditDrugComponent } from './pages/drugs/edit.drug/edit.drug.component';
+import { DrugInfoComponent } from './pages/drugs/drug.info/drug.info.component';
 
 import { DoctorsComponent } from './pages/doctors/doctors.component';
 import { DoctorCardComponent } from './pages/doctors/doctor.card/doctor.card.component';
@@ -47,6 +48,11 @@ import { VaccinationCardComponent } from './pages/vaccinations/vaccination.card/
 import { CreateVaccinationComponent } from './pages/vaccinations/create.vaccination/create.vaccination.component';
 import { EditVaccinationComponent } from './pages/vaccinations/edit.vaccination/edit.vaccination.component';
 
+import { PrescriptionsComponent } from './pages/prescriptions/prescriptions.component';
+import { PrescriptionCardComponent } from './pages/prescriptions/prescription.card/prescription.card.component';
+import { CreatePrescriptionComponent } from './pages/prescriptions/create.prescription/create.prescription.component';
+import { EditPrescriptionComponent } from './pages/prescriptions/edit.prescription/edit.prescription.component';
+
 import { ErrorComponent } from './pages/error/error.component';
 import { UserComponent } from './pages/user/user/user.component';
 import { ErrorInterceptor } from './services/auth/error.interceptor';
@@ -65,6 +71,7 @@ import { HomeComponent } from './pages/home/home/home.component';
     DrugCardComponent,
     CreateDrugComponent,
     EditDrugComponent,
+    DrugInfoComponent,
 
     DoctorsComponent,
     DoctorCardComponent,
@@ -87,6 +94,11 @@ import { HomeComponent } from './pages/home/home/home.component';
     VaccinationCardComponent,
     CreateVaccinationComponent,
     EditVaccinationComponent,
+
+    PrescriptionsComponent,
+    PrescriptionCardComponent,
+    CreatePrescriptionComponent,
+    EditPrescriptionComponent,
 
     ErrorComponent,
     UserComponent,
