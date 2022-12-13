@@ -27,13 +27,15 @@
     <div *ngIf="vaccination && !selected">
       <mat-card-header>
         <mat-card-title class="row">
-          <div>{{vaccination.date | date:'fullDate'}}</div>
+          <div>Done: {{vaccination.date | date:'fullDate'}}</div>
           <button mat-mini-fab color="warn" class="edit-button" (click)="selectToggle()">
             <mat-icon>edit</mat-icon>
           </button>
         </mat-card-title>
+        <mat-card-subtitle *ngIf="!endedBeforeToday" class="row">{{daysLeft}} days left</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="endedBeforeToday" class="row">Protection ended {{daysLeft}} days ago</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>Protection until {{vaccination.date + vaccination.daysOfProtection | date:'fullDate'}}<mat-icon>location_on</mat-icon></mat-card-content>
+      <mat-card-content>Until: {{endDate}}<mat-icon>access_time</mat-icon></mat-card-content>
     </div>
 
     <!-- Selected vaccination  -->

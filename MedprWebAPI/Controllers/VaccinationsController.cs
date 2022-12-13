@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using NuGet.Packaging;
 using MedprWebAPI.Utils;
 using Hangfire;
+using Hangfire.Storage;
 
 namespace MedprWebAPI.Controllers;
 
@@ -34,7 +35,7 @@ public class VaccinationsController : ControllerBase
     private readonly INotificationService _notificationService;
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
     private readonly string NotificationMessage = "It's time to vaccinate";
-    private readonly string NotificationType = "vaccination";
+    private readonly string NotificationType = "vaccinations";
     public VaccinationsController(IVaccinationService vaccinationService,
         IVaccineService vaccineService,
         IFamilyService familyService,
@@ -236,22 +237,38 @@ public class VaccinationsController : ControllerBase
                 var sourceDto = await _vaccinationService.GetVaccinationByIdAsync(model.Id);
                 dto.NotificationId = sourceDto.NotificationId;
 
-                // Refresh notification
-                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
+                if (dto.NotificationId != null)
                 {
-                    BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = BackgroundJob.Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"), 
-                        dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                    // Check if job was not enqueued by dev in hangfire UI
+                    IStorageConnection connection = JobStorage.Current.GetConnection();
+                    JobData? jobData = connection.GetJobData(dto.NotificationId);
+                    if (jobData != null && !jobData.State.Equals("Succeeded"))
+                    {
+                        // Refresh notification
+                        if (dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
+                        {
+                            BackgroundJob.Delete(sourceDto.NotificationId);
+                            dto.NotificationId = BackgroundJob.Schedule(() => 
+                                _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
+                                dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                        }
+                        if (dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
+                        {
+                            BackgroundJob.Delete(sourceDto.NotificationId);
+                            dto.NotificationId = null;
+                        }
+                    }
+                    else
+                    {
+                        dto.NotificationId = null;
+                    }
                 }
-                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
-                {
-                    BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = null;
-                }
+
+                // Create new job if date is appropriate
                 if (sourceDto.NotificationId == null && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                    .Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
+                        .Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
                     dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
@@ -261,6 +278,15 @@ public class VaccinationsController : ControllerBase
                 {
                     foreach (PropertyInfo property in typeof(VaccinationDTO).GetProperties())
                     {
+                        if (property.Name.Equals("NotificationId"))
+                        {
+                            patchList.Add(new PatchModel()
+                            {
+                                PropertyName = property.Name,
+                                PropertyValue = property.GetValue(dto)
+                            });
+                            continue;
+                        }
                         if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
                         {
                             patchList.Add(new PatchModel()
@@ -327,8 +353,17 @@ public class VaccinationsController : ControllerBase
                 }
 
                 await _vaccinationService.DeleteVaccinationAsync(dto);
-                BackgroundJob.Delete(dto.NotificationId);
 
+                if (dto.NotificationId != null)
+                {
+                    IStorageConnection connection = JobStorage.Current.GetConnection();
+                    JobData? jobData = connection.GetJobData(dto.NotificationId);
+                    if (jobData != null)
+                    {
+                        BackgroundJob.Delete(dto.NotificationId);
+                    }
+                }
+               
                 return Ok();
             }
             else

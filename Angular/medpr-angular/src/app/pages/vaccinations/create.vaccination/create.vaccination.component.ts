@@ -48,8 +48,8 @@ export class CreateVaccinationComponent implements OnInit {
   }
 
   vaccinationForm = this.fb.group({
-    date: ['', [Validators.required]],
-    daysOfProtection: ['',[Validators.required, Validators.min(0)]],
+    vaccinationDate: ['', [Validators.required]],
+    reVaccinationDate: ['',[Validators.required]],
     vaccineId: ['', [Validators.required]],
   });
 
@@ -57,17 +57,21 @@ export class CreateVaccinationComponent implements OnInit {
     if (!this.showSpinner && this.vaccinationForm.valid) {
       this.showSpinner = true;
 
-      let date = new Date(this.vaccinationForm.value.date!);
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
+      let vaccinationDate = new Date(this.vaccinationForm.value.vaccinationDate!);
+      let day = vaccinationDate.getDate();
+      let month = vaccinationDate.getMonth() + 1;
+      let year = vaccinationDate.getFullYear();
 
-      let dateTime = year + '-' + month + '-' + day + 'T21:00:00'
+      let vaccinationDateTime = year + '-' + month + '-' + day.toLocaleString('en-US', {minimumIntegerDigits: 2})
+
+      let reVaccinationDate = new Date(this.vaccinationForm.value.reVaccinationDate!);
+      let difference = reVaccinationDate.getTime() - vaccinationDate.getTime();
+      let daysOfProtection = Math.ceil(difference / (1000 * 3600 * 24));
 
       const vaccination: Vaccination = {
         id: Guid.createEmpty().toString(),
-        date: dateTime,
-        daysOfProtection: Number(this.vaccinationForm.value.daysOfProtection!),
+        date: vaccinationDateTime,
+        daysOfProtection: daysOfProtection,
         userId: this.userId!,
         vaccineId: this.vaccinationForm.value.vaccineId!,
       };
@@ -83,7 +87,7 @@ export class CreateVaccinationComponent implements OnInit {
           error: (err) => {
             this.showSpinner = false;
             console.log(err);
-            this.toastr.error(`Appointment on ${formatDate(vaccination.date, 'longDate', 'en-US')} is still in your dreams`, `Failed`);
+            this.toastr.error(`Vaccination on ${formatDate(vaccination.date, 'longDate', 'en-US')} is still in your dreams`, `Failed`);
             this.errorMessage = 'Could not create vaccination';
           },
         });

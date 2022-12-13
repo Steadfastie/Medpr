@@ -1,7 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { Vaccination } from 'src/app/models/vaccination';
@@ -49,16 +48,25 @@ export class EditVaccinationComponent implements OnInit {
   }
 
   vaccinationForm = this.fb.group({
-    date: ['', [Validators.required]],
-    daysOfProtection: ['',[Validators.required, Validators.min(0)]],
+    vaccinationDate: ['', [Validators.required]],
+    reVaccinationDate: ['',[Validators.required]],
     vaccineId: ['', [Validators.required]],
   });
 
   initialize() {
     if (this.vaccination) {
+      let reVaccinationDate = new Date(this.vaccination.date);
+      reVaccinationDate.setDate(reVaccinationDate.getDate() + this.vaccination.daysOfProtection);
+
+      let day = reVaccinationDate.getDate();
+      let month = reVaccinationDate.getMonth() + 1;
+      let year = reVaccinationDate.getFullYear();
+
+      let reVaccinationDateTime = year + '-' + month + '-' + day
+
       this.vaccinationForm.setValue({
-        date: this.vaccination.date,
-        daysOfProtection: this.vaccination.daysOfProtection.toString(),
+        vaccinationDate: this.vaccination.date,
+        reVaccinationDate: reVaccinationDateTime,
         vaccineId: this.vaccination.vaccine?.id!,
       })
       this.vaccineActions.emitVaccineSelect(this.vaccination.vaccine?.id!)
@@ -75,17 +83,21 @@ export class EditVaccinationComponent implements OnInit {
         vaccineId: this.vaccination!.vaccineId,
       }
 
-      let date = new Date(this.vaccinationForm.value.date!);
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
+      let vaccinationDate = new Date(this.vaccinationForm.value.vaccinationDate!);
+      let day = vaccinationDate.getDate();
+      let month = vaccinationDate.getMonth() + 1;
+      let year = vaccinationDate.getFullYear();
 
-      let dateTime = year + '-' + month + '-' + day + 'T21:00:00'
+      let vaccinationDateTime = year + '-' + month + '-' + day
+
+      let reVaccinationDate = new Date(this.vaccinationForm.value.reVaccinationDate!);
+      let difference = reVaccinationDate.getTime() - vaccinationDate.getTime();
+      let daysOfProtection = Math.ceil(difference / (1000 * 3600 * 24));
 
       const modifiedVaccination: Vaccination = {
         id: this.vaccination?.id!,
-        date: dateTime,
-        daysOfProtection: Number(this.vaccinationForm.value.daysOfProtection!),
+        date: vaccinationDateTime,
+        daysOfProtection: daysOfProtection,
         userId: this.userId!,
         vaccineId: this.vaccinationForm.value.vaccineId!,
       }
@@ -100,13 +112,12 @@ export class EditVaccinationComponent implements OnInit {
           error: (err) => {
             this.showSpinner = false;
             console.log(`${err}`);
-            this.toastr.error(`Appointment on ${formatDate(modifiedVaccination.date, 'longDate', 'en-US')} is still the same`, `Failed`);
+            this.toastr.error(`Vaccination on ${formatDate(modifiedVaccination.date, 'longDate', 'en-US')} is still the same`, `Failed`);
             this.errorMessage = "Could not modify vaccination";
           },
         });
       }
     }
-
   }
 
   remove(){
@@ -115,11 +126,11 @@ export class EditVaccinationComponent implements OnInit {
       this.VaccinationsService.delete(this.vaccination!.id).pipe().subscribe({
         next: () => {
           this.showSpinner = false;
-          this.toastr.success(`Success`, `${this.vaccination!.date} removed`);
+          this.toastr.success(`Vaccination on ${formatDate(this.vaccination?.date!, 'longDate', 'en-US')} removed`, `Success`);
           this.actions.emitVaccinationDelete(this.vaccination!.id);
         },
         error: (err) => {
-          this.toastr.warning(`Failed`, `${this.vaccination!.date} still persist`);
+          this.toastr.warning(`Vaccination on ${formatDate(this.vaccination?.date!, 'longDate', 'en-US')} still persist`, `Failed`);
           console.log(`${err.message}`);
         },
     });

@@ -2,18 +2,13 @@
 
 <form *ngIf="!showSpinner && !errorMessage" class="form" [formGroup]="vaccinationForm">
   <mat-form-field appearance="outline" [hideRequiredMarker]="true" color="primary">
-    <mat-label>Date</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="date">
+    <mat-label>Protection period</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Vaccination date" formControlName="vaccinationDate">
+      <input matEndDate placeholder="Revaccination date" formControlName="reVaccinationDate">
+    </mat-date-range-input>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-    <mat-error *ngIf="vaccinationForm.controls['date'].errors?.['required']">Date is required</mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-    <mat-label>Days of protection</mat-label>
-    <input matInput formControlName="daysOfProtection" type="number">
-    <mat-error *ngIf="vaccinationForm.controls['daysOfProtection'].errors?.['required']">It have to save for some time</mat-error>
-    <mat-error *ngIf="vaccinationForm.controls['daysOfProtection'].errors?.['min']">Can't be negative</mat-error>
+    <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
 
   <mat-form-field appearance="outline" [hideRequiredMarker]="true">

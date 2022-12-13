@@ -33,15 +33,21 @@ export class VaccinationsComponent {
     }
 
     this.actions.vaccinationResponseListner().subscribe((vaccinationFromAction) => {
-        const presentVaccination = this.vaccinations.find((presentVaccination) => {
-            return presentVaccination.id === vaccinationFromAction.id;
-          });
-        if (!presentVaccination) {
-          this.vaccinations.push(vaccinationFromAction);
-        } else {
-          this.vaccinations.splice(
-            this.vaccinations.indexOf(presentVaccination), 1, vaccinationFromAction
+        if (this.vaccinations) {
+          const presentVaccination = this.vaccinations.find((presentVaccination) => {
+              return presentVaccination.id === vaccinationFromAction.id;
+            }
           );
+          if (!presentVaccination) {
+            this.vaccinations.push(vaccinationFromAction);
+          } else {
+            this.vaccinations.splice(
+              this.vaccinations.indexOf(presentVaccination), 1, vaccinationFromAction
+            );
+          }
+        } else {
+          this.vaccinations = [];
+          this.vaccinations.push(vaccinationFromAction);
         }
       });
 

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using NuGet.Packaging;
 using MedprWebAPI.Utils;
 using Hangfire;
+using Hangfire.Storage;
 
 namespace MedprWebAPI.Controllers;
 
@@ -34,7 +35,7 @@ public class PrescriptionsController : ControllerBase
     private readonly IMapper _mapper;
     private readonly INotificationService _notificationService;
     private readonly string NotificationMessage = "It's time to take a pill";
-    private readonly string NotificationType = "prescription";
+    private readonly string NotificationType = "prescriptions";
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
     public PrescriptionsController(IPrescriptionService prescriptionService,
         IDoctorService doctorService,
@@ -239,17 +240,31 @@ public class PrescriptionsController : ControllerBase
                 var sourceDto = await _prescriptionService.GetPrescriptionByIdAsync(model.Id);
                 dto.NotificationId = sourceDto.NotificationId;
 
-                // Refresh notification
-                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
+                if (dto.NotificationId != null)
                 {
-                    BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = BackgroundJob.Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"), 
-                        dto.Date.ToUniversalTime() - DateTime.UtcNow);
-                }
-                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
-                {
-                    BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = null;
+                    // Check if job was not enqueued by dev in hangfire UI
+                    IStorageConnection connection = JobStorage.Current.GetConnection();
+                    JobData? jobData = connection.GetJobData(dto.NotificationId);
+                    if (jobData != null && !jobData.State.Equals("Succeeded"))
+                    {
+                        // Refresh notification
+                        if (dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
+                        {
+                            BackgroundJob.Delete(sourceDto.NotificationId);
+                            dto.NotificationId = BackgroundJob.Schedule(() =>
+                                _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
+                                dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                        }
+                        if (dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
+                        {
+                            BackgroundJob.Delete(sourceDto.NotificationId);
+                            dto.NotificationId = null;
+                        }
+                    }
+                    else
+                    {
+                        dto.NotificationId = null;
+                    }
                 }
                 if (sourceDto.NotificationId == null && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
@@ -264,6 +279,15 @@ public class PrescriptionsController : ControllerBase
                 {
                     foreach (PropertyInfo property in typeof(PrescriptionDTO).GetProperties())
                     {
+                        if (property.Name.Equals("NotificationId"))
+                        {
+                            patchList.Add(new PatchModel()
+                            {
+                                PropertyName = property.Name,
+                                PropertyValue = property.GetValue(dto)
+                            });
+                            continue;
+                        }
                         if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
                         {
                             patchList.Add(new PatchModel()
@@ -330,7 +354,15 @@ public class PrescriptionsController : ControllerBase
                 }
 
                 await _prescriptionService.DeletePrescriptionAsync(dto);
-                BackgroundJob.Delete(dto.NotificationId);
+                if (dto.NotificationId != null)
+                {
+                    IStorageConnection connection = JobStorage.Current.GetConnection();
+                    JobData? jobData = connection.GetJobData(dto.NotificationId);
+                    if (jobData != null)
+                    {
+                        BackgroundJob.Delete(dto.NotificationId);
+                    }
+                }
 
                 return Ok();
             }

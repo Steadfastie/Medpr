@@ -15,6 +15,7 @@ using MedprWebAPI.Utils;
 using Hangfire;
 using MedprWebAPI.Utils.Notifications;
 using Microsoft.AspNetCore.SignalR;
+using Hangfire.Storage;
 
 namespace MedprWebAPI.Controllers;
 
@@ -36,7 +37,7 @@ public class AppointmentsController : ControllerBase
     private readonly INotificationService _notificationService;
     private readonly IHubContext<EventNotificationHub, INotificationHub> _eventNotification;
     private readonly string NotificationMessage = "It's time for an appointment";
-    private readonly string MainEntityType = "appointments";
+    private readonly string NotificationType = "appointments";
 
 
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
@@ -80,7 +81,7 @@ public class AppointmentsController : ControllerBase
             {
                 var responseModel = await FillResponseModel(dto);
 
-                models.Add(responseModel.GenerateLinks(MainEntityType));
+                models.Add(responseModel.GenerateLinks(NotificationType));
             }
 
             if (models.Any())
@@ -133,7 +134,7 @@ public class AppointmentsController : ControllerBase
             {
                 var responseModel = await FillResponseModel(dto);
 
-                return Ok(responseModel.GenerateLinks(MainEntityType));
+                return Ok(responseModel.GenerateLinks(NotificationType));
             }
             else
             {
@@ -184,7 +185,7 @@ public class AppointmentsController : ControllerBase
                 if(model.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                        .Schedule(() => _notificationService.SendNotification(NotificationMessage, MainEntityType, $"{dto.Id}"),
+                        .Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
                         dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
@@ -192,7 +193,7 @@ public class AppointmentsController : ControllerBase
 
                 var responseModel = await FillResponseModel(dto);
 
-                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks(MainEntityType));
+                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks(NotificationType));
             }
             else
             {
@@ -243,23 +244,37 @@ public class AppointmentsController : ControllerBase
                 var sourceDto = await _appointmentService.GetAppointmentByIdAsync(model.Id);
                 dto.NotificationId = sourceDto.NotificationId;
 
-                // Refresh notification
-                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
+                if (dto.NotificationId != null)
                 {
-                    BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = BackgroundJob.Schedule(
-                        () => _notificationService.SendNotification(NotificationMessage, MainEntityType, $"{dto.Id}"),
-                        dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                    // Check if job was not enqueued by dev in hangfire UI
+                    IStorageConnection connection = JobStorage.Current.GetConnection();
+                    JobData? jobData = connection.GetJobData(dto.NotificationId);
+                    if (jobData != null && !jobData.State.Equals("Succeeded"))
+                    {
+                        // Refresh notification
+                        if (dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
+                        {
+                            BackgroundJob.Delete(sourceDto.NotificationId);
+                            dto.NotificationId = BackgroundJob.Schedule(() =>
+                                _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
+                                dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                        }
+                        if (dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
+                        {
+                            BackgroundJob.Delete(sourceDto.NotificationId);
+                            dto.NotificationId = null;
+                        }
+                    }
+                    else
+                    {
+                        dto.NotificationId = null;
+                    }
                 }
-                if (sourceDto.NotificationId != null && dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
-                {
-                    BackgroundJob.Delete(sourceDto.NotificationId);
-                    dto.NotificationId = null;
-                }
+
                 if (sourceDto.NotificationId == null && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob.Schedule(
-                        () => _notificationService.SendNotification(NotificationMessage, MainEntityType, $"{dto.Id}"),
+                        () => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
                         dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
@@ -269,6 +284,15 @@ public class AppointmentsController : ControllerBase
                 {
                     foreach (PropertyInfo property in typeof(AppointmentDTO).GetProperties())
                     {
+                        if (property.Name.Equals("NotificationId"))
+                        {
+                            patchList.Add(new PatchModel()
+                            {
+                                PropertyName = property.Name,
+                                PropertyValue = property.GetValue(dto)
+                            });
+                            continue;
+                        }
                         if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
                         {
                             patchList.Add(new PatchModel()
@@ -284,7 +308,7 @@ public class AppointmentsController : ControllerBase
 
                 var responseModel = await FillResponseModel(dto);
 
-                return Ok(responseModel.GenerateLinks(MainEntityType));
+                return Ok(responseModel.GenerateLinks(NotificationType));
             }
             else
             {
@@ -335,7 +359,15 @@ public class AppointmentsController : ControllerBase
                 }
                 
                 await _appointmentService.DeleteAppointmentAsync(dto);
-                BackgroundJob.Delete(dto.NotificationId);
+                if (dto.NotificationId != null)
+                {
+                    IStorageConnection connection = JobStorage.Current.GetConnection();
+                    JobData? jobData = connection.GetJobData(dto.NotificationId);
+                    if (jobData != null)
+                    {
+                        BackgroundJob.Delete(dto.NotificationId);
+                    }
+                }
 
                 return Ok();
             }
