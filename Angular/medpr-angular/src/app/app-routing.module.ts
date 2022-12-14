@@ -8,6 +8,9 @@ import { DrugsComponent } from './pages/drugs/drugs.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home/home.component';
 import { PrescriptionsComponent } from './pages/prescriptions/prescriptions.component';
+import { FamiliesComponent } from './pages/user/families/families.component';
+import { ProfileComponent } from './pages/user/profile/profile.component';
+import { SettingsComponent } from './pages/user/settings/settings.component';
 import { UserComponent } from './pages/user/user/user.component';
 import { VaccinationsComponent } from './pages/vaccinations/vaccinations.component';
 import { VaccinesComponent } from './pages/vaccines/vaccines.component';
@@ -26,10 +29,24 @@ const routes: Routes = [
   { path: 'vaccinations/:id', component: VaccinationsComponent, canActivate: [AuthGuardService] },
   { path: 'prescriptions', component: PrescriptionsComponent, canActivate: [AuthGuardService] },
   { path: 'prescriptions/:id', component: PrescriptionsComponent, canActivate: [AuthGuardService] },
+  { path: 'user', component: SettingsComponent,
+    children: [
+      {
+        path: "profile",
+        title: "user profile",
+        component: ProfileComponent,
+      },
+      {
+        path: "families",
+        title: "user families",
+        component: FamiliesComponent,
+      }
+  ], canActivate: [AuthGuardService]},
   { path: 'error', component: ErrorComponent },
-  { path: 'user', component: UserComponent, canActivate: [AdminGuardService] },
+  { path: 'users', component: UserComponent, canActivate: [AdminGuardService] },
   { path: 'signin', component: SigninComponent, canActivate: [AuthReverseGuardService] },
   { path: 'signup', component: SignupComponent, canActivate: [AuthReverseGuardService] },
+  { path: '**', component: HomeComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

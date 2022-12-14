@@ -1,0 +1,41 @@
+<mat-card [class.selected]="selected">
+  <!-- Blank creation -->
+  <div *ngIf="!doctor && !selected">
+    <mat-card-content>
+      <button mat-flat-button (click)="createFromBlank()">
+        <mat-icon>add</mat-icon>
+        Create from blank
+      </button>
+    </mat-card-content>
+  </div>
+
+  <!-- Selected blank creation  -->
+  <div *ngIf="!doctor && selected">
+    <create-doctor (deselect)="selectToggle()"></create-doctor>
+  </div>
+
+  <!-- Doctor -->
+  <div *ngIf="doctor && !selected">
+    <mat-card-header>
+      <mat-card-title class="row">
+        <div>{{doctor.name | trim}}</div>
+        <button mat-mini-fab color="warn" class="edit-button" (click)="selectToggle()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>practiced {{doctor.experience}} years</mat-card-content>
+  </div>
+
+  <!-- Selected doctor  -->
+  <div *ngIf="doctor && selected">
+    <edit-doctor [doctor]="doctor" (deselect)="selectToggle()"></edit-doctor>
+  </div>
+</mat-card>
+
+
+
+
+
+
+

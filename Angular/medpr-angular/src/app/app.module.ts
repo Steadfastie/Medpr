@@ -53,11 +53,17 @@ import { PrescriptionCardComponent } from './pages/prescriptions/prescription.ca
 import { CreatePrescriptionComponent } from './pages/prescriptions/create.prescription/create.prescription.component';
 import { EditPrescriptionComponent } from './pages/prescriptions/edit.prescription/edit.prescription.component';
 
+import { SettingsComponent } from './pages/user/settings/settings.component';
+import { ProfileComponent } from './pages/user/profile/profile.component';
+import { FamiliesComponent } from './pages/user/families/families.component';
+
 import { ErrorComponent } from './pages/error/error.component';
 import { UserComponent } from './pages/user/user/user.component';
 import { ErrorInterceptor } from './services/auth/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './pages/home/home/home.component';
+import { ProfileInfoComponent } from './pages/user/profile/profile.info/profile.info.component';
+
 
 @NgModule({
   declarations: [
@@ -102,8 +108,12 @@ import { HomeComponent } from './pages/home/home/home.component';
 
     ErrorComponent,
     UserComponent,
-    SigninComponent,
-    DoctorInfoComponent
+
+    SettingsComponent,
+    ProfileComponent,
+    FamiliesComponent,
+    ProfileInfoComponent,
+
   ],
   imports: [
     BrowserModule,
