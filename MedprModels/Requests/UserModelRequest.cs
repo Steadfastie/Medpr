@@ -21,12 +21,12 @@ public class UserModelRequest
     [StringLength(30, MinimumLength = 5)]
     public string? NewPassword { get; set; }
 
-    public AppRole? Role { get; set; }
+    public string? Role { get; set; }
 
     [StringLength(30, MinimumLength = 1)]
     public string? FullName { get; set; }
 
     [Column(TypeName = "DateTime2")]
     [DisplayFormat(DataFormatString = "{0:dddd d MMMM yyyy}")]
-    public DateTime? DateOfBirth { get; set; }
+    public string? DateOfBirth { get; set; }
 }

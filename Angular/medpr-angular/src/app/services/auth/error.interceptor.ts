@@ -26,9 +26,9 @@ export class ErrorInterceptor implements HttpInterceptor {
         const errorMessage = err.error?.detail || err.error?.title || err.status || "Something went wrong";
         switch (err.status) {
           case 401:
-            this.toastr?.error(`Sorry`, `Looks like it's time to signin again`);
-            this.router?.navigateByUrl('/signin');
             this.store.dispatch(userActions.logout());
+            this.router?.navigateByUrl('/signin');
+            this.toastr?.error(`Sorry`, `Looks like it's time to signin again`);
             break;
           case 500:
             this.toastr?.error(`${errorMessage}`);

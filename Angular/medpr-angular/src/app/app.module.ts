@@ -63,6 +63,7 @@ import { ErrorInterceptor } from './services/auth/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './pages/home/home/home.component';
 import { ProfileInfoComponent } from './pages/user/profile/profile.info/profile.info.component';
+import { EditProfileComponent } from './pages/user/profile/edit.profile/edit.profile.component';
 
 
 @NgModule({
@@ -113,7 +114,7 @@ import { ProfileInfoComponent } from './pages/user/profile/profile.info/profile.
     ProfileComponent,
     FamiliesComponent,
     ProfileInfoComponent,
-
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

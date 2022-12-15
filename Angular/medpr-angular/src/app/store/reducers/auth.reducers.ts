@@ -40,5 +40,11 @@ export const authReducer = createReducer(
     ...state,
     errorMessage: message})),
 
-  on(userActions.logout, state => state = initialState),
+  on(userActions.logout, state => {
+    return {
+      isAuthenticated: false,
+      user: undefined,
+      errorMessage: undefined
+    }
+  }),
 );

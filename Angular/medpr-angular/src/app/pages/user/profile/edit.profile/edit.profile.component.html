@@ -1,0 +1,50 @@
+<mat-spinner *ngIf="showSpinner" color="accent"></mat-spinner>
+
+<form *ngIf="!showSpinner && !errorMessage" class="form" [formGroup]="profileForm">
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" type="password">
+    <mat-error *ngIf="profileForm.controls['password'].errors?.['maxLength']">Definitely too short</mat-error>
+    <mat-error *ngIf="profileForm.controls['password'].errors?.['minLength']">Definitely too long</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>New password</mat-label>
+    <input matInput formControlName="newPassword" type="text">
+    <mat-error *ngIf="profileForm.controls['newPassword'].errors?.['maxLength']">Definitely too short</mat-error>
+    <mat-error *ngIf="profileForm.controls['newPassword'].errors?.['minLength']">Definitely too long</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Full name</mat-label>
+    <input matInput formControlName="fullName" type="text">
+    <mat-error *ngIf="profileForm.controls['fullName'].errors?.['maxLength']">Definitely too short</mat-error>
+    <mat-error *ngIf="profileForm.controls['fullName'].errors?.['minLength']">Definitely too long</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true" color="primary">
+    <mat-label>Date of birth</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</form>
+<mat-card-actions *ngIf="!showSpinner && !errorMessage">
+  <button mat-icon-button *ngIf="openEdit" (click)="remove()">
+    <mat-icon>remove_circle</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="openEdit" (click)="initialize()">
+    <mat-icon>undo</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="!openEdit" (click)="editToggle()">
+    <mat-icon>lock_open</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="openEdit" (click)="editToggle()">
+    <mat-icon>lock</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="openEdit" (click)="edit()">
+    <mat-icon>send</mat-icon>
+  </button>
+</mat-card-actions>
+
+<error *ngIf="errorMessage" [message]="errorMessage"></error>

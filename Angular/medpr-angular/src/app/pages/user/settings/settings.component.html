@@ -1,12 +1,12 @@
 <mat-card class="container">
-    <mat-grid-list [cols]="8" class="grid-layout">
+    <mat-grid-list [cols]="8" rowHeight="250px" class="grid-layout">
         <mat-grid-tile [colspan]="2" [rowspan]="1"
             [class]="profileLinkClass"
             (click)="switchTabs('profile')">
             <div class="link-label">Profile</div>
         </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-grid-tile [colspan]="6" [rowspan]="2">
             <router-outlet></router-outlet>
         </mat-grid-tile>
 
