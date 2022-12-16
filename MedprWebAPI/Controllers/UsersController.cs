@@ -151,7 +151,7 @@ public class UsersController : ControllerBase
                 var patchList = new List<PatchModel>();
                 foreach (PropertyInfo property in typeof(UserDTO).GetProperties())
                 {
-                    if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
+                    if (property.GetValue(dto) != null && !property.GetValue(dto).Equals(property.GetValue(sourceDto)))
                     {
                         patchList.Add(new PatchModel()
                         {

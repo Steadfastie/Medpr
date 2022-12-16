@@ -54,7 +54,8 @@ import { CreatePrescriptionComponent } from './pages/prescriptions/create.prescr
 import { EditPrescriptionComponent } from './pages/prescriptions/edit.prescription/edit.prescription.component';
 
 import { SettingsComponent } from './pages/user/settings/settings.component';
-import { ProfileComponent } from './pages/user/profile/profile.component';
+import { ProfileInfoComponent } from './pages/user/profile/profile.info/profile.info.component';
+import { EditProfileComponent } from './pages/user/profile/edit.profile/edit.profile.component';
 import { FamiliesComponent } from './pages/user/families/families.component';
 
 import { ErrorComponent } from './pages/error/error.component';
@@ -62,8 +63,6 @@ import { UserComponent } from './pages/user/user/user.component';
 import { ErrorInterceptor } from './services/auth/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './pages/home/home/home.component';
-import { ProfileInfoComponent } from './pages/user/profile/profile.info/profile.info.component';
-import { EditProfileComponent } from './pages/user/profile/edit.profile/edit.profile.component';
 
 
 @NgModule({
@@ -111,7 +110,6 @@ import { EditProfileComponent } from './pages/user/profile/edit.profile/edit.pro
     UserComponent,
 
     SettingsComponent,
-    ProfileComponent,
     FamiliesComponent,
     ProfileInfoComponent,
     EditProfileComponent,

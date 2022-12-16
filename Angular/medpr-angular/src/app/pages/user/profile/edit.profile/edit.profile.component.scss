@@ -5,6 +5,21 @@
 $typography-config: mat.get-typography-config($medpr-angular-theme);
 $font-family: mat.font-family($typography-config);
 
+.container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header{
+  display: flex;
+}
+
+hr{
+  width: 250px;
+}
+
+
 .form{
   justify-content: flex-start;
   display: flex;

@@ -27,7 +27,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         switch (err.status) {
           case 401:
             this.store.dispatch(userActions.logout());
-            this.router?.navigateByUrl('/signin');
             this.toastr?.error(`Sorry`, `Looks like it's time to signin again`);
             break;
           case 500:

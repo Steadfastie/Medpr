@@ -2,11 +2,12 @@
     <mat-icon>add</mat-icon>
     <div *ngIf="!user">
         <button mat-flat-button class="nav-icon" color="accent" disabled>Medpr</button>
+        <button mat-flat-button class="nav-icon" color="primary" routerLink="/signup">SignUp</button>
+        <button mat-flat-button class="nav-icon" color="primary" routerLink="/signin">SignIn</button>
     </div>
 
     <div *ngIf="user">
         <button mat-flat-button class="nav-icon" color="primary" routerLink="/">Medpr</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/user">User</button>
         <button mat-flat-button class="nav-icon" color="primary" routerLink="/drugs">Drugs</button>
         <button mat-flat-button class="nav-icon" color="primary" routerLink="/doctors">Doctors</button>
         <button mat-flat-button class="nav-icon" color="primary" routerLink="/vaccines">Vaccines</button>

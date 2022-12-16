@@ -11,7 +11,6 @@ export class SettingsComponent {
   familiesLinkClass = "inactiveLink"
 
   constructor(private router: Router) {
-    this.router.navigateByUrl("user/profile");
   }
 
   switchTabs(tab: string) {

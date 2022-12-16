@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
-import { UsersActionsService } from 'src/app/services/users/users.actions.service';
 import { UsersService } from 'src/app/services/users/users.service';
+import { selectStateUser } from 'src/app/store/app.states';
 
+import * as userActions from 'src/app/store/actions/auth.actions';
 
 @Component({
   selector: 'edit-profile',
@@ -13,31 +15,38 @@ import { UsersService } from 'src/app/services/users/users.service';
 })
 export class EditProfileComponent implements OnInit {
   @Input() profile?: User;
+  name?: string;
   @Output() deselect = new EventEmitter<void>();
   showSpinner: boolean = false;
   openEdit: boolean = false;
   errorMessage?: string;
 
+
   constructor(
     private fb: FormBuilder,
+    private store: Store,
     private usersService: UsersService,
     private toastr: ToastrService,
-    private actions: UsersActionsService
   ) {}
 
   ngOnInit(): void {
-    this.initialize();
+    // Get user from store
+    this.store.select(selectStateUser).pipe().subscribe((authUser) => {
+      this.profile = authUser;
+      let dogIndex = this.profile?.login.lastIndexOf('@');
+      this.name = this.profile?.login.substring(0, dogIndex);
+      this.initialize();
+    });
 
-    if (this.profile?.fullName) {
-      this.profileForm.patchValue({
-        fullName: this.profile.fullName,
-      });
-    }
-    if (this.profile?.dateOfBirth) {
-      this.profileForm.patchValue({
-        dateOfBirth: this.profile.dateOfBirth,
-      });
-    }
+    // Get additional user information
+    this.usersService.getUserById(this.profile!.userId!).pipe().subscribe((user) => {
+      this.profile = user;
+      this.profile.userId = user["id"];
+      if (user.fullName){
+        this.name = this.profile.fullName;
+      }
+      this.initialize();
+    });
 
     this.profileForm.controls.password.disable();
     this.profileForm.controls.newPassword.disable();
@@ -84,25 +93,22 @@ export class EditProfileComponent implements OnInit {
 
       // If password was changed
       if (
-        this.profileForm.value.password != "" &&
+        this.profileForm.value.password != null &&
         this.profileForm.value.password == this.profileForm.value.newPassword
       ) {
         modifiedProfile!.password = this.profileForm.value.password!;
         modifiedProfile!.newPassword = this.profileForm.value.newPassword!;
       } else {
         modifiedProfile.password = "00000";
-        modifiedProfile.newPassword = "00000";
       }
 
       // If fullName was changed
-      if (this.profileForm.value.fullName != "") {
+      if (this.profileForm.value.fullName != null) {
         modifiedProfile!.fullName = this.profileForm.value.fullName!;
-      } else {
-        modifiedProfile.fullName = "";
       }
 
       // If date of birth was provided
-      if (this.profileForm.value.dateOfBirth != "") {
+      if (this.profileForm.value.dateOfBirth != null) {
         let date = new Date(this.profileForm.value.dateOfBirth!);
         let day = date.getDate();
         let month = date.getMonth() + 1;
@@ -110,18 +116,15 @@ export class EditProfileComponent implements OnInit {
 
         let dateTime = year + '-' + month + '-' + day;
         modifiedProfile!.dateOfBirth = dateTime;
-      } else {
-        modifiedProfile.dateOfBirth = "0000-00-00";
       }
-
-      modifiedProfile.role = "Default";
 
       if (JSON.stringify(modifiedProfile) !== JSON.stringify(initialProfile)) {
         this.usersService.patch(modifiedProfile!).pipe()
           .subscribe({
             next: (profile) => {
               this.showSpinner = false;
-              this.actions.emitUserResponse(profile);
+              this.profile = profile;
+              this.initialize();
               this.toastr.success(`Success`, `${profile.login} updated`);
               this.editToggle();
             },
@@ -129,8 +132,7 @@ export class EditProfileComponent implements OnInit {
               this.showSpinner = false;
               console.log(`${err}`);
               this.toastr.error(
-                `Failed`,
-                `${modifiedProfile!.login} is still the same`
+                `${modifiedProfile!.login} is still the same`, `Failed`,
               );
               this.errorMessage = 'Could not modify profile';
             },
@@ -151,7 +153,7 @@ export class EditProfileComponent implements OnInit {
           next: () => {
             this.showSpinner = false;
             this.toastr.success(`Success`, `${this.profile!.login} removed`);
-            this.actions.emitUserDelete(this.profile!.userId!);
+            this.store.dispatch(userActions.logout());
           },
           error: (err) => {
             this.toastr.warning(
