@@ -1,3 +1,4 @@
+import { logout } from './../actions/auth.actions';
 import { Injectable } from '@angular/core';
 import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 
@@ -7,9 +8,17 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
 
 @Injectable()
 export class AuthEffects {
+
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
   signin$ = createEffect(() =>
     this.actions$.pipe(
       ofType(userActions.signin),
@@ -72,13 +81,10 @@ export class AuthEffects {
     () => this.actions$.pipe(
       ofType(userActions.logout),
       tap(() => {
+        console.log("logout effect");
         localStorage.removeItem(`user`);
+        this.router.navigate(['/signin']);
       })),
+      {dispatch: false}
   );
-
-  constructor(
-    private actions$: Actions,
-    private authService: AuthService,
-    private router: Router
-  ) {}
 }
