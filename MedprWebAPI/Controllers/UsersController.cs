@@ -184,7 +184,7 @@ public class UsersController : ControllerBase
                     await _userManager.RemoveFromRoleAsync(sourceUser, sourceUserRole[0]);
                     await _userManager.AddToRoleAsync(sourceUser, model.Role.ToString());
                 }
-                if (model.Password != model.NewPassword)
+                if (!model.Password.Equals("00000") && model.Password != model.NewPassword)
                 {
                     await _userManager.ChangePasswordAsync(sourceUser, model.Password, model.NewPassword);
                 }

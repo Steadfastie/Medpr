@@ -88,7 +88,8 @@ export class EditProfileComponent implements OnInit {
     if (!this.showSpinner && this.profileForm.valid) {
       this.showSpinner = true;
 
-      const initialProfile = this.profile;
+      let initialProfile = this.profile;
+      initialProfile!.password = '00000';
       let modifiedProfile = Object.assign({}, initialProfile);
 
       // If password was changed
@@ -98,8 +99,6 @@ export class EditProfileComponent implements OnInit {
       ) {
         modifiedProfile!.password = this.profileForm.value.password!;
         modifiedProfile!.newPassword = this.profileForm.value.newPassword!;
-      } else {
-        modifiedProfile.password = "00000";
       }
 
       // If fullName was changed
