@@ -25,7 +25,7 @@ Main user: firstuser@gmail.com | 8yQD!yya
   15. Add simultaneous remote checking for 
 	beginning and ending dates on presctiption CRUD.
 	As for now validation works, but sticks to the field
-	last modified (🖐) 
+	last modified (🖐 ➡ solved by reactive forms in 3.2) 
   16. Add authentification and authorization (✔️)
   17. Adjust views and controllers with authentification logic (✔️)
   18. Add redirect to error page if soemthing goes wrong (✔️)
@@ -47,10 +47,11 @@ Main user: firstuser@gmail.com | 8yQD!yya
   2. Reactive forms (✔️)
   3. Spinner & errors (✔️)
   4. Routing (✔️)
-  5. Consistent layout (🚧 ⬅ 1.13)
+  5. Consistent layout (✔️ ⬅ 1.13)
   6. Redux/NgRx store (✔️)
   7. Authentication guard (✔️)
   8. Interceptors adding JWT to requests (✔️)
   9. Notifications toastr (✔️)
   10. SignalR notifications (✔️ ⬅ 2.10)
   11. Scale Angular client to every entity provided (🚧)
+  12. User profile feature (✔️ ⬅ 1.19)
