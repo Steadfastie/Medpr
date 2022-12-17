@@ -1,7 +1,14 @@
+@use '@angular/material' as mat;
+@import '/src/styles.scss';
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
 .family-tabs{
+  margin-top: 3vh;
   display: flex;
-  height: 500px;
-  width: 600px;
+  width: 50vw;
+  min-width: 0;
 }
 
 .fisrt-tab{
@@ -12,4 +19,9 @@
   display: flex;
   margin-top: 50px;
   justify-content: center;
+}
+
+.feed{
+  max-height: 100px;
+  overflow: scroll;
 }

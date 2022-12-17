@@ -66,6 +66,9 @@ import { UserComponent } from './pages/user/user/user.component';
 import { ErrorInterceptor } from './services/auth/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './pages/home/home/home.component';
+import { FamilyFeedComponent } from './pages/user/families/family.feed/family.feed.component';
+import { FamilyControlComponent } from './pages/user/families/family.control/family.control.component';
+import { MemberControlComponent } from './pages/user/families/member.control/member.control.component';
 
 
 @NgModule({
@@ -120,6 +123,9 @@ import { HomeComponent } from './pages/home/home/home.component';
     SearchComponent,
     JoinFamilyComponent,
     CreateFamilyComponent,
+    FamilyFeedComponent,
+    FamilyControlComponent,
+    MemberControlComponent,
   ],
   imports: [
     BrowserModule,

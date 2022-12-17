@@ -6,9 +6,11 @@ $typography-config: mat.get-typography-config($medpr-angular-theme);
 $font-family: mat.font-family($typography-config);
 
 .container{
+  margin-top: 10vh;
   display: flex;
   align-items: center;
   flex-direction: column;
+  align-self: center;
 }
 
 .header{

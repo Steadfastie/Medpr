@@ -1,0 +1,40 @@
+@use '@angular/material' as mat;
+@import '/src/styles.scss';
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  min-width: 240px;
+  margin-bottom: 20px;
+  border-bottom: 1px rgb(208, 208, 208) solid;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+}
+
+.surname {
+  display: flex;
+  font-size: 32px;
+}
+
+.creator {
+  display: flex;
+  font-size: 20px;
+  color: rgb(145, 145, 145);
+}
+
+.deleteButton {
+  display: flex;
+  margin-left: 50px;
+}
+
+mat-spinner{
+  zoom: 0.4;
+}

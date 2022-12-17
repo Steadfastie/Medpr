@@ -1,35 +1,48 @@
 @use '@angular/material' as mat;
+@use "sass:math";
 @import '/src/styles.scss';
 
 $typography-config: mat.get-typography-config($medpr-angular-theme);
 $font-family: mat.font-family($typography-config);
 
+$containerHeight: 80vh;
+
 .container{
-    margin: 3rem;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  margin: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: $containerHeight;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.innerContainer{
-    display: flex;
-    border: 1px solid black;
+.links{
+  display: grid;
+  flex-direction: column;
+  height: inherit;
 }
 
-.grid-layout{
-    width: 100%;
-    max-height: 80%;
+.link-tile{
+  display: grid;
+  align-items: center;
+  padding-left: $containerHeight / 10;
+  padding-right: $containerHeight / 10;
+  transition: 0.5s;
+  &:hover{
+    background-color: aliceblue;
+    transition: 0.5s;
+  }
 }
 
-.nav-bar{
-    display: flex;
-    flex-direction: column;
-}
-
-.link-label{
-    pointer-events: none;
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
 }
 
 .activeLink{
@@ -42,4 +55,8 @@ $font-family: mat.font-family($typography-config);
     &:hover{
         background-color: rgb(241, 241, 241);
     }
+}
+
+.link-label{
+  pointer-events: none;
 }

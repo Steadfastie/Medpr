@@ -198,6 +198,13 @@
             <param name="model">Model with familyMember parameters</param>
             <returns></returns>
         </member>
+        <member name="M:MedprWebAPI.Controllers.MembersController.MakeAdmin(MedprModels.Requests.FamilyMemberModelRequest)">
+            <summary>
+            Make member family
+            </summary>
+            <param name="model">Model of member</param>
+            <returns></returns>
+        </member>
         <member name="M:MedprWebAPI.Controllers.MembersController.Delete(System.Guid)">
             <summary>
             Detach member from family

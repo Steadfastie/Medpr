@@ -15,6 +15,10 @@ export class MembersService {
     return this.apiService.post('members', member).pipe();
   }
 
+  makeAdmin(member: Member): Observable<Member> {
+    return this.apiService.patch('members', member).pipe();
+  }
+
   delete(id: string): Observable<Member> {
     return this.apiService.delete(`members/${id}`).pipe();
   }

@@ -24,6 +24,5 @@ export class SettingsComponent {
       this.profileLinkClass = "activeLink";
       this.familiesLinkClass = "inactiveLink";
     }
-
   }
 }

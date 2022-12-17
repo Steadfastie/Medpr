@@ -1,14 +1,15 @@
 <div [class]="isCurrentUserCreator ? 'creator' :
   isCurrentUserIn ? 'member' : 'nonmember'" class="row">
-  <div class="family-info">
 
+  <div class="family-info">
     <div matListItemTitle class="row-title">
       <mat-icon matListItemIcon class="group-icon">group</mat-icon>
       {{family?.surname | titlecase}}
     </div>
     <div matListItemLine class="row-subtitle">{{creatorName | titlecase}}</div>
   </div>
-  <div class="row-action" *ngIf="isCurrentUserIn">
+
+  <div class="row-action" *ngIf="isCurrentUserIn && !isCurrentUserCreator">
     <mat-icon>done</mat-icon>
   </div>
   <div class="row-action" *ngIf="isCurrentUserCreator">

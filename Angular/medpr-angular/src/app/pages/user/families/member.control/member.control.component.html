@@ -1,0 +1,15 @@
+<div class="row" [class]="member!.isAdmin ? 'admin' : ''">
+  <div class="title">{{memberName | titlecase}}</div>
+  <div class="action" *ngIf="isCurrentUserAdmin && !member!.isAdmin && !showSpinner">
+    <button mat-flat-button color="accent" (click)="makeAdmin()">Make admin</button>
+  </div>
+  <div class="action" *ngIf="isCurrentUserAdmin && member!.isAdmin && !showSpinner">
+    <button mat-flat-button color="accent" (click)="makeCasual()">Make casual</button>
+  </div>
+  <div class="action" *ngIf="isCurrentUserAdmin && !showSpinner">
+    <button mat-flat-button color="warn" (click)="removeMember()">Remove</button>
+  </div>
+  <div class="action" *ngIf="showSpinner">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+</div>

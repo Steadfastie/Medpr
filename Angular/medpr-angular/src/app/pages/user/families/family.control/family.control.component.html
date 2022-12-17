@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="header">
+    <div class="surname">{{family!.surname | titlecase}}</div>
+    <div class="creator">{{creatorName | titlecase}}</div>
+  </div>
+  <button mat-flat-button class="deleteButton"
+    *ngIf="isCurrentUserCreator && !showSpinner"
+    (click)="deleteFamily()">Delete
+  </button>
+  <div class="deleteButton" *ngIf="isCurrentUserCreator && showSpinner">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+</div>
+
+<div *ngFor="let member of family!.members">
+  <member-control
+    *ngIf="member.user!['id'] != family!.creator"
+    [member]="member"
+    [isCurrentUserAdmin]="isCurrentUserAdmin">
+  </member-control>
+</div>
+

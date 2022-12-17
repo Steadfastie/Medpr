@@ -64,7 +64,7 @@ public class MembersController : ControllerBase
                 var currentUser = await _userManager.FindByNameAsync(userName);
                 var currentUserRole = await _userManager.GetRolesAsync(currentUser);
 
-                if (model.UserId != currentUser.Id || currentUserRole[0] != "Admin")
+                if (currentUserRole[0] != "Admin" && model.UserId != currentUser.Id)
                 {
                     return Forbid();
                 }
@@ -80,6 +80,78 @@ public class MembersController : ControllerBase
                 var creatorModel = _mapper.Map<UserModelResponse>(creatorDTO);
 
                 responseModel.User = creatorModel.GenerateLinks("users");
+
+                return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("members"));
+            }
+
+            else
+            {
+                return Ok(model);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            ErrorModel errorModel = new()
+            {
+                Message = "Could not attach user to family",
+                StatusCode = StatusCodes.Status500InternalServerError,
+            };
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
+        }
+    }
+
+    /// <summary>
+    /// Make member family
+    /// </summary>
+    /// <param name="model">Model of member</param>
+    /// <returns></returns>
+    [HttpPatch]
+    [ProducesResponseType(typeof(FamilyModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(FamilyModelResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> MakeAdmin([FromBody] FamilyMemberModelRequest model)
+    {
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                var userName = User.Identities.FirstOrDefault().Claims.FirstOrDefault().Value;
+                var currentUser = await _userManager.FindByNameAsync(userName);
+                var currentUserRole = await _userManager.GetRolesAsync(currentUser);
+
+                var sourceMember = await _familyMemberService.GetFamilyMemberByIdAsync(model.Id);
+                var members = await _familyMemberService.GetMembersRelevantToFamily(sourceMember.FamilyId);
+                var isCurrentUserAdminForThisFamily = members
+                    .Where(member => member.UserId == currentUser.Id)
+                    .Select(member => member.IsAdmin)
+                    .FirstOrDefault();
+
+                if (currentUserRole[0] != "Admin" && !isCurrentUserAdminForThisFamily)
+                {
+                    return Forbid();
+                }
+
+                var dto = _mapper.Map<FamilyMemberDTO>(model);
+
+                var patchList = new List<PatchModel>()
+                {
+                    new PatchModel()
+                    {
+                        PropertyName = "IsAdmin",
+                        PropertyValue = dto.IsAdmin,
+                    },
+                };
+
+                await _familyMemberService.PatchFamilyMemberAsync(dto.Id, patchList);
+
+                var responseModel = _mapper.Map<FamilyMemberModelResponse>(dto);
+
+                var memberDTO = await _userService.GetUserByIdAsync(dto.UserId);
+                var memberModel = _mapper.Map<UserModelResponse>(memberDTO);
+
+                responseModel.User = memberModel.GenerateLinks("users");
 
                 return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("members"));
             }

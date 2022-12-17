@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+@import '/src/styles.scss';
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  font-size: 16px;
+}
+
+.admin{
+  background-color: rgb(247, 255, 234);
+}
+
+mat-spinner{
+  zoom: 0.4;
+}

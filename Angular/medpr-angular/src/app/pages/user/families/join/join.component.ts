@@ -33,7 +33,6 @@ export class JoinFamilyComponent implements OnInit {
       this.currentUserId = authUser?.userId;
       // Check if current user is creator
       if (this.family?.creator == authUser!.userId) {
-        this.isCurrentUserIn = true;
         this.isCurrentUserCreator = true;
       }
       // Check if current user is a member of the family

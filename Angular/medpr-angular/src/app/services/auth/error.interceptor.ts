@@ -27,13 +27,16 @@ export class ErrorInterceptor implements HttpInterceptor {
         switch (err.status) {
           case 401:
             this.store.dispatch(userActions.logout());
-            this.toastr?.error(`Sorry`, `Looks like it's time to signin again`);
+            this.toastr?.error(`Looks like it's time to signin again`, `Sorry`);
             break;
+          case 403:
+            this.toastr?.error(`This action is forbidden`, `Sorry`);
+          break;
           case 500:
-            this.toastr?.error(`${errorMessage}`);
+            this.toastr?.error(`${errorMessage}`, `Sorry`);
             break;
           default:
-            this.toastr?.error(`${errorMessage}`);
+            this.toastr?.error(`${errorMessage}`, `Sorry`);
         }
         return throwError(() => errorMessage);
       })

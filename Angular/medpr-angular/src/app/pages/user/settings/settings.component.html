@@ -1,19 +1,16 @@
 <mat-card class="container">
-    <mat-grid-list [cols]="8" rowHeight="250px" class="grid-layout">
-        <mat-grid-tile [colspan]="2" [rowspan]="1"
-            [class]="profileLinkClass"
-            (click)="switchTabs('profile')">
-            <div class="link-label">Profile</div>
-        </mat-grid-tile>
+  <div class="links">
+    <div class="link-tile"
+      (click)="switchTabs('profile')"
+      [class]="profileLinkClass">Profile
+    </div>
+    <div class="link-tile"
+      (click)="switchTabs('families')"
+      [class]="familiesLinkClass">Families
+    </div>
+  </div>
 
-        <mat-grid-tile [colspan]="6" [rowspan]="2">
-            <router-outlet></router-outlet>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2" [rowspan]="1"
-            [class]="familiesLinkClass"
-            (click)="switchTabs('families')">
-            <div class="link-label">Families</div>
-        </mat-grid-tile>
-    </mat-grid-list>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </mat-card>
