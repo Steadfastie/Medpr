@@ -53,5 +53,7 @@ Main user: firstuser@gmail.com | 8yQD!yya
   8. Interceptors adding JWT to requests (✔️)
   9. Notifications toastr (✔️)
   10. SignalR notifications (✔️ ⬅ 2.10)
-  11. Scale Angular client to every entity provided (🚧)
+  11. Scale Angular client to every entity provided (✔️)
   12. User profile feature (✔️ ⬅ 1.19)
+  13. Family basic search (✔️)
+  14. Family manager (✔️)
