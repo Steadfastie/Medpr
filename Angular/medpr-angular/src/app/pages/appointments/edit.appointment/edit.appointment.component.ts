@@ -73,6 +73,7 @@ export class EditAppointmentComponent implements OnInit {
         date: this.appointment!.date,
         place: this.appointment!.place,
         doctorId: this.appointment!.doctorId,
+        userId: this.appointment!.user!['id']
       }
 
       let date = new Date(this.appointmentForm.value.date!);
@@ -86,7 +87,7 @@ export class EditAppointmentComponent implements OnInit {
         id: this.appointment?.id!,
         date: dateTime,
         place: this.appointmentForm.value.place!,
-        userId: this.userId!,
+        userId: this.appointment!.user!['id']!,
         doctorId: this.appointmentForm.value.doctorId!,
       }
       if (JSON.stringify(modifiedAppointment) !== JSON.stringify(initialAppointment)){

@@ -57,10 +57,7 @@ export class FamilyControlComponent implements OnInit {
       const presentMember = this.family?.members!.find((presentMember) => {
         return presentMember.id === memberFromAction.id;
       })
-      if (!presentMember) {
-        this.family?.members!.push(memberFromAction);
-      }
-      else{
+      if (presentMember) {
         this.family?.members!.splice(this.family?.members!.indexOf(presentMember), 1, memberFromAction);
       }
     });

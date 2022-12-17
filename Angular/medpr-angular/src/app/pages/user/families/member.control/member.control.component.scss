@@ -10,12 +10,29 @@ $font-family: mat.font-family($typography-config);
   flex-direction: row;
   align-items: center;
   font-size: 16px;
+  margin-top: 1rem;
 }
 
-.admin{
-  background-color: rgb(247, 255, 234);
+.title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.action{
+  display: flex;
+  flex-direction: row;
+}
+
+.left{
+  margin-right: 1rem;
 }
 
 mat-spinner{
   zoom: 0.4;
+}
+
+mat-icon{
+  zoom: 0.8;
+  padding-right: 0.5rem;
 }

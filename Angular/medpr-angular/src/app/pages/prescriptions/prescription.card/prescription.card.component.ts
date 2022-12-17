@@ -7,6 +7,9 @@ import { DrugsService } from 'src/app/services/drugs/drugs.service';
 import { Doctor } from 'src/app/models/doctor';
 import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
+import { selectStateUser } from 'src/app/store/app.states';
+import { Store } from '@ngrx/store';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'prescription-card',
@@ -21,16 +24,28 @@ export class PrescriptionCardComponent implements OnInit {
   selected: boolean;
   daysLeft?: number;
   endedBeforeToday: boolean = false;
+  user?: User;
+  currentUserId?: string;
 
   constructor(private drugsService: DrugsService,
     private drugActions: DrugsActionsService,
     private doctorsService: DoctorsService,
     private doctorActions: DoctorsActionsService,
+    private store: Store,
     ){
     this.selected = false;
   }
 
   ngOnInit(): void {
+    this.store.select(selectStateUser).pipe().subscribe((authUser) => {
+      this.currentUserId = authUser?.userId;
+    });
+
+    if (this.prescription && this.prescription.user
+      && this.prescription.user['id'] != this.currentUserId) {
+        this.user = this.prescription.user;
+    }
+
     if (this.prescription && this.prescription.drug && this.prescription.doctor) {
       let endDate = new Date(this.prescription.endDate);
       let now = new Date();

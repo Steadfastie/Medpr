@@ -89,6 +89,7 @@ export class EditPrescriptionComponent implements OnInit {
         dose: this.prescription!.dose,
         drugId: this.prescription!.drugId,
         doctorId: this.prescription!.doctorId,
+        userId: this.prescription!.user!['id']!,
       }
 
       let startDate = new Date(this.prescriptionForm.value.startDate!);
@@ -110,7 +111,7 @@ export class EditPrescriptionComponent implements OnInit {
         date: startDateTime,
         endDate: endDateTime,
         dose: Number(this.prescriptionForm.value.dose!),
-        userId: this.userId!,
+        userId: this.prescription!.user!['id']!,
         drugId: this.prescriptionForm.value.drugId!,
         doctorId: this.prescriptionForm.value.doctorId!,
       }

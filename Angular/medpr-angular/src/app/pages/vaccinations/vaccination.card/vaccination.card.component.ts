@@ -1,9 +1,12 @@
 import { formatDate } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { User } from 'src/app/models/user';
 import { Vaccination } from 'src/app/models/vaccination';
 import { Vaccine } from 'src/app/models/vaccine';
 import { VaccinesActionsService } from 'src/app/services/vaccines/vaccines.actions.service';
 import { VaccinesService } from 'src/app/services/vaccines/vaccines.service';
+import { selectStateUser } from 'src/app/store/app.states';
 
 @Component({
   selector: 'vaccination-card',
@@ -18,14 +21,26 @@ export class VaccinationCardComponent implements OnInit {
   endDate?: string;
   daysLeft?: number;
   endedBeforeToday: boolean = false;
+  user?: User;
+  currentUserId?: string;
 
   constructor(private vaccinesService: VaccinesService,
     private vaccineActions: VaccinesActionsService,
+    private store: Store,
     ){
     this.selected = false;
   }
 
   ngOnInit(): void {
+    this.store.select(selectStateUser).pipe().subscribe((authUser) => {
+      this.currentUserId = authUser?.userId;
+    });
+
+    if (this.vaccination && this.vaccination.user
+      && this.vaccination.user['id'] != this.currentUserId) {
+        this.user = this.vaccination.user;
+    }
+
     if (this.vaccination && this.vaccination.vaccine) {
       let endDate = new Date(this.vaccination.date);
       endDate.setDate(endDate.getDate() + this.vaccination.daysOfProtection);

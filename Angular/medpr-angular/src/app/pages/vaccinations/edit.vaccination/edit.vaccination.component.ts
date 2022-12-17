@@ -81,6 +81,7 @@ export class EditVaccinationComponent implements OnInit {
         date: this.vaccination!.date,
         daysOfProtection: this.vaccination!.daysOfProtection,
         vaccineId: this.vaccination!.vaccineId,
+        userId: this.vaccination!.user!['id']!,
       }
 
       let vaccinationDate = new Date(this.vaccinationForm.value.vaccinationDate!);
@@ -98,7 +99,7 @@ export class EditVaccinationComponent implements OnInit {
         id: this.vaccination?.id!,
         date: vaccinationDateTime,
         daysOfProtection: daysOfProtection,
-        userId: this.userId!,
+        userId: this.vaccination!.user!['id']!,
         vaccineId: this.vaccinationForm.value.vaccineId!,
       }
       if (JSON.stringify(modifiedVaccination) !== JSON.stringify(initialVaccination)){

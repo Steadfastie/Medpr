@@ -1,4 +1,12 @@
 <div class="container">
+  <mat-card *ngIf="user" class="appointmentInfo">
+    <profile-info [user]="user"></profile-info>
+  </mat-card>
+
+  <div *ngIf="user" class="connect">
+    <mat-icon color="accent">attachment</mat-icon>
+  </div>
+
   <mat-card *ngIf="vaccine"  class="drugInfo">
     <vaccine-info [vaccine]="vaccine"></vaccine-info>
   </mat-card>
