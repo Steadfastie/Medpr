@@ -97,6 +97,49 @@ public class FamiliesController : ControllerBase
     }
 
     /// <summary>
+    /// Find family by substring
+    /// </summary>
+    /// <param name="substring">Substring of the family</param>
+    /// <returns></returns>
+    [HttpGet("search")]
+    [ProducesResponseType(typeof(DrugModelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> NameShard([FromQuery] string substring)
+    {
+        try
+        {
+            var dtos = await _familyService.GetFamiliesBySubstringAsync(substring);
+            if (dtos != null)
+            {
+                var models = _mapper.Map<List<FamilyModelResponse>>(dtos);
+
+                if (models.Any())
+                {
+                    foreach (var family in models)
+                    {
+                        await GetMembersForFamily(family);
+                        family.GenerateLinks("families");
+                    }
+
+                    return Ok(models);
+                }
+            }
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"{ex.Message}. {Environment.NewLine} {ex.StackTrace}");
+            ErrorModel errorModel = new()
+            {
+                Message = "Could not find family",
+                StatusCode = StatusCodes.Status500InternalServerError,
+            };
+            return Problem(detail: errorModel.Message, statusCode: errorModel.StatusCode);
+        }
+    }
+
+    /// <summary>
     /// Create new family for the app. Forbids creation of family with existing in app name
     /// </summary>
     /// <param name="model">Model with family parameters</param>

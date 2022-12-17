@@ -41,6 +41,14 @@ public class FamilyServiceCqs : IFamilyService
         });
     }
 
+    public async Task<List<FamilyDTO>> GetFamiliesBySubstringAsync(string substring)
+    {
+        return await _mediator.Send(new GetFamilyBySubstringQuery()
+        {
+            Substring = substring
+        });
+    }
+
     public async Task<List<FamilyDTO>> GetAllFamiliesAsync()
     {
         return await _mediator.Send(new GetAllFamiliesQuery());

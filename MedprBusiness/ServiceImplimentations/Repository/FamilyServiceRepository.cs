@@ -111,4 +111,9 @@ public class FamilyServiceRepository : IFamilyService
         }
         await _unitOfWork.Commit();
     }
+
+    public Task<List<FamilyDTO>> GetFamiliesBySubstringAsync(string substring)
+    {
+        throw new NotImplementedException();
+    }
 }

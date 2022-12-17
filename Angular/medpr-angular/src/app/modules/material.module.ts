@@ -13,6 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
 
 const MaterialComponents = [
   MatCardModule,
@@ -29,6 +30,7 @@ const MaterialComponents = [
   MatToolbarModule,
   MatSlideToggleModule,
   MatTabsModule,
+  MatListModule,
 ]
 
 @NgModule({

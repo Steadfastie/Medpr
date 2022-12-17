@@ -165,6 +165,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MedprWebAPI.Controllers.FamiliesController.NameShard(System.String)">
+            <summary>
+            Find family by substring
+            </summary>
+            <param name="substring">Substring of the family</param>
+            <returns></returns>
+        </member>
         <member name="M:MedprWebAPI.Controllers.FamiliesController.Create(MedprModels.Requests.FamilyModelRequest)">
             <summary>
             Create new family for the app. Forbids creation of family with existing in app name

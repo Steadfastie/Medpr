@@ -57,6 +57,8 @@ import { SettingsComponent } from './pages/user/settings/settings.component';
 import { ProfileInfoComponent } from './pages/user/profile/profile.info/profile.info.component';
 import { EditProfileComponent } from './pages/user/profile/edit.profile/edit.profile.component';
 import { FamiliesComponent } from './pages/user/families/families.component';
+import { SearchComponent } from './pages/user/families/search/search.component';
+import { JoinFamilyComponent } from './pages/user/families/join/join.component';
 
 import { ErrorComponent } from './pages/error/error.component';
 import { UserComponent } from './pages/user/user/user.component';
@@ -111,8 +113,11 @@ import { HomeComponent } from './pages/home/home/home.component';
 
     SettingsComponent,
     FamiliesComponent,
+    SearchComponent,
     ProfileInfoComponent,
     EditProfileComponent,
+    SearchComponent,
+    JoinFamilyComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<mat-list-item
+  [style.background-color]="isCurrentUserCreator ? 'primary' :
+  isCurrentUserIn ? 'warn' : 'accent'">
+    <div matListItemTitle>
+      <mat-icon matListItemIcon>group</mat-icon>
+      {{family?.surname | titlecase}}</div>
+    <span matListItemLine>{{creatorName | titlecase}}</span>
+    <button mat-icon-button *ngIf="!isCurrentUserIn" (click)="join()">
+      <mat-icon>group_add</mat-icon>
+    </button>
+</mat-list-item>
