@@ -7,6 +7,7 @@ import { UsersService } from 'src/app/services/users/users.service';
 import { selectStateUser } from 'src/app/store/app.states';
 
 import * as userActions from 'src/app/store/actions/auth.actions';
+import { UsersActionsService } from 'src/app/services/users/users.actions.service';
 
 @Component({
   selector: 'edit-profile',
@@ -26,6 +27,7 @@ export class EditProfileComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store,
     private usersService: UsersService,
+    private userActions: UsersActionsService,
     private toastr: ToastrService,
   ) {}
 
@@ -126,6 +128,7 @@ export class EditProfileComponent implements OnInit {
               this.initialize();
               this.toastr.success(`Success`, `${profile.login} updated`);
               this.editToggle();
+              this.userActions.emitUserResponse(profile);
             },
             error: (err) => {
               this.showSpinner = false;

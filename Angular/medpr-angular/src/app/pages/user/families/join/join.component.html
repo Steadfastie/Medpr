@@ -1,11 +1,20 @@
-<mat-list-item
-  [style.background-color]="isCurrentUserCreator ? 'primary' :
-  isCurrentUserIn ? 'warn' : 'accent'">
-    <div matListItemTitle>
-      <mat-icon matListItemIcon>group</mat-icon>
-      {{family?.surname | titlecase}}</div>
-    <span matListItemLine>{{creatorName | titlecase}}</span>
-    <button mat-icon-button *ngIf="!isCurrentUserIn" (click)="join()">
-      <mat-icon>group_add</mat-icon>
-    </button>
-</mat-list-item>
+<div [class]="isCurrentUserCreator ? 'creator' :
+  isCurrentUserIn ? 'member' : 'nonmember'" class="row">
+  <div class="family-info">
+
+    <div matListItemTitle class="row-title">
+      <mat-icon matListItemIcon class="group-icon">group</mat-icon>
+      {{family?.surname | titlecase}}
+    </div>
+    <div matListItemLine class="row-subtitle">{{creatorName | titlecase}}</div>
+  </div>
+  <div class="row-action" *ngIf="isCurrentUserIn">
+    <mat-icon>done</mat-icon>
+  </div>
+  <div class="row-action" *ngIf="isCurrentUserCreator">
+    <mat-icon>done_all</mat-icon>
+  </div>
+  <button mat-icon-button class="row-action" *ngIf="!isCurrentUserIn" (click)="join()">
+    <mat-icon>group_add</mat-icon>
+  </button>
+</div>

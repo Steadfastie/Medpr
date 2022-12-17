@@ -37,7 +37,7 @@ export class JoinFamilyComponent implements OnInit {
         this.isCurrentUserCreator = true;
       }
       // Check if current user is a member of the family
-      let memberIds = this.family!.members?.map(member => member.userId)
+      let memberIds = this.family!.members?.map(member => member.user?.['id'])
       if (memberIds!.indexOf(authUser!.userId!) > -1){
         this.isCurrentUserIn = true;
       }

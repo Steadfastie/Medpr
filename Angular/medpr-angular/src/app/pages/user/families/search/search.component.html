@@ -1,17 +1,31 @@
-<form class="form" [formGroup]="searchForm">
-  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-    <mat-label>Surname</mat-label>
-    <input matInput placeholder="..surname" formControlName="substring">
-    <mat-error *ngIf="searchForm.controls['substring'].errors?.['minlength']">Too short to search</mat-error>
-    <mat-error *ngIf="searchForm.controls['substring'].errors?.['required']">Too long to search</mat-error>
-    <button *ngIf="families" matSuffix mat-icon-button aria-label="Clear" (click)="close()">
-      <mat-icon>close</mat-icon>
+<div class="container">
+  <!-- Blank creation -->
+  <div *ngIf="!creationSelected">
+    <button mat-flat-button (click)="selectToggle()">
+      <mat-icon>add</mat-icon>
+      Create from blank
     </button>
-  </mat-form-field>
-<form>
+  </div>
 
+  <!-- Selected blank creation  -->
+  <div *ngIf="creationSelected">
+    <create-family (deselect)="selectToggle()"></create-family>
+  </div>
 
+  <form class="form" [formGroup]="searchForm">
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>Surname</mat-label>
+      <input matInput placeholder="..surname" formControlName="substring">
+      <mat-error *ngIf="searchForm.controls['substring'].errors?.['minlength']">Too short to search</mat-error>
+      <mat-error *ngIf="searchForm.controls['substring'].errors?.['required']">Too long to search</mat-error>
+      <button *ngIf="families" matSuffix mat-icon-button aria-label="Clear" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <form>
 
-<mat-list *ngIf="families">
-  <join-family *ngFor="let family of families" [family]="family"></join-family>
-<mat-list>
+    <div *ngIf="families">
+      <join-family *ngFor="let family of families" [family]="family"></join-family>
+    <div>
+
+</div>

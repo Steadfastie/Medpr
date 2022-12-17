@@ -59,6 +59,7 @@ import { EditProfileComponent } from './pages/user/profile/edit.profile/edit.pro
 import { FamiliesComponent } from './pages/user/families/families.component';
 import { SearchComponent } from './pages/user/families/search/search.component';
 import { JoinFamilyComponent } from './pages/user/families/join/join.component';
+import { CreateFamilyComponent } from './pages/user/families/create.family/create.family.component';
 
 import { ErrorComponent } from './pages/error/error.component';
 import { UserComponent } from './pages/user/user/user.component';
@@ -118,6 +119,7 @@ import { HomeComponent } from './pages/home/home/home.component';
     EditProfileComponent,
     SearchComponent,
     JoinFamilyComponent,
+    CreateFamilyComponent,
   ],
   imports: [
     BrowserModule,

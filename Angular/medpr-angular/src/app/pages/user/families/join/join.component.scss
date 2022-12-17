@@ -1,0 +1,47 @@
+@use '@angular/material' as mat;
+@import '/src/styles.scss';
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  min-width: 240px;
+}
+
+.creator{
+  background-color: rgb(234, 255, 234);
+}
+
+.member{
+  background-color: rgb(255, 249, 234);
+}
+
+.non-member{
+  background-color: rgb(239, 234, 255);
+}
+
+.family-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.row-title{
+  display: flex;
+}
+
+.group-icon{
+  margin-right: 5px;
+}
+
+.row-subtitle{
+  display: flex;
+}
+
+.row-actions{
+  display: flex;
+  margin-left: 50px;
+}

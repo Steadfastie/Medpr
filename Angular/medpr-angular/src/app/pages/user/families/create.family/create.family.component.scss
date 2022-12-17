@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+
+@import 'src/styles.scss';
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
+.form{
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: $font-family;
+}
+
+mat-card-actions{
+  justify-content: space-evenly;
+}
+
+
+
+
+
+

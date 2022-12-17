@@ -12,6 +12,7 @@ import { FamiliesService } from 'src/app/services/families/families.service';
 })
 export class SearchComponent implements OnInit {
   families?: Family[];
+  creationSelected: boolean = false;
 
   constructor(private fb: FormBuilder,
     private familiesService: FamiliesService,
@@ -37,6 +38,10 @@ export class SearchComponent implements OnInit {
   searchForm = this.fb.group({
     substring: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15)]]
   });
+
+  selectToggle(){
+    this.creationSelected = !this.creationSelected;
+  }
 
   close(){
     this.searchForm.reset();
