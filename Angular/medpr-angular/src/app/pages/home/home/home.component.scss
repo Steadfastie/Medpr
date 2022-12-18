@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@import 'src/styles.scss';
+
+$color-config: mat.get-color-config($medpr-angular-theme);
+$primary: map.get($color-config, 'primary');
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
+.container{
+  margin: 3rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+  max-height: 80vh;
+  overflow: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title{
+  display: block;
+  font-size: 32px;
+  border-bottom: 1px rgb(189, 189, 189) solid ;
+}
+
+.events{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  &.first{
+    margin-top: 0;
+  }
+}

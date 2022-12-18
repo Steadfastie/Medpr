@@ -81,7 +81,9 @@ export class EditAppointmentComponent implements OnInit {
       let month = date.getMonth() + 1;
       let year = date.getFullYear();
 
-      let dateTime = year + '-' + month + '-' + day + 'T21:00:00'
+      let dateTime = year +
+        '-' + month.toLocaleString('en-US', {minimumIntegerDigits: 2}) +
+        '-' + day.toLocaleString('en-US', {minimumIntegerDigits: 2})
 
       const modifiedAppointment: Appointment = {
         id: this.appointment?.id!,

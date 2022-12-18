@@ -186,6 +186,23 @@
             <param name="id">Family's id</param>
             <returns></returns>
         </member>
+        <member name="T:MedprWebAPI.Controllers.FeedController">
+            <summary>
+            Controller for users and errors
+            </summary>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.FeedController.Upcoming">
+            <summary>
+            Get upcoming events
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MedprWebAPI.Controllers.FeedController.Ongoing">
+            <summary>
+            Get upcoming events
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:MedprWebAPI.Controllers.MembersController">
             <summary>
             Controller for members of families

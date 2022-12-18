@@ -9,3 +9,19 @@ $font-family: mat.font-family($typography-config);
   flex-direction: column;
   justify-content: center;
 }
+
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.error-icon{
+  margin-left: 10px;
+  zoom: 1.5;
+}
+
+.back{
+  margin-right: 10px;
+}

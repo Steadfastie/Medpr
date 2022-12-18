@@ -136,6 +136,7 @@ public class Program
         builder.Services.AddScoped<IAppointmentService, AppointmentServiceCqs>();
         builder.Services.AddScoped<IFamilyMemberService, FamilyMemberServiceCqs>();
         builder.Services.AddScoped<IPrescriptionService, PrescriptionServiceCqs>();
+        builder.Services.AddScoped<IFeedService, FeedServiceCqs>();
 
         builder.Services.AddScoped<IJwtUtil, JwtUtilSha256>();
         builder.Services.AddScoped<INotificationService, NotificationService>();

@@ -6,6 +6,7 @@ import { selectStateUser } from './store/app.states';
 import { SignalrService } from './modules/notifications/services/signalr.service';
 import { UsersService } from './services/users/users.service';
 import { UsersActionsService } from './services/users/users.actions.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
     private singlarService: SignalrService,
     private usersService: UsersService,
     private usersActions: UsersActionsService,
+    private router: Router,
     ) {
     this.singlarService.startConnection();
     this.singlarService.addNotificationListner();
@@ -49,6 +51,7 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
+    // this.router.navigate(['/signin']);
     this.store.dispatch(userActions.logout());
   }
 }

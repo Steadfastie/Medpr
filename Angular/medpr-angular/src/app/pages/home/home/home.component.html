@@ -1,1 +1,35 @@
+<mat-card class="container">
+  <div class="events first" *ngIf="ongoingFeed?.prescriptions">
+    <div class="title">Ongoing prescriptions</div>
+    <prescription-plate
+      *ngFor="let prescription of ongoingFeed?.prescriptions"
+      [prescription]="prescription">
+    </prescription-plate>
+  </div>
+
+  <div class="events" *ngIf="upcomingFeed?.appointments">
+    <div class="title">Appointments</div>
+    <appointment-plate
+      *ngFor="let appointment of upcomingFeed?.appointments"
+      [appointment]="appointment">
+    </appointment-plate>
+  </div>
+
+  <div class="events" *ngIf="upcomingFeed?.vaccinations">
+    <div class="title">Vaccinations</div>
+    <vaccination-plate
+      *ngFor="let vaccination of upcomingFeed?.vaccinations"
+      [vaccination]="vaccination">
+    </vaccination-plate>
+  </div>
+
+  <div class="events" *ngIf="upcomingFeed?.prescriptions">
+    <div class="title">Future prescriptions</div>
+    <prescription-plate
+      *ngFor="let prescription of upcomingFeed?.prescriptions"
+      [prescription]="prescription">
+    </prescription-plate>
+  </div>
+</mat-card>
+
 

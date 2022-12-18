@@ -89,7 +89,9 @@ export class EditVaccinationComponent implements OnInit {
       let month = vaccinationDate.getMonth() + 1;
       let year = vaccinationDate.getFullYear();
 
-      let vaccinationDateTime = year + '-' + month + '-' + day
+      let vaccinationDateTime = year +
+        '-' + month.toLocaleString('en-US', {minimumIntegerDigits: 2}) +
+        '-' + day.toLocaleString('en-US', {minimumIntegerDigits: 2})
 
       let reVaccinationDate = new Date(this.vaccinationForm.value.reVaccinationDate!);
       let difference = reVaccinationDate.getTime() - vaccinationDate.getTime();

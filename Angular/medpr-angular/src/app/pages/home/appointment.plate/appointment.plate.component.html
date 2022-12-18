@@ -1,0 +1,12 @@
+<div class="row" (click)="goToDetails()">
+  <div class="left">
+    <div class="conditions">{{appointment?.date | date:'mediumDate'}}</div>
+    <mat-icon class="connect">room</mat-icon>
+    <div class="conditions">{{appointment?.place}}</div>
+  </div>
+  <div class="right">
+    <div class="people">{{appointment?.doctor?.name}}</div>
+    <mat-icon class="connect">compare_arrows</mat-icon>
+    <div class="people">{{userName | titlecase}}</div>
+  </div>
+</div>

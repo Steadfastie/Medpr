@@ -1,0 +1,15 @@
+<div class="row" (click)="goToDetails()">
+  <div class="left">
+    <div class="conditions">{{prescription?.date | date:'mediumDate'}}</div>
+    <mat-icon class="connect">schedule</mat-icon>
+    <div class="conditions">{{prescription?.endDate | date:'mediumDate'}}</div>
+  </div>
+  <div class="right">
+    <div class="people">{{prescription?.doctor?.name}}</div>
+    <mat-icon class="connect">compare_arrows</mat-icon>
+    <div class="people">{{prescription?.drug?.name}}</div>
+    <mat-icon class="connect">compare_arrows</mat-icon>
+    <div class="people">{{userName | titlecase}}</div>
+  </div>
+</div>
+

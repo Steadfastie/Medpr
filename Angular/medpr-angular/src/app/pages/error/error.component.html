@@ -1,11 +1,10 @@
 <div class="container">
-  <mat-card-content>
-    <mat-icon>error_outline</mat-icon> {{message}}
+  <mat-card-content class="row">
+    <div>{{message}}</div>
+    <mat-icon class="error-icon" color="warn">error_outline</mat-icon>
   </mat-card-content>
-  <mat-card-footer>
-    <mat-button-toggle-group>
-      <mat-button-toggle (click)="reloadPage()">Reload page</mat-button-toggle>
-      <mat-button-toggle (click)="back()">Go back</mat-button-toggle>
-    </mat-button-toggle-group>
-  </mat-card-footer>
+  <mat-card-actions align="end">
+    <button mat-flat-button class="back" (click)="back()" color="accent">Go back</button>
+    <button mat-flat-button class="reload" (click)="reloadPage()" color="primary">Reload page</button>
+  </mat-card-actions>
 </div>

@@ -97,14 +97,18 @@ export class EditPrescriptionComponent implements OnInit {
       let startMonth = startDate.getMonth() + 1;
       let startYear = startDate.getFullYear();
 
-      let startDateTime = startYear + '-' + startMonth + '-' + startDay
+      let startDateTime = startYear +
+        '-' + startMonth.toLocaleString('en-US', {minimumIntegerDigits: 2}) +
+        '-' + startDay.toLocaleString('en-US', {minimumIntegerDigits: 2})
 
       let endDate = new Date(this.prescriptionForm.value.endDate!);
       let endDay = endDate.getDate();
       let endMonth = endDate.getMonth() + 1;
       let endYear = endDate.getFullYear();
 
-      let endDateTime = endYear + '-' + endMonth + '-' + endDay
+      let endDateTime = endYear +
+        '-' + endMonth.toLocaleString('en-US', {minimumIntegerDigits: 2}) +
+        '-' + endDay.toLocaleString('en-US', {minimumIntegerDigits: 2})
 
       const modifiedPrescription: Prescription = {
         id: this.prescription?.id!,

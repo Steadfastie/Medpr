@@ -1,0 +1,59 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@import 'src/styles.scss';
+
+$color-config: mat.get-color-config($medpr-angular-theme);
+$primary: map.get($color-config, 'primary');
+$accent: map.get($color-config, 'accent');
+$warn: map.get($color-config, 'warn');
+
+$typography-config: mat.get-typography-config($medpr-angular-theme);
+$font-family: mat.font-family($typography-config);
+
+.row{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 28px;
+  width: inherit;
+  margin: 5px;
+  border-radius: 5px;
+  pointer-events: auto;
+  transition-duration: 0.5s;
+  &:hover{
+    z-index: 1;
+    scale: 101%;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 4px rgba(0, 0, 0, 0.19);
+    transition-duration: 0.5s;
+  }
+}
+
+.left{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  pointer-events: none;
+}
+
+.right{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  pointer-events: none;
+}
+
+.people{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.conditions{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.connect{
+  color: rgb(200, 200, 200);
+}

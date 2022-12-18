@@ -69,6 +69,9 @@ import { HomeComponent } from './pages/home/home/home.component';
 import { FamilyFeedComponent } from './pages/user/families/family.feed/family.feed.component';
 import { FamilyControlComponent } from './pages/user/families/family.control/family.control.component';
 import { MemberControlComponent } from './pages/user/families/member.control/member.control.component';
+import { AppointmentPlateComponent } from './pages/home/appointment.plate/appointment.plate.component';
+import { PrescriptionPlateComponent } from './pages/home/prescription.plate/prescription.plate.component';
+import { VaccinationPlateComponent } from './pages/home/vaccination.plate/vaccination.plate.component';
 
 
 @NgModule({
@@ -126,6 +129,9 @@ import { MemberControlComponent } from './pages/user/families/member.control/mem
     FamilyFeedComponent,
     FamilyControlComponent,
     MemberControlComponent,
+    AppointmentPlateComponent,
+    PrescriptionPlateComponent,
+    VaccinationPlateComponent,
   ],
   imports: [
     BrowserModule,
