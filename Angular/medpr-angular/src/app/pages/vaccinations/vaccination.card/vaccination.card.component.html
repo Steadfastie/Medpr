@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card *ngIf="user" class="appointmentInfo">
+  <mat-card *ngIf="user" class="vaccinationInfo">
     <profile-info [user]="user"></profile-info>
   </mat-card>
 
@@ -7,7 +7,7 @@
     <mat-icon color="accent">attachment</mat-icon>
   </div>
 
-  <mat-card *ngIf="vaccine"  class="drugInfo">
+  <mat-card *ngIf="vaccine"  class="vaccinationInfo">
     <vaccine-info [vaccine]="vaccine"></vaccine-info>
   </mat-card>
 

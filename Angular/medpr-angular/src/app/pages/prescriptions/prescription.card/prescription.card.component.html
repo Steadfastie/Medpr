@@ -1,4 +1,13 @@
 <div class="container">
+  <!-- User card -->
+  <mat-card *ngIf="user" class="info">
+    <profile-info [user]="user"></profile-info>
+  </mat-card>
+
+  <div *ngIf="user" class="connect">
+    <mat-icon color="accent">attachment</mat-icon>
+  </div>
+
   <!-- Doctor card -->
   <mat-card *ngIf="doctor" class="info">
     <doctor-info [doctor]="doctor"></doctor-info>
@@ -37,7 +46,7 @@
     <div *ngIf="prescription && !selected">
       <mat-card-header>
         <mat-card-title class="row">
-          <div>Done: {{prescription.date | date:'fullDate'}}</div>
+          <div>First: {{prescription.date | date:'mediumDate'}}</div>
           <button mat-mini-fab color="warn" class="edit-button" (click)="selectToggle()">
             <mat-icon>edit</mat-icon>
           </button>
@@ -45,7 +54,7 @@
         <mat-card-subtitle *ngIf="!endedBeforeToday" class="row">{{daysLeft}} days left</mat-card-subtitle>
         <mat-card-subtitle *ngIf="endedBeforeToday" class="row">Protection ended {{daysLeft}} days ago</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>Until: {{prescription.endDate | date:'fullDate'}} <mat-icon>access_time</mat-icon></mat-card-content>
+      <mat-card-content>Last: {{prescription.endDate | date:'mediumDate'}} <mat-icon>access_time</mat-icon></mat-card-content>
       <mat-card-content>{{prescription.dose}} units per day</mat-card-content>
     </div>
 

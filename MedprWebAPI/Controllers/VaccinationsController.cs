@@ -178,7 +178,8 @@ public class VaccinationsController : ControllerBase
                 if (model.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                    .Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
+                    .Schedule(() => _notificationService
+                        .SendNotification(NotificationMessage, NotificationType, $"{dto.Id}", model.UserId),
                     dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
@@ -248,8 +249,8 @@ public class VaccinationsController : ControllerBase
                         if (dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                         {
                             BackgroundJob.Delete(sourceDto.NotificationId);
-                            dto.NotificationId = BackgroundJob.Schedule(() => 
-                                _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
+                            dto.NotificationId = BackgroundJob.Schedule(() => _notificationService
+                                .SendNotification(NotificationMessage, NotificationType, $"{dto.Id}", model.UserId),
                                 dto.Date.ToUniversalTime() - DateTime.UtcNow);
                         }
                         if (dto.Date != sourceDto.Date && dto.Date.ToUniversalTime() < DateTime.UtcNow)
@@ -268,8 +269,9 @@ public class VaccinationsController : ControllerBase
                 if (sourceDto.NotificationId == null && dto.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
-                        .Schedule(() => _notificationService.SendNotification(NotificationMessage, NotificationType, $"{dto.Id}"),
-                    dto.Date.ToUniversalTime() - DateTime.UtcNow);
+                        .Schedule(() => _notificationService
+                            .SendNotification(NotificationMessage, NotificationType, $"{dto.Id}", model.UserId),
+                        dto.Date.ToUniversalTime() - DateTime.UtcNow);
                 }
 
                 var patchList = new List<PatchModel>();

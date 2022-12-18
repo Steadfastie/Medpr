@@ -19,13 +19,14 @@ public class NotificationService: INotificationService
     /// <param name="type">Entity type</param>
     /// <param name="eventId">Id of entity</param>
     /// <returns></returns>
-    public async Task SendNotification(string message, string type, string eventId)
+    public async Task SendNotification(string message, string type, string eventId, Guid userId)
     {
         var notification = new Notification
         {
             Message = message,
             Type = type,
-            EventId = eventId
+            EventId = eventId,
+            UserId = userId
         };
         await _eventNotification.Clients.All.SendMessage(notification);
     }

@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Notification } from '../models/notification';
+import { Store } from '@ngrx/store';
+import { selectUserId } from 'src/app/store/app.states';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +17,7 @@ export class SignalrService {
   constructor(
     private toastr: ToastrService,
     private router: Router,
+    private store: Store,
   ) {}
 
   public startConnection = () => {
@@ -32,14 +35,17 @@ export class SignalrService {
 
   public addNotificationListner = () => {
     this.hubConnection.on('SendMessage', (notification: Notification) => {
-      this.showNotification(notification)
+      this.store.select(selectUserId).pipe().subscribe(currentUserId => {
+        if (notification.userId == currentUserId){
+          this.showNotification(notification)
+        }
+      })
     });
   };
 
   showNotification(notification: Notification) {
-    this.toastr.success(
-      notification.message
-    ).onTap
+    this.toastr.success(notification.message, 'Look!')
+    .onTap
     .pipe(take(1))
     .subscribe(()=> {
       this.router.navigateByUrl(`${notification.type}/${notification.eventId}`);

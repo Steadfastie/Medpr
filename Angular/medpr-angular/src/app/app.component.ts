@@ -23,8 +23,7 @@ export class AppComponent implements OnInit {
     private usersActions: UsersActionsService,
     private router: Router,
     ) {
-    this.singlarService.startConnection();
-    this.singlarService.addNotificationListner();
+
   }
   ngOnInit(): void {
     this.store.select(selectStateUser).pipe()
@@ -32,26 +31,27 @@ export class AppComponent implements OnInit {
         this.user = authStatus;
         let dogIndex = this.user?.login.lastIndexOf('@');
         this.name = this.user?.login.substring(0, dogIndex);
+        this.singlarService.startConnection();
+        this.singlarService.addNotificationListner();
       });
 
-      this.usersService.getUserById(this.user!.userId!).pipe().subscribe((user) => {
-        this.user = user;
-        this.user.userId = user["id"];
-        if (user.fullName){
-          this.name = this.user.fullName;
-        }
-      });
+    this.usersService.getUserById(this.user!.userId!).pipe().subscribe((user) => {
+      this.user = user;
+      this.user.userId = user["id"];
+      if (user.fullName){
+        this.name = this.user.fullName;
+      }
+    });
 
-      this.usersActions.userResponseListner().subscribe((changedUser) => {
-        this.user = changedUser;
-        if (changedUser.fullName){
-          this.name = this.user.fullName;
-        }
-      });
+    this.usersActions.userResponseListner().subscribe((changedUser) => {
+      this.user = changedUser;
+      if (changedUser.fullName){
+        this.name = this.user.fullName;
+      }
+    });
   }
 
   logout() {
-    // this.router.navigate(['/signin']);
     this.store.dispatch(userActions.logout());
   }
 }
