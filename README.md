@@ -57,3 +57,4 @@ Main user: firstuser@gmail.com | 8yQD!yya
   12. User profile feature (✔️ ⬅ 1.19)
   13. Family basic search (✔️)
   14. Family manager (✔️)
+  15. User feed (✔️)
