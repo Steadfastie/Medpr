@@ -1,7 +1,7 @@
 import { AppointmentsService } from 'src/app/services/appointments/appointments.service';
 import { Component } from '@angular/core';
 import { Appointment } from 'src/app/models/appointment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentsActionsService } from 'src/app/services/appointments/appointments.actions.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class AppointmentsComponent {
   constructor(
     private appointmentsService: AppointmentsService,
     private actions: AppointmentsActionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -45,11 +46,14 @@ export class AppointmentsComponent {
         }
       });
 
-      this.actions.appointmentDeleteListner().subscribe(appointmentId => {
-        const presentAppointment = this.appointments.find((presentAppointment) => {
-          return presentAppointment.id === appointmentId;
-        })
-        this.appointments.splice(this.appointments.indexOf(presentAppointment!), 1);
-      });
+    this.actions.appointmentDeleteListner().subscribe(appointmentId => {
+      const presentAppointment = this.appointments.find((presentAppointment) => {
+        return presentAppointment.id === appointmentId;
+      })
+      this.appointments.splice(this.appointments.indexOf(presentAppointment!), 1);
+      if (appointmentId != null){
+        this.router.navigateByUrl("appointments");
+      }
+    });
   }
 }

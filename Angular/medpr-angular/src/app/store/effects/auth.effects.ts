@@ -81,9 +81,9 @@ export class AuthEffects {
     () => this.actions$.pipe(
       ofType(userActions.logout),
       tap(() => {
+        this.router.navigate(['/signin']);
         console.log("logout effect");
         localStorage.removeItem(`user`);
-        this.router.navigate(['/signin']);
       })),
       {dispatch: false}
   );

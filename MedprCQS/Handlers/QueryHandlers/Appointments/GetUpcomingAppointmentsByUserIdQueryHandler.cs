@@ -29,7 +29,7 @@ public class GetUpcomingAppointmentsByUserIdQueryHandler : IRequestHandler<GetUp
             .AsNoTracking()
             .Where(appointment => appointment.UserId == request.UserId && appointment.Date >= request.Date)
             .Select(appointment => _mapper.Map<AppointmentDTO>(appointment))
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
 
         return appointments;
     }

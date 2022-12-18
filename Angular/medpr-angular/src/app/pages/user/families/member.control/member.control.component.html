@@ -11,8 +11,11 @@
     <div class="left" *ngIf="isCurrentUserAdmin && member!.isAdmin && !showSpinner">
       <button mat-flat-button color="accent" (click)="makeCasual()">Make casual</button>
     </div>
-    <div *ngIf="isCurrentUserAdmin && !showSpinner">
+    <div *ngIf="isCurrentUserAdmin && !isCurrentUserMember && !showSpinner">
       <button mat-flat-button color="warn" (click)="removeMember()">Remove</button>
+    </div>
+    <div *ngIf="isCurrentUserMember && !showSpinner">
+      <button mat-flat-button color="warn" (click)="removeMember()">Get out</button>
     </div>
     <div *ngIf="showSpinner">
       <mat-spinner color="accent"></mat-spinner>

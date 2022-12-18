@@ -30,7 +30,7 @@ public class GetUpcomingVaccinationsByUserIdQueryHandler : IRequestHandler<GetUp
             .AsNoTracking()
             .Where(vaccination => vaccination.UserId == request.UserId && vaccination.Date >= request.Date)
             .Select(vaccination => _mapper.Map<VaccinationDTO>(vaccination))
-        .ToListAsync();
+            .ToListAsync(cancellationToken: cancellationToken);
 
         return vaccinations;
     }

@@ -7,7 +7,7 @@ import { Member } from 'src/app/models/member';
 })
 export class MembersActionsService {
   private responseMemberEvent = new Subject<Member>();
-  private selectMemberEvent = new Subject<string>();
+  private joinMemberEvent = new Subject<string>();
   private deleteMemberEvent = new Subject<string>();
 
   emitMemberResponse(member: Member) {
@@ -26,11 +26,11 @@ export class MembersActionsService {
     return this.deleteMemberEvent.asObservable();
   }
 
-  emitMemberSelect(memberId: string) {
-    this.selectMemberEvent.next(memberId);
+  emitMemberJoinAction(familyId: string) {
+    this.joinMemberEvent.next(familyId);
   }
 
-  memberSelectListner() {
-    return this.selectMemberEvent.asObservable();
+  memberJoinActionListner() {
+    return this.joinMemberEvent.asObservable();
   }
 }

@@ -1,6 +1,6 @@
 <mat-card class="container">
   <div class="events first" *ngIf="ongoingFeed?.prescriptions">
-    <div class="title">Ongoing prescriptions</div>
+    <div class="title">Prescriptions today <mat-icon>today</mat-icon></div>
     <prescription-plate
       *ngFor="let prescription of ongoingFeed?.prescriptions"
       [prescription]="prescription">
@@ -29,6 +29,14 @@
       *ngFor="let prescription of upcomingFeed?.prescriptions"
       [prescription]="prescription">
     </prescription-plate>
+  </div>
+
+  <div class="empty"
+    *ngIf="!upcomingFeed?.prescriptions &&
+    !upcomingFeed?.vaccinations &&
+    !upcomingFeed?.appointments &&
+    !ongoingFeed?.prescriptions">
+    &lt; Feed is currently empty, come back later &gt;
   </div>
 </mat-card>
 

@@ -1,3 +1,6 @@
+<div *ngIf="userFamilies.length < 1" class="empty">
+  &lt; You are not a member of any family, create or join some & come back &gt;
+</div>
 <div *ngFor="let family of userFamilies">
   <family-control class="table" [family]="family"></family-control>
 </div>

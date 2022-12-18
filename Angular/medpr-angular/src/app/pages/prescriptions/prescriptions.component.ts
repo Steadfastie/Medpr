@@ -1,7 +1,7 @@
 import { PrescriptionsService } from 'src/app/services/prescriptions/prescriptions.service';
 import { Component } from '@angular/core';
 import { Prescription } from 'src/app/models/prescription';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PrescriptionsActionsService } from 'src/app/services/prescriptions/prescriptions.actions.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class PrescriptionsComponent {
   constructor(
     private prescriptionsService: PrescriptionsService,
     private actions: PrescriptionsActionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -56,6 +57,9 @@ export class PrescriptionsComponent {
         return presentPrescription.id === prescriptionId;
       })
       this.prescriptions.splice(this.prescriptions.indexOf(presentPrescription!), 1);
+      if (prescriptionId != null){
+        this.router.navigateByUrl("prescriptions");
+      }
     });
   }
 }

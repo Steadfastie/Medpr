@@ -25,7 +25,6 @@ export class JoinFamilyComponent implements OnInit {
     private toastr: ToastrService,
     private membersService: MembersService,
     private membersActions: MembersActionsService,
-
   ) {}
 
   ngOnInit(): void {
@@ -59,8 +58,14 @@ export class JoinFamilyComponent implements OnInit {
       userId: this.currentUserId!,
       familyId: this.family!.id,
     }
-    this.membersService.create(member).pipe().subscribe(() => {
-      this.isCurrentUserIn = true;
+    this.membersService.create(member).pipe().subscribe({
+      next: (member) => {
+        this.membersActions.emitMemberJoinAction(member.familyId);
+        this.toastr.success(`You've joined ${this.family?.surname}`, `Success`);
+      },
+      error: (err) => {
+        this.toastr.error(`You've not joined ${this.family?.surname}`, `Failed`);
+      },
     })
   }
 }

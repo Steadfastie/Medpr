@@ -1,7 +1,7 @@
 import { VaccinationsService } from 'src/app/services/vaccinations/vaccinations.service';
 import { Component } from '@angular/core';
 import { Vaccination } from 'src/app/models/vaccination';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VaccinationsActionsService } from 'src/app/services/vaccinations/vaccinations.actions.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class VaccinationsComponent {
   constructor(
     private vaccinationsService: VaccinationsService,
     private actions: VaccinationsActionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -51,11 +52,14 @@ export class VaccinationsComponent {
         }
       });
 
-      this.actions.vaccinationDeleteListner().subscribe(vaccinationId => {
-        const presentVaccination = this.vaccinations.find((presentVaccination) => {
-          return presentVaccination.id === vaccinationId;
-        })
-        this.vaccinations.splice(this.vaccinations.indexOf(presentVaccination!), 1);
-      });
+    this.actions.vaccinationDeleteListner().subscribe(vaccinationId => {
+      const presentVaccination = this.vaccinations.find((presentVaccination) => {
+        return presentVaccination.id === vaccinationId;
+      })
+      this.vaccinations.splice(this.vaccinations.indexOf(presentVaccination!), 1);
+      if (vaccinationId != null){
+        this.router.navigateByUrl("vaccinations");
+      }
+    });
   }
 }

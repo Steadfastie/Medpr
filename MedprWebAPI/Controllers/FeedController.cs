@@ -18,6 +18,7 @@ namespace MedprWebAPI.Controllers;
 /// </summary>
 [Route("feed")]
 [ApiController]
+[Authorize]
 public class FeedController : ControllerBase
 {
     private readonly ILogger<AppController> _logger;
@@ -67,6 +68,7 @@ public class FeedController : ControllerBase
         _prescriptionService = prescriptionService;
         _doctorService = doctorService;
         _drugService = drugService;
+        _vaccineService = vaccineService;
     }
 
     /// <summary>
@@ -107,7 +109,7 @@ public class FeedController : ControllerBase
             var responseModel = new FeedModelResponse()
             {
                 Appointments = appointmentModels.Count > 0 ? appointmentModels : null,
-                Vaccintions = vaccinationModels.Count > 0 ? vaccinationModels : null,
+                Vaccinations = vaccinationModels.Count > 0 ? vaccinationModels : null,
                 Prescriptions = upcomingPrescriptionModels.Count > 0 ? upcomingPrescriptionModels : null
             };
 
@@ -151,7 +153,7 @@ public class FeedController : ControllerBase
             var responseModel = new FeedModelResponse()
             {
                 Appointments = null,
-                Vaccintions = null,
+                Vaccinations = null,
                 Prescriptions = ongoingPrescriptionModels.Count > 0 ? ongoingPrescriptionModels : null
             };
 

@@ -7,7 +7,8 @@ import { Family } from 'src/app/models/family';
 })
 export class FamiliesActionsService {
   private responseFamilyEvent = new Subject<Family>();
-  private selectFamilyEvent = new Subject<string>();
+  private getOutFamilyEvent = new Subject<string>();
+  private joinedFamilyEvent = new Subject<string>();
   private deleteFamilyEvent = new Subject<string>();
 
   emitFamilyResponse(family: Family) {
@@ -26,11 +27,19 @@ export class FamiliesActionsService {
     return this.deleteFamilyEvent.asObservable();
   }
 
-  emitFamilieselect(familyId: string) {
-    this.selectFamilyEvent.next(familyId);
+  emitFamilyGetOut(familyId: string) {
+    this.getOutFamilyEvent.next(familyId);
   }
 
-  familieselectListner() {
-    return this.selectFamilyEvent.asObservable();
+  familyGetOutListner() {
+    return this.getOutFamilyEvent.asObservable();
+  }
+
+  emitFamilyJoined(familyId: string) {
+    this.joinedFamilyEvent.next(familyId);
+  }
+
+  familyJoinedListner() {
+    return this.joinedFamilyEvent.asObservable();
   }
 }

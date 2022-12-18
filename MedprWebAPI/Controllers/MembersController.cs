@@ -81,6 +81,8 @@ public class MembersController : ControllerBase
 
                 responseModel.User = creatorModel.GenerateLinks("users");
 
+                responseModel.FamilyId = model.FamilyId;
+
                 return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("members"));
             }
 
@@ -206,7 +208,7 @@ public class MembersController : ControllerBase
                     isAdmin = await _familyMemberService.GetRoleByFamilyIdAndUserId(memberDTO.FamilyId, currentUser.Id); ;
                 }
 
-                if (!await CheckRelevancy(familyDTO.Id, currentUser, currentUserRole[0]) || !isAdmin)
+                if (!isAdmin && !await CheckRelevancy(familyDTO.Id, currentUser, currentUserRole[0]))
                 {
                     return Forbid();
                 }

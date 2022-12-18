@@ -68,6 +68,9 @@ export class FamilyControlComponent implements OnInit {
         return member.id === memberId;
       })
       this.family?.members!.splice(this.family.members!.indexOf(presentMember!), 1);
+      if (presentMember?.user!['id'] == this.currentUserId){
+        this.actions.emitFamilyGetOut(this.family?.id!);
+      }
     });
   }
 

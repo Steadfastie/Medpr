@@ -4,6 +4,7 @@ import { debounceTime, distinctUntilChanged, fromEvent, map, Observable, startWi
 import { Family } from 'src/app/models/family';
 import { FamiliesActionsService } from 'src/app/services/families/families.actions.service';
 import { FamiliesService } from 'src/app/services/families/families.service';
+import { MembersActionsService } from 'src/app/services/members/members.actions.service';
 
 @Component({
   selector: 'family-search',
@@ -16,7 +17,8 @@ export class SearchComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private familiesService: FamiliesService,
-    private familiesActions: FamiliesActionsService) {
+    private familiesActions: FamiliesActionsService,
+    private membersActions: MembersActionsService,) {
    }
 
   ngOnInit(): void {
@@ -33,6 +35,11 @@ export class SearchComponent implements OnInit {
           })
       }
     });
+
+    this.membersActions.memberJoinActionListner().subscribe((familyId) => {
+      this.familiesActions.emitFamilyJoined(familyId);
+      this.close();
+    })
   }
 
   searchForm = this.fb.group({

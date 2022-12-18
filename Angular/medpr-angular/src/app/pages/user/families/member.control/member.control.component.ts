@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { Member } from 'src/app/models/member';
 import { MembersActionsService } from 'src/app/services/members/members.actions.service';
 import { MembersService } from 'src/app/services/members/members.service';
+import { selectUserId } from 'src/app/store/app.states';
 
 @Component({
   selector: 'member-control',
@@ -11,16 +13,24 @@ import { MembersService } from 'src/app/services/members/members.service';
 })
 export class MemberControlComponent implements OnInit {
   @Input() member?: Member;
+  @Input() isCurrentUserAdmin?: boolean;
+  isCurrentUserMember?: boolean = false;
   memberName?: string;
   showSpinner: boolean = false;
-  @Input() isCurrentUserAdmin?: boolean;
 
   constructor(private actions: MembersActionsService,
     private memberService: MembersService,
     private toastr: ToastrService,
+    private store: Store,
     ) { }
 
   ngOnInit(): void {
+    this.store.select(selectUserId).pipe().subscribe((currentUserId) => {
+      if (currentUserId == this.member?.user!['id']) {
+        this.isCurrentUserMember = true;
+      }
+    });
+
     if (this.member?.user?.fullName){
       this.memberName = this.member?.user?.fullName
     } else {
@@ -80,7 +90,7 @@ export class MemberControlComponent implements OnInit {
   }
 
   removeMember() {
-    if (this.isCurrentUserAdmin ){
+    if (this.isCurrentUserAdmin || this.isCurrentUserMember){
       this.memberService.delete(this.member?.id!).pipe().subscribe({
         next: () => {
           this.showSpinner = false;

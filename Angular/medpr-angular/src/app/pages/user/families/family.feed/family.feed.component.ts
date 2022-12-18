@@ -30,6 +30,20 @@ export class FamilyFeedComponent implements OnInit {
       })
       this.userFamilies.splice(this.userFamilies.indexOf(presentFamily!), 1);
     });
+
+    // Remove family from list if user got out
+    this.actions.familyGetOutListner().subscribe(familyId => {
+      const presentFamily = this.userFamilies.find((family) => {
+        return family.id === familyId;
+      })
+      this.userFamilies.splice(this.userFamilies.indexOf(presentFamily!), 1);
+    });
+
+    this.actions.familyJoinedListner().subscribe(familyId => {
+      this.familiesService.getFamilyById(familyId).subscribe((family) => {
+        this.userFamilies.push(family);
+      })
+    })
   }
 
 }
