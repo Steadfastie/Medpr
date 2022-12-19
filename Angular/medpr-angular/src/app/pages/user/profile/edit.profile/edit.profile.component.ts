@@ -9,10 +9,20 @@ import { selectStateUser } from 'src/app/store/app.states';
 import * as userActions from 'src/app/store/actions/auth.actions';
 import { UsersActionsService } from 'src/app/services/users/users.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'edit-profile',
   templateUrl: './edit.profile.component.html',
   styleUrls: ['./edit.profile.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class EditProfileComponent implements OnInit {
   @Input() profile?: User;

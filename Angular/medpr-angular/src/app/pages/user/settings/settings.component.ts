@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class SettingsComponent {
   profileLinkClass = "activeLink"

@@ -1,4 +1,4 @@
-<div class="container">
+<div @insert class="container">
   <div class="header">Hi, {{name | titlecase}}</div>
   <hr />
 
@@ -50,7 +50,7 @@
       <mat-icon>send</mat-icon>
     </button>
   </mat-card-actions>
-
   <error *ngIf="errorMessage" [message]="errorMessage"></error>
-
 </div>
+
+

@@ -1,16 +1,18 @@
-<mat-card class="container">
-  <div class="links">
-    <div class="link-tile"
-      (click)="switchTabs('profile')"
-      [class]="profileLinkClass">Profile
+<div @insert>
+  <mat-card class="container">
+    <div class="links">
+      <div class="link-tile"
+        (click)="switchTabs('profile')"
+        [class]="profileLinkClass">Profile
+      </div>
+      <div class="link-tile"
+        (click)="switchTabs('families')"
+        [class]="familiesLinkClass">Families
+      </div>
     </div>
-    <div class="link-tile"
-      (click)="switchTabs('families')"
-      [class]="familiesLinkClass">Families
-    </div>
-  </div>
 
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
-</mat-card>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-card>
+</div>

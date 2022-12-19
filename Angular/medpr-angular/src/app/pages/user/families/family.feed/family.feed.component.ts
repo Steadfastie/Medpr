@@ -6,8 +6,9 @@ import { FamiliesService } from 'src/app/services/families/families.service';
 @Component({
   selector: 'family-feed',
   templateUrl: './family.feed.component.html',
-  styleUrls: ['./family.feed.component.scss']
+  styleUrls: ['./family.feed.component.scss'],
 })
+
 export class FamilyFeedComponent implements OnInit {
   userFamilies: Family[] = [];
 
