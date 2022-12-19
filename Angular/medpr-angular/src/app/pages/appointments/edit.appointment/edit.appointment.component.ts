@@ -12,11 +12,20 @@ import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 import { selectUserId } from 'src/app/store/app.states';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
 
 @Component({
   selector: 'edit-appointment',
   templateUrl: './edit.appointment.component.html',
-  styleUrls: ['./edit.appointment.component.scss']
+  styleUrls: ['./edit.appointment.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class EditAppointmentComponent implements OnInit {
   @Input() appointment?: Appointment;

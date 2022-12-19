@@ -6,11 +6,20 @@ import { Drug } from 'src/app/models/drug';
 import { DrugsActionsService } from 'src/app/services/drugs/drugs.actions.service';
 import { DrugsService } from 'src/app/services/drugs/drugs.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
 
 @Component({
   selector: 'edit-drug',
   templateUrl: './edit.drug.component.html',
-  styleUrls: ['./edit.drug.component.scss']
+  styleUrls: ['./edit.drug.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class EditDrugComponent implements OnInit {
   @Input() drug?: Drug;

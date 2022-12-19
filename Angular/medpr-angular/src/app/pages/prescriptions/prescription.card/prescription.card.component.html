@@ -1,6 +1,6 @@
-<div class="container">
+<div @insert class="container">
   <!-- User card -->
-  <mat-card *ngIf="user" class="info">
+  <mat-card @insert *ngIf="user" class="info">
     <profile-info [user]="user"></profile-info>
   </mat-card>
 
@@ -9,7 +9,7 @@
   </div>
 
   <!-- Doctor card -->
-  <mat-card *ngIf="doctor" class="info">
+  <mat-card @insert *ngIf="doctor" class="info">
     <doctor-info [doctor]="doctor"></doctor-info>
   </mat-card>
 
@@ -18,7 +18,7 @@
   </div>
 
   <!-- Drug card -->
-  <mat-card *ngIf="drug" class="info">
+  <mat-card @insert *ngIf="drug" class="info">
     <drug-info [drug]="drug"></drug-info>
   </mat-card>
 

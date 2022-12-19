@@ -7,10 +7,20 @@ import { FormBuilder, Validators } from '@angular/forms';
 import * as userActions from 'src/app/store/actions/auth.actions';
 import { User } from 'src/app/models/user';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class SignupComponent implements OnInit {
   selected: boolean = false;

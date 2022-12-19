@@ -1,3 +1,5 @@
-<mat-card-title>{{vaccine?.name | trim}}</mat-card-title>
-<mat-card-content><i>vs.</i> {{vaccine?.reason | trim}}</mat-card-content>
-<mat-card-content>{{vaccine?.price | currency}}</mat-card-content>
+<div @insert>
+  <mat-card-title>{{vaccine?.name | trim}}</mat-card-title>
+  <mat-card-content><i>vs.</i> {{vaccine?.reason | trim}}</mat-card-content>
+  <mat-card-content>{{vaccine?.price | currency}}</mat-card-content>
+</div>

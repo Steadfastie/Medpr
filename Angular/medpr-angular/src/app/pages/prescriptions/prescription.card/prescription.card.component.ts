@@ -11,11 +11,21 @@ import { selectStateUser } from 'src/app/store/app.states';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'prescription-card',
   templateUrl: './prescription.card.component.html',
   styleUrls: ['./prescription.card.component.scss'],
-  providers: [DrugsActionsService, DoctorsActionsService]
+  providers: [DrugsActionsService, DoctorsActionsService],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class PrescriptionCardComponent implements OnInit {
   @Input() prescription?: Prescription;

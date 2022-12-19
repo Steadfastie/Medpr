@@ -6,11 +6,20 @@ import { Doctor } from 'src/app/models/doctor';
 import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
 
 @Component({
   selector: 'edit-doctor',
   templateUrl: './edit.doctor.component.html',
-  styleUrls: ['./edit.doctor.component.scss']
+  styleUrls: ['./edit.doctor.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class EditDoctorComponent implements OnInit {
   @Input() doctor?: Doctor;

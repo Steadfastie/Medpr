@@ -11,11 +11,20 @@ import { VaccinesActionsService } from 'src/app/services/vaccines/vaccines.actio
 import { VaccinesService } from 'src/app/services/vaccines/vaccines.service';
 import { selectUserId } from 'src/app/store/app.states';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
 
 @Component({
   selector: 'edit-vaccination',
   templateUrl: './edit.vaccination.component.html',
-  styleUrls: ['./edit.vaccination.component.scss']
+  styleUrls: ['./edit.vaccination.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class EditVaccinationComponent implements OnInit {
   @Input() vaccination?: Vaccination;

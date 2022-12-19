@@ -7,11 +7,21 @@ import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 import { selectStateUser } from 'src/app/store/app.states';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'appointment-card',
   templateUrl: './appointment.card.component.html',
   styleUrls: ['./appointment.card.component.scss'],
-  providers: [DoctorsActionsService]
+  providers: [DoctorsActionsService],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class AppointmentCardComponent implements OnInit {
   @Input() appointment?: Appointment;

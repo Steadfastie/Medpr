@@ -16,10 +16,20 @@ import { Doctor } from 'src/app/models/doctor';
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'create-prescription',
   templateUrl: './create.prescription.component.html',
-  styleUrls: ['./create.prescription.component.scss']
+  styleUrls: ['./create.prescription.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class CreatePrescriptionComponent implements OnInit {
   @Output() deselect = new EventEmitter<void>();

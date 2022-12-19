@@ -8,11 +8,21 @@ import { VaccinesActionsService } from 'src/app/services/vaccines/vaccines.actio
 import { VaccinesService } from 'src/app/services/vaccines/vaccines.service';
 import { selectStateUser } from 'src/app/store/app.states';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'vaccination-card',
   templateUrl: './vaccination.card.component.html',
   styleUrls: ['./vaccination.card.component.scss'],
-  providers: [VaccinesActionsService]
+  providers: [VaccinesActionsService],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class VaccinationCardComponent implements OnInit {
   @Input() vaccination?: Vaccination;

@@ -2,11 +2,21 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { Guid } from 'guid-typescript';
 import { Drug } from 'src/app/models/drug';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'drug-card',
   templateUrl: './drug.card.component.html',
   styleUrls: ['./drug.card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class DrugCardComponent{
   @Input() random?: Drug;

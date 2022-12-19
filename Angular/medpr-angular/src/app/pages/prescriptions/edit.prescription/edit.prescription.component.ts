@@ -14,11 +14,20 @@ import { Doctor } from 'src/app/models/doctor';
 import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
 
 @Component({
   selector: 'edit-prescription',
   templateUrl: './edit.prescription.component.html',
-  styleUrls: ['./edit.prescription.component.scss']
+  styleUrls: ['./edit.prescription.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class EditPrescriptionComponent implements OnInit {
   @Input() prescription?: Prescription;

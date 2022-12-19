@@ -13,10 +13,20 @@ import { AppointmentsActionsService } from 'src/app/services/appointments/appoin
 import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 import { formatDate } from '@angular/common';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'create-appointment',
   templateUrl: './create.appointment.component.html',
-  styleUrls: ['./create.appointment.component.scss']
+  styleUrls: ['./create.appointment.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class CreateAppointmentComponent implements OnInit {
   @Output() deselect = new EventEmitter<void>();

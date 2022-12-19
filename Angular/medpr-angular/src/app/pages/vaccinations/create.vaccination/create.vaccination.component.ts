@@ -13,10 +13,20 @@ import { VaccinationsActionsService } from 'src/app/services/vaccinations/vaccin
 import { VaccinesActionsService } from 'src/app/services/vaccines/vaccines.actions.service';
 import { formatDate } from '@angular/common';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'create-vaccination',
   templateUrl: './create.vaccination.component.html',
-  styleUrls: ['./create.vaccination.component.scss']
+  styleUrls: ['./create.vaccination.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class CreateVaccinationComponent implements OnInit {
   @Output() deselect = new EventEmitter<void>();

@@ -1,4 +1,4 @@
-<mat-card [class.selected]="selected">
+<mat-card @insert [class.selected]="selected">
   <!-- Blank creation -->
   <div *ngIf="!doctor && !selected">
     <mat-card-content>
@@ -16,7 +16,7 @@
 
   <!-- Doctor -->
   <div *ngIf="doctor && !selected">
-    <mat-card-header>
+    <mat-card-header >
       <mat-card-title class="row">
         <div>{{doctor.name | trim}}</div>
         <button mat-mini-fab color="warn" class="edit-button" (click)="selectToggle()">

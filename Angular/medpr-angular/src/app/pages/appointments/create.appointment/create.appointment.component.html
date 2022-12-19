@@ -1,41 +1,43 @@
-<mat-spinner *ngIf="showSpinner" color="primary"></mat-spinner>
+<div @insert>
+  <mat-spinner *ngIf="showSpinner" color="primary"></mat-spinner>
 
-<form *ngIf="!showSpinner && !errorMessage" class="form" [formGroup]="appointmentForm">
-  <mat-form-field appearance="outline" [hideRequiredMarker]="true" color="primary">
-    <mat-label>Date</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="date">
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-    <mat-error *ngIf="appointmentForm.controls['date'].errors?.['required']">Date is required</mat-error>
-  </mat-form-field>
+  <form *ngIf="!showSpinner && !errorMessage" class="form" [formGroup]="appointmentForm">
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true" color="primary">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="appointmentForm.controls['date'].errors?.['required']">Date is required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-    <mat-label>Place</mat-label>
-    <input matInput formControlName="place" type="text">
-    <mat-error *ngIf="appointmentForm.controls['place'].errors?.['required']">Place is required</mat-error>
-    <mat-error *ngIf="appointmentForm.controls['place'].errors?.['minLength']">At least 3 symbols</mat-error>
-    <mat-error *ngIf="appointmentForm.controls['place'].errors?.['maxLength']">Make it shorter</mat-error>
-  </mat-form-field>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>Place</mat-label>
+      <input matInput formControlName="place" type="text">
+      <mat-error *ngIf="appointmentForm.controls['place'].errors?.['required']">Place is required</mat-error>
+      <mat-error *ngIf="appointmentForm.controls['place'].errors?.['minLength']">At least 3 symbols</mat-error>
+      <mat-error *ngIf="appointmentForm.controls['place'].errors?.['maxLength']">Make it shorter</mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
-    <mat-label>Doctor</mat-label>
-    <mat-select formControlName="doctorId" (selectionChange)="selectDoctor($event)">
-      <mat-option *ngFor="let doctor of doctors"
-        value="{{doctor.id}}">{{doctor.name}}</mat-option>
-    </mat-select>
-    <mat-error *ngIf="appointmentForm.controls['doctorId'].errors?.['required']">Place is required</mat-error>
-  </mat-form-field>
-</form>
-<mat-card-actions *ngIf="!showSpinner && !errorMessage">
-  <button mat-icon-button (click)="cancel()">
-    <mat-icon>undo</mat-icon>
-  </button>
-  <button mat-icon-button (click)="closeCreate()">
-    <mat-icon>clear</mat-icon>
-  </button>
-  <button mat-icon-button (click)="submit()">
-    <mat-icon>send</mat-icon>
-  </button>
-</mat-card-actions>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>Doctor</mat-label>
+      <mat-select formControlName="doctorId" (selectionChange)="selectDoctor($event)">
+        <mat-option *ngFor="let doctor of doctors"
+          value="{{doctor.id}}">{{doctor.name}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="appointmentForm.controls['doctorId'].errors?.['required']">Place is required</mat-error>
+    </mat-form-field>
+  </form>
+  <mat-card-actions *ngIf="!showSpinner && !errorMessage">
+    <button mat-icon-button (click)="cancel()">
+      <mat-icon>undo</mat-icon>
+    </button>
+    <button mat-icon-button (click)="closeCreate()">
+      <mat-icon>clear</mat-icon>
+    </button>
+    <button mat-icon-button (click)="submit()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </mat-card-actions>
 
-<error *ngIf="errorMessage" [message]="errorMessage"></error>
+  <error *ngIf="errorMessage" [message]="errorMessage"></error>
+</div>

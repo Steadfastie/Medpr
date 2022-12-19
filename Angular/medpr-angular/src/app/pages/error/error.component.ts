@@ -2,11 +2,21 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, Pipe } from '@angula
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class ErrorComponent implements OnInit {
   @Input() message!: string;

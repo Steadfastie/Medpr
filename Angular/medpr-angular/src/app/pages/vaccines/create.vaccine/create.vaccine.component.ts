@@ -6,10 +6,20 @@ import { Vaccine } from 'src/app/models/vaccine';
 import { VaccinesService } from 'src/app/services/vaccines/vaccines.service';
 import { VaccinesActionsService } from 'src/app/services/vaccines/vaccines.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'create-vaccine',
   templateUrl: './create.vaccine.component.html',
-  styleUrls: ['./create.vaccine.component.scss']
+  styleUrls: ['./create.vaccine.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class CreateVaccineComponent implements OnInit {
   @Output() deselect = new EventEmitter<void>();

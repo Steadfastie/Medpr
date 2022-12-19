@@ -6,10 +6,20 @@ import { Drug } from 'src/app/models/drug';
 import { DrugsService } from 'src/app/services/drugs/drugs.service';
 import { DrugsActionsService } from 'src/app/services/drugs/drugs.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'create-drug',
   templateUrl: './create.drug.component.html',
-  styleUrls: ['./create.drug.component.scss']
+  styleUrls: ['./create.drug.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class CreateDrugComponent implements OnInit {
   @Input() randomDrug?: Drug;

@@ -6,10 +6,20 @@ import { Doctor } from 'src/app/models/doctor';
 import { DoctorsService } from 'src/app/services/doctors/doctors.service';
 import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'create-doctor',
   templateUrl: './create.doctor.component.html',
-  styleUrls: ['./create.doctor.component.scss']
+  styleUrls: ['./create.doctor.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class CreateDoctorComponent implements OnInit {
   @Output() deselect = new EventEmitter<void>();
