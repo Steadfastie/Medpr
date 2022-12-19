@@ -58,3 +58,4 @@ Main user: firstuser@gmail.com | 8yQD!yya
   13. Family basic search (✔️)
   14. Family manager (✔️)
   15. User feed (✔️)
+  16. Simple animation (✔️)
