@@ -14,6 +14,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 const MaterialComponents = [
   MatCardModule,
@@ -31,6 +32,7 @@ const MaterialComponents = [
   MatSlideToggleModule,
   MatTabsModule,
   MatListModule,
+  MatMenuModule,
 ]
 
 @NgModule({

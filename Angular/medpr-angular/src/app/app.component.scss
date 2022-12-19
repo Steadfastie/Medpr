@@ -19,10 +19,38 @@ $primary: map.get($color-config, 'primary');
   background-color: mat.get-color-from-palette($primary, 300);
 }
 
-.nav-spacer {
-  flex: 1 1 auto;
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
+
+.right-aligned{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left-aligned{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: transparent;
+}
+
 .nav-icon{
   margin-left: 5px;
   margin-right: 5px;
+  &.menu{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 }

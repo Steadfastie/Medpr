@@ -1,23 +1,29 @@
 <mat-toolbar color="primary">
-    <mat-icon>add</mat-icon>
-    <div *ngIf="!user">
-        <button mat-flat-button class="nav-icon" color="accent" disabled>Medpr</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/signup">SignUp</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/signin">SignIn</button>
-    </div>
+  <div *ngIf="!user">
+      <button mat-flat-button class="nav-icon" color="accent" disabled>Medpr</button>
+      <button mat-flat-button class="nav-icon" color="primary" routerLink="/signup">SignUp</button>
+      <button mat-flat-button class="nav-icon" color="primary" routerLink="/signin">SignIn</button>
+  </div>
 
-    <div *ngIf="user">
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/">Medpr</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/drugs">Drugs</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/doctors">Doctors</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/vaccines">Vaccines</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/appointments">Appointments</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/vaccinations">Vaccinations</button>
-        <button mat-flat-button class="nav-icon" color="primary" routerLink="/prescriptions">Prescriptions</button>
-        <span class="nav-spacer"></span>
-        <button mat-flat-button class="nav-icon" color="accent" routerLink="/user">{{name | titlecase}}</button>
-        <button mat-flat-button class="nav-icon" color="warn" (click)="logout()">Sign out</button>
+  <div class="row" *ngIf="user">
+    <div class="right-aligned">
+      <button mat-mini-fab class="nav-icon" color="primary" routerLink="/"><mat-icon>local_pharmacy</mat-icon></button>
+      <button mat-flat-button class="nav-icon" color="primary" routerLink="/drugs">Drugs</button>
+      <button mat-flat-button class="nav-icon" color="primary" routerLink="/doctors">Doctors</button>
+      <button mat-flat-button class="nav-icon" color="primary" routerLink="/vaccines">Vaccines</button>
+      <button mat-flat-button class="nav-icon" color="primary" routerLink="/appointments">Appointments</button>
+      <button mat-flat-button class="nav-icon" color="primary" routerLink="/vaccinations">Vaccinations</button>
+      <button mat-flat-button class="nav-icon" color="primary" routerLink="/prescriptions">Prescriptions</button>
     </div>
-
-  </mat-toolbar>
+    <div class="left-aligned">
+      <button mat-mini-fab [matMenuTriggerFor]="menu" color="accent"><mat-icon>more_vert</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <div class="menu">
+          <button mat-flat-button class="nav-icon menu" color="accent" routerLink="/user">{{name | titlecase}}</button>
+          <button mat-flat-button class="nav-icon menu" color="warn" (click)="logout()">Sign out</button>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
 <router-outlet></router-outlet>
