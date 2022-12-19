@@ -4,10 +4,20 @@ import { Prescription } from 'src/app/models/prescription';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrescriptionsActionsService } from 'src/app/services/prescriptions/prescriptions.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'prescriptions',
   templateUrl: './prescriptions.component.html',
-  styleUrls: ['./prescriptions.component.scss']
+  styleUrls: ['./prescriptions.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class PrescriptionsComponent {
   prescriptions: Prescription[] = [];

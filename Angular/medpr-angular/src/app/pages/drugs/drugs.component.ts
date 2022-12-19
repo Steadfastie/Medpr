@@ -3,10 +3,20 @@ import { Component } from '@angular/core';
 import { Drug } from 'src/app/models/drug';
 import { DrugsActionsService } from 'src/app/services/drugs/drugs.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'drugs',
   templateUrl: './drugs.component.html',
   styleUrls: ['./drugs.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class DrugsComponent {
   drugs: Drug[] = [];

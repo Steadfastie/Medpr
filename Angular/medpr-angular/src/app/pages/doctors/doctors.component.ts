@@ -3,10 +3,20 @@ import { Component } from '@angular/core';
 import { Doctor } from 'src/app/models/doctor';
 import { DoctorsActionsService } from 'src/app/services/doctors/doctors.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'doctors',
   templateUrl: './doctors.component.html',
   styleUrls: ['./doctors.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class DoctorsComponent {
   doctors: Doctor[] = [];

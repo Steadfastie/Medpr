@@ -4,10 +4,20 @@ import { Vaccination } from 'src/app/models/vaccination';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VaccinationsActionsService } from 'src/app/services/vaccinations/vaccinations.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'vaccinations',
   templateUrl: './vaccinations.component.html',
-  styleUrls: ['./vaccinations.component.scss']
+  styleUrls: ['./vaccinations.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class VaccinationsComponent {
   vaccinations: Vaccination[] = [];

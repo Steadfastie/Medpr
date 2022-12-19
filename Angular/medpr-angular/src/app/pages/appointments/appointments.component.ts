@@ -4,10 +4,20 @@ import { Appointment } from 'src/app/models/appointment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentsActionsService } from 'src/app/services/appointments/appointments.actions.service';
 
+import { inAnimation } from 'src/app/modules/animations/animations';
+import { trigger, transition, useAnimation } from "@angular/animations";
+
 @Component({
   selector: 'appointments',
   templateUrl: './appointments.component.html',
-  styleUrls: ['./appointments.component.scss']
+  styleUrls: ['./appointments.component.scss'],
+  animations: [
+    trigger('insert', [
+      transition(':enter', [
+        useAnimation(inAnimation)
+      ])
+    ]),
+  ]
 })
 export class AppointmentsComponent {
   appointments: Appointment[] = [];
