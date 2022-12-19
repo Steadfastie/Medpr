@@ -6,7 +6,7 @@ export const inAnimation = animation([
     style({height: '0', opacity: 0, 'padding-top': '0', 'padding-bottom': '0'}),
 
     stagger(50,[
-      animate('300ms ease-in-out', style({height: '*', 'padding-top': '*', 'padding-bottom': '*'})),
+      animate('500ms ease-in-out', style({height: '*', 'padding-top': '*', 'padding-bottom': '*'})),
       animate('300ms ease-in-out', style({'opacity': '1'}))
     ])
   ], { optional: true })
