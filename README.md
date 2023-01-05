@@ -1,11 +1,17 @@
 # ASP.NET
-This repo is made for IT-Academy course on ASP.NET
+This repo was originally made for IT-Academy course on ASP.NET development.
 
-Hey, check out my new UI mockup: https://xd.adobe.com/view/c5b3da8e-d86b-435c-88ad-82eb5d7a315a-90e0/
-
-Admin user seeded: admin@admin.com | Admin_1_Admin
-
+App has some seeded users:
+Admin user: admin@admin.com | Admin_1_Admin
 Main user: firstuser@gmail.com | 8yQD!yya
+
+Check out the very first UI mockup: https://xd.adobe.com/view/c5b3da8e-d86b-435c-88ad-82eb5d7a315a-90e0/
+
+  ### Future plans
+  1. Integrate docker (🚧)
+  2. Add xUnit & MOQ tests (🚧)
+  3. Reactive services revision (🚧)
+  4. NgRx component state integration (🚧) 
 
   ## MVC project history
   1. password -> password hash migration (✔️)
