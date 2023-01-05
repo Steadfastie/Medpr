@@ -1,9 +1,11 @@
-# ASP.NET
+# Hello there
 This repo was originally made for IT-Academy course on ASP.NET development.
 
 App has some seeded users:
-Admin user: admin@admin.com | Admin_1_Admin
-Main user: firstuser@gmail.com | 8yQD!yya
+
+ ↪ Admin user: admin@admin.com | Admin_1_Admin
+
+ ↪ Main user: firstuser@gmail.com | 8yQD!yya
 
 Check out the very first UI mockup: https://xd.adobe.com/view/c5b3da8e-d86b-435c-88ad-82eb5d7a315a-90e0/
 
