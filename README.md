@@ -7,7 +7,7 @@ Main user: firstuser@gmail.com | 8yQD!yya
 
 Check out the very first UI mockup: https://xd.adobe.com/view/c5b3da8e-d86b-435c-88ad-82eb5d7a315a-90e0/
 
-  ### Future plans
+  # Future plans
   1. Integrate docker (🚧)
   2. Add xUnit & MOQ tests (🚧)
   3. Reactive services revision (🚧)
