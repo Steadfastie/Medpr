@@ -93,11 +93,11 @@ export class EditDrugComponent implements OnInit {
       this.DrugsService.delete(this.drug!.id).pipe().subscribe({
         next: () => {
           this.showSpinner = false;
-          this.toastr.success(`Success`, `${this.drug!.name} removed`);
+          this.toastr.success(`${this.drug!.name} removed`, `Success`);
           this.actions.emitDrugDelete(this.drug!.id);
         },
         error: (err) => {
-          this.toastr.warning(`Failed`, `${this.drug!.name} still persist`);
+          this.toastr.warning(`${this.drug!.name} still persist`, `Failed`);
           console.log(`${err.message}`);
         },
       });

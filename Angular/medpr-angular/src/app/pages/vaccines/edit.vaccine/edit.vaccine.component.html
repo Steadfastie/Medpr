@@ -21,8 +21,8 @@
     <mat-form-field appearance="outline" [hideRequiredMarker]="true">
       <mat-label>Price</mat-label>
       <input matInput formControlName="price" type="number">
-      <mat-error *ngIf="vaccineForm.controls['price'].errors?.['required']">Experience is required</mat-error>
-      <mat-error *ngIf="vaccineForm.controls['price'].errors?.['min']">Let her/him leave uni first</mat-error>
+      <mat-error *ngIf="vaccineForm.controls['price'].errors?.['required']">Price is required</mat-error>
+      <mat-error *ngIf="vaccineForm.controls['price'].errors?.['min']">Price is too low</mat-error>
     </mat-form-field>
   </form>
   <mat-card-actions *ngIf="!showSpinner && !errorMessage">

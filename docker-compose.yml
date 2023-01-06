@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  medprwebapi:
+    image: ${DOCKER_REGISTRY-}medprwebapi
+    build:
+      context: .
+      dockerfile: MedprWebAPI\Dockerfile
