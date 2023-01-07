@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: nanoserver-ltsc2022
+    runs-on: windows-latest
     steps:
       -
         name: Checkout
