@@ -18,7 +18,7 @@ jobs:
         with:
           image: latest
           registry: medpr
-          dockerfile: https://github.com/LexKutler/Medpr/tree/main/MedprWebAPI
+          directory: https://github.com/LexKutler/Medpr/tree/main/MedprWebAPI
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
             
