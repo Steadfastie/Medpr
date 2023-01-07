@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    name: Builds medpr docker
     runs-on: windows-latest
     steps:
       -
@@ -29,5 +28,5 @@ jobs:
           image: medpr
           registry: ghcr.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
           tags: development-latest
