@@ -29,3 +29,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/medpr:latest
+          build-contexts:
+            privileged=false
