@@ -19,6 +19,4 @@ jobs:
           image: latest
           registry: medpr
           dockerfile: github.com/LexKutler/Medpr
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
             
