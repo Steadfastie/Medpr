@@ -25,7 +25,9 @@ jobs:
         name: Build and push
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
+          image: my_awesome_microservice
+          registry: ghcr.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          platform: windows/amd64
+          tags: development-latest
