@@ -25,7 +25,6 @@ WORKDIR "/src/MedprWebAPI"
 RUN dotnet build "MedprWebAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet restore
 RUN dotnet publish "MedprWebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
