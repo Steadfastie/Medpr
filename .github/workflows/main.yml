@@ -16,9 +16,10 @@ jobs:
         name: Build and push
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: medpr
+          image: lkumbrella/medpr
           registry: docker.io
           dockerfile: MedprWebAPI/Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          tags: latest
             
