@@ -1,11 +1,5 @@
-﻿using AutoMapper;
-using MediatR;
-using MedprCore.Abstractions;
+﻿using MedprCore.Abstractions;
 using MedprCore.DTO;
-using MedprModels;
-using MedprModels.Interfaces;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.SignalR;
 
 namespace MedprWebAPI.Utils;
 

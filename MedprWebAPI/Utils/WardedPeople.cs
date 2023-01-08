@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using MedprCore.Abstractions;
-using Microsoft.AspNetCore.Identity;
+﻿using MedprCore.Abstractions;
 using NuGet.Packaging;
 
 namespace MedprWebAPI.Utils;
@@ -12,6 +10,7 @@ public class WardedPeople
 {
     private readonly IFamilyService _familyService;
     private readonly IFamilyMemberService _familyMemberService;
+
     public WardedPeople(IFamilyService familyService,
         IFamilyMemberService familyMemberService)
     {

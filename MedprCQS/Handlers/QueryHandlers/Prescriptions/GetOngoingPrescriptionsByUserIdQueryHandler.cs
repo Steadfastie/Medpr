@@ -4,11 +4,6 @@ using MedprCore.DTO;
 using MedprCQS.Queries.Appointments;
 using MedprDB;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.QueryHandlers.Appointments;
 
@@ -27,9 +22,9 @@ public class GetOngoingPrescriptionsByUserIdQueryHandler : IRequestHandler<GetOn
     {
         var prescriptions = await _context.Prescriptions
             .AsNoTracking()
-            .Where(prescription => 
-                prescription.UserId == request.UserId && 
-                prescription.Date <= request.Date && 
+            .Where(prescription =>
+                prescription.UserId == request.UserId &&
+                prescription.Date <= request.Date &&
                 prescription.EndDate >= request.Date)
             .Select(prescription => _mapper.Map<PrescriptionDTO>(prescription))
             .ToListAsync();

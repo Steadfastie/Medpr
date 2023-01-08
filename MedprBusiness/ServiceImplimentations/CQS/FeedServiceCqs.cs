@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
-using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using MedprCQS.Commands.Appointments;
 using MedprCQS.Queries.Appointments;
-using MedprDB.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace MedprBusiness.ServiceImplimentations.Cqs;
 

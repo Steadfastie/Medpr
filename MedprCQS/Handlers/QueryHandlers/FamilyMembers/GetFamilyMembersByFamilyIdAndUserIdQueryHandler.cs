@@ -4,15 +4,10 @@ using MedprCore.DTO;
 using MedprCQS.Queries.FamilyMembers;
 using MedprDB;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.QueryHandlers.FamilyMembers;
 
-public class GetFamilyMembersByFamilyIdAndUserIdQueryHandler: IRequestHandler<GetFamilyMembersByFamilyIdAndUserIdQuery, FamilyMemberDTO>
+public class GetFamilyMembersByFamilyIdAndUserIdQueryHandler : IRequestHandler<GetFamilyMembersByFamilyIdAndUserIdQuery, FamilyMemberDTO>
 {
     private readonly MedprDBContext _context;
     private readonly IMapper _mapper;
@@ -27,7 +22,7 @@ public class GetFamilyMembersByFamilyIdAndUserIdQueryHandler: IRequestHandler<Ge
     {
         var entities = await _context.FamilyMembers
             .AsNoTracking()
-            .Where(member => 
+            .Where(member =>
                 member.FamilyId.Equals(request.FamilyId) &&
                 member.UserId.Equals(request.UserId))
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);

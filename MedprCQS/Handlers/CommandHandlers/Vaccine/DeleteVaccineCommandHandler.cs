@@ -3,12 +3,6 @@ using MediatR;
 using MedprCQS.Commands.Vaccines;
 using MedprDB;
 using MedprDB.Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.Vaccines;
 
@@ -22,6 +16,7 @@ public class DeleteVaccineCommandHandler : IRequestHandler<DeleteVaccineCommand,
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(DeleteVaccineCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<Vaccine>(request.Vaccine);

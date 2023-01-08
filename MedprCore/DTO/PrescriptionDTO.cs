@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Numerics;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedprCore.DTO;
 
-public class PrescriptionDTO: INotifyUser
+public class PrescriptionDTO : INotifyUser
 {
     public Guid Id { get; set; }
     public string? NotificationId { get; set; }

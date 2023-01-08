@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using MedprCore.Abstractions;
+using MedprCore.DTO;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MedprCore.Abstractions;
-using AutoMapper;
-using MedprCore.DTO;
 using Serilog;
-using MedprModels.Responses;
-using MedprModels.Requests;
 
 namespace MedprWebAPI.Controllers;
 
@@ -67,7 +67,7 @@ public class AppController : ControllerBase
     [HttpPost("/signup")]
     [ProducesResponseType(typeof(TokenResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(Nullable), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> SignUp([FromBody]UserModelRequest model)
+    public async Task<IActionResult> SignUp([FromBody] UserModelRequest model)
     {
         try
         {
@@ -153,8 +153,8 @@ public class AppController : ControllerBase
                         userResponse = new UserModelResponse()
                         {
                             Id = identityUser.Id,
-                            Login  = identityUser.UserName,
-                            Role = identityUserRole[0]    
+                            Login = identityUser.UserName,
+                            Role = identityUserRole[0]
                         };
                     }
 

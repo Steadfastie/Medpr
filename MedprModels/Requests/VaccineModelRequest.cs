@@ -8,6 +8,7 @@ namespace MedprModels.Requests;
 public class VaccineModelRequest
 {
     public Guid Id { get; set; }
+
     [Required(ErrorMessage = "It couldn't be nameless")]
     [StringLength(15, MinimumLength = 3)]
     public string Name { get; set; }

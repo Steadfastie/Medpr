@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace MedprWebAPI.Utils.Notifications;
 
-public class NotificationService: INotificationService
+public class NotificationService : INotificationService
 {
     private readonly IHubContext<EventNotificationHub, INotificationHub> _eventNotification;
 

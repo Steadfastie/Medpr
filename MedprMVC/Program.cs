@@ -1,21 +1,16 @@
-using MedprCore;
+using MedprAbstractions;
+using MedprAbstractions.Repositories;
+using MedprBusiness.ServiceImplimentations.Repository;
 using MedprCore.Abstractions;
-using MedprCore.DTO;
-using Microsoft.EntityFrameworkCore;
+using MedprDataRepositories;
 using MedprDB;
 using MedprDB.Entities;
-using MedprBusiness;
-using Microsoft.Extensions.Options;
+using MedprMVC.Identity;
+using MedprRepositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
-using MedprRepositories;
-using MedprAbstractions.Repositories;
-using MedprAbstractions;
-using MedprDataRepositories;
-using MedprMVC.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using MedprBusiness.ServiceImplimentations.Repository;
 
 namespace MedprMVC;
 

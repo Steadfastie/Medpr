@@ -4,15 +4,10 @@ using MedprCore.DTO;
 using MedprCQS.Queries.Vaccinations;
 using MedprDB;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.QueryHandlers.Vaccinations;
 
-public class GetAllVaccinationsQueryHandler: IRequestHandler<GetAllVaccinationsQuery, List<VaccinationDTO>>
+public class GetAllVaccinationsQueryHandler : IRequestHandler<GetAllVaccinationsQuery, List<VaccinationDTO>>
 {
     private readonly MedprDBContext _context;
     private readonly IMapper _mapper;

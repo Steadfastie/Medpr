@@ -4,11 +4,6 @@ using MedprCQS.Commands.Doctors;
 using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.Doctors;
 
@@ -22,6 +17,7 @@ public class PatchDoctorCommandHandler : IRequestHandler<PatchDoctorCommand, int
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(PatchDoctorCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<Doctor>(request.Doctor);

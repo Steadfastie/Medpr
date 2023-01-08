@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
-using MedprAbstractions;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using MedprCQS.Commands.Drugs;
 using MedprCQS.Commands.Users;
-using MedprCQS.Queries.Drugs;
 using MedprCQS.Queries.Users;
-using MedprDB;
-using MedprDB.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Cqs;
 

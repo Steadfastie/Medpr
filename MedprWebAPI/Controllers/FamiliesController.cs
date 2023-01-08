@@ -1,19 +1,13 @@
-﻿using MedprCore;
+﻿using AutoMapper;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
-using Serilog;
-using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using MedprModels.Responses;
-using MedprModels;
-using MedprModels.Requests;
 using MedprModels.Links;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using MedprMVC.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using MedprDB.Entities;
+using Serilog;
 
 namespace MedprWebAPI.Controllers;
 
@@ -30,6 +24,7 @@ public class FamiliesController : ControllerBase
     private readonly IUserService _userService;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IMapper _mapper;
+
     public FamiliesController(IFamilyService familyService,
         IFamilyMemberService familyMemberService,
         IUserService userService,
@@ -180,7 +175,6 @@ public class FamiliesController : ControllerBase
 
                 return CreatedAtAction(nameof(Create), new { id = familyDTO.Id }, responseModel.GenerateLinks("families"));
             }
-
             else
             {
                 return Ok(model);
@@ -264,7 +258,8 @@ public class FamiliesController : ControllerBase
         }
 
         family.Members = SortMembers(memberModels, family);
-    } 
+    }
+
     private List<FamilyMemberModelResponse> SortMembers(
         List<FamilyMemberModelResponse> membersModels,
         FamilyModelResponse family)

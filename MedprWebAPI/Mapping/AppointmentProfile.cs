@@ -8,7 +8,7 @@ namespace MedprWebAPI.Mapping;
 
 public class AppointmentProfile : Profile
 {
-    public AppointmentProfile() 
+    public AppointmentProfile()
     {
         CreateMap<Appointment, AppointmentDTO>();
         CreateMap<AppointmentDTO, Appointment>();

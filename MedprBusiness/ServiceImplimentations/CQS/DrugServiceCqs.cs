@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
-using MedprAbstractions;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
 using MedprCQS.Commands.Drugs;
 using MedprCQS.Queries.Drugs;
-using MedprDB;
-using MedprDB.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;
 
 namespace MedprBusiness.ServiceImplimentations.CQS;
@@ -26,7 +15,7 @@ public class DrugServiceCqs : IDrugService
     private readonly IMediator _mediator;
     private readonly IConfiguration _configuration;
 
-    public DrugServiceCqs(IMapper mapper, 
+    public DrugServiceCqs(IMapper mapper,
         IMediator mediator,
         IConfiguration configuration)
     {

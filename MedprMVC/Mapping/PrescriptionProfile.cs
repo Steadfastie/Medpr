@@ -7,7 +7,7 @@ namespace MedprMVC.Mapping;
 
 public class PrescriptionProfile : Profile
 {
-    public PrescriptionProfile() 
+    public PrescriptionProfile()
     {
         CreateMap<Prescription, PrescriptionDTO>();
         CreateMap<PrescriptionDTO, Prescription>();

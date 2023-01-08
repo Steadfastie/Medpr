@@ -4,15 +4,10 @@ using MedprCore.DTO;
 using MedprCQS.Queries.Doctors;
 using MedprDB;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.QueryHandlers.Doctors;
 
-public class GetDoctorByIdQueryHandler: IRequestHandler<GetDoctorByIdQuery, DoctorDTO?>
+public class GetDoctorByIdQueryHandler : IRequestHandler<GetDoctorByIdQuery, DoctorDTO?>
 {
     private readonly MedprDBContext _context;
     private readonly IMapper _mapper;

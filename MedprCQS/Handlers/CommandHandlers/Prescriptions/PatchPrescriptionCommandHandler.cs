@@ -4,11 +4,6 @@ using MedprCQS.Commands.Prescriptions;
 using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.Prescriptions;
 
@@ -22,6 +17,7 @@ public class PatchPrescriptionCommandHandler : IRequestHandler<PatchPrescription
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(PatchPrescriptionCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<Prescription>(request.Prescription);

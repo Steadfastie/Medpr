@@ -1,20 +1,14 @@
-﻿using MedprCore;
+﻿using AutoMapper;
+using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
-using Serilog;
-using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using MedprModels.Responses;
-using MedprModels;
-using MedprModels.Requests;
 using MedprModels.Links;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using MedprMVC.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using MedprDB.Entities;
-using AutoMapper.Execution;
+using Serilog;
 
 namespace MedprWebAPI.Controllers;
 
@@ -31,6 +25,7 @@ public class MembersController : ControllerBase
     private readonly IUserService _userService;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IMapper _mapper;
+
     public MembersController(IFamilyService familyService,
         IFamilyMemberService familyMemberService,
         IUserService userService,
@@ -85,7 +80,6 @@ public class MembersController : ControllerBase
 
                 return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("members"));
             }
-
             else
             {
                 return Ok(model);
@@ -157,7 +151,6 @@ public class MembersController : ControllerBase
 
                 return CreatedAtAction(nameof(Create), new { id = dto.Id }, responseModel.GenerateLinks("members"));
             }
-
             else
             {
                 return Ok(model);

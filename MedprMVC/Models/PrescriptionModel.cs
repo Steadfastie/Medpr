@@ -1,5 +1,4 @@
-﻿using MedprDB.Entities;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
@@ -15,7 +14,7 @@ public class PrescriptionModel
     [Required(ErrorMessage = "Cmon, it should have the beginning date!")]
     [Column(TypeName = "DateTime2"), DataType(DataType.Date)]
     [Remote("CheckDate", "Prescriptions",
-        HttpMethod = WebRequestMethods.Http.Post, 
+        HttpMethod = WebRequestMethods.Http.Post,
         ErrorMessage = "Starting date should be before ending",
         AdditionalFields = "EndDate")]
     [DisplayFormat(DataFormatString = "{0:dddd d MMMM yyyy}")]

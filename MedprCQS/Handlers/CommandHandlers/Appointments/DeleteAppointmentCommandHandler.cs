@@ -3,12 +3,6 @@ using MediatR;
 using MedprCQS.Commands.Appointments;
 using MedprDB;
 using MedprDB.Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.Appointments;
 
@@ -22,6 +16,7 @@ public class DeleteAppointmentCommandHandler : IRequestHandler<DeleteAppointment
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(DeleteAppointmentCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<Appointment>(request.Appointment);

@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
 using MedprMVC.Models;
-using Serilog;
-using System.Reflection;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Serilog;
+using System.Reflection;
+
 namespace MedprMVC.Controllers;
 
 [Authorize]
@@ -21,6 +22,7 @@ public class AppointmentsController : Controller
     private readonly IDoctorService _doctorService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
+
     public AppointmentsController(IAppointmentService appointmentService,
         IDoctorService doctorService,
         IFamilyService familyService,
@@ -183,7 +185,6 @@ public class AppointmentsController : Controller
 
                 return RedirectToAction("Index", "Appointments");
             }
-
             else
             {
                 return View(model);
@@ -376,7 +377,6 @@ public class AppointmentsController : Controller
         {
             return await _appointmentService.GetAllAppointmentsAsync();
         }
-
     }
 
     private async Task<bool> CheckRelevancy(Guid appointmentId)

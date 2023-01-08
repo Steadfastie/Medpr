@@ -1,17 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
 using MedprMVC.Models;
-using Serilog;
-using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using MedprCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System;
+using Serilog;
+using System.Reflection;
 
 namespace MedprMVC.Controllers;
 
@@ -24,6 +21,7 @@ public class UsersController : Controller
     private readonly IFamilyService _familyService;
     private readonly IFamilyMemberService _familyMemberService;
     private readonly IMapper _mapper;
+
     public UsersController(IUserService userService,
         IFamilyService familyService,
         IFamilyMemberService familyMemberService,
@@ -178,10 +176,10 @@ public class UsersController : Controller
                     .GetValues(typeof(AppRole))
                     .Cast<AppRole>()
                     .Select(role => new SelectListItem
-                        {
-                            Text = role.ToString(),
-                            Value = ((int)role).ToString()
-                        })
+                    {
+                        Text = role.ToString(),
+                        Value = ((int)role).ToString()
+                    })
                     .ToList();
 
                 editModel.Roles = new SelectList(listOfRoles, "Value", "Text", role[0]);

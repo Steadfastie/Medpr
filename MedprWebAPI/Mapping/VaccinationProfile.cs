@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MedprCore.DTO;
 using MedprDB.Entities;
-using MedprModels;
 using MedprModels.Requests;
 using MedprModels.Responses;
 
@@ -9,7 +8,7 @@ namespace MedprModels.Mapping;
 
 public class VaccinationProfile : Profile
 {
-    public VaccinationProfile() 
+    public VaccinationProfile()
     {
         CreateMap<Vaccination, VaccinationDTO>();
         CreateMap<VaccinationDTO, Vaccination>();

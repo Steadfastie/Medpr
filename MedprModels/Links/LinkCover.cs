@@ -16,7 +16,7 @@ public static class LinkCover
     {
         if (model.Links == null)
         {
-            if(model is FamilyModelResponse || model is FamilyMemberModelResponse)
+            if (model is FamilyModelResponse || model is FamilyMemberModelResponse)
             {
                 model.Links = new List<Link>()
                 {

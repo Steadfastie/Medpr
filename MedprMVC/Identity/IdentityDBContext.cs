@@ -8,6 +8,5 @@ public class IdentityDBContext : IdentityDbContext<IdentityUser<Guid>, IdentityR
 {
     public IdentityDBContext(DbContextOptions<IdentityDBContext> options) : base(options)
     {
-
     }
 }

@@ -3,7 +3,6 @@ using MedprCore;
 using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace MedprRepositories;

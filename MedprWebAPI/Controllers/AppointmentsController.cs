@@ -1,21 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Hangfire;
+using Hangfire.Storage;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
+using MedprModels.Links;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using MedprWebAPI.Utils;
+using MedprWebAPI.Utils.Notifications;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Serilog;
 using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using MedprModels.Responses;
-using MedprModels.Requests;
-using MedprModels.Links;
-using Microsoft.AspNetCore.Identity;
-using NuGet.Packaging;
-using MedprWebAPI.Utils;
-using Hangfire;
-using MedprWebAPI.Utils.Notifications;
-using Microsoft.AspNetCore.SignalR;
-using Hangfire.Storage;
 
 namespace MedprWebAPI.Controllers;
 
@@ -39,8 +38,8 @@ public class AppointmentsController : ControllerBase
     private readonly string NotificationMessage = "It's time for an appointment";
     private readonly string NotificationType = "appointments";
 
-
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
+
     public AppointmentsController(IAppointmentService appointmentService,
         IDoctorService doctorService,
         IFamilyService familyService,
@@ -182,7 +181,7 @@ public class AppointmentsController : ControllerBase
 
                 var dto = _mapper.Map<AppointmentDTO>(model);
 
-                if(model.Date.ToUniversalTime() > DateTime.UtcNow)
+                if (model.Date.ToUniversalTime() > DateTime.UtcNow)
                 {
                     dto.NotificationId = BackgroundJob
                         .Schedule(() => _notificationService
@@ -358,7 +357,7 @@ public class AppointmentsController : ControllerBase
                 {
                     return BadRequest();
                 }
-                
+
                 await _appointmentService.DeleteAppointmentAsync(dto);
                 if (dto.NotificationId != null)
                 {
@@ -411,7 +410,6 @@ public class AppointmentsController : ControllerBase
         {
             return await _appointmentService.GetAllAppointmentsAsync();
         }
-
     }
 
     private async Task<AppointmentModelResponse> FillResponseModel(AppointmentDTO dto)

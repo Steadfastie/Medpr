@@ -1,19 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Hangfire;
+using Hangfire.Storage;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
+using MedprModels.Links;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using MedprWebAPI.Utils;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using MedprModels.Responses;
-using MedprModels.Requests;
-using MedprModels.Links;
-using Microsoft.AspNetCore.Identity;
-using NuGet.Packaging;
-using MedprWebAPI.Utils;
-using Hangfire;
-using Hangfire.Storage;
 
 namespace MedprWebAPI.Controllers;
 
@@ -36,6 +35,7 @@ public class VaccinationsController : ControllerBase
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
     private readonly string NotificationMessage = "It's time to vaccinate";
     private readonly string NotificationType = "vaccinations";
+
     public VaccinationsController(IVaccinationService vaccinationService,
         IVaccineService vaccineService,
         IFamilyService familyService,
@@ -365,7 +365,7 @@ public class VaccinationsController : ControllerBase
                         BackgroundJob.Delete(dto.NotificationId);
                     }
                 }
-               
+
                 return Ok();
             }
             else
@@ -407,7 +407,6 @@ public class VaccinationsController : ControllerBase
         {
             return await _vaccinationService.GetAllVaccinationsAsync();
         }
-
     }
 
     private async Task<VaccinationModelResponse> FillResponseModel(VaccinationDTO dto)

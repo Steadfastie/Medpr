@@ -3,11 +3,6 @@ using MediatR;
 using MedprCQS.Commands.FamilyMembers;
 using MedprDB;
 using MedprDB.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.FamilyMembers;
 
@@ -21,6 +16,7 @@ public class CreateFamilyMemberCommandHandler : IRequestHandler<CreateFamilyMemb
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(CreateFamilyMemberCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<FamilyMember>(request.FamilyMember);
@@ -28,7 +24,7 @@ public class CreateFamilyMemberCommandHandler : IRequestHandler<CreateFamilyMemb
         if (entity != null)
         {
             await _context.FamilyMembers.AddAsync(entity, cancellationToken);
-            
+
             return await _context.SaveChangesAsync(cancellationToken);
         }
         else

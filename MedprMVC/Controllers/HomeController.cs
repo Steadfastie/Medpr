@@ -1,20 +1,12 @@
-﻿using MedprMVC.Models;
-using Microsoft.AspNetCore.Authentication;
+﻿using AutoMapper;
+using MedprCore.Abstractions;
+using MedprCore.DTO;
+using MedprMVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebUtilities;
-using System.Diagnostics;
-using System.Text.Encodings.Web;
-using System.Text;
-using MedprCore.Abstractions;
-using AutoMapper;
-using MedprCore.DTO;
-using MedprCore;
-using Microsoft.Extensions.Logging;
-using MedprDB.Entities;
 using Serilog;
+using System.Diagnostics;
 
 namespace MedprMVC.Controllers;
 

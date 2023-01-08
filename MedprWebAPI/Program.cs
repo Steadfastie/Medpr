@@ -1,34 +1,24 @@
-using MedprCore.Abstractions;
-using MedprCore.DTO;
-using Microsoft.EntityFrameworkCore;
-using MedprDB;
-using MedprDB.Entities;
-using MedprBusiness;
-using Microsoft.Extensions.Options;
-using Serilog;
-using Serilog.Events;
-using MedprRepositories;
-using MedprAbstractions.Repositories;
-using MedprAbstractions;
-using MedprDataRepositories;
-using MedprMVC.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using MedprBusiness.ServiceImplimentations.CQS;
-using MediatR;
-using System.Reflection;
-using MedprBusiness.ServiceImplimentations.Repository;
-using MedprCQS.Queries;
-using MedprCQS;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using AspNetSample.WebAPI.Utils;
-using MedprBusiness.ServiceImplimentations.Cqs;
-using Microsoft.OpenApi.Models;
 using Hangfire;
 using Hangfire.SqlServer;
+using MediatR;
+using MedprBusiness;
+using MedprBusiness.ServiceImplimentations.Cqs;
+using MedprBusiness.ServiceImplimentations.CQS;
+using MedprCore.Abstractions;
+using MedprCQS;
+using MedprDB;
+using MedprMVC.Identity;
 using MedprWebAPI.Utils.Notifications;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Events;
+using System.Reflection;
+using System.Text;
 
 namespace MedprWebAPI;
 
@@ -143,7 +133,6 @@ public class Program
 
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
         builder.Services.AddMediatR(typeof(ClassToAddMediator).Assembly);
-
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

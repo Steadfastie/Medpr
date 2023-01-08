@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MedprCore.DTO;
 using MedprDB.Entities;
-using MedprModels;
 using MedprModels.Requests;
 using MedprModels.Responses;
 
@@ -9,7 +8,7 @@ namespace MedprModels.Mapping;
 
 public class FamilyMemberProfile : Profile
 {
-    public FamilyMemberProfile() 
+    public FamilyMemberProfile()
     {
         CreateMap<FamilyMember, FamilyMemberDTO>();
         CreateMap<FamilyMemberDTO, FamilyMember>();

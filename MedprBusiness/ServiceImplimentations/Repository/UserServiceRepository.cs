@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using MedprAbstractions;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MedprBusiness.ServiceImplimentations.Repository;
 

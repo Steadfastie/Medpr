@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
 using MedprMVC.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
 
 namespace MedprMVC.Controllers;
 
@@ -15,6 +15,7 @@ public class DrugsController : Controller
 {
     private readonly IDrugService _drugService;
     private readonly IMapper _mapper;
+
     public DrugsController(IDrugService drugService, IMapper mapper)
     {
         _drugService = drugService;
@@ -96,7 +97,6 @@ public class DrugsController : Controller
 
                 return RedirectToAction("Index", "Drugs");
             }
-
             else
             {
                 return View(model);

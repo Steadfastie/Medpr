@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
 using MedprMVC.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
 
 namespace MedprMVC.Controllers;
 
@@ -15,6 +15,7 @@ public class DoctorsController : Controller
 {
     private readonly IDoctorService _doctorService;
     private readonly IMapper _mapper;
+
     public DoctorsController(IDoctorService DoctorService, IMapper mapper)
     {
         _doctorService = DoctorService;
@@ -96,7 +97,6 @@ public class DoctorsController : Controller
 
                 return RedirectToAction("Index", "Doctors");
             }
-
             else
             {
                 return View(model);
@@ -161,7 +161,8 @@ public class DoctorsController : Controller
                 {
                     foreach (PropertyInfo property in typeof(DoctorDTO).GetProperties())
                     {
-                        if (!property.GetValue(dto).Equals(property.GetValue(sourceDto))) {
+                        if (!property.GetValue(dto).Equals(property.GetValue(sourceDto)))
+                        {
                             patchList.Add(new PatchModel()
                             {
                                 PropertyName = property.Name,

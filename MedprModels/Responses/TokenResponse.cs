@@ -1,4 +1,5 @@
 ﻿namespace MedprModels.Responses;
+
 public class TokenResponse
 {
     public Guid UserId { get; set; }

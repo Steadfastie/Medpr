@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using MedprCore.Abstractions;
+using MedprCore.DTO;
+using MedprModels.Responses;
+using MedprWebAPI.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MedprCore.Abstractions;
-using AutoMapper;
-using MedprCore.DTO;
 using Serilog;
-using MedprModels.Responses;
-using MedprModels.Requests;
-using MedprWebAPI.Utils;
-using MedprModels.Links;
-using MedprDB.Entities;
 
 namespace MedprWebAPI.Controllers;
 
@@ -226,7 +223,6 @@ public class FeedController : ControllerBase
         {
             return await _vaccinationService.GetAllVaccinationsAsync();
         }
-
     }
 
     private async Task<VaccinationModelResponse> FillVaccinationResponseModel(VaccinationDTO dto)
@@ -284,7 +280,6 @@ public class FeedController : ControllerBase
         {
             return await _prescriptionService.GetAllPrescriptionsAsync();
         }
-
     }
 
     private async Task<PrescriptionModelResponse> FillPrescriptionResponseModel(PrescriptionDTO dto)

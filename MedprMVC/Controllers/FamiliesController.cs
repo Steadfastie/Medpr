@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
 using MedprMVC.Models;
-using Serilog;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace MedprMVC.Controllers;
 
@@ -17,6 +17,7 @@ public class FamiliesController : Controller
     private readonly IUserService _userService;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly IMapper _mapper;
+
     public FamiliesController(IFamilyService familyService,
         IFamilyMemberService familyMemberService,
         IUserService userService,
@@ -82,7 +83,7 @@ public class FamiliesController : Controller
                 }
 
                 ViewData["CurrentUser"] = currentUser.Id;
-                
+
                 return View(familiesModels);
             }
             else
@@ -132,7 +133,6 @@ public class FamiliesController : Controller
 
                 return RedirectToAction("Index", "Families");
             }
-
             else
             {
                 return View(model);

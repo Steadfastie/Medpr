@@ -3,11 +3,6 @@ using MediatR;
 using MedprCQS.Commands.Vaccinations;
 using MedprDB;
 using MedprDB.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.Vaccinations;
 
@@ -21,6 +16,7 @@ public class CreateVaccinationCommandHandler : IRequestHandler<CreateVaccination
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(CreateVaccinationCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<Vaccination>(request.Vaccination);
@@ -28,7 +24,7 @@ public class CreateVaccinationCommandHandler : IRequestHandler<CreateVaccination
         if (entity != null)
         {
             await _context.Vaccinations.AddAsync(entity, cancellationToken);
-            
+
             return await _context.SaveChangesAsync(cancellationToken);
         }
         else

@@ -7,7 +7,7 @@ namespace MedprMVC.Mapping
 {
     public class DoctorProfile : Profile
     {
-        public DoctorProfile() 
+        public DoctorProfile()
         {
             CreateMap<Doctor, DoctorDTO>();
             CreateMap<DoctorDTO, Doctor>();

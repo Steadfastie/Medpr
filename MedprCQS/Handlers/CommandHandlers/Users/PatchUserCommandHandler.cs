@@ -4,11 +4,6 @@ using MedprCQS.Commands.Users;
 using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.Users;
 
@@ -22,6 +17,7 @@ public class PatchUserCommandHandler : IRequestHandler<PatchUserCommand, int>
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(PatchUserCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<User>(request.User);

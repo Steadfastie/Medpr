@@ -2,6 +2,6 @@
 
 namespace MedprWebAPI.Utils.Notifications;
 
-public class EventNotificationHub: Hub<INotificationHub>
+public class EventNotificationHub : Hub<INotificationHub>
 {
 }

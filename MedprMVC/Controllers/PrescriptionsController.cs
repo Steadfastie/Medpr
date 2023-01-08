@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
 using MedprMVC.Models;
-using Serilog;
-using System.Reflection;
-using MedprDB.Entities;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Serilog;
+using System.Reflection;
 
 namespace MedprMVC.Controllers;
 
@@ -25,6 +24,7 @@ public class PrescriptionsController : Controller
     private readonly IDrugService _drugService;
     private readonly IMapper _mapper;
     private readonly int _pagesize = 15;
+
     public PrescriptionsController(IPrescriptionService prescriptionService,
         IDoctorService doctorService,
         IFamilyService familyService,
@@ -195,7 +195,6 @@ public class PrescriptionsController : Controller
 
                 return RedirectToAction("Index", "Prescriptions");
             }
-
             else
             {
                 return View(model);
@@ -236,7 +235,7 @@ public class PrescriptionsController : Controller
 
                 editModel.Doctor = _mapper.Map<DoctorModel>(doctorSelected);
                 editModel.Doctors = new SelectList(_mapper.Map<List<DoctorModel>>(allDoctors), "Id", "Name", doctorSelected.Id.ToString());
-                
+
                 editModel.Drug = _mapper.Map<DrugModel>(drugSelected);
                 editModel.Drugs = new SelectList(_mapper.Map<List<DrugModel>>(allDrugs), "Id", "Name", drugSelected.Id.ToString());
 
@@ -418,7 +417,6 @@ public class PrescriptionsController : Controller
         {
             return await _prescriptionService.GetAllPrescriptionsAsync();
         }
-
     }
 
     private async Task<bool> CheckRelevancy(Guid prescriptionId)

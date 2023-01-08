@@ -4,11 +4,6 @@ using MedprCQS.Commands.FamilyMembers;
 using MedprDB;
 using MedprDB.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.FamilyMembers;
 
@@ -22,6 +17,7 @@ public class PatchFamilyMemberCommandHandler : IRequestHandler<PatchFamilyMember
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(PatchFamilyMemberCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<FamilyMember>(request.FamilyMember);

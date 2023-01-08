@@ -1,10 +1,9 @@
 ﻿using MedprModels.Interfaces;
 using MedprModels.Links;
-using MedprModels.Responses;
 
 namespace MedprModels.Responses;
 
-public class PrescriptionModelResponse: IHateoas
+public class PrescriptionModelResponse : IHateoas
 {
     public Guid Id { get; set; }
     public DateTime Date { get; set; }

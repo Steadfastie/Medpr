@@ -5,7 +5,6 @@ using MedprCore.Abstractions;
 using MedprCore.DTO;
 using MedprCQS.Commands.Appointments;
 using MedprCQS.Queries.Appointments;
-using Microsoft.EntityFrameworkCore;
 
 namespace MedprBusiness.ServiceImplimentations.Cqs;
 

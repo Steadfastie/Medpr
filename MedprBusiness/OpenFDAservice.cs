@@ -2,17 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace MedprBusiness;
 
@@ -21,6 +11,7 @@ public class OpenFDAService
     private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;
     private readonly string _key;
+
     public OpenFDAService(HttpClient httpClient,
         IConfiguration configuration)
     {
@@ -83,7 +74,6 @@ public class OpenFDAService
             var drug = new DrugDTO();
             return drug;
         }
-
     }
 
     private async Task<int> GetDrugAmount()
@@ -117,5 +107,4 @@ public class OpenFDAService
     {
         public string Key { get; set; }
     }
-
 }

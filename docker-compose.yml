@@ -6,3 +6,5 @@ services:
     build:
       context: .
       dockerfile: MedprWebAPI\Dockerfile
+    ports:
+      - "7295:443"

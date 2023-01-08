@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
+using MedprModels.Links;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using MedprModels.Responses;
-using MedprModels;
-using MedprModels.Requests;
-using MedprModels.Links;
-using Microsoft.AspNetCore.Identity;
 
 namespace MedprWebAPI.Controllers;
 
@@ -26,6 +25,7 @@ public class UsersController : ControllerBase
     private readonly IMapper _mapper;
     private readonly UserManager<IdentityUser<Guid>> _userManager;
     private readonly RoleManager<IdentityRole<Guid>> _roleManager;
+
     public UsersController(IUserService userService,
         IMapper mapper,
         UserManager<IdentityUser<Guid>> userManager,
@@ -163,7 +163,7 @@ public class UsersController : ControllerBase
 
                 if (patchList.Any())
                 {
-                    await _userService.PatchUserAsync(model.Id, patchList);                    
+                    await _userService.PatchUserAsync(model.Id, patchList);
                 }
 
                 // Update user info in identity database
@@ -283,5 +283,5 @@ public class UsersController : ControllerBase
             return true;
         }
         return false;
-    } 
+    }
 }

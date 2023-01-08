@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using MedprBusiness;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
+using MedprModels.Links;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using MedprModels.Responses;
-using MedprModels;
-using MedprModels.Requests;
-using MedprModels.Links;
-using MedprBusiness;
 
 namespace MedprWebAPI.Controllers;
 
@@ -25,6 +24,7 @@ public class DrugsController : ControllerBase
     private readonly IDrugService _drugService;
     private readonly IMapper _mapper;
     private readonly OpenFDAService _openFDA;
+
     public DrugsController(IDrugService drugService,
         IMapper mapper,
         OpenFDAService openFDA)
@@ -247,7 +247,7 @@ public class DrugsController : ControllerBase
             {
                 var dto = await _drugService.GetDrugByIdAsync(id);
 
-                if(dto == null)
+                if (dto == null)
                 {
                     return BadRequest();
                 }

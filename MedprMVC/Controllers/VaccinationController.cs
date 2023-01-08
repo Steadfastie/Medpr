@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
 using MedprMVC.Models;
-using Serilog;
-using System.Reflection;
-using MedprDB.Entities;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Serilog;
+using System.Reflection;
 
 namespace MedprMVC.Controllers;
 
@@ -24,12 +22,13 @@ public class VaccinationsController : Controller
     private readonly IVaccineService _vaccineService;
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
+
     public VaccinationsController(IVaccinationService vaccinationService,
         IVaccineService vaccineService,
         IFamilyService familyService,
         IFamilyMemberService familyMemberService,
-        IUserService userService, 
-        IMapper mapper, 
+        IUserService userService,
+        IMapper mapper,
         UserManager<IdentityUser<Guid>> userManager)
     {
         _vaccinationService = vaccinationService;
@@ -186,7 +185,6 @@ public class VaccinationsController : Controller
 
                 return RedirectToAction("Index", "Vaccinations");
             }
-
             else
             {
                 return View(model);
@@ -377,7 +375,6 @@ public class VaccinationsController : Controller
         {
             return await _vaccinationService.GetAllVaccinationsAsync();
         }
-        
     }
 
     private async Task<bool> CheckRelevancy(Guid vaccinationId)

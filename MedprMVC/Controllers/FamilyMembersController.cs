@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
 using MedprMVC.Models;
-using Serilog;
-using System.Reflection;
-using MedprDB.Entities;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Serilog;
+using System.Reflection;
 
 namespace MedprMVC.Controllers;
 
@@ -22,6 +21,7 @@ public class FamilyMembersController : Controller
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
     private readonly int _pagesize = 15;
+
     public FamilyMembersController(IFamilyMemberService familyMemberService,
         UserManager<IdentityUser<Guid>> userManager,
         IFamilyService familyService,
@@ -64,7 +64,6 @@ public class FamilyMembersController : Controller
 
                 return RedirectToAction("Create", "FamilyMembers");
             }
-
             else
             {
                 return View(model);

@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
+using MedprModels.Links;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using MedprModels.Responses;
-using MedprModels;
-using MedprModels.Requests;
-using MedprModels.Links;
 
 namespace MedprWebAPI.Controllers;
 
@@ -23,6 +22,7 @@ public class DoctorsController : ControllerBase
 {
     private readonly IDoctorService _doctorService;
     private readonly IMapper _mapper;
+
     public DoctorsController(IDoctorService doctorService, IMapper mapper)
     {
         _doctorService = doctorService;
@@ -241,7 +241,7 @@ public class DoctorsController : ControllerBase
             {
                 var dto = await _doctorService.GetDoctorByIdAsync(id);
 
-                if(dto == null)
+                if (dto == null)
                 {
                     return BadRequest();
                 }

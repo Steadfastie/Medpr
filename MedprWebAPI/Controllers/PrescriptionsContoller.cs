@@ -1,19 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Hangfire;
+using Hangfire.Storage;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
-using AutoMapper;
+using MedprModels.Links;
+using MedprModels.Requests;
+using MedprModels.Responses;
+using MedprWebAPI.Utils;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Reflection;
-using Microsoft.AspNetCore.Authorization;
-using MedprModels.Responses;
-using MedprModels.Requests;
-using MedprModels.Links;
-using Microsoft.AspNetCore.Identity;
-using NuGet.Packaging;
-using MedprWebAPI.Utils;
-using Hangfire;
-using Hangfire.Storage;
 
 namespace MedprWebAPI.Controllers;
 
@@ -37,6 +36,7 @@ public class PrescriptionsController : ControllerBase
     private readonly string NotificationMessage = "It's time to take a pill";
     private readonly string NotificationType = "prescriptions";
     private WardedPeople WardedPeople => new(_familyService, _familyMemberService);
+
     public PrescriptionsController(IPrescriptionService prescriptionService,
         IDoctorService doctorService,
         IDrugService drugService,
@@ -407,7 +407,6 @@ public class PrescriptionsController : ControllerBase
         {
             return await _prescriptionService.GetAllPrescriptionsAsync();
         }
-
     }
 
     private async Task<PrescriptionModelResponse> FillResponseModel(PrescriptionDTO dto)

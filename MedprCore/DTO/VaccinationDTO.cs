@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedprCore.DTO;
 
-public class VaccinationDTO: INotifyUser
+public class VaccinationDTO : INotifyUser
 {
     public Guid Id { get; set; }
     public string? NotificationId { get; set; }

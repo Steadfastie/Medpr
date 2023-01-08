@@ -4,15 +4,10 @@ using MedprCore.DTO;
 using MedprCQS.Queries.Appointments;
 using MedprDB;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.QueryHandlers.Appointments;
 
-public class GetAllAppointmentsQueryHandler: IRequestHandler<GetAllAppointmentsQuery, List<AppointmentDTO>>
+public class GetAllAppointmentsQueryHandler : IRequestHandler<GetAllAppointmentsQuery, List<AppointmentDTO>>
 {
     private readonly MedprDBContext _context;
     private readonly IMapper _mapper;

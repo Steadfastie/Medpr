@@ -5,7 +5,6 @@ using MedprCore.Abstractions;
 using MedprCore.DTO;
 using MedprCQS.Commands.Prescriptions;
 using MedprCQS.Queries.Prescriptions;
-using Microsoft.EntityFrameworkCore;
 
 namespace MedprBusiness.ServiceImplimentations.Cqs;
 

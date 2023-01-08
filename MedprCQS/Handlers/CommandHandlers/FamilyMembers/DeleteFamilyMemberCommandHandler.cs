@@ -3,12 +3,6 @@ using MediatR;
 using MedprCQS.Commands.FamilyMembers;
 using MedprDB;
 using MedprDB.Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.FamilyMembers;
 
@@ -22,6 +16,7 @@ public class DeleteFamilyMemberCommandHandler : IRequestHandler<DeleteFamilyMemb
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(DeleteFamilyMemberCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<FamilyMember>(request.FamilyMember);

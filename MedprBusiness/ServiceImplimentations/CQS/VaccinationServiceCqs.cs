@@ -5,7 +5,6 @@ using MedprCore.Abstractions;
 using MedprCore.DTO;
 using MedprCQS.Commands.Vaccinations;
 using MedprCQS.Queries.Vaccinations;
-using Microsoft.EntityFrameworkCore;
 
 namespace MedprBusiness.ServiceImplimentations.Cqs;
 

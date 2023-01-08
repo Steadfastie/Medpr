@@ -3,11 +3,6 @@ using MediatR;
 using MedprCQS.Commands.Doctors;
 using MedprDB;
 using MedprDB.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedprCQS.Handlers.CommandHandlers.Doctors;
 
@@ -21,6 +16,7 @@ public class CreateDoctorCommandHandler : IRequestHandler<CreateDoctorCommand, i
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<int> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<Doctor>(request.Doctor);
@@ -28,7 +24,7 @@ public class CreateDoctorCommandHandler : IRequestHandler<CreateDoctorCommand, i
         if (entity != null)
         {
             await _context.Doctors.AddAsync(entity, cancellationToken);
-            
+
             return await _context.SaveChangesAsync(cancellationToken);
         }
         else
