@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Build and push
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: lkumbrella/medpr
+          registry: docker.io
+          dockerfile: MedprWebAPI/Dockerfile
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          tags: latest
+            
