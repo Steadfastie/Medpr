@@ -23,11 +23,11 @@ public class DrugsController : ControllerBase
 {
     private readonly IDrugService _drugService;
     private readonly IMapper _mapper;
-    private readonly OpenFDAService _openFDA;
+    private readonly IOpenFDAService _openFDA;
 
     public DrugsController(IDrugService drugService,
         IMapper mapper,
-        OpenFDAService openFDA)
+        IOpenFDAService openFDA)
     {
         _drugService = drugService;
         _mapper = mapper;
@@ -45,7 +45,6 @@ public class DrugsController : ControllerBase
     {
         try
         {
-            var user = User;
             var dtos = await _drugService.GetAllDrugsAsync();
 
             var models = _mapper.Map<List<DrugModelResponse>>(dtos);

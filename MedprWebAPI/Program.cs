@@ -5,6 +5,7 @@ using MediatR;
 using MedprBusiness;
 using MedprBusiness.ServiceImplimentations.Cqs;
 using MedprBusiness.ServiceImplimentations.CQS;
+using MedprCore;
 using MedprCore.Abstractions;
 using MedprCQS;
 using MedprDB;
@@ -127,6 +128,8 @@ public class Program
         builder.Services.AddScoped<IFamilyMemberService, FamilyMemberServiceCqs>();
         builder.Services.AddScoped<IPrescriptionService, PrescriptionServiceCqs>();
         builder.Services.AddScoped<IFeedService, FeedServiceCqs>();
+
+        builder.Services.AddScoped<IOpenFDAService, OpenFDAService>();
 
         builder.Services.AddScoped<IJwtUtil, JwtUtilSha256>();
         builder.Services.AddScoped<INotificationService, NotificationService>();

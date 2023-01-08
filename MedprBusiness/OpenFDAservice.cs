@@ -1,4 +1,5 @@
-﻿using MedprCore.DTO;
+﻿using MedprCore;
+using MedprCore.DTO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
@@ -6,11 +7,10 @@ using Serilog;
 
 namespace MedprBusiness;
 
-public class OpenFDAService
+public class OpenFDAService : IOpenFDAService
 {
     private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;
-    private readonly string _key;
 
     public OpenFDAService(HttpClient httpClient,
         IConfiguration configuration)
@@ -34,8 +34,7 @@ public class OpenFDAService
             $"api_key={secret.Key}&");
 
         var total = await GetDrugAmount();
-        var randomDrug = await GetDrug(total);
-        return randomDrug;
+        return await GetDrug(total);
     }
 
     private async Task<DrugDTO> GetDrug(int total)
@@ -93,8 +92,7 @@ public class OpenFDAService
             var data = await sr.ReadToEndAsync();
             var resp = JsonConvert.DeserializeObject<dynamic>(data);
 
-            var total = (int)resp.meta.results.total.Value;
-            return total;
+            return (int)resp?.meta.results.total.Value;
         }
         catch (Exception ex)
         {
