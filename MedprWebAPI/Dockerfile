@@ -12,17 +12,20 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["MedprWebAPI/MedprWebAPI.csproj", "MedprWebAPI/"]
 COPY ["MedprBusiness/MedprBusiness.csproj", "MedprBusiness/"]
+COPY ["MedprAbstractions/MedprDataAbstractions.csproj", "MedprAbstractions/"]
 COPY ["MedprDB/MedprDB/MedprDB.csproj", "MedprDB/MedprDB/"]
 COPY ["MedprCOre/MedprCore.csproj", "MedprCOre/"]
 COPY ["MedprCQS/MedprCQS.csproj", "MedprCQS/"]
 COPY ["MedprModels/MedprModels.csproj", "MedprModels/"]
+COPY ["MedprMVC/MedprMVC.csproj", "MedprMVC/"]
+COPY ["MedprRepositories/MedprDataRepositories.csproj", "MedprRepositories/"]
 RUN dotnet restore "MedprWebAPI/MedprWebAPI.csproj"
 COPY . .
 WORKDIR "/src/MedprWebAPI"
 RUN dotnet build "MedprWebAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet restore "MedprWebAPI/MedprWebAPI.csproj"
+RUN dotnet restore
 RUN dotnet publish "MedprWebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
