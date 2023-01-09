@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TestsMedpr.Drugs.Controller;
 
-public class CreateTests
+public class EditTests
 {
     private readonly Mock<IDrugService> _drugServiceMock;
     private readonly Mock<IMapper> _mapperMock;
     private readonly Mock<IOpenFDAService> _openFDAmock;
 
-    public CreateTests()
+    public EditTests()
     {
         _drugServiceMock = new Mock<IDrugService>();
         _mapperMock = new Mock<IMapper>();
@@ -23,40 +23,50 @@ public class CreateTests
 
     [Theory]
     [MemberData(nameof(GetDrugs), parameters: true)]
-    public async Task Create_ReturnsOk_OnValid(DrugModelRequest model)
+    public async Task Edit_ReturnsOk_OnValid(DrugModelRequest model)
     {
         // Arrange
-        _drugServiceMock.Setup(s => s.GetDrugByNameAsync(model.Name)).ReturnsAsync(null as DrugDTO);
+        _drugServiceMock.Setup(s => s.GetDrugByIdAsync(model.Id)).ReturnsAsync(new DrugDTO()
+        {
+            Id= model.Id,
+            Name = model.Name,
+        });
         _mapperMock.Setup(m => m
             .Map<DrugDTO>(It.IsAny<DrugModelRequest>()))
-                .Returns(() => new DrugDTO());
-        _drugServiceMock.Setup(s => s.CreateDrugAsync(It.IsAny<DrugDTO>()));
+                .Returns(() => new DrugDTO()
+                {
+                    Id = model.Id,
+                    Name = model.Name,
+                });
+        _drugServiceMock.Setup(s => s.PatchDrugAsync(It.IsAny<Guid>(), It.IsAny<List<PatchModel>>()));
         _mapperMock.Setup(m => m
            .Map<DrugModelResponse>(It.IsAny<DrugDTO>()))
                .Returns(() => new DrugModelResponse());
         var controller = new DrugsController(_drugServiceMock.Object, _mapperMock.Object, _openFDAmock.Object);
 
         // Act
-        var actionResult = await controller.Create(model);
+        var actionResult = await controller.Edit(model);
 
         // Assert
         Assert.NotNull(actionResult);
-        Assert.IsType<CreatedAtActionResult>(actionResult);
-        Assert.Equal(201, ((CreatedAtActionResult)actionResult).StatusCode);
-        Assert.NotNull(((CreatedAtActionResult)actionResult).Value);
-        Assert.IsType<DrugModelResponse>(((CreatedAtActionResult)actionResult).Value);
+        Assert.IsType<OkObjectResult>(actionResult);
+        Assert.Equal(201, ((OkObjectResult)actionResult).StatusCode);
+        Assert.NotNull(((OkObjectResult)actionResult).Value);
+        Assert.IsType<DrugModelResponse>(((OkObjectResult)actionResult).Value);
     }
 
+    // TODO: Refactor to name checking <- name changing should be forbidden
+    // TODO: Add test for NotModified
     [Theory]
     [MemberData(nameof(GetDrugs), parameters: true)]
-    public async Task Create_ForbidsDuplication(DrugModelRequest model)
+    public async Task Edit_ForbidsDuplication(DrugModelRequest model)
     {
         // Arrange
         _drugServiceMock.Setup(s => s.GetDrugByNameAsync(model.Name)).ReturnsAsync(new DrugDTO());
         var controller = new DrugsController(_drugServiceMock.Object, _mapperMock.Object, _openFDAmock.Object);
 
         // Act
-        var actionResult = await controller.Create(model);
+        var actionResult = await controller.Edit(model);
 
         // Assert
         Assert.NotNull(actionResult);
@@ -65,37 +75,35 @@ public class CreateTests
 
     [Theory]
     [MemberData(nameof(GetDrugs), parameters: false)]
-    public async Task Create_ReturnsOk_WhenModelStateInvalid(DrugModelRequest model)
+    public async Task Edit_ReturnsOk_WhenModelStateInvalid(DrugModelRequest model)
     {
         // Arrange
         var controller = new DrugsController(_drugServiceMock.Object, _mapperMock.Object, _openFDAmock.Object);
         controller.ModelState.AddModelError("Error", "Invalid input model");
 
         // Act
-        var actionResult = await controller.Create(model);
+        var actionResult = await controller.Edit(model);
 
         // Assert
         Assert.NotNull(actionResult);
         Assert.IsType<OkObjectResult>(actionResult);
         Assert.Equal(200, ((OkObjectResult)actionResult).StatusCode);
-        Assert.NotNull(((OkObjectResult)actionResult).Value);
-        Assert.IsType<DrugModelRequest>(((OkObjectResult)actionResult).Value);
-        Assert.Equal(model, ((OkObjectResult)actionResult).Value);
     }
 
     [Theory]
     [MemberData(nameof(GetDrugs), parameters: false)]
-    public async Task Create_Returns500_IfSomethingIsOff(DrugModelRequest model)
+    public async Task Edit_Returns500_IfSomethingIsOff(DrugModelRequest model)
     {
         // Arrange
+        _drugServiceMock.Setup(s => s.GetDrugByIdAsync(It.IsAny<Guid>())).ThrowsAsync(new Exception());
         _mapperMock.Setup(m => m
             .Map<DrugDTO>(It.IsAny<DrugModelRequest>()))
                 .Returns(() => new DrugDTO());
-        _drugServiceMock.Setup(s => s.CreateDrugAsync(It.IsAny<DrugDTO>())).ThrowsAsync(new Exception());
+        _drugServiceMock.Setup(s => s.PatchDrugAsync(It.IsAny<Guid>(), It.IsAny<List<PatchModel>>())).ThrowsAsync(new Exception());
         var controller = new DrugsController(_drugServiceMock.Object, _mapperMock.Object, _openFDAmock.Object);
 
         // Act
-        var actionResult = await controller.Create(model) as ObjectResult;
+        var actionResult = await controller.Edit(model) as ObjectResult;
 
         // Assert
         Assert.NotNull(actionResult);

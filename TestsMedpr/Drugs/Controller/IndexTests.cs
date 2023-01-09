@@ -1,12 +1,9 @@
-using MedprBusiness;
 using MedprCore;
 using MedprCore.Abstractions;
 using MedprCore.DTO;
 using MedprModels.Responses;
 using MedprWebAPI.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using Moq;
-using NuGet.Protocol;
 
 namespace TestsMedpr.Drugs.Controller;
 
