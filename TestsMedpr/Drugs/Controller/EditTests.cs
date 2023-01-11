@@ -59,7 +59,6 @@ public class EditTests
         Assert.IsType<DrugModelResponse>(((OkObjectResult)actionResult).Value);
     }
 
-    // TODO: Add test for NotModified
     [Theory]
     [MemberData(nameof(GetDrugs), parameters: true)]
     public async Task Edit_ForbidsNameChanging(DrugModelRequest model)
