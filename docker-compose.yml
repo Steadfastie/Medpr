@@ -5,6 +5,14 @@ services:
     image: ${DOCKER_REGISTRY-}medprwebapi
     build:
       context: .
-      dockerfile: MedprWebAPI\Dockerfile
+      dockerfile: MedprWebAPI/Dockerfile
     ports:
       - "7295:443"
+  sqlserver:
+    container_name: sql
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - SA_PASSWORD=8yQD!yya
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"

@@ -21,6 +21,8 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
+*.sln
+!Medpr.sln
 LICENSE
 README.md
-Angular
+/Angular

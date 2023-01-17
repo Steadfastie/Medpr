@@ -35,8 +35,8 @@ public class Program
         lc.WriteTo.File(
             builder.Configuration["Serilog"],
             LogEventLevel.Information,
-            retainedFileCountLimit: 20,
-            rollingInterval: RollingInterval.Hour)
+            rollingInterval: RollingInterval.Hour,
+            retainedFileCountLimit: 20)
             .WriteTo.Console(LogEventLevel.Verbose));
 
         builder.Services.AddCors(options =>
