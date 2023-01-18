@@ -54,11 +54,11 @@ public class Program
         // Main database
         builder.Services.AddDbContext<MedprDBContext>(
             optionsBuilder => optionsBuilder.UseSqlServer(
-                builder.Configuration.GetConnectionString("Default")));
+                builder.Configuration.GetConnectionString("Containerize_Default")));
         // Identity database
         builder.Services.AddDbContext<IdentityDBContext>(
             optionsBuilder => optionsBuilder.UseSqlServer(
-                builder.Configuration.GetConnectionString("Identity")));
+                builder.Configuration.GetConnectionString("Containerize_Identity")));
 
         builder.Services.AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>()
             .AddEntityFrameworkStores<IdentityDBContext>()
@@ -104,7 +104,7 @@ public class Program
             .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
             .UseSimpleAssemblyNameTypeSerializer()
             .UseRecommendedSerializerSettings()
-            .UseSqlServerStorage(builder.Configuration.GetConnectionString("Default"), new SqlServerStorageOptions
+            .UseSqlServerStorage(builder.Configuration.GetConnectionString("Containerize_Default"), new SqlServerStorageOptions
             {
                 CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
                 SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
@@ -142,7 +142,9 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(options =>
         {
-            options.IncludeXmlComments(builder.Configuration["Documentation"]);
+            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+            //options.IncludeXmlComments(builder.Configuration["Documentation"]);
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
             {
                 Name = "Authorization",
