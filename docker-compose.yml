@@ -9,8 +9,11 @@ services:
     ports:
       - "7295:443"
   sqlserver:
-    container_name: sql
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server
+    image: sql-server-image
+    build:
+      context: .
+      dockerfile: Dockerfile-sql
     environment:
       - SA_PASSWORD=8yQD!yya
       - ACCEPT_EULA=Y
