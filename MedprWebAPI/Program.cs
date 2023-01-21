@@ -54,11 +54,11 @@ public class Program
         // Main database
         builder.Services.AddDbContext<MedprDBContext>(
             optionsBuilder => optionsBuilder.UseSqlServer(
-                builder.Configuration.GetConnectionString("Containerize_Default")));
+                builder.Configuration.GetConnectionString("Default")));
         // Identity database
         builder.Services.AddDbContext<IdentityDBContext>(
             optionsBuilder => optionsBuilder.UseSqlServer(
-                builder.Configuration.GetConnectionString("Containerize_Identity")));
+                builder.Configuration.GetConnectionString("Identity")));
 
         builder.Services.AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>()
             .AddEntityFrameworkStores<IdentityDBContext>()
@@ -104,7 +104,7 @@ public class Program
             .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
             .UseSimpleAssemblyNameTypeSerializer()
             .UseRecommendedSerializerSettings()
-            .UseSqlServerStorage(builder.Configuration.GetConnectionString("Containerize_Default"), new SqlServerStorageOptions
+            .UseSqlServerStorage(builder.Configuration.GetConnectionString("Default"), new SqlServerStorageOptions
             {
                 CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
                 SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),

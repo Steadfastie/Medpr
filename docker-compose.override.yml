@@ -5,6 +5,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionStrings__Default=Server=host.docker.internal,1433; Database=ITA-Medpr; User=sa; Password=8yQD!yya
+      - ConnectionStrings__Identity=Server=host.docker.internal,1433; Database=ITA-Medpr-Identity; User=sa; Password=8yQD!yya
     ports:
       - "80"
       - "443"
