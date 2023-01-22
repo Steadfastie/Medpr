@@ -1,5 +1,4 @@
-version: '3.4'
-
+version: '3.3'
 services:
   medprwebapi:
     container_name: webAPI
@@ -18,6 +17,7 @@ services:
       context: .
       dockerfile: Dockerfile-sql
     environment:
+      - COMPOSE_PROJECT_NAME=medpr
       - SA_PASSWORD=8yQD!yya
       - ACCEPT_EULA=Y
     ports:
@@ -27,10 +27,13 @@ services:
     container_name: angular
     image: medprangular
     build:
-      context: ./Angular
-      dockerfile: ./Angular/Dockerfile
+      context: ./Angular/medpr-angular
+      dockerfile: Dockerfile
     environment:
       NODE_ENV: production
+    expose: 
+      - 4200
     ports:
       - 4200:4200
+    command: "ng serve --open --host 0.0.0.0 --port 4200 --disable-host-check"
     depends_on: [sqlserver, medprwebapi]
