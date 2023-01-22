@@ -2,12 +2,15 @@ version: '3.4'
 
 services:
   medprwebapi:
+    container_name: webAPI
     image: ${DOCKER_REGISTRY-}medprwebapi
     build:
       context: .
       dockerfile: MedprWebAPI/Dockerfile
     ports:
       - "7295:443"
+    depends_on: [sqlserver]
+
   sqlserver:
     container_name: sql_server
     image: sql-server-image
@@ -19,3 +22,15 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - "1433:1433"
+
+  medprangular:
+    container_name: angular
+    image: medprangular
+    build:
+      context: ./Angular
+      dockerfile: ./Angular/Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4200:4200
+    depends_on: [sqlserver, medprwebapi]

@@ -10,6 +10,7 @@ using MedprCore.Abstractions;
 using MedprCQS;
 using MedprDB;
 using MedprMVC.Identity;
+using MedprWebAPI.Utils.HangfireAuth;
 using MedprWebAPI.Utils.Notifications;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -180,7 +181,18 @@ public class Program
 
         app.UseDefaultFiles();
         app.UseStaticFiles();
-        app.UseHangfireDashboard();
+
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseHangfireDashboard(options: new DashboardOptions()
+            {
+                Authorization = new[] { new AuthorizationFilter() }
+            });
+        }
+        else
+        {
+            app.UseHangfireDashboard();
+        }
 
         app.UseHttpsRedirection();
         app.UseCors("medpr");
