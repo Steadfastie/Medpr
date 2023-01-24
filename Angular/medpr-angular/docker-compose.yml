@@ -1,12 +1,14 @@
 version: '3.4'
 
 services:
-  medprangular:
-    image: medprangular
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
+  app:
+    build: .
+    command: sh -c "npm start"
     ports:
       - 4200:4200
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+      - node_modules:/home/node/app/node_modules
+volumes:
+  node_modules:
