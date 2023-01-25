@@ -19,7 +19,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Compose
-        uses: isbang/compose-action@v1.4.1
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
         with:
-          compose-file: "./docker-compose.yml"
+          context: .
+          file: ./MedprWebAPI/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/MedprWebAPI:latest
