@@ -25,7 +25,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: ./MedprWebAPI/Dockerfile
+          context: ./MedprWebAPI
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/medpr:latest
