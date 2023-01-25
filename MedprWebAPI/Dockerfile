@@ -14,5 +14,5 @@ RUN dotnet publish "MedprWebAPI.csproj" -c Release -o /app/publish /p:UseAppHost
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "MedprWebAPI.dll"]
