@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./MedprWebAPI/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/MedprWebAPI:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/medpr:latest
