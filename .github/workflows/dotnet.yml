@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore Medpr.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build Medpr.sln --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test Medpr.sln --no-build --verbosity normal
