@@ -39,7 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MedprBusiness\MedprBusiness.csproj" />
-    <ProjectReference Include="..\MedprCOre\MedprCore.csproj" />
+    <ProjectReference Include="..\MedprCore\MedprCore.csproj" />
     <ProjectReference Include="..\MedprDB\MedprDB\MedprDB.csproj" />
     <ProjectReference Include="..\MedprModels\MedprModels.csproj" />
     <ProjectReference Include="..\MedprMVC\MedprMVC.csproj" />
