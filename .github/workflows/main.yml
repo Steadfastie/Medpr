@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./MedprWebAPI/Dockerfile
+          file: ./MedprWebAPI/Dockerfile-actions
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/medpr:latest
