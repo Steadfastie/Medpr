@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MedprCOre\MedprCore.csproj" />
+    <ProjectReference Include="..\MedprCore\MedprCore.csproj" />
     <ProjectReference Include="..\MedprWebAPI\MedprWebAPI.csproj" />
   </ItemGroup>
 
