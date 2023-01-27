@@ -42,10 +42,7 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
-        name: Build and push
-        uses: docker/build-push-action@v3
+        name: Compose
+        uses: isbang/compose-action@v1.4.1
         with:
-          context: .
-          file: ./MedprWebAPI/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/medpr:latest
+          compose-file: "docker-compose.yml"
