@@ -70,8 +70,8 @@ jobs:
         with:
           context: .
           file: MedprWebAPI/Dockerfile-actions
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/medpr:latest
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
