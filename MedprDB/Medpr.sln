@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedprDB", "MedprDB\MedprDB.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedprMVC", "..\MedprMVC\MedprMVC.csproj", "{071B46A7-E917-44A2-9B11-7F6F161497DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedprCore", "..\MedprCOre\MedprCore.csproj", "{3B8887CE-D594-4B17-AB07-14AFD1634922}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedprCore", "..\MedprCore\MedprCore.csproj", "{3B8887CE-D594-4B17-AB07-14AFD1634922}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedprBusiness", "MedprBusiness\MedprBusiness.csproj", "{827F94A9-4FBF-435E-A8DB-121FFB12FAB5}"
 EndProject
