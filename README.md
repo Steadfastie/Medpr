@@ -1,23 +1,35 @@
-# Hello there
+![Medpr](https://user-images.githubusercontent.com/68227124/215276510-905c580f-1b2e-4247-826d-e365bee0fd86.jpg)
 
-![NationalGeographic_2572187_square](https://user-images.githubusercontent.com/68227124/215260898-4d6261bb-e6ca-4484-989c-899dead7fe0a.png)
+# Hello there!
+This repo was originally made for IT-Academy's ASP.NET Enterprise Development course. Today it's a size of a decent pet-project.
 
+	As illustrated  above, Medpr has 3 parts:
+		🙂 Angular app
+		🧠 ASP.NET Core WebAPI
+		💾 SQL Server
+Docker compose is configured to build 3 linux-based containers, seed data to SQL server and bind mounts to Angular app.
 
-This repo was originally made for IT-Academy course on ASP.NET development.
+Here is an example of seeded users:
 
-App has some seeded users:
-
- 👉 Admin user: admin@admin.com | Admin_1_Admin
-
- 👉 Main user: firstuser@gmail.com | 8yQD!yya
+	👉 Admin user: admin@admin.com | Admin_1_Admin
+	👉 Main user: firstuser@gmail.com | 8yQD!yya
 
 Check out the very first UI mockup: https://xd.adobe.com/view/c5b3da8e-d86b-435c-88ad-82eb5d7a315a-90e0/
 
-  # Future plans
-  1. Integrate docker (🚧)
-  2. Add xUnit & MOQ tests (✔️)
-  3. Reactive services revision (⌛)
-  4. NgRx component state integration (⌛) 
+  ## Current plans
+  1. Add xUnit & MOQ tests (✔️)
+  2. Integrate docker (✔️)
+  
+  	2.1. Dockerfile for WebAPI (✔️)
+  	2.2. Containerize SQL Server & seed data (✔️)
+  	2.3. Dockerfile for Angular with bind-mounts to recompile on change (✔️)
+  	2.4. Docker-compose (✔️)
+	
+  3. GitHub Actions (✔️)
+  
+ 	3.1. Build & test .NET (✔️)
+  	3.2. CI to Docker Hub (✔️)
+  	3.3. CodeQL (✔️)
 
   ## MVC project history
   1. password -> password hash migration (✔️)
