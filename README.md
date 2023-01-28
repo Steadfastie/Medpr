@@ -1,4 +1,8 @@
 # Hello there
+
+![NationalGeographic_2572187_square](https://user-images.githubusercontent.com/68227124/215260898-4d6261bb-e6ca-4484-989c-899dead7fe0a.png)
+
+
 This repo was originally made for IT-Academy course on ASP.NET development.
 
 App has some seeded users:
